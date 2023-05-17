@@ -1,0 +1,13 @@
+.shadow {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0);
+}
+
+.menu {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffff;
+}
+
+.menu:hover {
+    -fx-background-color: #28a13e;
+}
+

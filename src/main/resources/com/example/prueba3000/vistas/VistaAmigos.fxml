@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaAmigosController">
+    <children>
+        <Label layoutX="473.0" layoutY="49.0" prefHeight="17.0" prefWidth="89.0" text="Añadir amigo" />
+        <TextField fx:id="username_amigoaañadir" layoutX="443.0" layoutY="86.0" />
+        <Button fx:id="añadiramigo" layoutX="492.0" layoutY="121.0" mnemonicParsing="false" onAction="#añadiramigo" text="Añadir" />
+        <Label fx:id="numeroDeSolicitudes" layoutX="437.0" layoutY="173.0" prefHeight="17.0" prefWidth="149.0" text="label" />
+        <Label fx:id="nombresol" layoutX="401.0" layoutY="206.0" prefHeight="25.0" prefWidth="66.0" text="label" />
+        <Button fx:id="aceptar" layoutX="470.0" layoutY="206.0" mnemonicParsing="false" onAction="#aceptar" text="Aceptar" />
+        <Button fx:id="rechazar" layoutX="530.0" layoutY="206.0" mnemonicParsing="false" onAction="#rechazar" text="Rechazar" />
+        <ScrollPane layoutX="16.0" layoutY="11.0" prefHeight="200.0" prefWidth="200.0">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <GridPane fx:id="gridpane" prefHeight="184.0" prefWidth="183.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="183.0" minWidth="10.0" prefWidth="183.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="0.0" prefWidth="0.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                        </GridPane>
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>
+
