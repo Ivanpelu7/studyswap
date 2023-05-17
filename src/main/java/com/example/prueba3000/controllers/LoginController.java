@@ -11,65 +11,121 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import model.Usuario;
+import model.UsuarioModel;
+
+import java.io.IOException;
+import java.sql.*;
+
 public class LoginController {
-    @javafx.fxml.FXML
-    private AnchorPane cambiarpagina;
-    @javafx.fxml.FXML
-    private TextField nombreiniciar;
-    @javafx.fxml.FXML
-    private TextField contraseña1;
-    @javafx.fxml.FXML
-    private Button iniciosesion;
-    @javafx.fxml.FXML
-    private Label incorrecte2;
-    @javafx.fxml.FXML
+    @FXML
     private TextField nombre;
-    @javafx.fxml.FXML
+    @FXML
     private TextField apellidos;
-    @javafx.fxml.FXML
+    @FXML
     private TextField email;
-    @javafx.fxml.FXML
-    private PasswordField contraseña;
-    @javafx.fxml.FXML
+    @FXML
     private PasswordField confcontraseña;
-    @javafx.fxml.FXML
-    private Button boto;
-    @javafx.fxml.FXML
+    @FXML
     private Label incorrecte;
-    @javafx.fxml.FXML
+    @FXML
     private TextField nomuser;
-    @javafx.fxml.FXML
+    @FXML
+    private Button boto;
+    @FXML
+    private Button iniciosesion;
+    @FXML
+    private TextField nombreiniciar;
+    @FXML
+    private TextField contraseña1;
+    @FXML
+    private PasswordField contraseña;
+    @FXML
+    private AnchorPane cambiarpagina;
+    @FXML
+    private Label incorrecte2;
+    @FXML
     private Label incorrecte1;
-    @javafx.fxml.FXML
+    private Usuario usuario;
+    @FXML
     private RadioButton masculino;
-    @javafx.fxml.FXML
+    @FXML
     private ToggleGroup sexo;
-    @javafx.fxml.FXML
+    @FXML
     private RadioButton femenino;
 
-    @javafx.fxml.FXML
-    public void iniciosesion(ActionEvent actionEvent) {
+    public Usuario getUsuario() {
 
-        try {
-           Parent root = FXMLLoader.load(Main.class.getResource("vistas/VistaPrincipal.fxml"));
+        return usuario;
+    }
 
-           Scene scene = new Scene(root);
+    @FXML
+    public void registrarse(ActionEvent actionEvent) throws SQLException {
+        UsuarioModel um= new UsuarioModel();
+        String sexo="";
+        if (masculino.isSelected()){sexo="Masculino";}
+        if (femenino.isSelected()){sexo="Femenino";}
 
-           Stage stage = (Stage) iniciosesion.getScene().getWindow();
+        int comprovarusuari= um.comprovarusuario(nomuser.getText());
+        if (comprovarusuari==0){
+            System.out.println(contraseña.getText()+"   "+confcontraseña.getText());
 
-            stage.setScene(scene);
+            if(contraseña.getText().equals(confcontraseña.getText())){
+                Usuario u=new Usuario(nomuser.getText(),contraseña.getText(),email.getText(),nombre.getText(),apellidos.getText(),0,sexo);
+                System.out.println(sexo
+                );
+                um.añadirUsuario(u);
+                incorrecte.setText("");
+            }
+            else{
+                incorrecte.setText("Las contraseñas no coinciden");
+            }
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        }
+        else{
+            incorrecte.setText("El nombre de usuario esta en uso");
+        }
+    }
+
+    @FXML
+    public void iniciosesion(ActionEvent actionEvent) throws SQLException {
+        UsuarioModel us= new UsuarioModel();
+        int comprovar= us.comprovarusuario(nombreiniciar.getText());
+        String contraseña = us.comprovarcontraseña(nombreiniciar.getText());
+
+        if(comprovar==1){
+            if(contraseña1.getText().equals(contraseña)){
+                //ASO ES PA CARREGAR ELS AMICS
+                UsuarioModel um= new UsuarioModel();
+                usuario= um.recuperarusuario(nombreiniciar.getText());
+
+                try {
+                    Parent root = FXMLLoader.load(Main.class.getResource("vistas/VistaPrincipal.fxml"));
+
+                    Scene scene = new Scene(root);
+
+                    Stage stage = (Stage) iniciosesion.getScene().getWindow();
+
+                    stage.setScene(scene);
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            else{
+                incorrecte2.setText("Contraseña incorrecta");
+            }
+        }
+        else {
+            incorrecte2.setText("usuario no registrado");
         }
 
-
-
-
-
     }
 
-    @javafx.fxml.FXML
-    public void registrarse(ActionEvent actionEvent) {
-    }
 }
