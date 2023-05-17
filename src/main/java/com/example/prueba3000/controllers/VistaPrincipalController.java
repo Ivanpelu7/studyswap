@@ -16,7 +16,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -42,11 +41,22 @@ public class VistaPrincipalController implements Initializable {
     @FXML
     private AnchorPane rootPane;
     private Usuario usuario;
-    @FXML
-    private Button buttonAmigos1;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaPerfil.fxml"));
+
+            Parent root = loader.load();
+
+            rootPane.getChildren().setAll(root);
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
@@ -99,6 +109,22 @@ public class VistaPrincipalController implements Initializable {
             Stage stage = (Stage) buttonAmigos.getScene().getWindow();
 
             stage.setScene(scene);
+        }
+    }
+
+    @FXML
+    public void cambiarVistaInicio(ActionEvent actionEvent) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaPerfil.fxml"));
+
+            Parent root = loader.load();
+
+            rootPane.getChildren().setAll(root);
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

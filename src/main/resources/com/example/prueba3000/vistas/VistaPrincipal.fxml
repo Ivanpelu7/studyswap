@@ -23,7 +23,7 @@
                                         <Image url="@../images/hombre.png" />
                                     </image>
                                 </ImageView>
-                                <Button fx:id="buttonInicio" alignment="CENTER" graphicTextGap="1.0" layoutX="6.0" layoutY="247.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="168.0" styleClass="menu" stylesheets="@../css/prueba.css" text="Inicio" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                <Button fx:id="buttonInicio" alignment="CENTER" graphicTextGap="1.0" layoutX="6.0" layoutY="247.0" mnemonicParsing="false" onAction="#cambiarVistaInicio" prefHeight="57.0" prefWidth="168.0" styleClass="menu" stylesheets="@../css/prueba.css" text="Inicio" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
                                     </font>
@@ -90,7 +90,7 @@
                                         <Image url="@../images/mujer.png" />
                                     </image>
                                 </ImageView>
-                        <Button fx:id="buttonAmigos1" graphicTextGap="10.0" layoutX="1.0" layoutY="419.0" mnemonicParsing="false" onAction="#cambiarVistaAmigos" prefHeight="57.0" prefWidth="171.0" styleClass="menu" text="Ajustes">
+                        <Button graphicTextGap="10.0" layoutX="1.0" layoutY="419.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="171.0" styleClass="menu" text="Ajustes">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
