@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane fx:id="cambiarpagina" prefHeight="378.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.LoginController">
+<AnchorPane prefHeight="378.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.LoginController">
     <children>
         <BorderPane prefHeight="405.0" prefWidth="672.0">
             <right>
@@ -19,9 +19,9 @@
                         <TextField fx:id="nombreiniciar" layoutX="127.0" layoutY="114.0" />
                         <Label layoutX="40.0" layoutY="117.0" prefHeight="18.0" prefWidth="64.0" text="Usuario" />
                         <Label layoutX="40.0" layoutY="176.0" prefHeight="18.0" prefWidth="89.0" text="Contraseña" />
-                        <TextField fx:id="contraseña1" layoutX="127.0" layoutY="173.0" />
-                        <Button fx:id="iniciosesion" layoutX="127.0" layoutY="236.0" mnemonicParsing="false" onAction="#iniciosesion" text="Iniciar Sesion" />
+                        <Button fx:id="buttonInicioSesion" layoutX="127.0" layoutY="236.0" mnemonicParsing="false" onAction="#inicioSesion" text="Iniciar Sesion" />
                         <Label fx:id="incorrecte2" layoutX="115.0" layoutY="307.0" prefHeight="17.0" prefWidth="201.0" textFill="#f20404" />
+                  <PasswordField fx:id="passwordInicio" layoutX="127.0" layoutY="172.0" />
                     </children>
                 </AnchorPane>
             </right>
@@ -40,10 +40,10 @@
                         <PasswordField fx:id="confcontraseña" layoutX="150.0" layoutY="293.0" />
                         <Label layoutX="36.0" layoutY="236.0" prefHeight="17.0" prefWidth="112.0" text="Nombre de usuario" />
                         <Label layoutX="129.0" layoutY="62.0" prefHeight="17.0" prefWidth="221.0" text="REGISTRO" />
-                        <Button fx:id="boto" layoutX="138.0" layoutY="360.0" mnemonicParsing="false" onAction="#registrarse" text="Registrarse" />
+                        <Button fx:id="buttonRegistro" layoutX="138.0" layoutY="360.0" mnemonicParsing="false" onAction="#registrarse" text="Registrarse" />
                         <Label fx:id="incorrecte" layoutX="84.0" layoutY="332.0" prefHeight="17.0" prefWidth="201.0" textFill="#f20404" />
                         <TextField fx:id="nomuser" layoutX="152.0" layoutY="232.0" prefHeight="25.0" prefWidth="148.0" />
-                        <Label fx:id="incorrecte1" layoutX="94.0" layoutY="342.0" prefHeight="17.0" prefWidth="201.0" textFill="#f20404" />
+                        <Label layoutX="94.0" layoutY="342.0" prefHeight="17.0" prefWidth="201.0" textFill="#f20404" />
                         <Label layoutX="62.0" layoutY="194.0" prefHeight="17.0" prefWidth="38.0" text="Sexo" />
                         <RadioButton fx:id="masculino" layoutX="107.0" layoutY="194.0" mnemonicParsing="false" text="Masculino">
                             <toggleGroup>
@@ -57,4 +57,3 @@
         </BorderPane>
     </children>
 </AnchorPane>
-

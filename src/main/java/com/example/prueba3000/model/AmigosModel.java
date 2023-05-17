@@ -1,8 +1,8 @@
-package model;
+package com.example.prueba3000.model;
 
 
 
-import util.DBUtil;
+import com.example.prueba3000.util.DBUtil;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

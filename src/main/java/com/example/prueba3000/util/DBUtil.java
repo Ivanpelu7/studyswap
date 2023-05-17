@@ -1,4 +1,4 @@
-package util;
+package com.example.prueba3000.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

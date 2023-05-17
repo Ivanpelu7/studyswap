@@ -3,16 +3,11 @@ package com.example.prueba3000.controllers;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import model.AmigosModel;
-import model.UsuarioModel;
+import com.example.prueba3000.model.AmigosModel;
 
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class VistaAmigosController {
 
@@ -38,20 +33,19 @@ public class VistaAmigosController {
     int numsolicitudes= 0;
     int i = 0;
     int s = 0;
-    public String nomuser(){}
 
     public void initialize() throws SQLException {
 
         LoginController lc= new LoginController();
 
-        //cride al model
+        //cride al com.example.prueba3000.model
         AmigosModel am = new AmigosModel();
         //llamamos a la funcion ver amigos
-        am.veramigos(lc.getUsuario().getNombreUsuario());
+        //am.veramigos(lc.getUsuario().getNombreUsuario());
         amigos.addAll(am.amigos);
         int i = 0;
         //llamo a la funcion ver solicitudes
-        am.mostrarsolicitudes(lc.getUsuario().getNombreUsuario());
+        //am.mostrarsolicitudes(lc.getUsuario().getNombreUsuario());
         numsolicitudes= am.solicitudes.size();
         System.out.println(numsolicitudes);
         Solicitudes.addAll(am.solicitudes);

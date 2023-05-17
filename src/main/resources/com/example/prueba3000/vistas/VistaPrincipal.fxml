@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="662.0" prefWidth="1041.0" style="-fx-background-color: ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaPrincipalController">
+<AnchorPane prefHeight="662.0" prefWidth="1041.0" style="-fx-background-color: ffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaPrincipalController">
     <children>
         <BorderPane prefHeight="662.0" prefWidth="1041.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
@@ -57,7 +57,7 @@
                                         <Font name="System Bold" size="19.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="labelNombreUsuario" layoutX="16.0" layoutY="156.0" text="nombre_usuario" textFill="WHITE">
+                                <Label fx:id="labelNombreUsuario" alignment="CENTER" layoutX="16.0" layoutY="156.0" prefHeight="28.0" prefWidth="133.0" textAlignment="CENTER" textFill="WHITE">
                                     <font>
                                         <Font size="19.0" />
                                     </font>

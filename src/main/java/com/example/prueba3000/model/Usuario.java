@@ -1,4 +1,4 @@
-package model;
+package com.example.prueba3000.model;
 
 public class Usuario {
 
@@ -21,6 +21,16 @@ public class Usuario {
         this.sexo = sexo;
     }
 
+    public Usuario(int id, String nombreUsuario, String password, String email, String nombre, String apellidos, int tipoUsuario, String sexo) {
+        this.id = id;
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
+        this.email = email;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.tipoUsuario = tipoUsuario;
+        this.sexo = sexo;
+    }
 
     public int getId() {
         return id;

@@ -1,36 +1,55 @@
 package com.example.prueba3000.controllers;
 
 import com.example.prueba3000.Main;
+import com.example.prueba3000.model.Usuario;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class VistaPrincipalController {
-    @javafx.fxml.FXML
+public class VistaPrincipalController implements Initializable {
+
+    @FXML
     private ImageView fotoHombre;
-    @javafx.fxml.FXML
+    @FXML
     private Button buttonInicio;
-    @javafx.fxml.FXML
+    @FXML
     private Button buttonApuntes;
-    @javafx.fxml.FXML
+    @FXML
     private Label labelBienvenida;
-    @javafx.fxml.FXML
+    @FXML
     private Label labelNombreUsuario;
-    @javafx.fxml.FXML
+    @FXML
     private Button buttonAmigos;
-    @javafx.fxml.FXML
+    @FXML
     private ImageView buttonCerrarSesion;
-    @javafx.fxml.FXML
+    @FXML
     private ImageView fotoMujer;
-    @javafx.fxml.FXML
+    @FXML
     private AnchorPane rootPane;
+    private Usuario usuario;
 
-    @javafx.fxml.FXML
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+    public void setUsuario(Usuario u) {
+
+        this.usuario = u;
+
+        labelNombreUsuario.setText(usuario.getNombreUsuario());
+    }
+
+    @FXML
     public void cambiarVistaAmigos(ActionEvent actionEvent) {
 
         try {
@@ -38,11 +57,10 @@ public class VistaPrincipalController {
 
             rootPane.getChildren().setAll(pane);
 
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
+
+
 }
