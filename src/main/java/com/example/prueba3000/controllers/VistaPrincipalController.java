@@ -3,13 +3,19 @@ package com.example.prueba3000.controllers;
 import com.example.prueba3000.Main;
 import com.example.prueba3000.model.Usuario;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,6 +42,8 @@ public class VistaPrincipalController implements Initializable {
     @FXML
     private AnchorPane rootPane;
     private Usuario usuario;
+    @FXML
+    private Button buttonAmigos1;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -47,6 +55,17 @@ public class VistaPrincipalController implements Initializable {
         this.usuario = u;
 
         labelNombreUsuario.setText(usuario.getNombreUsuario());
+
+        if (usuario.getSexo().equals("M")) {
+            fotoHombre.setVisible(true);
+            fotoMujer.setVisible(false);
+            labelBienvenida.setText("BIENVENIDO,");
+
+        } else if (usuario.getSexo().equals("F")) {
+            fotoMujer.setVisible(true);
+            fotoHombre.setVisible(false);
+            labelBienvenida.setText("BIENVENIDA,");
+        }
     }
 
     @FXML
@@ -62,5 +81,24 @@ public class VistaPrincipalController implements Initializable {
         }
     }
 
+    @FXML
+    public void cerrarSesion(Event event) throws IOException {
 
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setHeaderText(null);
+        a.setContentText("¿Seguro que quiere cerrar la sesión?");
+        a.showAndWait();
+
+        if (a.getResult() == ButtonType.OK) {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/Login.fxml"));
+
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+
+            Stage stage = (Stage) buttonAmigos.getScene().getWindow();
+
+            stage.setScene(scene);
+        }
+    }
 }
