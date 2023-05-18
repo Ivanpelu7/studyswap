@@ -46,7 +46,7 @@ public class CursoModel extends DBUtil {
 
         while (rs.next()) {
 
-            Integer id = rs.getInt("id_apunte");
+            Integer id = rs.getInt("id_curso");
             String nombre = rs.getString("nombre");
 
             Curso curso = new Curso(id, nombre);

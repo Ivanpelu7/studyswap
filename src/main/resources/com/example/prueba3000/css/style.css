@@ -18,3 +18,26 @@
     -fx-background-color: transparent;
 }
 
+.combobox-filtro {
+
+    -fx-background-color: #70c07f;
+    -fx-background-radius: 15px;
+}
+
+.textfield-datos {
+
+    -fx-background-radius: 15px;
+}
+
+.shadow {
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 10.0, 0.0, 0.0, 10.0);
+}
+
+.style-menu-lateral {
+    -fx-background-color: #70c07f;
+    -fx-background-radius: 10px;
+}
+
+.bordes-redondos {
+    -fx-background-radius: 100px;
+}

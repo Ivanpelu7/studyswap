@@ -7,6 +7,7 @@ import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ApunteModel extends DBUtil {
@@ -34,6 +35,31 @@ public class ApunteModel extends DBUtil {
         }
 
         return apuntes;
+    }
+
+    public ArrayList<Apunte> apuntesFiltro(Asignatura a) throws SQLException {
+
+        HashMap<Integer, Apunte> apuntesTodos = recuperarApuntes();
+
+        ArrayList<Apunte> apuntesFiltro = new ArrayList<>();
+
+        String query = "SELECT id_apunte FROM apuntes WHERE id_asignatura = " + a.getId();
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Integer id = rs.getInt("id_apunte");
+
+            Apunte ap = apuntesTodos.get(id);
+
+            apuntesFiltro.add(ap);
+        }
+
+        cerrarConexion();
+
+        return apuntesFiltro;
     }
 
 }

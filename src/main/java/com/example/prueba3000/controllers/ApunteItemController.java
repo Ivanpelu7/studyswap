@@ -10,8 +10,11 @@ public class ApunteItemController {
     private AnchorPane anchorPanePDF;
     @javafx.fxml.FXML
     private Label labelNombreUsuario;
+    private Apunte apunte;
 
-    public void setApunte(Apunte apunte) {
+    public void setApunte(Apunte a) {
+
+        this.apunte = a;
 
         labelNombreUsuario.setText(apunte.getNombre());
     }

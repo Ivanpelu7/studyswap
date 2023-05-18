@@ -11,13 +11,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="662.0" prefWidth="1041.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaPrincipalController">
+<AnchorPane prefHeight="662.0" prefWidth="1041.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaPrincipalController">
     <children>
         <BorderPane prefHeight="662.0" prefWidth="1041.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
                 <AnchorPane prefHeight="662.0" prefWidth="141.0" BorderPane.alignment="CENTER">
                     <children>
-                        <AnchorPane layoutX="65.0" layoutY="31.0" prefHeight="642.0" prefWidth="167.0" style="-fx-background-color: #70c07f; -fx-background-radius: 10px;" styleClass="shadow" stylesheets="@../css/prueba.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                        <AnchorPane layoutX="65.0" layoutY="31.0" prefHeight="642.0" prefWidth="167.0" stylesheets="@../css/style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                             <children>
                                 <ImageView fx:id="fotoHombre" fitHeight="90.0" fitWidth="83.0" layoutX="42.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -123,6 +123,10 @@
                            </styleClass>
                         </Button>
                             </children>
+                     <styleClass>
+                        <String fx:value="style-menu-lateral" />
+                        <String fx:value="shadow" />
+                     </styleClass>
                         </AnchorPane>
                     </children>
                 </AnchorPane>
