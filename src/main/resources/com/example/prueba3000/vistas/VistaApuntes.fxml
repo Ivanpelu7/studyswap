@@ -32,7 +32,7 @@
                         <String fx:value="bordes-redondos" />
                      </styleClass>
                   </ComboBox>
-                  <ComboBox fx:id="comboboxAsignatura" disable="true" onAction="#filtrarAsignatura" prefWidth="150.0" promptText="Asignatura" stylesheets="@../css/style.css">
+                  <ComboBox fx:id="comboboxAsignatura" disable="true" prefWidth="150.0" promptText="Asignatura" stylesheets="@../css/style.css">
                      <HBox.margin>
                         <Insets left="20.0" top="15.0" />
                      </HBox.margin>

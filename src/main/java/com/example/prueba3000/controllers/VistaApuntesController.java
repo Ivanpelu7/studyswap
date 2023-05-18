@@ -110,11 +110,6 @@ public class VistaApuntesController implements Initializable {
     }
 
     @javafx.fxml.FXML
-    public void filtrarAsignatura(ActionEvent actionEvent) {
-    }
-
-
-    @javafx.fxml.FXML
     public void filtrar(ActionEvent actionEvent) throws SQLException, IOException {
 
         ApunteModel am = new ApunteModel();
