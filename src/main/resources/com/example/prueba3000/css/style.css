@@ -1,0 +1,20 @@
+.boton-menu:hover {
+
+    -fx-background-color: #27963a;
+}
+
+.boton {
+
+    -fx-background-color: transparent;
+}
+
+.pdflateral {
+
+    -fx-background-color: #ffff;
+    -fx-background-radius: 10px;
+}
+
+.style-scroll-pane {
+    -fx-background-color: transparent;
+}
+

@@ -1,11 +1,11 @@
 package com.example.prueba3000.model;
 
-public class Asignatura {
+public class Curso {
 
     private int id;
     private String nombre;
 
-    public Asignatura(int id, String nombre) {
+    public Curso(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }

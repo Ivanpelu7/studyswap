@@ -127,4 +127,20 @@ public class VistaPrincipalController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    public void cambiarVistaApuntes(ActionEvent actionEvent) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaApuntes.fxml"));
+
+            Parent root = loader.load();
+
+            rootPane.getChildren().setAll(root);
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
