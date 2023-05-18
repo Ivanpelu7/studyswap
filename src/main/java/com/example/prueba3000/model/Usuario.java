@@ -1,5 +1,7 @@
 package com.example.prueba3000.model;
 
+import java.util.ArrayList;
+
 public class Usuario {
 
     private int id;
