@@ -1,121 +1,97 @@
 package com.example.prueba3000.controllers;
 
-import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import com.example.prueba3000.Main;
 import com.example.prueba3000.model.AmigosModel;
+import com.example.prueba3000.model.Usuario;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
+import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.ResourceBundle;
 
-public class VistaAmigosController {
+public class VistaAmigosController implements Initializable {
 
 
     @javafx.fxml.FXML
-    private TextField username_amigoaañadir;
+    private HBox hbox_info;
     @javafx.fxml.FXML
-    private Button añadiramigo;
+    private VBox vbox_users;
     @javafx.fxml.FXML
-    private Label numeroDeSolicitudes;
+    private ImageView imagenperfil;
     @javafx.fxml.FXML
-    private Button aceptar;
+    private Label nombre_usuario;
     @javafx.fxml.FXML
-    private Button rechazar;
-    ArrayList<String> amigos = new ArrayList<>();
-    String nombreusuario = "";
-
-    ArrayList<String> Solicitudes = new ArrayList<>();
+    private Label correo;
     @javafx.fxml.FXML
-    private Label nombresol;
-
-
-    int numsolicitudes= 0;
-    int i = 0;
-    int s = 0;
-
-    public void initialize() throws SQLException {
-
-        LoginController lc= new LoginController();
-
-        //cride al com.example.prueba3000.model
-        AmigosModel am = new AmigosModel();
-        //llamamos a la funcion ver amigos
-        //am.veramigos(lc.getUsuario().getNombreUsuario());
-        amigos.addAll(am.amigos);
-        int i = 0;
-        //llamo a la funcion ver solicitudes
-        //am.mostrarsolicitudes(lc.getUsuario().getNombreUsuario());
-        numsolicitudes= am.solicitudes.size();
-        System.out.println(numsolicitudes);
-        Solicitudes.addAll(am.solicitudes);
-        numeroDeSolicitudes.setText("Tienes " + numsolicitudes + " Solicitudes");
-        if(am.idsolicitantes.size()>0){
-            nombresol.setText(Solicitudes.get(s));
-        }
-
-        if (am.idsolicitantes.size() < 1) {
-            aceptar.setDisable(true);
-            rechazar.setDisable(true);
-            numeroDeSolicitudes.setText("No tienes solicitudes");
-            nombresol.setText("");
-        }
-    }
-
+    private Label nombre;
     @javafx.fxml.FXML
-    public void añadiramigo(ActionEvent actionEvent) throws SQLException {
-        AmigosModel am = new AmigosModel();
-        am.añadiramigo(nombreusuario, username_amigoaañadir.getText());
-    }
+    private Label apellidos;
 
-    @javafx.fxml.FXML
-
-    public void aceptar(ActionEvent actionEvent) throws SQLException {
-        AmigosModel am = new AmigosModel();
-        System.out.println(numsolicitudes);
-        if (numsolicitudes > 0) {
-
-            String emisor = Solicitudes.get(s);
-            am.aceptarsolicitud(emisor, nombreusuario);
-            s++;
-            nombresol.setText(Solicitudes.get(s));
-            numsolicitudes--;
-            numeroDeSolicitudes.setText("Tienes " + numsolicitudes + " Solicitudes");
-            if(numsolicitudes<1) {
-                aceptar.setDisable(true);
-                rechazar.setDisable(true);
-                numeroDeSolicitudes.setText("No tienes solicitudes");
+private ArrayList<Usuario> amigos = new ArrayList<>();
+public void setUsuarios_usuario(Usuario usuario, HashMap<Integer, Usuario> usuarios) throws SQLException {
+    AmigosModel am = new AmigosModel();
+    amigos.addAll(am.recuperarAmigos(usuario, usuarios));
+    System.out.println(this.amigos.size());
+}
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ArrayList<Usuario> amigouser = new ArrayList<>();
+        amigouser.addAll(this.amigos);
+        System.out.println(amigouser.size());
+        for (int i=0;i< amigos.size();i++){
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(Main.class.getResource("vistas/AmigosItem.fxml"));
+            try {
+                HBox hBox=fxmlLoader.load();
+                AmigosItemController aic=new AmigosItemController();
+                aic.setData(amigos.get(i));
+                hbox_info.getChildren().add(hBox);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
-        if(numsolicitudes<1) {
-            aceptar.setDisable(true);
-            rechazar.setDisable(true);
-            numeroDeSolicitudes.setText("No tienes solicitudes");
-        }
+
+    }
+    @Deprecated
+    public void añadiramigo(ActionEvent actionEvent) {
+
     }
 
-    @javafx.fxml.FXML
-    public void rechazar(ActionEvent actionEvent) throws SQLException {
-        AmigosModel am = new AmigosModel();
-        if (numsolicitudes > 0) {
-
-            System.out.println(numsolicitudes);
-            String emisor = Solicitudes.get(s);
-            am.rechazarsolicitud(emisor, nombreusuario);
-            s++;
-            numsolicitudes--;
-            nombresol.setText(Solicitudes.get(s));
-            numeroDeSolicitudes.setText("Tienes " +  numsolicitudes + " Solicitudes");
-            if(numsolicitudes<1) {
-                aceptar.setDisable(true);
-                rechazar.setDisable(true);
-                numeroDeSolicitudes.setText("No tienes solicitudes");
-            }
-        }
-        if(numsolicitudes<1) {
-            aceptar.setDisable(true);
-            rechazar.setDisable(true);
-            numeroDeSolicitudes.setText("No tienes solicitudes");
-        }
+    @Deprecated
+    public void aceptar(ActionEvent actionEvent) {
     }
+
+    @Deprecated
+    public void rechazar(ActionEvent actionEvent) {
+    }
+
+    public void datosusuarioregistrado(Usuario user){
+        if(user.getSexo().equals("F")){
+            imagenperfil.setImage(new Image(getClass().getResourceAsStream("src/main/resources/com/example/prueba3000/images/mujer.png")));
+        }
+        if(user.getSexo().equals("M")){
+            imagenperfil.setImage(new Image(getClass().getResourceAsStream("src/main/resources/com/example/prueba3000/images/hombre.png")));
+        }
+        nombre_usuario.setText(user.getNombreUsuario());
+        nombre.setText(user.getNombre());
+        apellidos.setText(user.getApellidos());
+        correo.setText(user.getApellidos());
+
+    }
+
+
+
+
+
+
 }

@@ -1,6 +1,7 @@
 package com.example.prueba3000.controllers;
 
 import com.example.prueba3000.Main;
+import com.example.prueba3000.model.AmigosModel;
 import com.example.prueba3000.util.Validador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,7 @@ import com.example.prueba3000.model.Usuario;
 import com.example.prueba3000.model.UsuarioModel;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LoginController {
@@ -51,8 +53,6 @@ public class LoginController {
     private Button buttonInicioSesion;
     @FXML
     private Button buttonRegistro;
-
-
     @FXML
     public void registrarse(ActionEvent actionEvent) throws SQLException {
 
@@ -69,6 +69,7 @@ public class LoginController {
         String contra = contraseña.getText();
         String segundaContra = confcontraseña.getText();
         String genero = null;
+
 
         if (masculino.isSelected()) {
             genero = "M";
@@ -121,6 +122,7 @@ public class LoginController {
 
         } else {
 
+
             Usuario usuarioConectado = null;
 
             for (Usuario u : usuarios.values()) {
@@ -135,6 +137,11 @@ public class LoginController {
             a.setContentText("Inicio de sesión correcto");
             a.showAndWait();
 
+
+
+
+
+
             try {
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaPrincipal.fxml"));
 
@@ -142,6 +149,9 @@ public class LoginController {
 
                 VistaPrincipalController controller = loader.getController();
                 controller.setUsuario(usuarioConectado);
+
+                VistaAmigosController controller1 = new VistaAmigosController();
+                controller1.setUsuarios_usuario(usuarioConectado, usuarios);
 
                 Scene scene = new Scene(root);
 
