@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaApuntesController">
+<AnchorPane prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaApuntesController">
    <children>
       <BorderPane layoutX="244.0" layoutY="201.0" prefHeight="642.0" prefWidth="839.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -41,7 +41,7 @@
                         <String fx:value="bordes-redondos" />
                      </styleClass>
                   </ComboBox>
-                  <Button fx:id="botonFiltrar" mnemonicParsing="false" onAction="#filtrar" prefHeight="26.0" prefWidth="60.0" styleClass="combobox-filtro" stylesheets="@../css/style.css" text="Filtrar" textFill="WHITE">
+                  <Button fx:id="botonFiltrar" mnemonicParsing="false" onAction="#filtrar" prefHeight="26.0" prefWidth="60.0" stylesheets="@../css/style.css" text="Filtrar" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="30.0" top="15.0" />
                      </HBox.margin>
@@ -51,6 +51,10 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <styleClass>
+                        <String fx:value="combobox-filtro" />
+                        <String fx:value="shadow" />
+                     </styleClass>
                   </Button>
                </children>
             </HBox>
@@ -58,7 +62,13 @@
          <right>
             <AnchorPane prefHeight="581.0" prefWidth="307.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane layoutY="22.0" prefHeight="518.0" prefWidth="281.0" stylesheets="@../css/style.css" AnchorPane.rightAnchor="20.0">
+                  <AnchorPane fx:id="anchorPaneSeleccion" layoutY="22.0" prefHeight="518.0" prefWidth="281.0" AnchorPane.rightAnchor="20.0">
+                     <styleClass>
+                        <String fx:value="pdflateral" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </AnchorPane>
+                  <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="518.0" prefWidth="281.0" stylesheets="@../css/style.css">
                      <children>
                         <ImageView fx:id="imgPDF" fitHeight="122.0" fitWidth="127.0" layoutX="80.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -70,8 +80,8 @@
                               <Image url="@../images/descargar.png" />
                            </image>
                         </ImageView>
-                        <TextField editable="false" layoutX="86.0" layoutY="208.0" prefHeight="26.0" prefWidth="179.0" styleClass="textfield-datos" stylesheets="@../css/style.css" />
-                        <Label layoutX="45.0" layoutY="211.0" text="Curso">
+                        <TextField fx:id="textFieldCurso" layoutX="86.0" layoutY="208.0" prefHeight="26.0" prefWidth="179.0" styleClass="textfield-datos" stylesheets="@../css/style.css" />
+                        <Label fx:id="labelCurso" layoutX="45.0" layoutY="211.0" text="Curso">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -86,8 +96,8 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField editable="false" layoutX="86.0" layoutY="297.0" prefHeight="26.0" prefWidth="178.0" styleClass="textfield-datos" stylesheets="@../css/style.css" />
-                        <TextField editable="false" layoutX="86.0" layoutY="253.0" prefHeight="26.0" prefWidth="178.0" styleClass="textfield-datos" stylesheets="@../css/style.css" />
+                        <TextField fx:id="textFieldAutor" layoutX="86.0" layoutY="297.0" prefHeight="26.0" prefWidth="178.0" styleClass="textfield-datos" stylesheets="@../css/style.css" />
+                        <TextField fx:id="textFieldAsignatura" layoutX="86.0" layoutY="253.0" prefHeight="26.0" prefWidth="178.0" styleClass="textfield-datos" stylesheets="@../css/style.css" />
                      </children>
                      <styleClass>
                         <String fx:value="pdflateral" />

@@ -10,27 +10,39 @@ public class Apunte {
     private Blob pdf;
     private File pf;
     private int puntuacion;
+    private Asignatura asignatura;
+    private Curso curso;
+    private Usuario autor;
 
-    public Apunte(int id, String nombre, Blob pdf, File pf, int puntuacion) {
+    public Apunte(int id, String nombre, Blob pdf, File pf, int puntuacion, Asignatura asignatura, Curso curso, Usuario autor) {
         this.id = id;
         this.nombre = nombre;
         this.pdf = pdf;
         this.pf = pf;
         this.puntuacion = puntuacion;
+        this.asignatura = asignatura;
+        this.curso = curso;
+        this.autor = autor;
     }
 
-    public Apunte(int id, String nombre, File pf, int puntuacion) {
+    public Apunte(int id, String nombre, File pf, int puntuacion, Asignatura asignatura, Curso curso, Usuario autor) {
         this.id = id;
         this.nombre = nombre;
         this.pf = pf;
         this.puntuacion = puntuacion;
+        this.asignatura = asignatura;
+        this.curso = curso;
+        this.autor = autor;
     }
 
-    public Apunte(int id, String nombre, Blob pdf, int puntuacion) {
+    public Apunte(int id, String nombre, Blob pdf, int puntuacion, Asignatura asignatura, Curso curso, Usuario autor) {
         this.id = id;
         this.nombre = nombre;
         this.pdf = pdf;
         this.puntuacion = puntuacion;
+        this.asignatura = asignatura;
+        this.curso = curso;
+        this.autor = autor;
     }
 
     public int getId() {
@@ -71,5 +83,29 @@ public class Apunte {
 
     public void setPuntuacion(int puntuacion) {
         this.puntuacion = puntuacion;
+    }
+
+    public Asignatura getAsignatura() {
+        return asignatura;
+    }
+
+    public void setAsignatura(Asignatura asignatura) {
+        this.asignatura = asignatura;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
+
+    public Usuario getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Usuario autor) {
+        this.autor = autor;
     }
 }

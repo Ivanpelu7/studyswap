@@ -6,10 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -28,10 +25,6 @@ public class VistaApuntesController implements Initializable {
     @javafx.fxml.FXML
     private ComboBox comboboxAsignatura;
     @javafx.fxml.FXML
-    private ImageView imgPDF;
-    @javafx.fxml.FXML
-    private ImageView botonDescargar;
-    @javafx.fxml.FXML
     private ScrollPane scrollPane;
     @javafx.fxml.FXML
     private GridPane gridPane;
@@ -42,6 +35,21 @@ public class VistaApuntesController implements Initializable {
     private ScrollPane scrollPaneFiltro;
     @javafx.fxml.FXML
     private GridPane gridPaneFiltro;
+    @javafx.fxml.FXML
+    private AnchorPane anchorPaneSeleccion;
+    @javafx.fxml.FXML
+    private ImageView imgPDF;
+    @javafx.fxml.FXML
+    private ImageView botonDescargar;
+    @javafx.fxml.FXML
+    private TextField textFieldCurso;
+    @javafx.fxml.FXML
+    private Label labelCurso;
+    @javafx.fxml.FXML
+    private TextField textFieldAutor;
+    @javafx.fxml.FXML
+    private TextField textFieldAsignatura;
+    private Apunte apunte;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -68,8 +76,8 @@ public class VistaApuntesController implements Initializable {
 
                 AnchorPane pane = fxmlLoader.load();
 
-                ApunteItemController aic = fxmlLoader.getController();
-                aic.setApunte(apuntes.get(i));
+                ApunteItemController aic2 = fxmlLoader.getController();
+                aic2.setApunte(apuntes.get(i));
 
                 if (column == 4) {
                     column = 0;
@@ -149,8 +157,14 @@ public class VistaApuntesController implements Initializable {
 
             GridPane.setMargin(pane, new Insets(10));
         }
+    }
 
+    public void setApunte(Apunte apunte) {
 
+        this.apunte = apunte;
 
+        textFieldCurso.setText(this.apunte.getCurso().getNombre());
+        textFieldAsignatura.setText(this.apunte.getAsignatura().getNombre());
+        textFieldAutor.setText(this.apunte.getAutor().getNombreUsuario());
     }
 }
