@@ -5,10 +5,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Validador {
-
     public boolean validarPasswordRegistro(String password, String repeatPassword) {
 
         if (password.equals(repeatPassword)) {
