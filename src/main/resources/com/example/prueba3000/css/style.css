@@ -41,3 +41,8 @@
 .bordes-redondos {
     -fx-background-radius: 100px;
 }
+
+.item:hover {
+    -fx-background-color: #A2F0BA;
+    -fx-cursor: hand;
+}

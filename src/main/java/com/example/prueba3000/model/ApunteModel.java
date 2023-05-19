@@ -15,6 +15,9 @@ public class ApunteModel extends DBUtil {
     public HashMap<Integer, Apunte> recuperarApuntes() throws SQLException {
 
         HashMap<Integer, Apunte> apuntes = new HashMap<>();
+        HashMap<Integer, Asignatura> asignaturas = new AsignaturaModel().recuperarAsignaturas();
+        HashMap<Integer, Curso> cursos = new CursoModel().recuperarCursos();
+        HashMap<Integer, Usuario> usuarios = new UsuarioModel().recuperarUsuarios();
 
         String query = "SELECT * FROM apuntes";
 
@@ -28,8 +31,15 @@ public class ApunteModel extends DBUtil {
             String nombre = rs.getString("nombre");
             Blob pdf = rs.getBlob("pdf");
             Integer puntuacion = rs.getInt("puntuacion");
+            Integer idAsignatura = rs.getInt("id_asignatura");
+            Integer idCurso = rs.getInt("id_curso");
+            Integer idAutor = rs.getInt("id_propietario");
 
-            Apunte apunte = new Apunte(id, nombre, pdf, puntuacion);
+            Asignatura a = asignaturas.get(idAsignatura);
+            Curso c = cursos.get(idCurso);
+            Usuario u = usuarios.get(idAutor);
+
+            Apunte apunte = new Apunte(id, nombre, pdf, puntuacion, a, c, u);
 
             apuntes.put(apunte.getId(), apunte);
         }
