@@ -2,6 +2,7 @@ package com.example.prueba3000.controllers;
 
 import com.example.prueba3000.Main;
 import com.example.prueba3000.model.Apunte;
+import com.example.prueba3000.util.MyListener;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,22 +21,21 @@ public class ApunteItemController {
     @javafx.fxml.FXML
     private Label labelNombreUsuario;
     private Apunte apunte;
+    private MyListener myListener;
 
-    public void setApunte(Apunte a) {
+    public void setApunte(Apunte a, MyListener myListener) {
 
         this.apunte = a;
+
+        this.myListener = myListener;
 
         labelNombreUsuario.setText(apunte.getNombre());
     }
 
+
     @javafx.fxml.FXML
-    public void seleccionarApunte(Event event) throws IOException {
+    public void clickApunte(Event event) {
 
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaApuntes.fxml"));
-        loader.load();
-        VistaApuntesController vac = loader.getController();
-
-        vac.setApunte(this.apunte);
+        myListener.onClickListener(apunte);
     }
-
 }

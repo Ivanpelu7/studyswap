@@ -2,6 +2,7 @@ package com.example.prueba3000.controllers;
 
 import com.example.prueba3000.Main;
 import com.example.prueba3000.model.*;
+import com.example.prueba3000.util.MyListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,19 +25,9 @@ public class VistaApuntesController implements Initializable {
     private ComboBox comboboxCurso;
     @javafx.fxml.FXML
     private ComboBox comboboxAsignatura;
-    @javafx.fxml.FXML
-    private ScrollPane scrollPane;
-    @javafx.fxml.FXML
-    private GridPane gridPane;
     private HashMap<Integer, Apunte> apuntesHM;
     @javafx.fxml.FXML
     private Button botonFiltrar;
-    @javafx.fxml.FXML
-    private ScrollPane scrollPaneFiltro;
-    @javafx.fxml.FXML
-    private GridPane gridPaneFiltro;
-    @javafx.fxml.FXML
-    private AnchorPane anchorPaneSeleccion;
     @javafx.fxml.FXML
     private ImageView imgPDF;
     @javafx.fxml.FXML
@@ -49,7 +40,13 @@ public class VistaApuntesController implements Initializable {
     private TextField textFieldAutor;
     @javafx.fxml.FXML
     private TextField textFieldAsignatura;
-    private Apunte apunte;
+    @javafx.fxml.FXML
+    private AnchorPane mainAnchorPane;
+    @javafx.fxml.FXML
+    private ScrollPane mainScrollPane;
+    @javafx.fxml.FXML
+    private GridPane mainGridPane;
+    private MyListener myListener;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -57,7 +54,12 @@ public class VistaApuntesController implements Initializable {
         ApunteModel am = new ApunteModel();
         CursoModel cm = new CursoModel();
 
-        scrollPaneFiltro.setVisible(false);
+        myListener = new MyListener() {
+            @Override
+            public void onClickListener(Apunte apunte) {
+                setApunte(apunte);
+            }
+        };
 
         try {
             comboboxCurso.setItems(cm.recuperarCursosOL());
@@ -77,24 +79,24 @@ public class VistaApuntesController implements Initializable {
                 AnchorPane pane = fxmlLoader.load();
 
                 ApunteItemController aic2 = fxmlLoader.getController();
-                aic2.setApunte(apuntes.get(i));
+                aic2.setApunte(apuntes.get(i), myListener);
 
                 if (column == 4) {
                     column = 0;
                     row++;
                 }
 
-                gridPane.add(pane, column++, row);
+                mainGridPane.add(pane, column++, row);
 
-                gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
-                gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                gridPane.setMaxWidth(Region.USE_COMPUTED_SIZE);
+                mainGridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
+                mainGridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                mainGridPane.setMaxWidth(Region.USE_COMPUTED_SIZE);
 
-                gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
-                gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                gridPane.setMaxHeight(Region.USE_COMPUTED_SIZE);
+                mainGridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
+                mainGridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                mainGridPane.setMaxHeight(Region.USE_COMPUTED_SIZE);
 
-                GridPane.setMargin(pane, new Insets(10));
+                GridPane.setMargin(pane, new Insets(8));
             }
 
 
@@ -124,9 +126,6 @@ public class VistaApuntesController implements Initializable {
 
         ArrayList<Apunte> apuntesF = am.apuntesFiltro((Asignatura) comboboxAsignatura.getValue());
 
-        scrollPane.setVisible(false);
-        scrollPaneFiltro.setVisible(true);
-
         int column = 0;
         int row = 1;
 
@@ -138,13 +137,13 @@ public class VistaApuntesController implements Initializable {
             AnchorPane pane = fxmlLoader.load();
 
             ApunteItemController aic = fxmlLoader.getController();
-            aic.setApunte(apuntesF.get(i));
+            aic.setApunte(apuntesF.get(i), myListener);
 
             if (column == 4) {
                 column = 0;
                 row++;
             }
-
+/*
             gridPaneFiltro.add(pane, column++, row);
 
             gridPaneFiltro.setMinWidth(Region.USE_COMPUTED_SIZE);
@@ -154,17 +153,15 @@ public class VistaApuntesController implements Initializable {
             gridPaneFiltro.setMinHeight(Region.USE_COMPUTED_SIZE);
             gridPaneFiltro.setPrefHeight(Region.USE_COMPUTED_SIZE);
             gridPaneFiltro.setMaxHeight(Region.USE_COMPUTED_SIZE);
-
+*/
             GridPane.setMargin(pane, new Insets(10));
         }
     }
 
     public void setApunte(Apunte apunte) {
 
-        this.apunte = apunte;
-
-        textFieldCurso.setText(this.apunte.getCurso().getNombre());
-        textFieldAsignatura.setText(this.apunte.getAsignatura().getNombre());
-        textFieldAutor.setText(this.apunte.getAutor().getNombreUsuario());
+        textFieldCurso.setText(apunte.getCurso().getNombre());
+        textFieldAsignatura.setText(apunte.getAsignatura().getNombre());
+        textFieldAutor.setText(apunte.getAutor().getNombreUsuario());
     }
 }

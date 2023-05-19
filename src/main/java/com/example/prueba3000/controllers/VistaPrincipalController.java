@@ -9,10 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -29,8 +26,6 @@ public class VistaPrincipalController implements Initializable {
     @FXML
     private Button buttonApuntes;
     @FXML
-    private Label labelBienvenida;
-    @FXML
     private Label labelNombreUsuario;
     @FXML
     private Button buttonAmigos;
@@ -41,6 +36,10 @@ public class VistaPrincipalController implements Initializable {
     @FXML
     private AnchorPane rootPane;
     private Usuario usuario;
+    @FXML
+    private Label labelNombre;
+    @FXML
+    private Label labelApellidos;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -65,16 +64,16 @@ public class VistaPrincipalController implements Initializable {
         this.usuario = u;
 
         labelNombreUsuario.setText(usuario.getNombreUsuario());
+        labelNombre.setText(usuario.getNombre());
+        labelApellidos.setText(usuario.getApellidos());
 
         if (usuario.getSexo().equals("M")) {
             fotoHombre.setVisible(true);
             fotoMujer.setVisible(false);
-            labelBienvenida.setText("BIENVENIDO,");
 
         } else if (usuario.getSexo().equals("F")) {
             fotoMujer.setVisible(true);
             fotoHombre.setVisible(false);
-            labelBienvenida.setText("BIENVENIDA,");
         }
     }
 
