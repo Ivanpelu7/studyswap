@@ -41,7 +41,8 @@
                            <styleClass>
                               <String fx:value="boton-menu" />
                               <String fx:value="boton" />
-                           </styleClass></Button>
+                           </styleClass>
+                        </Button>
                                 <Line endX="79.0" layoutX="86.0" layoutY="216.0" startX="-79.0" stroke="WHITE" strokeWidth="3.0" />
                                 <Button fx:id="buttonApuntes" graphicTextGap="10.0" layoutY="304.0" mnemonicParsing="false" onAction="#cambiarVistaApuntes" prefHeight="57.0" prefWidth="171.0" stylesheets="@../css/style.css" text="Apuntes" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                     <font>
