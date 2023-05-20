@@ -1,9 +1,12 @@
 package com.example.prueba3000.model;
 
+import java.util.ArrayList;
+
 public class Curso {
 
     private int id;
     private String nombre;
+    private ArrayList<Asignatura> asignaturasCurso;
 
     public Curso(int id, String nombre) {
         this.id = id;

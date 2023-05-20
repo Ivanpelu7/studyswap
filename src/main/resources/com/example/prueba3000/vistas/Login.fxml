@@ -1,59 +1,173 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="378.0" prefWidth="665.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.LoginController">
-    <children>
-        <BorderPane prefHeight="405.0" prefWidth="672.0">
-            <right>
-                <AnchorPane prefHeight="406.0" prefWidth="341.0" BorderPane.alignment="CENTER">
-                    <children>
-                        <Label layoutX="113.0" layoutY="63.0" prefHeight="18.0" prefWidth="114.0" text="INICIAR SESION" />
-                        <TextField fx:id="nombreiniciar" layoutX="127.0" layoutY="114.0" />
-                        <Label layoutX="40.0" layoutY="117.0" prefHeight="18.0" prefWidth="64.0" text="Usuario" />
-                        <Label layoutX="40.0" layoutY="176.0" prefHeight="18.0" prefWidth="89.0" text="Contraseña" />
-                        <Button fx:id="buttonInicioSesion" layoutX="127.0" layoutY="236.0" mnemonicParsing="false" onAction="#inicioSesion" text="Iniciar Sesion" />
-                        <Label fx:id="incorrecte2" layoutX="115.0" layoutY="307.0" prefHeight="17.0" prefWidth="201.0" textFill="#f20404" />
-                  <PasswordField fx:id="passwordInicio" layoutX="127.0" layoutY="172.0" />
-                    </children>
-                </AnchorPane>
-            </right>
-            <center>
-                <AnchorPane prefHeight="406.0" prefWidth="400.0" BorderPane.alignment="CENTER">
-                    <children>
-                        <TextField fx:id="nombre" layoutX="102.0" layoutY="85.0" prefHeight="25.0" prefWidth="193.0" />
-                        <Label layoutX="36.0" layoutY="89.0" prefHeight="17.0" prefWidth="51.0" text="Nombre" />
-                        <TextField fx:id="apellidos" layoutX="102.0" layoutY="120.0" prefHeight="25.0" prefWidth="193.0" />
-                        <Label layoutX="36.0" layoutY="124.0" prefHeight="17.0" prefWidth="51.0" text="Apellidos" />
-                        <Label layoutX="36.0" layoutY="160.0" prefHeight="17.0" prefWidth="51.0" text="Email" />
-                        <TextField fx:id="email" layoutX="102.0" layoutY="156.0" prefHeight="25.0" prefWidth="193.0" />
-                        <Label layoutX="27.0" layoutY="297.0" prefHeight="17.0" prefWidth="125.0" text="Confirmar Contraseña" />
-                        <Label layoutX="36.0" layoutY="265.0" prefHeight="17.0" prefWidth="60.0" text="Contraseña" />
-                        <PasswordField fx:id="contraseña" layoutX="152.0" layoutY="261.0" />
-                        <PasswordField fx:id="confcontraseña" layoutX="150.0" layoutY="293.0" />
-                        <Label layoutX="36.0" layoutY="236.0" prefHeight="17.0" prefWidth="112.0" text="Nombre de usuario" />
-                        <Label layoutX="129.0" layoutY="62.0" prefHeight="17.0" prefWidth="221.0" text="REGISTRO" />
-                        <Button fx:id="buttonRegistro" layoutX="138.0" layoutY="360.0" mnemonicParsing="false" onAction="#registrarse" text="Registrarse" />
-                        <Label fx:id="incorrecte" layoutX="84.0" layoutY="332.0" prefHeight="17.0" prefWidth="201.0" textFill="#f20404" />
-                        <TextField fx:id="nomuser" layoutX="152.0" layoutY="232.0" prefHeight="25.0" prefWidth="148.0" />
-                        <Label layoutX="94.0" layoutY="342.0" prefHeight="17.0" prefWidth="201.0" textFill="#f20404" />
-                        <Label layoutX="62.0" layoutY="194.0" prefHeight="17.0" prefWidth="38.0" text="Sexo" />
-                        <RadioButton fx:id="masculino" layoutX="107.0" layoutY="194.0" mnemonicParsing="false" text="Masculino">
-                            <toggleGroup>
-                                <ToggleGroup fx:id="sexo" />
-                            </toggleGroup>
-                        </RadioButton>
-                        <RadioButton fx:id="femenino" layoutX="189.0" layoutY="194.0" mnemonicParsing="false" text="Femenino" toggleGroup="$sexo" />
-                    </children>
-                </AnchorPane>
-            </center>
-        </BorderPane>
-    </children>
-</AnchorPane>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.LoginController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane fx:id="anchorPane2" layoutX="273.0" prefHeight="450.0" prefWidth="418.0" styleClass="fondo-blanco" stylesheets="@../css/style.css" AnchorPane.leftAnchor="273.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <TextField fx:id="textFieldNombreUsuarioI" layoutX="76.0" layoutY="185.0" prefHeight="31.0" prefWidth="263.0" promptText="Nombre usuario" stylesheets="@../css/style.css">
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="shadow" />
+                        <String fx:value="text-field" />
+                     </styleClass>
+                  </TextField>
+                  <Button fx:id="buttonAcceder" layoutX="143.0" layoutY="299.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="26.0" prefWidth="129.0" stylesheets="@../css/style.css" text="Acceder" textFill="WHITE">
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="combobox-filtro" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <PasswordField fx:id="textFieldPasswordI" layoutX="76.0" layoutY="233.0" prefHeight="31.0" prefWidth="263.0" promptText="Contraseña" stylesheets="@../css/style.css">
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="bordes-redondos" />
+                     </styleClass>
+                  </PasswordField>
+                  <TextField fx:id="textFieldNombre" layoutX="76.0" layoutY="110.0" prefHeight="31.0" prefWidth="263.0" promptText="Nombre" stylesheets="@../css/style.css">
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </TextField>
+                  <TextField fx:id="textFieldApellidos" layoutX="76.0" layoutY="153.0" prefHeight="31.0" prefWidth="263.0" promptText="Apellidos" stylesheets="@../css/style.css">
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </TextField>
+                  <TextField fx:id="textFieldCorreo" layoutX="76.0" layoutY="193.0" prefHeight="31.0" prefWidth="263.0" promptText="Correo electrónico" stylesheets="@../css/style.css">
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </TextField>
+                  <RadioButton fx:id="radioButtonMasc" layoutX="125.0" layoutY="240.0" mnemonicParsing="false" styleClass="shadow" stylesheets="@../css/style.css" text="Masculino">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="sexo" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="radioButtonFem" layoutX="217.0" layoutY="240.0" mnemonicParsing="false" styleClass="shadow" stylesheets="@../css/style.css" text="Femenino" toggleGroup="$sexo" />
+                  <TextField fx:id="textFieldNombreUsuarioR" layoutX="76.0" layoutY="273.0" prefHeight="31.0" prefWidth="263.0" promptText="Nombre usuario" stylesheets="@../css/style.css">
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </TextField>
+                  <Button fx:id="buttonRegistrarse" layoutX="136.0" layoutY="398.0" mnemonicParsing="false" onAction="#registrarse" prefHeight="26.0" prefWidth="129.0" stylesheets="@../css/style.css" text="Registrarse" textFill="WHITE">
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="combobox-filtro" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fx:id="imageRegistro" fitHeight="80.0" fitWidth="74.0" layoutX="180.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/editar.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageInicioSesion" fitHeight="74.0" fitWidth="74.0" layoutX="164.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/usuario%20(4).png" />
+                     </image>
+                  </ImageView>
+                  <PasswordField fx:id="textFieldPasswordR" layoutX="76.0" layoutY="314.0" prefHeight="31.0" prefWidth="263.0" promptText="Contraseña" stylesheets="@../css/style.css">
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="bordes-redondos" />
+                     </styleClass>
+                  </PasswordField>
+                  <PasswordField fx:id="textFieldConfPassword" layoutX="77.0" layoutY="353.0" prefHeight="31.0" prefWidth="263.0" promptText="Confirmar contraseña" stylesheets="@../css/style.css">
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="bordes-redondos" />
+                     </styleClass>
+                  </PasswordField>
+                  <Label fx:id="labelRegistroIncorrecto" alignment="CENTER" layoutX="35.0" layoutY="88.0" prefHeight="18.0" prefWidth="346.0" textFill="RED">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelDatosIncorrectos" alignment="CENTER" layoutX="27.0" layoutY="159.0" prefHeight="18.0" prefWidth="346.0" textFill="RED">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="anchorPane1" prefHeight="450.0" prefWidth="275.0" styleClass="background-azul" stylesheets="@../css/style.css" AnchorPane.rightAnchor="416.00000000000006">
+               <children>
+                  <ImageView fitHeight="93.0" fitWidth="235.0" layoutX="20.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/foto.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="labelAunNoTienesCuenta" layoutX="46.0" layoutY="251.0" styleClass="shadow" stylesheets="@../css/style.css" text="¿Aún no tienes una cuenta?">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="buttonCambiarRegistro" layoutX="73.0" layoutY="284.0" mnemonicParsing="false" onAction="#cambiarARegistro" prefHeight="26.0" prefWidth="129.0" stylesheets="@../css/style.css" text="Registrarse" textFill="WHITE">
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="combobox-filtro" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label fx:id="labelYaTienesCuenta" layoutX="58.0" layoutY="251.0" styleClass="shadow" stylesheets="@../css/style.css" text="¿Ya tienes una cuenta?">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="buttonCambiar" layoutX="73.0" layoutY="284.0" mnemonicParsing="false" onAction="#cambiarIniciarSesion" prefHeight="26.0" prefWidth="129.0" stylesheets="@../css/style.css" text="Iniciar sesión" textFill="WHITE">
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="combobox-filtro" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children></AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

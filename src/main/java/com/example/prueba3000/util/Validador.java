@@ -31,9 +31,9 @@ public class Validador {
         return true;
     }
 
-    public boolean camposRellenados(TextField n, TextField a, TextField em, RadioButton m, RadioButton f, PasswordField p, PasswordField pa) {
+    public boolean camposRellenados(TextField n, TextField a, TextField em, RadioButton m, RadioButton f, PasswordField p, PasswordField pa, TextField nu) {
 
-        if (n == null || a == null || em == null || (!m.isSelected() && !f.isSelected()) || p == null || pa == null) {
+        if (n == null || a == null || em == null || (!m.isSelected() && !f.isSelected()) || p == null || pa == null || nu == null) {
             return false;
         }
 

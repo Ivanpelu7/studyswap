@@ -3,6 +3,10 @@
     -fx-background-color: #27963a;
 }
 
+.background-azul {
+    -fx-background-color: #b5d0d4;
+}
+
 .boton {
 
     -fx-background-color: transparent;

@@ -33,7 +33,7 @@ public class ApunteModel extends DBUtil {
             Integer puntuacion = rs.getInt("puntuacion");
             Integer idAsignatura = rs.getInt("id_asignatura");
             Integer idCurso = rs.getInt("id_curso");
-            Integer idAutor = rs.getInt("id_propietario");
+            Integer idAutor = rs.getInt("id_autor");
 
             Asignatura a = asignaturas.get(idAsignatura);
             Curso c = cursos.get(idCurso);
@@ -47,13 +47,13 @@ public class ApunteModel extends DBUtil {
         return apuntes;
     }
 
-    public ArrayList<Apunte> apuntesFiltro(Asignatura a) throws SQLException {
+    public ArrayList<Apunte> apuntesFiltro(Asignatura a, Curso c) throws SQLException {
 
         HashMap<Integer, Apunte> apuntesTodos = recuperarApuntes();
 
         ArrayList<Apunte> apuntesFiltro = new ArrayList<>();
 
-        String query = "SELECT id_apunte FROM apuntes WHERE id_asignatura = " + a.getId();
+        String query = "SELECT id_apunte FROM apuntes WHERE id_asignatura = " + a.getId() + " AND id_curso = " + c.getId();
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 

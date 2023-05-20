@@ -41,10 +41,6 @@ public class VistaApuntesController implements Initializable {
     @javafx.fxml.FXML
     private TextField textFieldAsignatura;
     @javafx.fxml.FXML
-    private AnchorPane mainAnchorPane;
-    @javafx.fxml.FXML
-    private ScrollPane mainScrollPane;
-    @javafx.fxml.FXML
     private GridPane mainGridPane;
     private MyListener myListener;
 
@@ -124,7 +120,9 @@ public class VistaApuntesController implements Initializable {
 
         ApunteModel am = new ApunteModel();
 
-        ArrayList<Apunte> apuntesF = am.apuntesFiltro((Asignatura) comboboxAsignatura.getValue());
+        ArrayList<Apunte> apuntesF = am.apuntesFiltro((Asignatura) comboboxAsignatura.getValue(), (Curso) comboboxCurso.getValue());
+
+        mainGridPane.getChildren().clear();
 
         int column = 0;
         int row = 1;
@@ -143,19 +141,20 @@ public class VistaApuntesController implements Initializable {
                 column = 0;
                 row++;
             }
-/*
-            gridPaneFiltro.add(pane, column++, row);
 
-            gridPaneFiltro.setMinWidth(Region.USE_COMPUTED_SIZE);
-            gridPaneFiltro.setPrefWidth(Region.USE_COMPUTED_SIZE);
-            gridPaneFiltro.setMaxWidth(Region.USE_COMPUTED_SIZE);
+            mainGridPane.add(pane, column++, row);
 
-            gridPaneFiltro.setMinHeight(Region.USE_COMPUTED_SIZE);
-            gridPaneFiltro.setPrefHeight(Region.USE_COMPUTED_SIZE);
-            gridPaneFiltro.setMaxHeight(Region.USE_COMPUTED_SIZE);
-*/
-            GridPane.setMargin(pane, new Insets(10));
+            mainGridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
+            mainGridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
+            mainGridPane.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
+            mainGridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
+            mainGridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+            mainGridPane.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
+            GridPane.setMargin(pane, new Insets(8));
         }
+
     }
 
     public void setApunte(Apunte apunte) {
