@@ -1,7 +1,9 @@
 package com.example.prueba3000.controllers;
 
 import com.example.prueba3000.Main;
+import com.example.prueba3000.model.SolicitudAmistadModel;
 import com.example.prueba3000.model.Usuario;
+import com.example.prueba3000.model.UsuarioModel;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -12,9 +14,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class VistaPrincipalController implements Initializable {
@@ -40,6 +45,10 @@ public class VistaPrincipalController implements Initializable {
     private Label labelNombre;
     @FXML
     private Label labelApellidos;
+    @FXML
+    private Circle circuloSolicitudes;
+    @FXML
+    private Label numeroSolicitudes;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -51,6 +60,9 @@ public class VistaPrincipalController implements Initializable {
 
             rootPane.getChildren().setAll(root);
 
+            circuloSolicitudes.setVisible(false);
+            numeroSolicitudes.setVisible(false);
+
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -59,7 +71,12 @@ public class VistaPrincipalController implements Initializable {
 
     }
 
-    public void setUsuario(Usuario u) {
+    public void setDatos(Usuario u) throws SQLException {
+
+        SolicitudAmistadModel sam = new SolicitudAmistadModel();
+        UsuarioModel um = new UsuarioModel();
+
+        HashMap<Integer, Usuario> usuarios = um.recuperarUsuarios();
 
         this.usuario = u;
 
@@ -74,6 +91,12 @@ public class VistaPrincipalController implements Initializable {
         } else if (usuario.getSexo().equals("F")) {
             fotoMujer.setVisible(true);
             fotoHombre.setVisible(false);
+        }
+
+        if (sam.peticionesAmistad(u, usuarios).size() > 0) {
+            circuloSolicitudes.setVisible(true);
+            numeroSolicitudes.setVisible(true);
+            numeroSolicitudes.setText(String.valueOf(sam.peticionesAmistad(u, usuarios).size()));
         }
     }
 

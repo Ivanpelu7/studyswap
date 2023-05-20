@@ -21,7 +21,6 @@ public class SolicitudAmistadModel extends DBUtil {
         ResultSet rs = ps.executeQuery();
 
         while (rs.next()) {
-
             Integer idEmisor = rs.getInt("id_usuario_emisor");
             Integer estado = rs.getInt("estado");
 

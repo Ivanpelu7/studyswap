@@ -265,7 +265,7 @@ public class LoginController implements Initializable {
                 Parent root = loader.load();
 
                 VistaPrincipalController controller = loader.getController();
-                controller.setUsuario(usuarioConectado);
+                controller.setDatos(usuarioConectado);
 
                 VistaAmigosController controller1 = new VistaAmigosController();
                 controller1.setUsuarios_usuario(usuarioConectado, usuarios);
