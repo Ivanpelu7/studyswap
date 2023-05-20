@@ -69,10 +69,13 @@
                               <Image url="@../images/pdf.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="botonDescargar" fitHeight="52.0" fitWidth="45.0" layoutX="118.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="botonDescargar" fitHeight="52.0" fitWidth="45.0" layoutX="119.0" layoutY="426.0" onMouseReleased="#descargarApunte" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/descargar.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </ImageView>
                         <TextField fx:id="textFieldCurso" editable="false" layoutX="86.0" layoutY="208.0" prefHeight="26.0" prefWidth="179.0" styleClass="textfield-datos" stylesheets="@../css/style.css" />
                         <Label fx:id="labelCurso" layoutX="45.0" layoutY="211.0" text="Curso">
@@ -92,6 +95,12 @@
                         </Label>
                         <TextField fx:id="textFieldAutor" editable="false" layoutX="86.0" layoutY="297.0" prefHeight="26.0" prefWidth="178.0" styleClass="textfield-datos" stylesheets="@../css/style.css" />
                         <TextField fx:id="textFieldAsignatura" editable="false" layoutX="86.0" layoutY="253.0" prefHeight="26.0" prefWidth="178.0" styleClass="textfield-datos" stylesheets="@../css/style.css" />
+                        <TextField fx:id="textFieldNombre" editable="false" layoutX="86.0" layoutY="341.0" prefHeight="26.0" prefWidth="178.0" styleClass="textfield-datos" stylesheets="@../css/style.css" />
+                        <Label layoutX="29.0" layoutY="344.0" text="Nombre">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
                      </children>
                      <styleClass>
                         <String fx:value="pdflateral" />

@@ -50,7 +50,6 @@ public class AsignaturaModel extends DBUtil {
         ResultSet rs = ps.executeQuery();
 
         while (rs.next()) {
-
             Integer id = rs.getInt("id_asignatura");
 
             Asignatura a = todasAsignaturas.get(id);

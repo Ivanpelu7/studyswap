@@ -1,15 +1,16 @@
 package com.example.prueba3000.util;
 
+import com.example.prueba3000.model.Asignatura;
+import com.example.prueba3000.model.Curso;
 import com.example.prueba3000.model.Usuario;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Validador {
-    public boolean validarPasswordRegistro(String password, String repeatPassword) {
+    public boolean validarPasswordIguales(String password, String repeatPassword) {
 
         if (password.equals(repeatPassword)) {
             return true;
@@ -52,9 +53,32 @@ public class Validador {
         return false;
     }
 
+    public boolean validarPasswordFormato(String password) {
 
+        if (password.length() > 5) {
+            return false;
+        }
 
+        for (char caracter : password.toCharArray()) {
+            if (!Character.isLetterOrDigit(caracter)) {
+                return false;
+            }
+        }
 
+        return true;
+    }
+
+    public boolean validarFiltro(ComboBox<Curso> cursos, ComboBox<Asignatura> asignaturas) {
+
+        if (cursos.getValue() == null) {
+            return false;
+
+        } else if (asignaturas.getValue() == null) {
+            return false;
+        }
+
+        return true;
+    }
 
 
 }

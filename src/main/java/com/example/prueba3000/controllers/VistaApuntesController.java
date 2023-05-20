@@ -3,7 +3,9 @@ package com.example.prueba3000.controllers;
 import com.example.prueba3000.Main;
 import com.example.prueba3000.model.*;
 import com.example.prueba3000.util.MyListener;
+import com.example.prueba3000.util.Validador;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -12,9 +14,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.stage.FileChooser;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,6 +49,9 @@ public class VistaApuntesController implements Initializable {
     @javafx.fxml.FXML
     private GridPane mainGridPane;
     private MyListener myListener;
+    private Apunte apunte;
+    @javafx.fxml.FXML
+    private TextField textFieldNombre;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -118,49 +127,97 @@ public class VistaApuntesController implements Initializable {
     @javafx.fxml.FXML
     public void filtrar(ActionEvent actionEvent) throws SQLException, IOException {
 
+        Validador v = new Validador();
+
         ApunteModel am = new ApunteModel();
 
         ArrayList<Apunte> apuntesF = am.apuntesFiltro((Asignatura) comboboxAsignatura.getValue(), (Curso) comboboxCurso.getValue());
 
-        mainGridPane.getChildren().clear();
+        if (!v.validarFiltro(comboboxCurso, comboboxAsignatura)) {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setHeaderText(null);
+            a.setContentText("Debe seleccionar los filtros");
+            a.showAndWait();
 
-        int column = 0;
-        int row = 1;
+        } else {
+            mainGridPane.getChildren().clear();
 
-        for (int i = 0; i < apuntesF.size(); i++) {
-            FXMLLoader fxmlLoader = new FXMLLoader();
+            int column = 0;
+            int row = 1;
 
-            fxmlLoader.setLocation(Main.class.getResource("vistas/ApunteItem.fxml"));
+            for (int i = 0; i < apuntesF.size(); i++) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
 
-            AnchorPane pane = fxmlLoader.load();
+                fxmlLoader.setLocation(Main.class.getResource("vistas/ApunteItem.fxml"));
 
-            ApunteItemController aic = fxmlLoader.getController();
-            aic.setApunte(apuntesF.get(i), myListener);
+                AnchorPane pane = fxmlLoader.load();
 
-            if (column == 4) {
-                column = 0;
-                row++;
+                ApunteItemController aic = fxmlLoader.getController();
+                aic.setApunte(apuntesF.get(i), myListener);
+
+                if (column == 4) {
+                    column = 0;
+                    row++;
+                }
+
+                mainGridPane.add(pane, column++, row);
+
+                mainGridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
+                mainGridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                mainGridPane.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
+                mainGridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
+                mainGridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                mainGridPane.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
+                GridPane.setMargin(pane, new Insets(8));
             }
-
-            mainGridPane.add(pane, column++, row);
-
-            mainGridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
-            mainGridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
-            mainGridPane.setMaxWidth(Region.USE_COMPUTED_SIZE);
-
-            mainGridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
-            mainGridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
-            mainGridPane.setMaxHeight(Region.USE_COMPUTED_SIZE);
-
-            GridPane.setMargin(pane, new Insets(8));
         }
-
     }
 
     public void setApunte(Apunte apunte) {
 
+        this.apunte = apunte;
         textFieldCurso.setText(apunte.getCurso().getNombre());
         textFieldAsignatura.setText(apunte.getAsignatura().getNombre());
         textFieldAutor.setText(apunte.getAutor().getNombreUsuario());
+        textFieldNombre.setText(apunte.getNombre());
+    }
+
+    @javafx.fxml.FXML
+    public void descargarApunte(Event event) throws SQLException, IOException {
+
+        Blob pdf = this.apunte.getPdf();
+        String nombre = this.apunte.getNombre();
+
+        File temporalFile = File.createTempFile("temp", ".pdf");
+        InputStream is = pdf.getBinaryStream();
+        OutputStream os = new FileOutputStream(temporalFile);
+        byte[] buffer = new byte[8096];
+        int bytesRead;
+
+        while ((bytesRead = is.read(buffer)) > 0) {
+            os.write(buffer, 0, bytesRead);
+        }
+
+        pdf.free();
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+        fileChooser.setInitialFileName(nombre);
+
+        File archivo = fileChooser.showSaveDialog(null);
+
+        if (archivo != null) {
+            Files.copy(temporalFile.toPath(), archivo.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText(null);
+            a.setContentText("Descarga realizada correctamente");
+            a.showAndWait();
+        }
+
+        temporalFile.delete();
+
     }
 }

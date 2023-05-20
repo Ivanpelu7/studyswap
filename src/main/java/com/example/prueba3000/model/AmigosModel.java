@@ -16,12 +16,7 @@ public class AmigosModel extends DBUtil {
     public ArrayList<Integer> idsolicitantes = new ArrayList<Integer>();
     public ArrayList<String> solicitudes = new ArrayList<String>();
 
-
-
-
-
     public ArrayList<Usuario> recuperarAmigos(Usuario usuario, HashMap<Integer, Usuario> usuarios) throws SQLException {
-
 
         ArrayList<Usuario> amigos = new ArrayList<Usuario>();
         String query = "SELECT id_amigo FROM amigos WHERE id_usuario = " + usuario.getId();
@@ -42,29 +37,6 @@ public class AmigosModel extends DBUtil {
         cerrarConexion();
 
         return amigos;
-    }
-
-    public ArrayList<Usuario> solicitantesAmistad(Usuario usuario, HashMap<Integer, Usuario> usuarios) throws SQLException {
-
-        ArrayList<Usuario> solicitantes = new ArrayList<>();
-
-        String query = "SELECT id_usuario_emisor FROM solicitudes WHERE id_usuario_receptor = " + usuario.getId() + " AND " +
-                "estado = 0";
-
-        PreparedStatement ps = getConexion().prepareStatement(query);
-
-        ResultSet rs = ps.executeQuery();
-
-        while (rs.next()) {
-
-            Integer id = rs.getInt("id_usuario_emisor");
-
-            Usuario u = usuarios.get(id);
-
-            solicitantes.add(u);
-        }
-
-        return solicitantes;
     }
 
     public int aceptarSolicitud(Usuario usuarioEmisor, Usuario usuarioConectado) throws SQLException {

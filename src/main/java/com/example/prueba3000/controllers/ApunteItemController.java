@@ -32,7 +32,6 @@ public class ApunteItemController {
         labelNombreUsuario.setText(apunte.getNombre());
     }
 
-
     @javafx.fxml.FXML
     public void clickApunte(Event event) {
 
