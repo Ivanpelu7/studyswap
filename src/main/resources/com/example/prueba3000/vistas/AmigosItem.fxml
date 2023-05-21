@@ -7,15 +7,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="62.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.AmigosItemController">
+<HBox prefHeight="62.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.model.AmigosItemController">
    <children>
       <Pane prefHeight="62.0" prefWidth="581.0">
          <children>
-            <ImageView fx:id="foto" fitHeight="50.0" fitWidth="50.0" layoutX="6.0" layoutY="6.0">
-               <image>
-                  <Image url="@../images/hombre.png" />
-               </image>
-            </ImageView>
             <Label fx:id="nombre_usuario" layoutX="69.0" layoutY="17.0" prefHeight="30.0" prefWidth="118.0" text="Diego">
                <font>
                   <Font size="20.0" />
@@ -29,6 +24,16 @@
             <ImageView fx:id="botoneliminar" fitHeight="40.0" fitWidth="40.0" layoutX="489.0" layoutY="12.0" onDragDetected="#eliminar_amigo">
                <image>
                   <Image url="@../images/borrar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fotohombre" fitHeight="50.0" fitWidth="50.0" layoutX="6.0" layoutY="8.0">
+               <image>
+                  <Image url="@../images/mujer.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fotomujer" fitHeight="50.0" fitWidth="50.0" layoutX="6.0" layoutY="7.0">
+               <image>
+                  <Image url="@../images/hombre.png" />
                </image>
             </ImageView>
          </children>

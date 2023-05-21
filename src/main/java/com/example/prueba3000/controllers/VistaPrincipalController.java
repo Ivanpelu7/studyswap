@@ -40,7 +40,7 @@ public class VistaPrincipalController implements Initializable {
     private ImageView fotoMujer;
     @FXML
     private AnchorPane rootPane;
-    private Usuario usuario;
+    public Usuario usuario;
     @FXML
     private Label labelNombre;
     @FXML
@@ -98,6 +98,8 @@ public class VistaPrincipalController implements Initializable {
             numeroSolicitudes.setVisible(true);
             numeroSolicitudes.setText(String.valueOf(sam.peticionesAmistad(u, usuarios).size()));
         }
+
+
     }
 
     @FXML
@@ -108,9 +110,16 @@ public class VistaPrincipalController implements Initializable {
 
             rootPane.getChildren().setAll(pane);
 
+            FXMLLoader amigos = new FXMLLoader(Main.class.getResource("vistas/VistaAmigos.fxml"));
+            VistaAmigosController controller1 = amigos.getController();
+            controller1.setUsuario(usuario);
+
+
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     @FXML
@@ -157,6 +166,7 @@ public class VistaPrincipalController implements Initializable {
             AnchorPane pane = FXMLLoader.load(Main.class.getResource("vistas/VistaApuntes.fxml"));
 
             rootPane.getChildren().setAll(pane);
+
 
         } catch (IOException e) {
             throw new RuntimeException(e);

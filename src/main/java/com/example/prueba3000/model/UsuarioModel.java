@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 public class UsuarioModel extends DBUtil {
 
+
     public HashMap<Integer, Usuario> recuperarUsuarios() throws SQLException {
 
         HashMap<Integer, Usuario> usuarios = new HashMap<Integer, Usuario>();
@@ -60,8 +61,8 @@ public class UsuarioModel extends DBUtil {
 
         return i;
     }
-/*
-    public Usuario recuperarUsuario(String nomuser) throws SQLException {
+
+   /** public void guardarUsuario(String nomuser) throws SQLException {
         DBUtil db = new DBUtil();
 
         String query1 = "select * from usuarios where nombre_usuario= ?";
@@ -91,8 +92,11 @@ public class UsuarioModel extends DBUtil {
 
         }
         Usuario u= new Usuario(username, contraseña, email,nombre , apellidos, tipo_usuario, sexo);
-        return u;
+       this.usuario=u;
         }
- */
+        **/
+
+
+
 }
 

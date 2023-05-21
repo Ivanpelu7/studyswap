@@ -231,7 +231,7 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    public void iniciarSesion(ActionEvent actionEvent) throws SQLException {
+    public void iniciarSesion(ActionEvent actionEvent) throws SQLException, IOException {
 
         UsuarioModel um = new UsuarioModel();
 
@@ -267,8 +267,9 @@ public class LoginController implements Initializable {
                 VistaPrincipalController controller = loader.getController();
                 controller.setDatos(usuarioConectado);
 
-                VistaAmigosController controller1 = new VistaAmigosController();
-                controller1.setUsuarios_usuario(usuarioConectado, usuarios);
+
+
+
 
                 Scene scene = new Scene(root);
 
@@ -279,6 +280,8 @@ public class LoginController implements Initializable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+
+
         }
     }
 }

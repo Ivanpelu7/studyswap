@@ -1,4 +1,4 @@
-package com.example.prueba3000.controllers;
+package com.example.prueba3000.model;
 
 import com.example.prueba3000.model.Usuario;
 import javafx.event.Event;
@@ -15,17 +15,20 @@ import java.util.ResourceBundle;
 
 public class AmigosItemController implements Initializable {
     @javafx.fxml.FXML
-    private ImageView foto;
-    @javafx.fxml.FXML
     private Label nombre_usuario;
     @javafx.fxml.FXML
     private Label email;
     @javafx.fxml.FXML
     private ImageView botoneliminar;
     private Usuario usuario;
+    @javafx.fxml.FXML
+    private ImageView fotohombre;
+    @javafx.fxml.FXML
+    private ImageView fotomujer;
 
     @javafx.fxml.FXML
     public void eliminar_amigo(Event event) {
+        System.out.println("aaaaaaaaaaaaaaaa");
     }
 
     @Override
@@ -33,14 +36,17 @@ public class AmigosItemController implements Initializable {
 
     }
 
-   public void setData(Usuario user){
-        if(user.getSexo().equals("F")){
-            foto.setImage(new Image(getClass().getResourceAsStream("src/main/resources/com/example/prueba3000/images/mujer.png")));
-        }
-       if(user.getSexo().equals("M")){
-           foto.setImage(new Image(getClass().getResourceAsStream("src/main/resources/com/example/prueba3000/images/hombre.png")));
+   public void setData(String nombreusuario, String Email,String sexo){
+        System.out.println(nombreusuario);
+       if (sexo.equals("M")) {
+           fotohombre.setVisible(true);
+           fotomujer.setVisible(false);
+
+       } else if (sexo.equals("F")) {
+           fotomujer.setVisible(true);
+           fotohombre.setVisible(false);
        }
-       nombre_usuario.setText(user.getNombreUsuario());
-       email.setText(user.getEmail());
+       nombre_usuario.setText(nombreusuario);
+       email.setText(Email);
    }
 }
