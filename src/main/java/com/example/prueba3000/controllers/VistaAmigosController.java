@@ -8,8 +8,11 @@ import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -53,13 +56,27 @@ public class VistaAmigosController implements Initializable {
     @javafx.fxml.FXML
     private TextField usernameAmigoAñadir;
     @javafx.fxml.FXML
-    private ImageView buscar;
+    private ImageView fotomujer1;
+    @javafx.fxml.FXML
+    private ImageView fotohombre1;
+    @javafx.fxml.FXML
+    private Label nomuserMostrarAñadir;
+    @javafx.fxml.FXML
+    private ImageView botonañadir;
+    @javafx.fxml.FXML
+    private ImageView botonAñadido;
+    @javafx.fxml.FXML
+    private Pane paneAmigobuscado;
+    @javafx.fxml.FXML
+    private ImageView buscador;
 
     public Usuario getUsuario() {
         return usuario;
     }
 
     public void setUsuario(Usuario u) throws SQLException {
+        paneAmigobuscado.setVisible(false);
+        botonAñadido.setVisible(false);
 
         this.usuario = u;
 
@@ -102,7 +119,6 @@ public class VistaAmigosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    paneAmigoSeleccionado.setVisible(false);
 
     }
     @Deprecated
@@ -149,5 +165,18 @@ public class VistaAmigosController implements Initializable {
         AmigosModel am= new AmigosModel();
         am.eliminaramigo(this.usuario,this.usuarioaeliminar );
         System.out.println("qq");
+    }
+
+    @javafx.fxml.FXML
+    public void buscar_usuario(Event event) {
+
+        usernameAmigoAñadir.getText();
+        paneAmigobuscado.setVisible(true);
+    }
+
+    @javafx.fxml.FXML
+    public void Añadir_usuario(Event event) {
+        botonañadir.setVisible(false);
+        botonAñadido.setVisible(true);
     }
 }
