@@ -49,31 +49,29 @@ public class VistaPrincipalController implements Initializable {
     private Circle circuloSolicitudes;
     @FXML
     private Label numeroSolicitudes;
-    private Parent pane;
-    private VistaPerfilController vpc;
-    private FXMLLoader loader;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
-            loader = new FXMLLoader();
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaPerfil.fxml"));
 
-            loader.setLocation(Main.class.getResource("vistas/VistaPerfil.fxml"));
+            Parent root = loader.load();
 
-            pane = loader.load();
-
-            rootPane.getChildren().setAll(pane);
+            rootPane.getChildren().setAll(root);
 
             circuloSolicitudes.setVisible(false);
             numeroSolicitudes.setVisible(false);
 
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+
     }
 
-    public void setDatos(Usuario u) throws SQLException, IOException {
+    public void setDatos(Usuario u) throws SQLException {
 
         SolicitudAmistadModel sam = new SolicitudAmistadModel();
         UsuarioModel um = new UsuarioModel();
@@ -101,8 +99,6 @@ public class VistaPrincipalController implements Initializable {
             numeroSolicitudes.setText(String.valueOf(sam.peticionesAmistad(u, usuarios).size()));
         }
 
-        vpc = loader.getController();
-        vpc.setApuntesSubidos(this.usuario);
 
     }
 
@@ -110,14 +106,16 @@ public class VistaPrincipalController implements Initializable {
     public void cambiarVistaAmigos(ActionEvent actionEvent) {
 
         try {
-            loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("vistas/VistaAmigos.fxml"));
-            pane = loader.load();
+            FXMLLoader amigos = new FXMLLoader(Main.class.getResource("vistas/VistaAmigos.fxml"));
 
-            rootPane.getChildren().setAll(pane);
+            Parent root = amigos.load();
 
-            VistaAmigosController vac = loader.getController();
-            vac.setUsuario(usuario);
+            rootPane.getChildren().setAll(root);
+
+            VistaAmigosController controller1 = amigos.getController();
+            controller1.setUsuario(usuario);
+
+
 
         } catch (IOException | SQLException e) {
             throw new RuntimeException(e);
@@ -134,11 +132,11 @@ public class VistaPrincipalController implements Initializable {
         a.showAndWait();
 
         if (a.getResult() == ButtonType.OK) {
-            loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("vistas/Login.fxml"));
-            pane = loader.load();
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/Login.fxml"));
 
-            Scene scene = new Scene(pane);
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
 
             Stage stage = (Stage) buttonAmigos.getScene().getWindow();
 
@@ -147,26 +145,28 @@ public class VistaPrincipalController implements Initializable {
     }
 
     @FXML
-    public void cambiarVistaInicio(ActionEvent actionEvent) throws IOException {
+    public void cambiarVistaInicio(ActionEvent actionEvent) {
 
-        loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("vistas/VistaPerfil.fxml"));
-        pane = loader.load();
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaPerfil.fxml"));
 
-        vpc = loader.getController();
-        vpc.setApuntesSubidos(this.usuario);
+            Parent root = loader.load();
 
-        rootPane.getChildren().setAll(pane);
+            rootPane.getChildren().setAll(root);
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     public void cambiarVistaApuntes(ActionEvent actionEvent) throws SQLException {
 
         try {
-            loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("vistas/VistaApuntes.fxml"));
-            pane = loader.load();
-            rootPane.getChildren().setAll(pane);
+           FXMLLoader pane = FXMLLoader.load(Main.class.getResource("vistas/VistaApuntes.fxml"));
+            Parent root= pane.load();
+            rootPane.getChildren().setAll(root);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
