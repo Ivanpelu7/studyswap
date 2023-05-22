@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,6 +10,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaAmigosController">
    <children>
@@ -16,30 +19,48 @@
          <right>
             <VBox fx:id="VBoxInfoselccionat" prefHeight="627.0" prefWidth="361.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane fx:id="paneAmigoSeleccionado" prefHeight="218.0" prefWidth="361.0">
+                  <Pane fx:id="paneAmigoSeleccionado" prefHeight="218.0" prefWidth="361.0" styleClass="shadow" stylesheets="@../css/style.css">
                      <children>
-                        <Label fx:id="Mostar_username" layoutX="145.0" layoutY="14.0" prefHeight="17.0" prefWidth="194.0" text="Label" />
-                        <Label fx:id="Mostrar_Nombre" layoutX="145.0" layoutY="54.0" prefHeight="17.0" prefWidth="194.0" text="Label" />
-                        <Label fx:id="Mostrar_Apellidos" layoutX="145.0" layoutY="89.0" prefHeight="17.0" prefWidth="194.0" text="Label" />
-                        <Label fx:id="Mostrar_email" layoutX="145.0" layoutY="129.0" prefHeight="17.0" prefWidth="194.0" text="Label" />
-                        <ImageView fx:id="boton_eliminar" fitHeight="50.0" fitWidth="50.0" layoutX="134.0" layoutY="154.0" onMouseClicked="#eliminar_amigo">
+                        <ImageView fx:id="boton_eliminar" fitHeight="50.0" fitWidth="50.0" layoutX="131.0" layoutY="160.0" onMouseClicked="#eliminarAmigo">
                            <image>
                               <Image url="@../images/borrar.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="fotohombre" fitHeight="119.0" fitWidth="129.0" layoutX="5.0" layoutY="3.0">
+                        <ImageView fx:id="fotohombre" fitHeight="119.0" fitWidth="129.0" layoutY="12.0">
                            <image>
                               <Image url="@../images/hombre.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="fotomujer" fitHeight="119.0" fitWidth="129.0" layoutX="5.0" layoutY="3.0">
+                        <ImageView fx:id="fotomujer" fitHeight="119.0" fitWidth="129.0" layoutY="12.0">
                            <image>
                               <Image url="@../images/mujer.png" />
                            </image>
                         </ImageView>
+                        <Line endX="-3.0" endY="216.0" layoutX="5.0" layoutY="3.0" startX="-2.0" strokeWidth="4.0" />
+                        <Line endX="-15.0" endY="205.0" layoutX="15.0" layoutY="13.0" startX="340.0" startY="205.0" strokeWidth="4.0" />
+                        <Line endX="-3.0" endY="216.0" layoutX="358.0" layoutY="2.0" startX="-3.70703125" startY="1.0" strokeWidth="4.0" />
+                        <Line endX="-15.70709228515625" endY="-9.0" layoutX="368.0" layoutY="12.0" startX="-363.0" startY="-9.0" strokeWidth="4.0" />
+                        <TextField fx:id="Mostar_username" layoutX="129.0" layoutY="14.0" prefHeight="25.0" prefWidth="215.0" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
+                        <TextField fx:id="Mostrar_Nombre" layoutX="129.0" layoutY="47.0" prefHeight="25.0" prefWidth="215.0" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
+                        <TextField fx:id="Mostrar_Apellidos" layoutX="129.0" layoutY="86.0" prefHeight="25.0" prefWidth="215.0" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
+                        <TextField fx:id="Mostrar_email" layoutX="128.0" layoutY="119.0" prefHeight="25.0" prefWidth="218.0" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
                      </children>
                   </Pane>
-                  <Pane prefHeight="408.0" prefWidth="361.0" />
+                  <Pane prefHeight="408.0" prefWidth="361.0">
+                     <children>
+                        <Label layoutX="36.0" layoutY="25.0" prefHeight="77.0" prefWidth="288.0" text="AÑADIR AMIGOS">
+                           <font>
+                              <Font name="Leelawadee Bold" size="34.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="usernameAmigoAñadir" layoutX="42.0" layoutY="102.0" prefHeight="25.0" prefWidth="270.0" promptText="Nombre de usuario" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
+                        <ImageView fx:id="buscar" fitHeight="25.0" fitWidth="25.0" layoutX="312.0" layoutY="102.0">
+                           <image>
+                              <Image url="@../../../../../../../../../Downloads/lupa.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
                </children></VBox>
          </right>
          <left>

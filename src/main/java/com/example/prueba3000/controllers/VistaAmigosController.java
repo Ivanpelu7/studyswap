@@ -8,6 +8,7 @@ import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -27,6 +28,7 @@ public class VistaAmigosController implements Initializable {
     @javafx.fxml.FXML
     private VBox vbox_users;
     private Usuario usuario;
+    private Usuario usuarioaeliminar;
 
     private ArrayList<Usuario> amigos=new ArrayList<>();
     @javafx.fxml.FXML
@@ -34,20 +36,24 @@ public class VistaAmigosController implements Initializable {
     @javafx.fxml.FXML
     private Pane paneAmigoSeleccionado;
     @javafx.fxml.FXML
-    private Label Mostar_username;
-    @javafx.fxml.FXML
-    private Label Mostrar_Nombre;
-    @javafx.fxml.FXML
-    private Label Mostrar_Apellidos;
-    @javafx.fxml.FXML
-    private Label Mostrar_email;
-    @javafx.fxml.FXML
     private ImageView boton_eliminar;
     private MyListener myListener;
     @javafx.fxml.FXML
     private ImageView fotohombre;
     @javafx.fxml.FXML
     private ImageView fotomujer;
+    @javafx.fxml.FXML
+    private TextField Mostar_username;
+    @javafx.fxml.FXML
+    private TextField Mostrar_Nombre;
+    @javafx.fxml.FXML
+    private TextField Mostrar_Apellidos;
+    @javafx.fxml.FXML
+    private TextField Mostrar_email;
+    @javafx.fxml.FXML
+    private TextField usernameAmigoAñadir;
+    @javafx.fxml.FXML
+    private ImageView buscar;
 
     public Usuario getUsuario() {
         return usuario;
@@ -76,7 +82,7 @@ public class VistaAmigosController implements Initializable {
 
             @Override
             public void onclicklistener(Usuario Usuario) throws SQLException {
-                set_datos(Usuario,u);
+                set_datos(Usuario);
             }
         };
         for(Usuario user:this.amigos){
@@ -112,7 +118,8 @@ public class VistaAmigosController implements Initializable {
     public void rechazar(ActionEvent actionEvent) {
     }
 
-    public void set_datos(Usuario usuario,Usuario userconect) throws SQLException {
+    public void set_datos(Usuario usuario) throws SQLException {
+       this.usuarioaeliminar=usuario;
         paneAmigoSeleccionado.setVisible(true);
 
            if (usuario.getSexo().equals("M")) {
@@ -128,19 +135,19 @@ public class VistaAmigosController implements Initializable {
         Mostrar_Nombre.setText(usuario.getNombre());
         Mostrar_Apellidos.setText(usuario.getApellidos());
         Mostrar_email.setText(usuario.getEmail());
-        if(boton_eliminar.isPressed()){
-            Eliminar_amigo(usuario,userconect);
-        }
+
+
+
     }
 
 
 
-    public void Eliminar_amigo(Usuario userselect, Usuario userconect) throws SQLException {
-        AmigosModel am= new AmigosModel();
-        am.eliminaramigo(userconect,userselect );
-    }
+
 
     @javafx.fxml.FXML
-    public void eliminar_amigo(Event event) {
+    public void eliminarAmigo(Event event) throws SQLException {
+        AmigosModel am= new AmigosModel();
+        am.eliminaramigo(this.usuario,this.usuarioaeliminar );
+        System.out.println("qq");
     }
 }

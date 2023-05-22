@@ -18,10 +18,10 @@ public class AmigosItemController {
     @javafx.fxml.FXML
     private ImageView fotohombre;
     @javafx.fxml.FXML
-    private ImageView fotomujer;
-    @javafx.fxml.FXML
     private HBox seleccionado;
     private MyListener myslistener;
+    @javafx.fxml.FXML
+    private ImageView fotomujer;
 
     @javafx.fxml.FXML
     private void click() throws SQLException {
