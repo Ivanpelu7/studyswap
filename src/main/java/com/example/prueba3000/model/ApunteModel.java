@@ -3,6 +3,7 @@ package com.example.prueba3000.model;
 import com.example.prueba3000.util.DBUtil;
 
 import javax.xml.transform.Result;
+import java.io.IOException;
 import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +13,7 @@ import java.util.HashMap;
 
 public class ApunteModel extends DBUtil {
 
-    public HashMap<Integer, Apunte> recuperarApuntes() throws SQLException {
+    public HashMap<Integer, Apunte> recuperarApuntes() throws SQLException, IOException {
 
         HashMap<Integer, Apunte> apuntes = new HashMap<>();
         HashMap<Integer, Asignatura> asignaturas = new AsignaturaModel().recuperarAsignaturas();
@@ -47,7 +48,7 @@ public class ApunteModel extends DBUtil {
         return apuntes;
     }
 
-    public ArrayList<Apunte> apuntesFiltro(Asignatura a, Curso c) throws SQLException {
+    public ArrayList<Apunte> apuntesFiltro(Asignatura a, Curso c) throws SQLException, IOException {
 
         HashMap<Integer, Apunte> apuntesTodos = recuperarApuntes();
 
@@ -70,6 +71,29 @@ public class ApunteModel extends DBUtil {
         cerrarConexion();
 
         return apuntesFiltro;
+    }
+
+    public ArrayList<Apunte> apuntesSubidos(Usuario usuario) throws SQLException, IOException {
+
+        HashMap<Integer, Apunte> apuntes = recuperarApuntes();
+        ArrayList<Apunte> apuntesSubidos = new ArrayList<>();
+
+        String query = "SELECT * FROM apuntes WHERE id_autor = " + usuario.getId();
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+
+            Integer id = rs.getInt("id_apunte");
+
+            Apunte apunte = apuntes.get(id);
+
+            apuntesSubidos.add(apunte);
+        }
+
+        return apuntesSubidos;
     }
 
 }

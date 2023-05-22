@@ -1,7 +1,11 @@
 package com.example.prueba3000.model;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Blob;
+import java.sql.SQLException;
 
 public class Apunte {
 
@@ -35,7 +39,7 @@ public class Apunte {
         this.autor = autor;
     }
 
-    public Apunte(int id, String nombre, Blob pdf, int puntuacion, Asignatura asignatura, Curso curso, Usuario autor) {
+    public Apunte(int id, String nombre, Blob pdf, int puntuacion, Asignatura asignatura, Curso curso, Usuario autor) throws SQLException, IOException {
         this.id = id;
         this.nombre = nombre;
         this.pdf = pdf;

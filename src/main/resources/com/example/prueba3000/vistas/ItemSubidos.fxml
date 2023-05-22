@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="125.0" prefWidth="116.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPanePDF" prefHeight="96.0" prefWidth="90.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.ApunteSubidoController">
    <children>
-      <Label fx:id="nombrePDF" alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="6.0" prefHeight="17.0" prefWidth="97.0" text="Label" />
-      <ImageView fitHeight="62.0" fitWidth="61.0" layoutX="29.0" layoutY="43.0">
-         <image>
-            <Image url="@../images/pdf.png" />
-         </image>
-      </ImageView>
+      <AnchorPane prefHeight="96.0" prefWidth="91.0" stylesheets="@../css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="labelNombreUsuario" alignment="CENTER" layoutX="1.0" layoutY="5.0" prefHeight="9.0" prefWidth="90.0" text="nombre_usuario" />
+            <ImageView fitHeight="47.0" fitWidth="48.0" layoutX="22.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/pdf.png" />
+               </image>
+            </ImageView>
+         </children>
+         <styleClass>
+            <String fx:value="item" />
+            <String fx:value="pdflateral" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </AnchorPane>
    </children>
 </AnchorPane>

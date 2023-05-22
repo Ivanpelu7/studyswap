@@ -3,7 +3,7 @@ module com.example.prueba3000 {
     requires javafx.fxml;
     requires java.sql;
     requires mysql.connector.j;
-
+    requires java.desktop;
 
     opens com.example.prueba3000 to javafx.fxml;
     exports com.example.prueba3000;

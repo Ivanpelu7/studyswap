@@ -1,6 +1,7 @@
-package com.example.prueba3000.model;
+package com.example.prueba3000.controllers;
 
 import com.example.prueba3000.controllers.VistaAmigosController;
+import com.example.prueba3000.model.Usuario;
 import com.example.prueba3000.util.MyListener;
 import javafx.event.Event;
 import javafx.scene.control.Label;
