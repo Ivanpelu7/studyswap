@@ -106,11 +106,12 @@ public class VistaPrincipalController implements Initializable {
     public void cambiarVistaAmigos(ActionEvent actionEvent) {
 
         try {
-            AnchorPane pane = FXMLLoader.load(Main.class.getResource("vistas/VistaAmigos.fxml"));
-
-            rootPane.getChildren().setAll(pane);
-
             FXMLLoader amigos = new FXMLLoader(Main.class.getResource("vistas/VistaAmigos.fxml"));
+
+            Parent root = amigos.load();
+
+            rootPane.getChildren().setAll(root);
+
             VistaAmigosController controller1 = amigos.getController();
             controller1.setUsuario(usuario);
 

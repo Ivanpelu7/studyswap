@@ -267,10 +267,6 @@ public class LoginController implements Initializable {
                 VistaPrincipalController controller = loader.getController();
                 controller.setDatos(usuarioConectado);
 
-
-
-
-
                 Scene scene = new Scene(root);
 
                 Stage stage = (Stage) buttonAcceder.getScene().getWindow();
