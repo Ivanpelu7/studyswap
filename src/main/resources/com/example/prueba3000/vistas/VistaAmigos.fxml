@@ -1,23 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaAmigosController">
    <children>
-      <BorderPane layoutX="6.0" layoutY="11.0" prefHeight="627.0" prefWidth="826.0">
+      <BorderPane layoutX="14.0" layoutY="8.0" prefHeight="627.0" prefWidth="826.0">
          <right>
-            <VBox prefHeight="627.0" prefWidth="238.0" BorderPane.alignment="CENTER" />
+            <VBox fx:id="VBoxInfoselccionat" prefHeight="627.0" prefWidth="361.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane fx:id="paneAmigoSeleccionado" prefHeight="218.0" prefWidth="361.0">
+                     <children>
+                        <Label fx:id="Mostar_username" layoutX="145.0" layoutY="14.0" prefHeight="17.0" prefWidth="194.0" text="Label" />
+                        <Label fx:id="Mostrar_Nombre" layoutX="145.0" layoutY="54.0" prefHeight="17.0" prefWidth="194.0" text="Label" />
+                        <Label fx:id="Mostrar_Apellidos" layoutX="145.0" layoutY="89.0" prefHeight="17.0" prefWidth="194.0" text="Label" />
+                        <Label fx:id="Mostrar_email" layoutX="145.0" layoutY="129.0" prefHeight="17.0" prefWidth="194.0" text="Label" />
+                        <ImageView fx:id="boton_eliminar" fitHeight="50.0" fitWidth="50.0" layoutX="134.0" layoutY="154.0" onMouseClicked="#eliminar_amigo">
+                           <image>
+                              <Image url="@../images/borrar.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="fotohombre" fitHeight="119.0" fitWidth="129.0" layoutX="5.0" layoutY="3.0">
+                           <image>
+                              <Image url="@../images/hombre.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="fotomujer" fitHeight="119.0" fitWidth="129.0" layoutX="5.0" layoutY="3.0">
+                           <image>
+                              <Image url="@../images/mujer.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="408.0" prefWidth="361.0" />
+               </children></VBox>
          </right>
          <left>
-            <HBox prefHeight="627.0" prefWidth="585.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="627.0" prefWidth="473.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane prefHeight="627.0" prefWidth="585.0">
+                  <ScrollPane prefHeight="627.0" prefWidth="473.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css">
                      <content>
-                        <VBox fx:id="vbox_users" prefHeight="625.0" prefWidth="583.0" />
+                        <VBox fx:id="vbox_users" prefHeight="614.0" prefWidth="460.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css" />
                      </content>
                   </ScrollPane>
                </children>

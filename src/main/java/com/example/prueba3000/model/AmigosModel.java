@@ -77,6 +77,14 @@ public class AmigosModel extends DBUtil {
         return i;
     }
 
+    public void eliminaramigo(Usuario userconectado,Usuario amigoEliminado) throws SQLException {
+        String query = "delete from amigos where id_usuario="+userconectado.getId()+" and id_amigo="+amigoEliminado.getId()+";";
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ps.execute();
+    }
+
 }
 
 

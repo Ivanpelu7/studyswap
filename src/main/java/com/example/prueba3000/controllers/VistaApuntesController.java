@@ -64,6 +64,11 @@ public class VistaApuntesController implements Initializable {
             public void onClickListener(Apunte apunte) {
                 setApunte(apunte);
             }
+
+            @Override
+            public void onclicklistener(Usuario Usuario) {
+
+            }
         };
 
         try {

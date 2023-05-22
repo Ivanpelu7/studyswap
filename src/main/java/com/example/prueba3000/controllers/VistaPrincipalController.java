@@ -117,7 +117,7 @@ public class VistaPrincipalController implements Initializable {
 
 
 
-        } catch (IOException e) {
+        } catch (IOException | SQLException e) {
             throw new RuntimeException(e);
         }
 
@@ -161,13 +161,12 @@ public class VistaPrincipalController implements Initializable {
     }
 
     @FXML
-    public void cambiarVistaApuntes(ActionEvent actionEvent) {
+    public void cambiarVistaApuntes(ActionEvent actionEvent) throws SQLException {
 
         try {
-            AnchorPane pane = FXMLLoader.load(Main.class.getResource("vistas/VistaApuntes.fxml"));
-
-            rootPane.getChildren().setAll(pane);
-
+           FXMLLoader pane = FXMLLoader.load(Main.class.getResource("vistas/VistaApuntes.fxml"));
+            Parent root= pane.load();
+            rootPane.getChildren().setAll(root);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
