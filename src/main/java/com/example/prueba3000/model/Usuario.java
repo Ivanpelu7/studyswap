@@ -19,8 +19,6 @@ public class Usuario {
     private String apellidos;
     private int tipoUsuario;
     private String sexo;
-    private ArrayList<Usuario> amigos;
-    private ArrayList<SolicitudAmistad> solicitudesAmistad;
 
     public Usuario(String nombreUsuario, String password, String email, String nombre, String apellidos, int tipoUsuario, String sexo) {
         this.nombreUsuario = nombreUsuario;
@@ -30,8 +28,6 @@ public class Usuario {
         this.apellidos = apellidos;
         this.tipoUsuario = tipoUsuario;
         this.sexo = sexo;
-        solicitudesAmistad = new ArrayList<>();
-        amigos = new ArrayList<>();
     }
 
     public Usuario(int id, String nombreUsuario, String password, String email, String nombre, String apellidos, int tipoUsuario, String sexo) {
@@ -107,21 +103,5 @@ public class Usuario {
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
-    }
-
-    public ArrayList<Usuario> getAmigos() {
-        return amigos;
-    }
-
-    public void setAmigos(ArrayList<Usuario> amigos) {
-        this.amigos = amigos;
-    }
-
-    public ArrayList<SolicitudAmistad> getSolicitudesAmistad() {
-        return solicitudesAmistad;
-    }
-
-    public void setSolicitudesAmistad(ArrayList<SolicitudAmistad> solicitudesAmistad) {
-        this.solicitudesAmistad = solicitudesAmistad;
     }
 }

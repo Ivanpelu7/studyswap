@@ -80,5 +80,13 @@ public class Validador {
         return true;
     }
 
+    public boolean validarPublicacion(ComboBox<Asignatura> asignaturas, ComboBox<Curso> cursos, TextField ruta, TextField nombre) {
 
+        if (asignaturas.getValue() == null || cursos.getValue() == null || ruta.getText().equals("") || nombre.getText().equals("")) {
+            return false;
+
+        } else {
+            return true;
+        }
+    }
 }

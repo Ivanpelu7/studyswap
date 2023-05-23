@@ -52,6 +52,7 @@ public class VistaApuntesController implements Initializable {
     private Apunte apunte;
     @javafx.fxml.FXML
     private TextField textFieldNombre;
+    private Usuario usuario;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -220,9 +221,17 @@ public class VistaApuntesController implements Initializable {
             a.setHeaderText(null);
             a.setContentText("Descarga realizada correctamente");
             a.showAndWait();
+
+            ApunteModel am = new ApunteModel();
+            am.apunteDescargado(this.apunte, this.usuario);
         }
 
         temporalFile.delete();
 
+    }
+
+    public void setUsuario(Usuario usuario) {
+
+        this.usuario = usuario;
     }
 }

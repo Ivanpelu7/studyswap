@@ -3,6 +3,8 @@ package com.example.prueba3000.model;
 import com.example.prueba3000.util.DBUtil;
 
 import javax.xml.transform.Result;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.PreparedStatement;
@@ -96,4 +98,59 @@ public class ApunteModel extends DBUtil {
         return apuntesSubidos;
     }
 
+    public ArrayList<Apunte> apuntesDescargados(Usuario usuario) throws SQLException, IOException {
+
+        HashMap<Integer, Apunte> apuntes = recuperarApuntes();
+        ArrayList<Apunte> apuntesDescargados = new ArrayList<>();
+
+        String query = "SELECT * FROM descargas WHERE id_usuario = " + usuario.getId();
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+
+            Integer id = rs.getInt("id_apunte");
+
+            Apunte apunte = apuntes.get(id);
+
+            apuntesDescargados.add(apunte);
+        }
+
+        return apuntesDescargados;
+    }
+
+    public int insertarApunte(Apunte apunte) throws SQLException, FileNotFoundException {
+
+        String query = "INSERT INTO apuntes(nombre, pdf, id_asignatura, id_curso, id_autor)" +
+                " VALUES(?, ?, ?, ?, ?)";
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        FileInputStream flujo = new FileInputStream(apunte.getPf());
+
+        ps.setString(1, apunte.getNombre());
+        ps.setBlob(2, flujo);
+        ps.setInt(3, apunte.getAsignatura().getId());
+        ps.setInt(4, apunte.getCurso().getId());
+        ps.setInt(5, apunte.getAutor().getId());
+
+        int i = ps.executeUpdate();
+
+        cerrarConexion();
+
+        return i;
+    }
+
+    public void apunteDescargado(Apunte apunte, Usuario usuario) throws SQLException {
+
+        String query = "call añadirRegistroDescargas(" + usuario.getId() + ", " + apunte.getId() + ")";
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ps.executeUpdate();
+
+        cerrarConexion();
+    }
 }

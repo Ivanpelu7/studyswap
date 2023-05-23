@@ -18,12 +18,11 @@ public class Apunte {
     private Curso curso;
     private Usuario autor;
 
-    public Apunte(int id, String nombre, Blob pdf, File pf, int puntuacion, Asignatura asignatura, Curso curso, Usuario autor) {
+    public Apunte(String nombre, File pf, Asignatura asignatura, Curso curso, Usuario autor) {
         this.id = id;
         this.nombre = nombre;
         this.pdf = pdf;
         this.pf = pf;
-        this.puntuacion = puntuacion;
         this.asignatura = asignatura;
         this.curso = curso;
         this.autor = autor;

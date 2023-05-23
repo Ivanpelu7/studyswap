@@ -15,7 +15,7 @@
 .pdflateral {
 
     -fx-background-color: #ffff;
-    -fx-background-radius: 10px;
+    -fx-background-radius: 7px;
 }
 
 .fondo-blanco {
@@ -38,7 +38,7 @@
 }
 
 .shadow {
-    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 10.0, 0.0, 0.0, 10.0);
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 5.0, 0.0, 0.0, 5.0);
 }
 
 .style-menu-lateral {

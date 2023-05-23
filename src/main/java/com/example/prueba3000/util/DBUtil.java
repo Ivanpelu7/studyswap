@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class DBUtil {
     private Connection conexion;
-    private String cadenaConexion = "jdbc:mysql://studyswap.hopto.org:3306/studyswap";
-    private String nombreUsuario = "studyswap";
-    private String password = "studyswap";
+    private String cadenaConexion = "jdbc:mysql://localhost:3306/studyswap";
+    private String nombreUsuario = "root";
+    private String password = "12345";
 
     public Connection getConexion() {
 
