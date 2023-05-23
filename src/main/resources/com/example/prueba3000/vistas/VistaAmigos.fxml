@@ -41,7 +41,7 @@
                         <TextField fx:id="Mostrar_Apellidos" layoutX="129.0" layoutY="86.0" prefHeight="25.0" prefWidth="207.0" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
                         <TextField fx:id="Mostrar_email" layoutX="128.0" layoutY="119.0" prefHeight="25.0" prefWidth="209.0" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
                         <Label layoutX="179.0" layoutY="169.0" prefHeight="33.0" prefWidth="32.0" style="-fx-background-color: #FFFF;" />
-                        <ImageView fx:id="boton_eliminar" fitHeight="50.0" fitWidth="50.0" layoutX="170.0" layoutY="161.0" onMouseClicked="#eliminarAmigo" onMouseDragged="#eliminarAmigo" onMousePressed="#eliminarAmigo" onMouseReleased="#eliminarAmigo">
+                        <ImageView fx:id="boton_eliminar" fitHeight="50.0" fitWidth="50.0" layoutX="170.0" layoutY="161.0" onMouseClicked="#eliminarAmigo">
                            <image>
                               <Image url="@../images/borrar.png" />
                            </image>
@@ -75,7 +75,7 @@
                                  </image>
                               </ImageView>
                               <Label fx:id="nomuserMostrarAñadir" layoutX="49.0" layoutY="10.0" prefHeight="17.0" prefWidth="120.0" text="Label" />
-                              <ImageView fx:id="botonañadir" fitHeight="30.0" fitWidth="30.0" layoutX="237.0" layoutY="4.0" onMouseClicked="#Añadir_usuario" onMousePressed="#Añadir_usuario" onMouseReleased="#Añadir_usuario">
+                              <ImageView fx:id="botonañadir" fitHeight="30.0" fitWidth="30.0" layoutX="237.0" layoutY="4.0" onMouseClicked="#Añadir_usuario">
                                  <image>
                                     <Image url="@../images/añadir.png" />
                                  </image>
@@ -108,7 +108,7 @@
                         </Label>
                         <Pane fx:id="PaneSolicitudes" layoutX="36.0" layoutY="273.0" prefHeight="38.0" prefWidth="281.0" stylesheets="@../css/style.css">
                            <children>
-                              <ImageView fx:id="botoaceptarsolicitud" fitHeight="30.0" fitWidth="30.0" layoutX="237.0" layoutY="4.0" onMouseClicked="#aceptarsolicitud" onMouseDragged="#aceptarsolicitud" onMousePressed="#aceptarsolicitud" onMouseReleased="#aceptarsolicitud">
+                              <ImageView fx:id="botoaceptarsolicitud" fitHeight="30.0" fitWidth="30.0" layoutX="237.0" layoutY="4.0" onMouseClicked="#aceptarsolicitud">
                                  <image>
                                     <Image url="@../images/cheque.png" />
                                  </image>
@@ -124,7 +124,7 @@
                                  </image>
                               </ImageView>
                               <Label fx:id="nomuserSolicitud" layoutX="49.0" layoutY="10.0" prefHeight="17.0" prefWidth="120.0" text="Label" />
-                              <ImageView fx:id="botodenegarsolicitud" fitHeight="30.0" fitWidth="30.0" layoutX="198.0" layoutY="3.0" onDragDetected="#denegarsolicitud" onMouseClicked="#aceptarsolicitud" onMouseDragged="#aceptarsolicitud" onMousePressed="#aceptarsolicitud" onMouseReleased="#aceptarsolicitud">
+                              <ImageView fx:id="botodenegarsolicitud" fitHeight="30.0" fitWidth="30.0" layoutX="198.0" layoutY="3.0" onMouseClicked="#denegarsolicitud">
                                  <image>
                                     <Image url="@../images/boton-eliminar.png" />
                                  </image>

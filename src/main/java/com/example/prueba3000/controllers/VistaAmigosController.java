@@ -117,7 +117,7 @@ public class VistaAmigosController implements Initializable {
 
         SolicitudAmistad s = this.solicitudes.get(nsolicitud);
         nomuserSolicitud.setText(s.getUsuarioEmisor().getNombreUsuario());
-        nsolicitud++;
+
     }
     else{
         PaneSolicitudes.setVisible(false);
@@ -222,7 +222,7 @@ public class VistaAmigosController implements Initializable {
 
     @javafx.fxml.FXML
     public void buscar_usuario(Event event) throws SQLException {
-
+        paneAmigobuscado.setVisible(false);
         UsuarioModel um= new UsuarioModel();
         AmigosModel am= new AmigosModel();
         Validador v= new Validador();
@@ -230,9 +230,10 @@ public class VistaAmigosController implements Initializable {
         HashMap<Integer,Usuario> usuariosHashmap = new HashMap<>();
         usuariosHashmap.putAll(um.recuperarUsuarios());
 
-        Usuario usuarioaBuscar=um.recuperarUsuario(usernameAmigoAñadir.getText());
 
-        if(v.nombreUsuarioExiste(usuarioaBuscar.getNombre(),usuariosHashmap )==true){
+
+        if(!v.nombreUsuarioExiste(usernameAmigoAñadir.getText(),usuariosHashmap )){
+            Usuario usuarioaBuscar=um.recuperarUsuario(usernameAmigoAñadir.getText());
             userNoExiste.setText("");
             paneAmigobuscado.setVisible(true);
             boolean sonamigos=am.sonamigos(this.usuario, usuarioaBuscar);
@@ -285,6 +286,7 @@ public class VistaAmigosController implements Initializable {
             }
 
             nomuserMostrarAñadir.setText(usuarioaBuscar.getNombreUsuario());
+
         }
         else{
             userNoExiste.setText("El usuario no existe");
@@ -318,6 +320,7 @@ public class VistaAmigosController implements Initializable {
         AmigosModel am= new AmigosModel();
         SolicitudAmistad s = this.solicitudes.get(nsolicitud);
         if( nsolicitud<=this.solicitudes.size()) {
+            PaneSolicitudes.setVisible(true);
             am.aceptarSolicitud(s.getUsuarioEmisor(), s.getUsuarioReceptor());
             if (usuario.getSexo().equals("M")) {
                 fotohombre11.setVisible(true);
@@ -328,9 +331,9 @@ public class VistaAmigosController implements Initializable {
                 fotohombre11.setVisible(false);
             }
 
-
-            nomuserSolicitud.setText(s.getUsuarioEmisor().getNombreUsuario());
             nsolicitud++;
+            nomuserSolicitud.setText(s.getUsuarioEmisor().getNombreUsuario());
+            PaneSolicitudes.setVisible(false);
         }
         else{
             PaneSolicitudes.setVisible(false);
@@ -341,6 +344,7 @@ public class VistaAmigosController implements Initializable {
     public void denegarsolicitud(Event event) throws SQLException {
         AmigosModel am= new AmigosModel();
         SolicitudAmistad s = this.solicitudes.get(nsolicitud);
+        PaneSolicitudes.setVisible(true);
         if( nsolicitud<=this.solicitudes.size()) {
             am.rechazarSolicitud(s.getUsuarioEmisor(), s.getUsuarioReceptor());
             if (usuario.getSexo().equals("M")) {
@@ -352,9 +356,9 @@ public class VistaAmigosController implements Initializable {
                 fotohombre11.setVisible(false);
             }
 
-
-            nomuserSolicitud.setText(s.getUsuarioEmisor().getNombreUsuario());
             nsolicitud++;
+            nomuserSolicitud.setText(s.getUsuarioEmisor().getNombreUsuario());
+            PaneSolicitudes.setVisible(false);
         }
         else{
             PaneSolicitudes.setVisible(false);
