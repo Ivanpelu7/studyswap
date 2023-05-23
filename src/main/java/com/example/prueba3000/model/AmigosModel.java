@@ -85,6 +85,59 @@ public class AmigosModel extends DBUtil {
         ps.execute();
     }
 
+    public boolean sonamigos(Usuario userconectado,Usuario amigo) throws SQLException {
+        String query = "SELECT id_amigo FROM amigos WHERE id_usuario = "+ userconectado.getId()+";";
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ResultSet rs = ps.executeQuery();
+
+        boolean comprovaramistad=false;
+        while(rs.next()){
+            int id= rs.getInt("id_amigo");
+            if(amigo.getId()==id){
+                comprovaramistad=true;
+            }
+        }
+        return comprovaramistad;
+    }
+
+    public int comprovar_tipo_solicitud(Usuario userconectado,Usuario recividor) throws SQLException {
+        String query = "SELECT id_usuario_receptor,estado FROM solicitudes where id_usuario_emisor="+userconectado.getId()+" and estado=0 or estado=2;";
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ResultSet rs = ps.executeQuery();
+
+        int comprovarSolicitud=0;
+        while(rs.next()){
+            int id= rs.getInt("id_usuario_receptor");
+            int estado=rs.getInt("estado");
+            if(recividor.getId()==id){
+                if(estado==1){comprovarSolicitud=1;}
+                if(estado==2){comprovarSolicitud=2;}
+            }
+        }
+       return comprovarSolicitud;
+    }
+
+    public boolean comprovar_solicitud_enviada(Usuario userconectado, Usuario recividor) throws SQLException {
+        String query = "SELECT id_usuario_receptor FROM solicitudes where id_usuario_emisor="+userconectado.getId()+" and estado=0 or estado=2;";
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ResultSet rs = ps.executeQuery();
+
+        boolean comprovarSolicitud=false;
+        while(rs.next()){
+            int id= rs.getInt("id_usuario_receptor");
+            if(recividor.getId()==id){
+                comprovarSolicitud=true;
+            }
+        }
+        return comprovarSolicitud;
+    }
+
 }
 
 

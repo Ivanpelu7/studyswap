@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaAmigosController">
+<AnchorPane fx:id="anchor" prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaAmigosController">
    <children>
       <BorderPane layoutX="14.0" layoutY="8.0" prefHeight="627.0" prefWidth="826.0">
          <right>
@@ -56,6 +56,7 @@
                            </font>
                         </Label>
                         <TextField fx:id="usernameAmigoAñadir" layoutX="42.0" layoutY="102.0" prefHeight="25.0" prefWidth="270.0" promptText="Nombre de usuario" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
+                        <Label fx:id="userNoExiste" alignment="CENTER" layoutX="43.0" layoutY="196.0" prefHeight="17.0" prefWidth="273.0" textFill="RED" />
                         <Pane fx:id="paneAmigobuscado" layoutX="36.0" layoutY="140.0" prefHeight="38.0" prefWidth="281.0" stylesheets="@../css/style.css">
                            <children>
                               <ImageView fx:id="botonAñadido" fitHeight="30.0" fitWidth="30.0" layoutX="237.0" layoutY="4.0">
@@ -68,15 +69,25 @@
                                     <Image url="@../images/mujer.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="fotohombre1" fitHeight="30.0" fitWidth="30.0" layoutX="7.0" layoutY="3.0">
+                              <ImageView fx:id="fotohombre1" fitHeight="30.0" fitWidth="30.0" layoutX="7.0" layoutY="4.0">
                                  <image>
                                     <Image url="@../images/hombre.png" />
                                  </image>
                               </ImageView>
                               <Label fx:id="nomuserMostrarAñadir" layoutX="49.0" layoutY="10.0" prefHeight="17.0" prefWidth="120.0" text="Label" />
-                              <ImageView fx:id="botonañadir" fitHeight="30.0" fitWidth="30.0" layoutX="237.0" layoutY="4.0" onMouseReleased="#Añadir_usuario">
+                              <ImageView fx:id="botonañadir" fitHeight="30.0" fitWidth="30.0" layoutX="237.0" layoutY="4.0" onMouseClicked="#Añadir_usuario">
                                  <image>
                                     <Image url="@../images/añadir.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="denegada" fitHeight="30.0" fitWidth="30.0" layoutX="237.0" layoutY="4.0">
+                                 <image>
+                                    <Image url="@../images/boton-eliminar.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="pendiente" fitHeight="30.0" fitWidth="30.0" layoutX="237.0" layoutY="4.0">
+                                 <image>
+                                    <Image url="@../images/reloj.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -85,11 +96,45 @@
                               <String fx:value="bordes-redondos" />
                            </styleClass>
                         </Pane>
-                        <ImageView fx:id="buscador" fitHeight="35.0" fitWidth="36.0" layoutX="317.0" layoutY="97.0" onMouseReleased="#buscar_usuario">
+                        <ImageView fx:id="buscador" fitHeight="35.0" fitWidth="35.0" layoutX="317.0" layoutY="97.0" onMouseClicked="#buscar_usuario" onMouseDragged="#buscar_usuario" onMousePressed="#buscar_usuario" onMouseReleased="#buscar_usuario">
                            <image>
                               <Image url="@../images/lupa.png" />
                            </image>
                         </ImageView>
+                        <Label alignment="CENTER" layoutX="36.0" layoutY="196.0" prefHeight="77.0" prefWidth="288.0" text="SOLICITUDES">
+                           <font>
+                              <Font name="Leelawadee Bold" size="34.0" />
+                           </font>
+                        </Label>
+                        <Pane fx:id="PaneSolicitudes" layoutX="36.0" layoutY="273.0" prefHeight="38.0" prefWidth="281.0" stylesheets="@../css/style.css">
+                           <children>
+                              <ImageView fx:id="botoaceptarsolicitud" fitHeight="30.0" fitWidth="30.0" layoutX="237.0" layoutY="4.0" onMouseClicked="#aceptarsolicitud">
+                                 <image>
+                                    <Image url="@../images/cheque.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="fotomujer11" fitHeight="30.0" fitWidth="30.0" layoutX="7.0" layoutY="3.0">
+                                 <image>
+                                    <Image url="@../images/mujer.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="fotohombre11" fitHeight="30.0" fitWidth="30.0" layoutX="7.0" layoutY="4.0">
+                                 <image>
+                                    <Image url="@../images/hombre.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="nomuserSolicitud" layoutX="49.0" layoutY="10.0" prefHeight="17.0" prefWidth="120.0" text="Label" />
+                              <ImageView fx:id="botodenegarsolicitud" fitHeight="30.0" fitWidth="30.0" layoutX="198.0" layoutY="3.0" onMouseClicked="#denegarsolicitud">
+                                 <image>
+                                    <Image url="@../images/boton-eliminar.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <styleClass>
+                              <String fx:value="fondo-blanco" />
+                              <String fx:value="bordes-redondos" />
+                           </styleClass>
+                        </Pane>
                      </children>
                   </Pane>
                </children></VBox>
@@ -97,7 +142,7 @@
          <left>
             <HBox prefHeight="627.0" prefWidth="473.0" style="-fx-background-color: transparent;" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane prefHeight="627.0" prefWidth="467.0" style="-fx-background-color: transparent;" stylesheets="@../css/style.css">
+                  <ScrollPane fx:id="scrollpane" prefHeight="627.0" prefWidth="467.0" style="-fx-background-color: transparent;" stylesheets="@../css/style.css">
                      <content>
                         <VBox fx:id="vbox_users" prefHeight="614.0" prefWidth="460.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css" />
                      </content>

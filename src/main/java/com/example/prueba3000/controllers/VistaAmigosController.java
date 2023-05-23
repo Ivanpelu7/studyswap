@@ -3,16 +3,19 @@ package com.example.prueba3000.controllers;
 import com.example.prueba3000.Main;
 import com.example.prueba3000.model.*;
 import com.example.prueba3000.util.MyListener;
+import com.example.prueba3000.util.Validador;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -66,14 +69,69 @@ public class VistaAmigosController implements Initializable {
     private Pane paneAmigobuscado;
     @javafx.fxml.FXML
     private ImageView buscador;
-
+    @javafx.fxml.FXML
+    private AnchorPane anchor;
+    @javafx.fxml.FXML
+    private Label userNoExiste;
+    @javafx.fxml.FXML
+    private ImageView denegada;
+    @javafx.fxml.FXML
+    private ImageView pendiente;
+    @javafx.fxml.FXML
+    private ScrollPane scrollpane;
+    @javafx.fxml.FXML
+    private Pane PaneSolicitudes;
+    @javafx.fxml.FXML
+    private ImageView botoaceptarsolicitud;
+    @javafx.fxml.FXML
+    private ImageView fotomujer11;
+    @javafx.fxml.FXML
+    private ImageView fotohombre11;
+    @javafx.fxml.FXML
+    private Label nomuserSolicitud;
+    @javafx.fxml.FXML
+    private ImageView botodenegarsolicitud;
+    ArrayList<SolicitudAmistad> solicitudes = new ArrayList<>();
     public Usuario getUsuario() {
         return usuario;
     }
 
+    int nsolicitud=0;
+    public void setSolicitudes(Usuario u) throws SQLException {
+        SolicitudAmistadModel sam= new SolicitudAmistadModel();
+        UsuarioModel um= new UsuarioModel();
+
+        HashMap<Integer,Usuario> usuariosHashmap = new HashMap<>();
+        usuariosHashmap.putAll(um.recuperarUsuarios());
+
+        solicitudes.addAll(sam.peticionesAmistad(this.usuario, usuariosHashmap));
+    if(this.solicitudes.size()>0) {
+        if (usuario.getSexo().equals("M")) {
+            fotohombre11.setVisible(true);
+            fotomujer11.setVisible(false);
+
+        } else if (usuario.getSexo().equals("F")) {
+            fotomujer11.setVisible(true);
+            fotohombre11.setVisible(false);
+        }
+
+        SolicitudAmistad s = this.solicitudes.get(nsolicitud);
+        nomuserSolicitud.setText(s.getUsuarioEmisor().getNombreUsuario());
+
+    }
+    else{
+        PaneSolicitudes.setVisible(false);
+    }
+    }
     public void setUsuario(Usuario u) throws SQLException {
+
+        paneAmigoSeleccionado.setVisible(false);
         paneAmigobuscado.setVisible(false);
         botonAñadido.setVisible(false);
+        botonañadir.setVisible(false);
+        denegada.setVisible(false);
+        pendiente.setVisible(false);
+
 
         this.usuario = u;
 
@@ -111,25 +169,14 @@ public class VistaAmigosController implements Initializable {
                 throw new RuntimeException(e);
             }
         }
-
+        setSolicitudes(u);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-    @Deprecated
-    public void añadiramigo(ActionEvent actionEvent) {
 
-    }
-
-    @Deprecated
-    public void aceptar(ActionEvent actionEvent) {
-    }
-
-    @Deprecated
-    public void rechazar(ActionEvent actionEvent) {
-    }
 
     public void set_datos(Usuario usuario) throws SQLException {
        this.usuarioaeliminar=usuario;
@@ -158,22 +205,163 @@ public class VistaAmigosController implements Initializable {
 
 
     @javafx.fxml.FXML
-    public void eliminarAmigo(Event event) throws SQLException {
+    public void eliminarAmigo(Event event) throws SQLException, IOException {
         AmigosModel am= new AmigosModel();
         am.eliminaramigo(this.usuario,this.usuarioaeliminar );
         System.out.println("qq");
+
+        FXMLLoader amigos = new FXMLLoader(Main.class.getResource("vistas/VistaAmigos.fxml"));
+
+        Parent root = amigos.load();
+
+        anchor.getChildren().setAll(root);
+
+        VistaAmigosController controller1 = amigos.getController();
+        controller1.setUsuario(this.usuario);
     }
 
     @javafx.fxml.FXML
-    public void buscar_usuario(Event event) {
+    public void buscar_usuario(Event event) throws SQLException {
+        paneAmigobuscado.setVisible(false);
+        UsuarioModel um= new UsuarioModel();
+        AmigosModel am= new AmigosModel();
+        Validador v= new Validador();
 
-        usernameAmigoAñadir.getText();
-        paneAmigobuscado.setVisible(true);
+        HashMap<Integer,Usuario> usuariosHashmap = new HashMap<>();
+        usuariosHashmap.putAll(um.recuperarUsuarios());
+
+
+
+        if(!v.nombreUsuarioExiste(usernameAmigoAñadir.getText(),usuariosHashmap )){
+            Usuario usuarioaBuscar=um.recuperarUsuario(usernameAmigoAñadir.getText());
+            userNoExiste.setText("");
+            paneAmigobuscado.setVisible(true);
+            boolean sonamigos=am.sonamigos(this.usuario, usuarioaBuscar);
+
+            if(sonamigos==true){
+                botonAñadido.setVisible(true);
+                botonañadir.setVisible(false);
+                denegada.setVisible(false);
+                pendiente.setVisible(false);
+            }
+            else{
+                boolean comprovar_solicitud_enviada=am.comprovar_solicitud_enviada(this.usuario, usuarioaBuscar);
+                if(comprovar_solicitud_enviada==true){
+                    int i= am.comprovar_tipo_solicitud(this.usuario, usuarioaBuscar);
+
+                    if(i==0){
+                        botonAñadido.setVisible(false);
+                        botonañadir.setVisible(false);
+                        denegada.setVisible(false);
+                        pendiente.setVisible(true);
+                    }
+                    if(i==1){
+                        botonAñadido.setVisible(true);
+                        botonañadir.setVisible(false);
+                        denegada.setVisible(false);
+                        pendiente.setVisible(false);
+                    }
+                    if(i==2){
+                        botonAñadido.setVisible(false);
+                        botonañadir.setVisible(false);
+                        denegada.setVisible(true);
+                        pendiente.setVisible(false);
+                    }
+                } else if (comprovar_solicitud_enviada==false) {
+                    botonAñadido.setVisible(false);
+                    botonañadir.setVisible(true);
+                    denegada.setVisible(false);
+                    pendiente.setVisible(false);
+                }
+
+
+            }
+            if (usuario.getSexo().equals("M")) {
+                fotohombre1.setVisible(true);
+                fotomujer1.setVisible(false);
+
+            } else if (usuario.getSexo().equals("F")) {
+                fotomujer1.setVisible(true);
+                fotohombre1.setVisible(false);
+            }
+
+            nomuserMostrarAñadir.setText(usuarioaBuscar.getNombreUsuario());
+
+        }
+        else{
+            userNoExiste.setText("El usuario no existe");
+        }
+
     }
 
     @javafx.fxml.FXML
-    public void Añadir_usuario(Event event) {
-        botonañadir.setVisible(false);
-        botonAñadido.setVisible(true);
+    public void Añadir_usuario(Event event) throws SQLException {
+        UsuarioModel um= new UsuarioModel();
+        AmigosModel am= new AmigosModel();
+
+
+        HashMap<Integer,Usuario> usuariosHashmap = new HashMap<>();
+        usuariosHashmap.putAll(um.recuperarUsuarios());
+
+        Usuario usuarioaañadir=um.recuperarUsuario(usernameAmigoAñadir.getText());
+
+        int i=am.enviarSolicitud(this.usuario,usuarioaañadir );
+
+            botonAñadido.setVisible(true);
+            botonañadir.setVisible(false);
+            denegada.setVisible(false);
+            pendiente.setVisible(false);
+
+    }
+
+
+    @javafx.fxml.FXML
+    public void aceptarsolicitud(Event event) throws SQLException {
+        AmigosModel am= new AmigosModel();
+        SolicitudAmistad s = this.solicitudes.get(nsolicitud);
+        if( nsolicitud<=this.solicitudes.size()) {
+            PaneSolicitudes.setVisible(true);
+            am.aceptarSolicitud(s.getUsuarioEmisor(), s.getUsuarioReceptor());
+            if (usuario.getSexo().equals("M")) {
+                fotohombre11.setVisible(true);
+                fotomujer11.setVisible(false);
+
+            } else if (usuario.getSexo().equals("F")) {
+                fotomujer11.setVisible(true);
+                fotohombre11.setVisible(false);
+            }
+
+            nsolicitud++;
+            nomuserSolicitud.setText(s.getUsuarioEmisor().getNombreUsuario());
+            PaneSolicitudes.setVisible(false);
+        }
+        else{
+            PaneSolicitudes.setVisible(false);
+        }
+    }
+
+    @javafx.fxml.FXML
+    public void denegarsolicitud(Event event) throws SQLException {
+        AmigosModel am= new AmigosModel();
+        SolicitudAmistad s = this.solicitudes.get(nsolicitud);
+        PaneSolicitudes.setVisible(true);
+        if( nsolicitud<=this.solicitudes.size()) {
+            am.rechazarSolicitud(s.getUsuarioEmisor(), s.getUsuarioReceptor());
+            if (usuario.getSexo().equals("M")) {
+                fotohombre11.setVisible(true);
+                fotomujer11.setVisible(false);
+
+            } else if (usuario.getSexo().equals("F")) {
+                fotomujer11.setVisible(true);
+                fotohombre11.setVisible(false);
+            }
+
+            nsolicitud++;
+            nomuserSolicitud.setText(s.getUsuarioEmisor().getNombreUsuario());
+            PaneSolicitudes.setVisible(false);
+        }
+        else{
+            PaneSolicitudes.setVisible(false);
+        }
     }
 }

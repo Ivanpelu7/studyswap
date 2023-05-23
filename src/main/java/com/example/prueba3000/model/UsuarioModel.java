@@ -10,6 +10,30 @@ import java.util.HashMap;
 
 public class UsuarioModel extends DBUtil {
 
+    public Usuario recuperarUsuario(String nomnreuser) throws SQLException {
+        String query = "SELECT * FROM usuarios where nombre_usuario=?";
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+        ps.setString(1, nomnreuser);
+        ResultSet rs = ps.executeQuery();
+        Usuario usuario = null;
+        while (rs.next()) {
+
+            Integer id = rs.getInt("id_usuario");
+            String nombreUsuario = rs.getString("nombre_usuario");
+            String password = rs.getString("password");
+            String email = rs.getString("email");
+            String nombre = rs.getString("nombre");
+            String apellidos = rs.getString("apellidos");
+            int tipoUsuario = rs.getInt("tipo_usuario");
+            String sexo = rs.getString("sexo");
+
+             usuario = new Usuario(id, nombreUsuario, password, email, nombre, apellidos, tipoUsuario, sexo);
+
+
+        }
+        return usuario;
+    }
 
     public HashMap<Integer, Usuario> recuperarUsuarios() throws SQLException {
 
