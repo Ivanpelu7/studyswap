@@ -12,10 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -226,15 +223,25 @@ public class VistaAmigosController implements Initializable {
 
     @javafx.fxml.FXML
     public void eliminarAmigo(Event event) throws SQLException, IOException {
-        AmigosModel am = new AmigosModel();
 
-        am.eliminaramigo(this.usuario, this.usuarioaeliminar);
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setHeaderText(null);
+        a.setContentText("Estas seguro que lo quiere eliminar de amigos?");
+        a.showAndWait();
 
-        FXMLLoader amigos = new FXMLLoader(Main.class.getResource("vistas/VistaAmigos.fxml"));
+        if (a.getResult() == ButtonType.OK) {
+            AmigosModel am = new AmigosModel();
 
-        Parent root = amigos.load();
+            am.eliminaramigo(this.usuario, this.usuarioaeliminar);
 
-        anchor.getChildren().setAll(root);
+            FXMLLoader amigos = new FXMLLoader(Main.class.getResource("vistas/VistaAmigos.fxml"));
+
+            Parent root = amigos.load();
+
+            anchor.getChildren().setAll(root);
+        }
+
+
     }
 
     @javafx.fxml.FXML

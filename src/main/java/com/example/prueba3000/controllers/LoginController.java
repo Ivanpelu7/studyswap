@@ -7,6 +7,7 @@ import com.example.prueba3000.util.UsuarioHolder;
 import com.example.prueba3000.util.Validador;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -264,13 +265,9 @@ public class LoginController implements Initializable {
 
             try {
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaPrincipal.fxml"));
-
                 Parent root = loader.load();
-
                 Scene scene = new Scene(root);
-
                 Stage stage = (Stage) buttonAcceder.getScene().getWindow();
-
                 stage.setScene(scene);
 
             } catch (IOException e) {
@@ -281,4 +278,3 @@ public class LoginController implements Initializable {
         }
     }
 }
-

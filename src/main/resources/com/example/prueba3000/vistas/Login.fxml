@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.LoginController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.LoginController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -32,6 +32,12 @@
                         <String fx:value="text-field" />
                      </styleClass>
                   </TextField>
+                  <PasswordField fx:id="textFieldPasswordI" layoutX="76.0" layoutY="233.0" prefHeight="31.0" prefWidth="263.0" promptText="Contraseña" stylesheets="@../css/style.css">
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="bordes-redondos" />
+                     </styleClass>
+                  </PasswordField>
                   <Button fx:id="buttonAcceder" layoutX="143.0" layoutY="299.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="26.0" prefWidth="129.0" stylesheets="@../css/style.css" text="Acceder" textFill="WHITE">
                      <styleClass>
                         <String fx:value="bordes-redondos" />
@@ -45,12 +51,6 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <PasswordField fx:id="textFieldPasswordI" layoutX="76.0" layoutY="233.0" prefHeight="31.0" prefWidth="263.0" promptText="Contraseña" stylesheets="@../css/style.css">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="bordes-redondos" />
-                     </styleClass>
-                  </PasswordField>
                   <TextField fx:id="textFieldNombre" layoutX="76.0" layoutY="110.0" prefHeight="31.0" prefWidth="263.0" promptText="Nombre" stylesheets="@../css/style.css">
                      <styleClass>
                         <String fx:value="bordes-redondos" />
@@ -81,6 +81,18 @@
                         <String fx:value="shadow" />
                      </styleClass>
                   </TextField>
+                  <PasswordField fx:id="textFieldPasswordR" layoutX="76.0" layoutY="314.0" prefHeight="31.0" prefWidth="263.0" promptText="Contraseña" stylesheets="@../css/style.css">
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="bordes-redondos" />
+                     </styleClass>
+                  </PasswordField>
+                  <PasswordField fx:id="textFieldConfPassword" layoutX="77.0" layoutY="353.0" prefHeight="31.0" prefWidth="263.0" promptText="Confirmar contraseña" stylesheets="@../css/style.css">
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="bordes-redondos" />
+                     </styleClass>
+                  </PasswordField>
                   <Button fx:id="buttonRegistrarse" layoutX="136.0" layoutY="398.0" mnemonicParsing="false" onAction="#registrarse" prefHeight="26.0" prefWidth="129.0" stylesheets="@../css/style.css" text="Registrarse" textFill="WHITE">
                      <styleClass>
                         <String fx:value="bordes-redondos" />
@@ -104,18 +116,6 @@
                         <Image url="@../images/usuario%20(4).png" />
                      </image>
                   </ImageView>
-                  <PasswordField fx:id="textFieldPasswordR" layoutX="76.0" layoutY="314.0" prefHeight="31.0" prefWidth="263.0" promptText="Contraseña" stylesheets="@../css/style.css">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="bordes-redondos" />
-                     </styleClass>
-                  </PasswordField>
-                  <PasswordField fx:id="textFieldConfPassword" layoutX="77.0" layoutY="353.0" prefHeight="31.0" prefWidth="263.0" promptText="Confirmar contraseña" stylesheets="@../css/style.css">
-                     <styleClass>
-                        <String fx:value="shadow" />
-                        <String fx:value="bordes-redondos" />
-                     </styleClass>
-                  </PasswordField>
                   <Label fx:id="labelRegistroIncorrecto" alignment="CENTER" layoutX="35.0" layoutY="88.0" prefHeight="18.0" prefWidth="346.0" textFill="RED">
                      <font>
                         <Font size="10.0" />
