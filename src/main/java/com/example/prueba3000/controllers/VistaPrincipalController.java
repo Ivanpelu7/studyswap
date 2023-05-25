@@ -61,6 +61,8 @@ public class VistaPrincipalController implements Initializable {
     private Button buttonAjustes;
     @FXML
     private ImageView fotoPerfil;
+    @FXML
+    private AnchorPane mainAnchorPane;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

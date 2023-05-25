@@ -17,12 +17,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javax.imageio.ImageIO;
 
 public class AjustesController implements Initializable {
 
@@ -78,18 +80,25 @@ public class AjustesController implements Initializable {
 
         if (imagenSeleccionada != null) {
             UsuarioModel usuarioModel = new UsuarioModel();
-            usuarioModel.anadirFotoPerfil(this.usuario, imagenSeleccionada);
+            int i = usuarioModel.anadirFotoPerfil(this.usuario, imagenSeleccionada);
 
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setHeaderText(null);
-            a.setContentText("Foto de perfil cambiada correctamente");
-            a.showAndWait();
+            if (i != 0) {
+                Alert a = new Alert(Alert.AlertType.INFORMATION);
+                a.setHeaderText(null);
+                a.setContentText("Foto de perfil cambiada correctamente");
+                a.showAndWait();
 
-            FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaAjustes.fxml"));
-            Parent pane = loader.load();
-            mainAnchor.getChildren().setAll(pane);
+                Image image = new Image(imagenSeleccionada.toURI().toString());
+                this.usuario.setFotoPerfil(image);
+
+                FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaAjustes.fxml"));
+                Parent pane = loader.load();
+                mainAnchor.getChildren().setAll(pane);
+            }
+
+
         }
+
+
     }
-
-
 }

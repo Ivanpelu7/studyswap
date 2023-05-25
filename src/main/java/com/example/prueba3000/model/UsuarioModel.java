@@ -109,7 +109,7 @@ public class UsuarioModel extends DBUtil {
         return i;
     }
 
-    public void anadirFotoPerfil(Usuario usuario, File file) throws SQLException, FileNotFoundException {
+    public int anadirFotoPerfil(Usuario usuario, File file) throws SQLException, FileNotFoundException {
 
         String query = "UPDATE usuarios SET foto_perfil = ? WHERE id_usuario = " + usuario.getId();
 
@@ -118,7 +118,9 @@ public class UsuarioModel extends DBUtil {
         InputStream inputStream = new FileInputStream(file);
         preparedStatement.setBinaryStream(1, inputStream, (int) file.length());
 
-        preparedStatement.executeUpdate();
+        int i = preparedStatement.executeUpdate();
+
+        return i;
     }
 }
 
