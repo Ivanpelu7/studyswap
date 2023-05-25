@@ -163,7 +163,7 @@ public class VistaAmigosController implements Initializable {
         };
         int column = 0;
         int row = 1;
-        if(amigos.size()>0) {
+        if (amigos.size() > 0) {
             for (Usuario user : this.amigos) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(Main.class.getResource("vistas/AmigosItem.fxml"));
@@ -187,8 +187,7 @@ public class VistaAmigosController implements Initializable {
                 }
 
             }
-        }
-        else{
+        } else {
             noAmigos.setVisible(true);
         }
         setSolicitudes(u);
@@ -331,10 +330,10 @@ public class VistaAmigosController implements Initializable {
 
     @javafx.fxml.FXML
     public void aceptarsolicitud(Event event) throws SQLException, IOException {
-        System.out.println("aaaaa");
-        AmigosModel am= new AmigosModel();
+
+        AmigosModel am = new AmigosModel();
         SolicitudAmistad s = this.solicitudes.get(nsolicitud);
-        if( nsolicitud<=this.solicitudes.size()) {
+        if (nsolicitud <= this.solicitudes.size()) {
             PaneSolicitudes.setVisible(true);
             am.aceptarSolicitud(s);
             if (usuario.getSexo().equals("M")) {
@@ -360,8 +359,7 @@ public class VistaAmigosController implements Initializable {
             VistaAmigosController controller1 = amigos.getController();
             controller1.setUsuario(this.usuario);
 
-        }
-        else{
+        } else {
             PaneSolicitudes.setVisible(false);
         }
     }
@@ -369,11 +367,10 @@ public class VistaAmigosController implements Initializable {
     @javafx.fxml.FXML
     public void denegarsolicitud(Event event) throws SQLException, IOException {
 
-        AmigosModel am= new AmigosModel();
+        AmigosModel am = new AmigosModel();
         SolicitudAmistad s = this.solicitudes.get(nsolicitud);
         PaneSolicitudes.setVisible(true);
-        if( nsolicitud<=this.solicitudes.size()) {
-            System.out.println(s.getId());
+        if (nsolicitud <= this.solicitudes.size()) {
             am.rechazarSolicitud(s);
             if (usuario.getSexo().equals("M")) {
                 fotohombre11.setVisible(true);
@@ -397,8 +394,7 @@ public class VistaAmigosController implements Initializable {
             VistaAmigosController controller1 = amigos.getController();
             controller1.setUsuario(this.usuario);
 
-        }
-        else{
+        } else {
             PaneSolicitudes.setVisible(false);
         }
     }

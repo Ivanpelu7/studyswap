@@ -63,7 +63,7 @@ public class AmigosModel extends DBUtil {
 
     public int enviarSolicitud(Usuario usuarioConectado, Usuario usuarioReceptor) throws SQLException {
 
-        String query = "INSERT INTO solicitudes (id_usuario_emisor,id_usuario_receptor,estado) VALUES(?, ?, 0)";
+        String query = "call solicitud_amistad(?, ?)";
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
