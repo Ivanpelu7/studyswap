@@ -3,6 +3,7 @@ package com.example.prueba3000.model;
 import java.util.ArrayList;
 
 import com.example.prueba3000.util.DBUtil;
+import javafx.scene.image.Image;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,6 +20,7 @@ public class Usuario {
     private String apellidos;
     private int tipoUsuario;
     private String sexo;
+    private Image fotoPerfil;
 
     public Usuario(String nombreUsuario, String password, String email, String nombre, String apellidos, int tipoUsuario, String sexo) {
         this.nombreUsuario = nombreUsuario;
@@ -30,7 +32,7 @@ public class Usuario {
         this.sexo = sexo;
     }
 
-    public Usuario(int id, String nombreUsuario, String password, String email, String nombre, String apellidos, int tipoUsuario, String sexo) {
+    public Usuario(int id, String nombreUsuario, String password, String email, String nombre, String apellidos, int tipoUsuario, String sexo, Image image) {
         this.id = id;
         this.nombreUsuario = nombreUsuario;
         this.password = password;
@@ -39,6 +41,7 @@ public class Usuario {
         this.apellidos = apellidos;
         this.tipoUsuario = tipoUsuario;
         this.sexo = sexo;
+        this.fotoPerfil = image;
     }
 
     public int getId() {
@@ -103,5 +106,13 @@ public class Usuario {
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
+    }
+
+    public Image getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(Image fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
     }
 }

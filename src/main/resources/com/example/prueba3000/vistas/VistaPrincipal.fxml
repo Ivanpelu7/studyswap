@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="662.0" prefWidth="1041.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaPrincipalController">
+<AnchorPane prefHeight="662.0" prefWidth="1041.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaPrincipalController">
     <children>
         <BorderPane prefHeight="662.0" prefWidth="1041.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
@@ -99,7 +99,7 @@
                                         <Image url="@../images/mujer.png" />
                                     </image>
                                 </ImageView>
-                                <Button graphicTextGap="10.0" layoutX="-1.0" layoutY="419.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="171.0" stylesheets="@../css/style.css" text="Ajustes" textFill="WHITE">
+                                <Button fx:id="buttonAjustes" graphicTextGap="10.0" layoutX="-1.0" layoutY="419.0" mnemonicParsing="false" onAction="#cambiarAjustes" prefHeight="57.0" prefWidth="171.0" stylesheets="@../css/style.css" text="Ajustes" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
                                     </font>

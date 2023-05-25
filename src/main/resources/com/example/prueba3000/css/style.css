@@ -54,3 +54,8 @@
     -fx-background-color: #D3D7D3;
     -fx-cursor: hand;
 }
+
+.style-foto-perfil {
+    -fx-background-radius: 100%;
+    -fx-border-radius: 100%;
+}

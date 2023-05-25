@@ -1,11 +1,13 @@
 package com.example.prueba3000.model;
 
 import com.example.prueba3000.util.DBUtil;
+import javafx.scene.image.Image;
 
+import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class UsuarioModel extends DBUtil {
@@ -17,6 +19,7 @@ public class UsuarioModel extends DBUtil {
         ps.setString(1, nomnreuser);
         ResultSet rs = ps.executeQuery();
         Usuario usuario = null;
+
         while (rs.next()) {
 
             Integer id = rs.getInt("id_usuario");
@@ -27,8 +30,16 @@ public class UsuarioModel extends DBUtil {
             String apellidos = rs.getString("apellidos");
             int tipoUsuario = rs.getInt("tipo_usuario");
             String sexo = rs.getString("sexo");
+            Blob fotoPerfil = rs.getBlob("foto_perfil");
 
-             usuario = new Usuario(id, nombreUsuario, password, email, nombre, apellidos, tipoUsuario, sexo);
+            Image image = null;
+
+            if (fotoPerfil != null) {
+                InputStream inputStream = fotoPerfil.getBinaryStream();
+                image = new Image(inputStream);
+            }
+
+            usuario = new Usuario(id, nombreUsuario, password, email, nombre, apellidos, tipoUsuario, sexo, image);
 
 
         }
@@ -55,8 +66,16 @@ public class UsuarioModel extends DBUtil {
             String apellidos = rs.getString("apellidos");
             int tipoUsuario = rs.getInt("tipo_usuario");
             String sexo = rs.getString("sexo");
+            Blob fotoPerfil = rs.getBlob("foto_perfil");
 
-            Usuario usuario = new Usuario(id, nombreUsuario, password, email, nombre, apellidos, tipoUsuario, sexo);
+            Image image = null;
+
+            if (fotoPerfil != null) {
+                InputStream inputStream = fotoPerfil.getBinaryStream();
+                image = new Image(inputStream);
+            }
+
+            Usuario usuario = new Usuario(id, nombreUsuario, password, email, nombre, apellidos, tipoUsuario, sexo, image);
 
             usuarios.put(usuario.getId(), usuario);
         }
@@ -86,40 +105,39 @@ public class UsuarioModel extends DBUtil {
         return i;
     }
 
-   /** public void guardarUsuario(String nomuser) throws SQLException {
-        DBUtil db = new DBUtil();
+    /** public void guardarUsuario(String nomuser) throws SQLException {
+     DBUtil db = new DBUtil();
 
-        String query1 = "select * from usuarios where nombre_usuario= ?";
-        PreparedStatement ps = db.getConexion().prepareStatement(query1);
-        ps.setString(1, nomuser);
-        ResultSet rs = ps.executeQuery();
-        int id=0;
-        String username="";
-        String contraseña="";
-        String email="";
-        String nombre="";
-        String apellidos="";
-        Integer tipo_usuario=0;
-        String sexo="";
+     String query1 = "select * from usuarios where nombre_usuario= ?";
+     PreparedStatement ps = db.getConexion().prepareStatement(query1);
+     ps.setString(1, nomuser);
+     ResultSet rs = ps.executeQuery();
+     int id=0;
+     String username="";
+     String contraseña="";
+     String email="";
+     String nombre="";
+     String apellidos="";
+     Integer tipo_usuario=0;
+     String sexo="";
 
-        while (rs.next()) {
+     while (rs.next()) {
 
-             id=rs.getInt("id_usuario");
-             username=rs.getString("nombre_usuario");
-             contraseña=rs.getString("password");
-             email=rs.getString("email");
-             nombre=rs.getString("nombre");
-             apellidos=rs.getString("apellidos");
-             tipo_usuario=rs.getInt("tipo_usuario");
-             sexo=rs.getString("sexo");
+     id=rs.getInt("id_usuario");
+     username=rs.getString("nombre_usuario");
+     contraseña=rs.getString("password");
+     email=rs.getString("email");
+     nombre=rs.getString("nombre");
+     apellidos=rs.getString("apellidos");
+     tipo_usuario=rs.getInt("tipo_usuario");
+     sexo=rs.getString("sexo");
 
 
-        }
-        Usuario u= new Usuario(username, contraseña, email,nombre , apellidos, tipo_usuario, sexo);
-       this.usuario=u;
-        }
-        **/
-
+     }
+     Usuario u= new Usuario(username, contraseña, email,nombre , apellidos, tipo_usuario, sexo);
+     this.usuario=u;
+     }
+     **/
 
 
 }

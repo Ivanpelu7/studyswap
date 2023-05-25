@@ -54,6 +54,8 @@ public class VistaPrincipalController implements Initializable {
     private FXMLLoader loader;
     @FXML
     private Button Administrador;
+    @FXML
+    private Button buttonAjustes;
 
     public  void adminSioNo(Usuario user){
         if(user.getTipoUsuario()==0){
@@ -196,5 +198,18 @@ public class VistaPrincipalController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    public void cambiarAjustes(ActionEvent actionEvent) throws IOException {
+
+        loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("vistas/VistaAjustes.fxml"));
+        pane = loader.load();
+
+        AjustesController ac = loader.getController();
+        ac.setUsuario(this.usuario);
+
+        rootPane.getChildren().setAll(pane);
     }
 }

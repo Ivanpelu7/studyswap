@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.AjustesController">
+   <children>
+      <BorderPane layoutX="7.0" prefHeight="642.0" prefWidth="839.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="200.0" prefWidth="778.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="29.0" layoutY="5.0" prefHeight="184.0" prefWidth="401.0" stylesheets="@../css/style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
+                     <children>
+                        <ImageView fx:id="fotoPerfil" fitHeight="85.0" fitWidth="98.0" layoutX="20.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" styleClass="style-foto-perfil" AnchorPane.bottomAnchor="49.0" AnchorPane.topAnchor="46.0">
+                           <image>
+                              <Image url="@../images/hombre.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="labelNombre" layoutX="252.0" layoutY="24.0" promptText="Nombre" stylesheets="@../css/style.css">
+                           <styleClass>
+                              <String fx:value="bordes-redondos" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </TextField>
+                        <TextField fx:id="labelApellidos" layoutX="551.0" layoutY="24.0" prefHeight="31.0" prefWidth="214.0" promptText="Apellidos" stylesheets="@../css/style.css">
+                           <styleClass>
+                              <String fx:value="bordes-redondos" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </TextField>
+                        <TextField fx:id="labelNombreUsuario" layoutX="252.0" layoutY="73.0" promptText="Nombre usuario" stylesheets="@../css/style.css">
+                           <styleClass>
+                              <String fx:value="bordes-redondos" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </TextField>
+                        <TextField fx:id="labelEmail" layoutX="412.0" layoutY="125.0" prefHeight="31.0" prefWidth="236.0" promptText="Correo electrónico" stylesheets="@../css/style.css">
+                           <styleClass>
+                              <String fx:value="bordes-redondos" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </TextField>
+                        <PasswordField fx:id="labelPassword" layoutX="551.0" layoutY="73.0" prefHeight="31.0" prefWidth="214.0" promptText="Contraseña" stylesheets="@../css/style.css">
+                           <styleClass>
+                              <String fx:value="bordes-redondos" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </PasswordField>
+                        <Label layoutX="187.0" layoutY="29.0" text="Nombre">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="479.0" layoutY="29.0" text="Apellidos">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="133.0" layoutY="78.0" text="Nombre usuario">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="466.0" layoutY="78.0" text="Contraseña">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="273.0" layoutY="130.0" text="Correo electrónico">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="pdflateral" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <Button fx:id="buttonCambiarFotoPerfil" mnemonicParsing="false" onAction="#cambiarFotoPerfil" text="Añadir foto perfil" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
