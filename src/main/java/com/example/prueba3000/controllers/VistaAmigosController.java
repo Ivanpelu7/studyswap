@@ -92,6 +92,8 @@ public class VistaAmigosController implements Initializable {
     private GridPane vbox_users;
     @javafx.fxml.FXML
     private Button botodenegarsolicitud;
+    @javafx.fxml.FXML
+    private Pane noAmigos;
 
     public Usuario getUsuario() {
         return usuario;
@@ -126,7 +128,7 @@ public class VistaAmigosController implements Initializable {
     }
 
     public void setUsuario(Usuario u) throws SQLException {
-
+        noAmigos.setVisible(false);
         paneAmigoSeleccionado.setVisible(false);
         paneAmigobuscado.setVisible(false);
         botonAñadido.setVisible(false);
@@ -161,28 +163,33 @@ public class VistaAmigosController implements Initializable {
         };
         int column = 0;
         int row = 1;
-        for (Usuario user : this.amigos) {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(Main.class.getResource("vistas/AmigosItem.fxml"));
-            try {
-                HBox hBox = fxmlLoader.load();
-                AmigosItemController aic = fxmlLoader.getController();
-                aic.setData(user, myListener);
-                vbox_users.add(hBox, column, row++);
-                GridPane.setMargin(hBox, new Insets(10));
+        if(amigos.size()>0) {
+            for (Usuario user : this.amigos) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(Main.class.getResource("vistas/AmigosItem.fxml"));
+                try {
+                    HBox hBox = fxmlLoader.load();
+                    AmigosItemController aic = fxmlLoader.getController();
+                    aic.setData(user, myListener);
+                    vbox_users.add(hBox, column, row++);
+                    GridPane.setMargin(hBox, new Insets(10));
 
-                vbox_users.setMinWidth(Region.USE_COMPUTED_SIZE);
-                vbox_users.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                vbox_users.setMaxWidth(Region.USE_COMPUTED_SIZE);
+                    vbox_users.setMinWidth(Region.USE_COMPUTED_SIZE);
+                    vbox_users.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                    vbox_users.setMaxWidth(Region.USE_COMPUTED_SIZE);
 
-                vbox_users.setMinHeight(Region.USE_COMPUTED_SIZE);
-                vbox_users.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                vbox_users.setMaxHeight(Region.USE_COMPUTED_SIZE);
+                    vbox_users.setMinHeight(Region.USE_COMPUTED_SIZE);
+                    vbox_users.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                    vbox_users.setMaxHeight(Region.USE_COMPUTED_SIZE);
 
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
             }
-
+        }
+        else{
+            noAmigos.setVisible(true);
         }
         setSolicitudes(u);
     }

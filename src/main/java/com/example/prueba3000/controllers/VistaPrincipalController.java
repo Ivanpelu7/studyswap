@@ -52,6 +52,14 @@ public class VistaPrincipalController implements Initializable {
     private Parent pane;
     private VistaPerfilController vpc;
     private FXMLLoader loader;
+    @FXML
+    private Button Administrador;
+
+    public  void adminSioNo(Usuario user){
+        if(user.getTipoUsuario()==0){
+            Administrador.setVisible(false);
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -172,6 +180,18 @@ public class VistaPrincipalController implements Initializable {
             vac.setUsuario(this.usuario);
 
             rootPane.getChildren().setAll(pane);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void CambiarAdministracion(ActionEvent actionEvent) {
+        try {
+            FXMLLoader pane =  new FXMLLoader(Main.class.getResource("vistas/Administracion.fxml"));
+            Parent root= pane.load();
+            rootPane.getChildren().setAll(root);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
