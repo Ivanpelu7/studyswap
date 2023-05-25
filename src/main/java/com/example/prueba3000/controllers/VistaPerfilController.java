@@ -48,6 +48,8 @@ public class VistaPerfilController implements Initializable {
 
     public void setApuntesSubidos() {
 
+        gridPaneSubidos.getChildren().clear();
+
         ApunteModel am = new ApunteModel();
 
         try {

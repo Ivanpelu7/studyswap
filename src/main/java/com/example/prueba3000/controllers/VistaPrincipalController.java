@@ -158,6 +158,15 @@ public class VistaPrincipalController implements Initializable {
         rootPane.getChildren().setAll(pane);
     }
 
+    public void cargarInicio() throws IOException {
+
+        loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("vistas/VistaPerfil.fxml"));
+        pane = loader.load();
+
+        rootPane.getChildren().setAll(pane);
+    }
+
     @FXML
     public void cambiarVistaApuntes(ActionEvent actionEvent) throws SQLException {
 

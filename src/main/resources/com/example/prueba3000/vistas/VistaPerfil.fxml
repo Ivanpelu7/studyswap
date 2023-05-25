@@ -17,7 +17,8 @@
       <Label layoutX="108.0" layoutY="14.0" text="Apuntes Subidos">
          <font>
             <Font name="System Bold" size="22.0" />
-         </font></Label>
+         </font>
+      </Label>
       <ScrollPane layoutX="46.0" layoutY="59.0" prefHeight="554.0" prefWidth="342.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css">
          <content>
             <GridPane fx:id="gridPaneSubidos">
@@ -30,7 +31,8 @@
       <Label layoutX="519.0" layoutY="14.0" text="Apuntes Descargados">
          <font>
             <Font name="System Bold" size="22.0" />
-         </font></Label>
+         </font>
+      </Label>
       <ScrollPane layoutX="453.0" layoutY="59.0" prefHeight="554.0" prefWidth="342.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css">
          <content>
             <GridPane fx:id="gridPaneDescargados">
@@ -51,6 +53,7 @@
          </graphic>
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>
