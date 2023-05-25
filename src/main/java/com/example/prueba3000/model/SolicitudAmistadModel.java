@@ -23,7 +23,7 @@ public class SolicitudAmistadModel extends DBUtil {
         while (rs.next()) {
             Integer idEmisor = rs.getInt("id_usuario_emisor");
             Integer estado = rs.getInt("estado");
-            Integer id =rs.getInt("id_Solicitud");
+            Integer id =rs.getInt("id_solicitud");
 
             Usuario usEmisor = null;
 
@@ -33,7 +33,7 @@ public class SolicitudAmistadModel extends DBUtil {
                 }
             }
 
-            SolicitudAmistad solicitudAmistad = new SolicitudAmistad(usEmisor, usuario , estado,id);
+            SolicitudAmistad solicitudAmistad = new SolicitudAmistad(usEmisor, usuario , estado, id);
 
             solicitudes.add(solicitudAmistad);
         }

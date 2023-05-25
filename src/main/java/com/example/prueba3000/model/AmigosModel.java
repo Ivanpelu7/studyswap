@@ -76,7 +76,8 @@ public class AmigosModel extends DBUtil {
     }
 
     public void eliminaramigo(Usuario userconectado,Usuario amigoEliminado) throws SQLException {
-        String query = "delete from amigos where id_usuario="+userconectado.getId()+" and id_amigo="+amigoEliminado.getId()+";";
+
+        String query = "call eliminar_amigo(" + userconectado.getId() + ", " + amigoEliminado.getId() + ")";
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
@@ -84,6 +85,7 @@ public class AmigosModel extends DBUtil {
     }
 
     public boolean sonamigos(Usuario userconectado,Usuario amigo) throws SQLException {
+
         String query = "SELECT id_amigo FROM amigos WHERE id_usuario = "+ userconectado.getId()+";";
 
         PreparedStatement ps = getConexion().prepareStatement(query);
@@ -91,6 +93,7 @@ public class AmigosModel extends DBUtil {
         ResultSet rs = ps.executeQuery();
 
         boolean comprovaramistad=false;
+
         while(rs.next()){
             int id= rs.getInt("id_amigo");
             if(amigo.getId()==id){

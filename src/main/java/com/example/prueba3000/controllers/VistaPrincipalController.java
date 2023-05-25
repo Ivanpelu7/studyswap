@@ -4,6 +4,7 @@ import com.example.prueba3000.Main;
 import com.example.prueba3000.model.SolicitudAmistadModel;
 import com.example.prueba3000.model.Usuario;
 import com.example.prueba3000.model.UsuarioModel;
+import com.example.prueba3000.util.UsuarioHolder;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -57,16 +59,41 @@ public class VistaPrincipalController implements Initializable {
     @FXML
     private Button buttonAjustes;
 
-    public  void adminSioNo(Usuario user){
-        if(user.getTipoUsuario()==0){
-            Administrador.setVisible(false);
-        }
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
+            this.usuario = UsuarioHolder.getUsuario();
+
+            if (this.usuario.getTipoUsuario() == 0) {
+                Administrador.setVisible(false);
+            }
+
+            SolicitudAmistadModel sam = new SolicitudAmistadModel();
+            UsuarioModel um = new UsuarioModel();
+
+            HashMap<Integer, Usuario> usuarios = um.recuperarUsuarios();
+
+
+            labelNombreUsuario.setText(usuario.getNombreUsuario());
+            labelNombre.setText(usuario.getNombre());
+            labelApellidos.setText(usuario.getApellidos());
+
+            if (usuario.getSexo().equals("M")) {
+                fotoHombre.setVisible(true);
+                fotoMujer.setVisible(false);
+
+            } else if (usuario.getSexo().equals("F")) {
+                fotoMujer.setVisible(true);
+                fotoHombre.setVisible(false);
+            }
+
+            if (sam.peticionesAmistad(this.usuario, usuarios).size() > 0) {
+                circuloSolicitudes.setVisible(true);
+                numeroSolicitudes.setVisible(true);
+                numeroSolicitudes.setText(String.valueOf(sam.peticionesAmistad(this.usuario, usuarios).size()));
+            }
+
             loader = new FXMLLoader();
 
             loader.setLocation(Main.class.getResource("vistas/VistaPerfil.fxml"));
@@ -75,49 +102,17 @@ public class VistaPrincipalController implements Initializable {
 
             rootPane.getChildren().setAll(pane);
 
-            circuloSolicitudes.setVisible(false);
-            numeroSolicitudes.setVisible(false);
-
         } catch (IOException e) {
+            throw new RuntimeException(e);
+
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void setDatos(Usuario u) throws SQLException, IOException {
-
-        SolicitudAmistadModel sam = new SolicitudAmistadModel();
-        UsuarioModel um = new UsuarioModel();
-
-        HashMap<Integer, Usuario> usuarios = um.recuperarUsuarios();
-
-        this.usuario = u;
-
-        labelNombreUsuario.setText(usuario.getNombreUsuario());
-        labelNombre.setText(usuario.getNombre());
-        labelApellidos.setText(usuario.getApellidos());
-
-        if (usuario.getSexo().equals("M")) {
-            fotoHombre.setVisible(true);
-            fotoMujer.setVisible(false);
-
-        } else if (usuario.getSexo().equals("F")) {
-            fotoMujer.setVisible(true);
-            fotoHombre.setVisible(false);
-        }
-
-        if (sam.peticionesAmistad(u, usuarios).size() > 0) {
-            circuloSolicitudes.setVisible(true);
-            numeroSolicitudes.setVisible(true);
-            numeroSolicitudes.setText(String.valueOf(sam.peticionesAmistad(u, usuarios).size()));
-        }
-
-        vpc = loader.getController();
-        vpc.setApuntesSubidos(this.usuario);
-        vpc.setApuntesDescargados(this.usuario);
-    }
 
     @FXML
-    public void cambiarVistaAmigos(ActionEvent actionEvent) {
+    public void cambiarVistaAmigos(ActionEvent actionEvent) throws IOException {
 
         try {
             loader = new FXMLLoader();
@@ -126,10 +121,7 @@ public class VistaPrincipalController implements Initializable {
 
             rootPane.getChildren().setAll(pane);
 
-            VistaAmigosController vac = loader.getController();
-            vac.setUsuario(usuario);
-
-        } catch (IOException | SQLException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
@@ -163,10 +155,6 @@ public class VistaPrincipalController implements Initializable {
         loader.setLocation(Main.class.getResource("vistas/VistaPerfil.fxml"));
         pane = loader.load();
 
-        vpc = loader.getController();
-        vpc.setApuntesSubidos(this.usuario);
-        vpc.setApuntesDescargados(this.usuario);
-
         rootPane.getChildren().setAll(pane);
     }
 
@@ -178,9 +166,6 @@ public class VistaPrincipalController implements Initializable {
             loader.setLocation(Main.class.getResource("vistas/VistaApuntes.fxml"));
             pane = loader.load();
 
-            VistaApuntesController vac = loader.getController();
-            vac.setUsuario(this.usuario);
-
             rootPane.getChildren().setAll(pane);
 
         } catch (IOException e) {
@@ -191,8 +176,8 @@ public class VistaPrincipalController implements Initializable {
     @FXML
     public void CambiarAdministracion(ActionEvent actionEvent) {
         try {
-            FXMLLoader pane =  new FXMLLoader(Main.class.getResource("vistas/Administracion.fxml"));
-            Parent root= pane.load();
+            FXMLLoader pane = new FXMLLoader(Main.class.getResource("vistas/Administracion.fxml"));
+            Parent root = pane.load();
             rootPane.getChildren().setAll(root);
 
         } catch (IOException e) {
@@ -206,9 +191,6 @@ public class VistaPrincipalController implements Initializable {
         loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("vistas/VistaAjustes.fxml"));
         pane = loader.load();
-
-        AjustesController ac = loader.getController();
-        ac.setUsuario(this.usuario);
 
         rootPane.getChildren().setAll(pane);
     }

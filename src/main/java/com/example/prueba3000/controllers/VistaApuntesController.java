@@ -3,6 +3,7 @@ package com.example.prueba3000.controllers;
 import com.example.prueba3000.Main;
 import com.example.prueba3000.model.*;
 import com.example.prueba3000.util.MyListener;
+import com.example.prueba3000.util.UsuarioHolder;
 import com.example.prueba3000.util.Validador;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -56,6 +57,8 @@ public class VistaApuntesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        this.usuario = UsuarioHolder.getUsuario();
 
         ApunteModel am = new ApunteModel();
         CursoModel cm = new CursoModel();
@@ -184,6 +187,7 @@ public class VistaApuntesController implements Initializable {
     public void setApunte(Apunte apunte) {
 
         this.apunte = apunte;
+
         textFieldCurso.setText(apunte.getCurso().getNombre());
         textFieldAsignatura.setText(apunte.getAsignatura().getNombre());
         textFieldAutor.setText(apunte.getAutor().getNombreUsuario());
@@ -228,10 +232,5 @@ public class VistaApuntesController implements Initializable {
 
         temporalFile.delete();
 
-    }
-
-    public void setUsuario(Usuario usuario) {
-
-        this.usuario = usuario;
     }
 }

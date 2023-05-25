@@ -3,6 +3,7 @@ package com.example.prueba3000.controllers;
 import com.example.prueba3000.Main;
 import com.example.prueba3000.model.Usuario;
 import com.example.prueba3000.model.UsuarioModel;
+import com.example.prueba3000.util.UsuarioHolder;
 import com.example.prueba3000.util.Validador;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -127,7 +128,7 @@ public class LoginController implements Initializable {
         imageInicioSesion.setVisible(false);
         labelDatosIncorrectos.setText("");
 
-        slide.setOnFinished((e->{
+        slide.setOnFinished((e -> {
 
 
         }));
@@ -137,7 +138,7 @@ public class LoginController implements Initializable {
     @FXML
     public void registrarse(ActionEvent actionEvent) throws SQLException {
 
-        UsuarioModel um= new UsuarioModel();
+        UsuarioModel um = new UsuarioModel();
 
         Validador v = new Validador();
 
@@ -226,7 +227,7 @@ public class LoginController implements Initializable {
         labelAunNoTienesCuenta.setVisible(true);
         imageInicioSesion.setVisible(true);
 
-        slide.setOnFinished((e->{
+        slide.setOnFinished((e -> {
 
 
         }));
@@ -245,8 +246,6 @@ public class LoginController implements Initializable {
             labelDatosIncorrectos.setText("Datos introducidos incorrectos");
 
         } else {
-
-
             Usuario usuarioConectado = null;
 
             for (Usuario u : usuarios.values()) {
@@ -255,6 +254,8 @@ public class LoginController implements Initializable {
                     usuarioConectado = u;
                 }
             }
+
+            UsuarioHolder.setUsuario(usuarioConectado);
 
             Alert a = new Alert(Alert.AlertType.INFORMATION);
             a.setHeaderText(null);
@@ -265,10 +266,6 @@ public class LoginController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaPrincipal.fxml"));
 
                 Parent root = loader.load();
-
-                VistaPrincipalController controller = loader.getController();
-                controller.setDatos(usuarioConectado);
-                controller.adminSioNo(usuarioConectado);
 
                 Scene scene = new Scene(root);
 

@@ -2,6 +2,7 @@ package com.example.prueba3000.controllers;
 
 import com.example.prueba3000.Main;
 import com.example.prueba3000.model.*;
+import com.example.prueba3000.util.UsuarioHolder;
 import com.example.prueba3000.util.Validador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -35,6 +36,8 @@ public class PublicarApunteController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        this.usuario = UsuarioHolder.getUsuario();
 
         CursoModel cm = new CursoModel();
         AsignaturaModel am = new AsignaturaModel();
@@ -110,11 +113,4 @@ public class PublicarApunteController implements Initializable {
             }
         }
     }
-
-    public void setUsuario(Usuario usuario) {
-
-        this.usuario = usuario;
-    }
-
-
 }

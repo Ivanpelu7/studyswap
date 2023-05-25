@@ -1,13 +1,18 @@
 package com.example.prueba3000.controllers;
 
 import com.example.prueba3000.model.Usuario;
+import com.example.prueba3000.util.UsuarioHolder;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
-public class AjustesController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class AjustesController implements Initializable {
     @javafx.fxml.FXML
     private ImageView fotoPerfil;
     @javafx.fxml.FXML
@@ -24,9 +29,10 @@ public class AjustesController {
     private Button buttonCambiarFotoPerfil;
     private Usuario usuario;
 
-    public void setUsuario(Usuario usuario) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        this.usuario = usuario;
+        this.usuario = UsuarioHolder.getUsuario();
 
         labelNombre.setText(usuario.getNombre());
         labelApellidos.setText(usuario.getApellidos());
@@ -35,7 +41,10 @@ public class AjustesController {
         labelNombreUsuario.setText(usuario.getNombreUsuario());
     }
 
+
     @javafx.fxml.FXML
     public void cambiarFotoPerfil(ActionEvent actionEvent) {
     }
+
+
 }

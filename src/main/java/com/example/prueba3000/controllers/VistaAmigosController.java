@@ -3,6 +3,7 @@ package com.example.prueba3000.controllers;
 import com.example.prueba3000.Main;
 import com.example.prueba3000.model.*;
 import com.example.prueba3000.util.MyListener;
+import com.example.prueba3000.util.UsuarioHolder;
 import com.example.prueba3000.util.Validador;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -32,7 +33,6 @@ public class VistaAmigosController implements Initializable {
 
     private Usuario usuario;
     private Usuario usuarioaeliminar;
-
     private ArrayList<Usuario> amigos = new ArrayList<>();
     @javafx.fxml.FXML
     private Pane paneAmigoSeleccionado;
@@ -95,8 +95,82 @@ public class VistaAmigosController implements Initializable {
     @javafx.fxml.FXML
     private Pane noAmigos;
 
-    public Usuario getUsuario() {
-        return usuario;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        this.usuario = UsuarioHolder.getUsuario();
+
+        try {
+            setSolicitudes(this.usuario);
+
+            noAmigos.setVisible(false);
+            paneAmigoSeleccionado.setVisible(false);
+            paneAmigobuscado.setVisible(false);
+            botonAñadido.setVisible(false);
+            botonañadir.setVisible(false);
+            denegada.setVisible(false);
+            pendiente.setVisible(false);
+
+
+            UsuarioModel um = new UsuarioModel();
+            AmigosModel am = new AmigosModel();
+
+            HashMap<Integer, Usuario> usuariosHashmap = new HashMap<>();
+            ArrayList<Usuario> amigoss = new ArrayList<>();
+
+            try {
+                usuariosHashmap.putAll(um.recuperarUsuarios());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            amigoss.addAll(am.recuperarAmigos(this.usuario, usuariosHashmap));
+
+            this.amigos.addAll(amigoss);
+            myListener = new MyListener() {
+                @Override
+                public void onClickListener(Apunte apunte) {
+
+                }
+
+                @Override
+                public void onclicklistener(Usuario Usuario) throws SQLException {
+                    set_datos(Usuario);
+                }
+            };
+            int column = 0;
+            int row = 1;
+            if (amigos.size() > 0) {
+                for (Usuario user : this.amigos) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(Main.class.getResource("vistas/AmigosItem.fxml"));
+                    try {
+                        HBox hBox = fxmlLoader.load();
+                        AmigosItemController aic = fxmlLoader.getController();
+                        aic.setData(user, myListener);
+                        vbox_users.add(hBox, column, row++);
+                        GridPane.setMargin(hBox, new Insets(10));
+
+                        vbox_users.setMinWidth(Region.USE_COMPUTED_SIZE);
+                        vbox_users.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                        vbox_users.setMaxWidth(Region.USE_COMPUTED_SIZE);
+
+                        vbox_users.setMinHeight(Region.USE_COMPUTED_SIZE);
+                        vbox_users.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                        vbox_users.setMaxHeight(Region.USE_COMPUTED_SIZE);
+
+                    } catch (IOException | SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                }
+            } else {
+                noAmigos.setVisible(true);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     int nsolicitud = 0;
@@ -127,77 +201,6 @@ public class VistaAmigosController implements Initializable {
         }
     }
 
-    public void setUsuario(Usuario u) throws SQLException {
-        noAmigos.setVisible(false);
-        paneAmigoSeleccionado.setVisible(false);
-        paneAmigobuscado.setVisible(false);
-        botonAñadido.setVisible(false);
-        botonañadir.setVisible(false);
-        denegada.setVisible(false);
-        pendiente.setVisible(false);
-
-
-        this.usuario = u;
-
-
-        UsuarioModel um = new UsuarioModel();
-        AmigosModel am = new AmigosModel();
-
-        HashMap<Integer, Usuario> usuariosHashmap = new HashMap<>();
-        ArrayList<Usuario> amigoss = new ArrayList<>();
-
-        usuariosHashmap.putAll(um.recuperarUsuarios());
-        amigoss.addAll(am.recuperarAmigos(u, usuariosHashmap));
-
-        this.amigos.addAll(amigoss);
-        myListener = new MyListener() {
-            @Override
-            public void onClickListener(Apunte apunte) {
-
-            }
-
-            @Override
-            public void onclicklistener(Usuario Usuario) throws SQLException {
-                set_datos(Usuario);
-            }
-        };
-        int column = 0;
-        int row = 1;
-        if (amigos.size() > 0) {
-            for (Usuario user : this.amigos) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(Main.class.getResource("vistas/AmigosItem.fxml"));
-                try {
-                    HBox hBox = fxmlLoader.load();
-                    AmigosItemController aic = fxmlLoader.getController();
-                    aic.setData(user, myListener);
-                    vbox_users.add(hBox, column, row++);
-                    GridPane.setMargin(hBox, new Insets(10));
-
-                    vbox_users.setMinWidth(Region.USE_COMPUTED_SIZE);
-                    vbox_users.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                    vbox_users.setMaxWidth(Region.USE_COMPUTED_SIZE);
-
-                    vbox_users.setMinHeight(Region.USE_COMPUTED_SIZE);
-                    vbox_users.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                    vbox_users.setMaxHeight(Region.USE_COMPUTED_SIZE);
-
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-
-            }
-        } else {
-            noAmigos.setVisible(true);
-        }
-        setSolicitudes(u);
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
-
 
     public void set_datos(Usuario usuario) throws SQLException {
         this.usuarioaeliminar = usuario;
@@ -224,17 +227,14 @@ public class VistaAmigosController implements Initializable {
     @javafx.fxml.FXML
     public void eliminarAmigo(Event event) throws SQLException, IOException {
         AmigosModel am = new AmigosModel();
+
         am.eliminaramigo(this.usuario, this.usuarioaeliminar);
-        System.out.println("qq");
 
         FXMLLoader amigos = new FXMLLoader(Main.class.getResource("vistas/VistaAmigos.fxml"));
 
         Parent root = amigos.load();
 
         anchor.getChildren().setAll(root);
-
-        VistaAmigosController controller1 = amigos.getController();
-        controller1.setUsuario(this.usuario);
     }
 
     @javafx.fxml.FXML
@@ -333,6 +333,7 @@ public class VistaAmigosController implements Initializable {
 
         AmigosModel am = new AmigosModel();
         SolicitudAmistad s = this.solicitudes.get(nsolicitud);
+
         if (nsolicitud <= this.solicitudes.size()) {
             PaneSolicitudes.setVisible(true);
             am.aceptarSolicitud(s);
@@ -355,9 +356,6 @@ public class VistaAmigosController implements Initializable {
             Parent root = amigos.load();
 
             anchor.getChildren().setAll(root);
-
-            VistaAmigosController controller1 = amigos.getController();
-            controller1.setUsuario(this.usuario);
 
         } else {
             PaneSolicitudes.setVisible(false);
@@ -390,9 +388,6 @@ public class VistaAmigosController implements Initializable {
             Parent root = amigos.load();
 
             anchor.getChildren().setAll(root);
-
-            VistaAmigosController controller1 = amigos.getController();
-            controller1.setUsuario(this.usuario);
 
         } else {
             PaneSolicitudes.setVisible(false);

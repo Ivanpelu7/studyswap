@@ -4,7 +4,9 @@ import com.example.prueba3000.Main;
 import com.example.prueba3000.model.Apunte;
 import com.example.prueba3000.model.ApunteModel;
 import com.example.prueba3000.model.Usuario;
+import com.example.prueba3000.util.UsuarioHolder;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,13 +14,17 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
-public class VistaPerfilController {
+public class VistaPerfilController implements Initializable {
 
     @javafx.fxml.FXML
     public GridPane gridPaneSubidos;
@@ -32,9 +38,15 @@ public class VistaPerfilController {
     @javafx.fxml.FXML
     public AnchorPane mainVistaPerfil;
 
-    public void setApuntesSubidos(Usuario usuario) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        this.usuario = usuario;
+        this.usuario = UsuarioHolder.getUsuario();
+        setApuntesSubidos();
+        setApuntesDescargados();
+    }
+
+    public void setApuntesSubidos() {
 
         ApunteModel am = new ApunteModel();
 
@@ -74,26 +86,25 @@ public class VistaPerfilController {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void setApuntesDescargados(Usuario usuario) {
+    public void setApuntesDescargados() {
 
         ApunteModel am = new ApunteModel();
 
         try {
-            ArrayList<Apunte> apuntes = am.apuntesDescargados(usuario);
+            ArrayList<Apunte> apuntes = am.apuntesDescargados(this.usuario);
 
             int column = 0;
             int row = 1;
 
             for (int i = 0; i < apuntes.size(); i++) {
                 loader = new FXMLLoader();
-
                 loader.setLocation(Main.class.getResource("vistas/ItemDescargado.fxml"));
-
                 pane = loader.load();
 
                 ItemDescargadoController itdc = loader.getController();
@@ -131,9 +142,6 @@ public class VistaPerfilController {
         loader.setLocation(Main.class.getResource("vistas/PublicarApunte.fxml"));
         pane = loader.load();
 
-        PublicarApunteController pac = loader.getController();
-        pac.setUsuario(this.usuario);
-
         Scene scene = new Scene(pane);
 
         Stage stage = new Stage();
@@ -142,4 +150,6 @@ public class VistaPerfilController {
         stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icon.jpg")));
         stage.show();
     }
+
+
 }
