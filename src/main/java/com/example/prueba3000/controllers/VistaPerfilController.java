@@ -27,23 +27,27 @@ import javafx.stage.Stage;
 public class VistaPerfilController implements Initializable {
 
     @javafx.fxml.FXML
-    public GridPane gridPaneSubidos;
+    private GridPane gridPaneSubidos;
     @javafx.fxml.FXML
     private GridPane gridPaneDescargados;
     private Usuario usuario;
     private FXMLLoader loader;
     AnchorPane pane;
     @javafx.fxml.FXML
-    private Button buttonPublicarApunte;
-    @javafx.fxml.FXML
-    public AnchorPane mainVistaPerfil;
+    private AnchorPane mainVistaPerfil;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         this.usuario = UsuarioHolder.getUsuario();
+
         setApuntesSubidos();
         setApuntesDescargados();
+    }
+
+    public AnchorPane getRootPane() {
+
+        return mainVistaPerfil;
     }
 
     public void setApuntesSubidos() {
@@ -53,7 +57,7 @@ public class VistaPerfilController implements Initializable {
         ApunteModel am = new ApunteModel();
 
         try {
-            ArrayList<Apunte> apuntes = am.apuntesSubidos(usuario);
+            ArrayList<Apunte> apuntes = am.apuntesSubidos(this.usuario);
 
             int column = 0;
             int row = 1;
@@ -86,11 +90,9 @@ public class VistaPerfilController implements Initializable {
                 GridPane.setMargin(pane, new Insets(8));
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             throw new RuntimeException(e);
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -130,9 +132,7 @@ public class VistaPerfilController implements Initializable {
                 GridPane.setMargin(pane, new Insets(8));
             }
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
+        } catch (SQLException | IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -149,6 +149,7 @@ public class VistaPerfilController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Publicar Apunte");
+        stage.setResizable(false);
         stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icon.jpg")));
         stage.show();
     }

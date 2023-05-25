@@ -3,7 +3,7 @@ package com.example.prueba3000.model;
 import com.example.prueba3000.util.DBUtil;
 import javafx.scene.image.Image;
 
-import java.io.InputStream;
+import java.io.*;
 import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +11,10 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 public class UsuarioModel extends DBUtil {
+
+    public UsuarioModel() {
+
+    }
 
     public Usuario recuperarUsuario(String nomnreuser) throws SQLException {
         String query = "SELECT * FROM usuarios where nombre_usuario=?";
@@ -105,40 +109,17 @@ public class UsuarioModel extends DBUtil {
         return i;
     }
 
-    /** public void guardarUsuario(String nomuser) throws SQLException {
-     DBUtil db = new DBUtil();
+    public void anadirFotoPerfil(Usuario usuario, File file) throws SQLException, FileNotFoundException {
 
-     String query1 = "select * from usuarios where nombre_usuario= ?";
-     PreparedStatement ps = db.getConexion().prepareStatement(query1);
-     ps.setString(1, nomuser);
-     ResultSet rs = ps.executeQuery();
-     int id=0;
-     String username="";
-     String contraseña="";
-     String email="";
-     String nombre="";
-     String apellidos="";
-     Integer tipo_usuario=0;
-     String sexo="";
+        String query = "UPDATE usuarios SET foto_perfil = ? WHERE id_usuario = " + usuario.getId();
 
-     while (rs.next()) {
+        PreparedStatement preparedStatement = getConexion().prepareStatement(query);
 
-     id=rs.getInt("id_usuario");
-     username=rs.getString("nombre_usuario");
-     contraseña=rs.getString("password");
-     email=rs.getString("email");
-     nombre=rs.getString("nombre");
-     apellidos=rs.getString("apellidos");
-     tipo_usuario=rs.getInt("tipo_usuario");
-     sexo=rs.getString("sexo");
+        InputStream inputStream = new FileInputStream(file);
+        preparedStatement.setBinaryStream(1, inputStream, (int) file.length());
 
-
-     }
-     Usuario u= new Usuario(username, contraseña, email,nombre , apellidos, tipo_usuario, sexo);
-     this.usuario=u;
-     }
-     **/
-
-
+        preparedStatement.executeUpdate();
+    }
 }
+
 

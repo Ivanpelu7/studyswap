@@ -5,6 +5,7 @@ import com.example.prueba3000.model.SolicitudAmistadModel;
 import com.example.prueba3000.model.Usuario;
 import com.example.prueba3000.model.UsuarioModel;
 import com.example.prueba3000.util.UsuarioHolder;
+import com.example.prueba3000.util.Validador;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -58,6 +59,8 @@ public class VistaPrincipalController implements Initializable {
     private Button Administrador;
     @FXML
     private Button buttonAjustes;
+    @FXML
+    private ImageView fotoPerfil;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -74,18 +77,26 @@ public class VistaPrincipalController implements Initializable {
 
             HashMap<Integer, Usuario> usuarios = um.recuperarUsuarios();
 
-
             labelNombreUsuario.setText(usuario.getNombreUsuario());
             labelNombre.setText(usuario.getNombre());
             labelApellidos.setText(usuario.getApellidos());
 
-            if (usuario.getSexo().equals("M")) {
-                fotoHombre.setVisible(true);
+            if (this.usuario.getFotoPerfil() != null) {
+                fotoPerfil.setImage(this.usuario.getFotoPerfil());
+                fotoHombre.setVisible(false);
                 fotoMujer.setVisible(false);
 
-            } else if (usuario.getSexo().equals("F")) {
-                fotoMujer.setVisible(true);
-                fotoHombre.setVisible(false);
+            } else {
+                if (usuario.getSexo().equals("M")) {
+                    fotoPerfil.setVisible(false);
+                    fotoHombre.setVisible(true);
+                    fotoMujer.setVisible(false);
+
+                } else if (usuario.getSexo().equals("F")) {
+                    fotoPerfil.setVisible(false);
+                    fotoMujer.setVisible(true);
+                    fotoHombre.setVisible(false);
+                }
             }
 
             if (sam.peticionesAmistad(this.usuario, usuarios).size() > 0) {
@@ -95,17 +106,11 @@ public class VistaPrincipalController implements Initializable {
             }
 
             loader = new FXMLLoader();
-
             loader.setLocation(Main.class.getResource("vistas/VistaPerfil.fxml"));
-
             pane = loader.load();
-
             rootPane.getChildren().setAll(pane);
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-
-        } catch (SQLException e) {
+        } catch (IOException | SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -124,7 +129,6 @@ public class VistaPrincipalController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @FXML

@@ -2,13 +2,9 @@ package com.example.prueba3000.util;
 
 import com.example.prueba3000.model.Usuario;
 
-public final class UsuarioHolder {
+public class UsuarioHolder {
 
     private static Usuario usuario;
-
-    private UsuarioHolder() {
-
-    }
 
     public static Usuario getUsuario() {
         return usuario;

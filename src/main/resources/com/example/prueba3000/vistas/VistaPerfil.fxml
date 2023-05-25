@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainVistaPerfil" prefHeight="642.4" prefWidth="839.2" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaPerfilController">
+<AnchorPane fx:id="mainVistaPerfil" prefHeight="642.4" prefWidth="839.2" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaPerfilController">
    <children>
       <Label layoutX="108.0" layoutY="14.0" text="Apuntes Subidos">
          <font>
@@ -42,7 +42,7 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <Line endY="505.20001220703125" layoutX="420.0" layoutY="106.0" startY="-46.79998779296875" strokeWidth="2.0" />
+      <Line endY="505.20001220703125" layoutX="420.0" layoutY="106.0" startY="-46.79998779296875" stroke="#2cbf4c" strokeWidth="2.0" />
       <Button fx:id="buttonPublicarApunte" layoutX="290.0" layoutY="14.0" mnemonicParsing="false" onAction="#publicarApunte" prefHeight="36.0" prefWidth="25.0" styleClass="boton" stylesheets="@../css/style.css">
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
