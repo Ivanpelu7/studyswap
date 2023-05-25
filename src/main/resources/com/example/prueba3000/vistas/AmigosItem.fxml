@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -7,9 +8,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="seleccionado" onMousePressed="#click" prefHeight="57.0" prefWidth="473.0" style="-fx-background-color: F2F2F2;" styleClass="bordes-redondos" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.AmigosItemController">
+<HBox fx:id="seleccionado" onMousePressed="#click" prefHeight="57.0" prefWidth="445.0" style="-fx-background-color: FFFF;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.AmigosItemController">
    <children>
-      <Pane prefHeight="62.0" prefWidth="475.0" style="-fx-background-color: F2F2F2;" styleClass="bordes-redondos" stylesheets="@../css/style.css">
+      <Pane prefHeight="57.0" prefWidth="445.0" style="-fx-background-color: FFFF;" stylesheets="@../css/style.css">
          <children>
             <Label fx:id="nombre_usuario" layoutX="77.0" layoutY="15.0" prefHeight="30.0" prefWidth="118.0" text="Diego">
                <font>
@@ -32,6 +33,15 @@
                </image>
             </ImageView>
          </children>
+         <styleClass>
+            <String fx:value="bordes-redondos" />
+            <String fx:value="pdflateral" />
+         </styleClass>
       </Pane>
    </children>
+   <styleClass>
+      <String fx:value="bordes-redondos" />
+      <String fx:value="pdflateral" />
+      <String fx:value="shadow" />
+   </styleClass>
 </HBox>

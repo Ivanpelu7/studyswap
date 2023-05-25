@@ -17,6 +17,7 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("StudySwap");
         stage.getIcons().setAll(new Image(getClass().getResourceAsStream("images/icon.jpg")));
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
