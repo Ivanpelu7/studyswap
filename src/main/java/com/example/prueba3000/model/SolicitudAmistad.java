@@ -1,16 +1,16 @@
 package com.example.prueba3000.model;
 
-import java.util.Date;
-
 public class SolicitudAmistad {
 
     private Usuario usuarioEmisor;
     private Usuario usuarioReceptor;
     private int estado;
+    private int id;
 
-    public SolicitudAmistad(Usuario usuarioEmisor, Usuario usuarioReceptor, int estado) {
+    public SolicitudAmistad(Usuario usuarioEmisor, Usuario usuarioReceptor, int estado, Integer id) {
         this.usuarioEmisor = usuarioEmisor;
         this.usuarioReceptor = usuarioReceptor;
+        this.id = id;
         this.estado = 0;
     }
 
@@ -36,5 +36,13 @@ public class SolicitudAmistad {
 
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

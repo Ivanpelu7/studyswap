@@ -330,10 +330,76 @@ public class VistaAmigosController implements Initializable {
     }
 
     @javafx.fxml.FXML
-    public void denegarsolicitud(ActionEvent actionEvent) {
+    public void aceptarsolicitud(Event event) throws SQLException, IOException {
+        System.out.println("aaaaa");
+        AmigosModel am= new AmigosModel();
+        SolicitudAmistad s = this.solicitudes.get(nsolicitud);
+        if( nsolicitud<=this.solicitudes.size()) {
+            PaneSolicitudes.setVisible(true);
+            am.aceptarSolicitud(s);
+            if (usuario.getSexo().equals("M")) {
+                fotohombre11.setVisible(true);
+                fotomujer11.setVisible(false);
+
+            } else if (usuario.getSexo().equals("F")) {
+                fotomujer11.setVisible(true);
+                fotohombre11.setVisible(false);
+            }
+
+            nsolicitud++;
+            nomuserSolicitud.setText(s.getUsuarioEmisor().getNombreUsuario());
+            PaneSolicitudes.setVisible(false);
+
+
+            FXMLLoader amigos = new FXMLLoader(Main.class.getResource("vistas/VistaAmigos.fxml"));
+
+            Parent root = amigos.load();
+
+            anchor.getChildren().setAll(root);
+
+            VistaAmigosController controller1 = amigos.getController();
+            controller1.setUsuario(this.usuario);
+
+        }
+        else{
+            PaneSolicitudes.setVisible(false);
+        }
     }
 
     @javafx.fxml.FXML
-    public void aceptarsolicitud(Event event) {
+    public void denegarsolicitud(Event event) throws SQLException, IOException {
+
+        AmigosModel am= new AmigosModel();
+        SolicitudAmistad s = this.solicitudes.get(nsolicitud);
+        PaneSolicitudes.setVisible(true);
+        if( nsolicitud<=this.solicitudes.size()) {
+            System.out.println(s.getId());
+            am.rechazarSolicitud(s);
+            if (usuario.getSexo().equals("M")) {
+                fotohombre11.setVisible(true);
+                fotomujer11.setVisible(false);
+
+            } else if (usuario.getSexo().equals("F")) {
+                fotomujer11.setVisible(true);
+                fotohombre11.setVisible(false);
+            }
+
+            nsolicitud++;
+            nomuserSolicitud.setText(s.getUsuarioEmisor().getNombreUsuario());
+            PaneSolicitudes.setVisible(false);
+
+            FXMLLoader amigos = new FXMLLoader(Main.class.getResource("vistas/VistaAmigos.fxml"));
+
+            Parent root = amigos.load();
+
+            anchor.getChildren().setAll(root);
+
+            VistaAmigosController controller1 = amigos.getController();
+            controller1.setUsuario(this.usuario);
+
+        }
+        else{
+            PaneSolicitudes.setVisible(false);
+        }
     }
 }

@@ -39,10 +39,9 @@ public class AmigosModel extends DBUtil {
         return amigos;
     }
 
-    public int aceptarSolicitud(Usuario usuarioEmisor, Usuario usuarioConectado) throws SQLException {
+    public int aceptarSolicitud(SolicitudAmistad s) throws SQLException {
 
-        String query = "UPDATE solicitudes SET estado = 1 WHERE id_usuario_emisor = " + usuarioEmisor.getId() + " AND " +
-                "id_usuario_receptor = " + usuarioConectado.getId();
+        String query = "UPDATE solicitudes SET estado = 1 WHERE id_solicitud ="+s.getId();
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
@@ -51,10 +50,9 @@ public class AmigosModel extends DBUtil {
         return i;
     }
 
-    public int rechazarSolicitud(Usuario usuarioEmisor, Usuario usuarioConectado) throws SQLException {
+    public int rechazarSolicitud(SolicitudAmistad s) throws SQLException {
 
-        String query = "UPDATE solicitudes SET estado = 2 WHERE id_usuario_emisor = " + usuarioEmisor.getId() + " AND " +
-                "id_usuario_receptor = " + usuarioConectado.getId();
+        String query = "UPDATE solicitudes SET estado = 2 WHERE id_solicitud ="+s.getId();
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
@@ -65,7 +63,7 @@ public class AmigosModel extends DBUtil {
 
     public int enviarSolicitud(Usuario usuarioConectado, Usuario usuarioReceptor) throws SQLException {
 
-        String query = "INSERT INTO solicitudes VALUES(?, ?, 0)";
+        String query = "INSERT INTO solicitudes (id_usuario_emisor,id_usuario_receptor,estado) VALUES(?, ?, 0)";
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
