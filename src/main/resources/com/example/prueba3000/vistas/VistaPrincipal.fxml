@@ -153,7 +153,7 @@
                                         <Image url="@../images/mujer.png" />
                                     </image>
                                 </ImageView>
-                        <ImageView fx:id="fotoPerfil" fitHeight="83.0" fitWidth="83.0" layoutX="60.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="fotoPerfil" fitHeight="83.0" fitWidth="83.0" layoutX="45.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/mujer.png" />
                            </image>
