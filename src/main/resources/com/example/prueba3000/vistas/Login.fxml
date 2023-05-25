@@ -14,12 +14,17 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.LoginController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.LoginController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
             <AnchorPane fx:id="anchorPane2" layoutX="273.0" prefHeight="450.0" prefWidth="418.0" styleClass="fondo-blanco" stylesheets="@../css/style.css" AnchorPane.leftAnchor="273.0" AnchorPane.rightAnchor="0.0">
                <children>
+                  <Label fx:id="labelDatosIncorrectos" alignment="CENTER" layoutX="27.0" layoutY="159.0" prefHeight="18.0" prefWidth="346.0" textFill="RED">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
                   <TextField fx:id="textFieldNombreUsuarioI" layoutX="76.0" layoutY="185.0" prefHeight="31.0" prefWidth="263.0" promptText="Nombre usuario" stylesheets="@../css/style.css">
                      <styleClass>
                         <String fx:value="bordes-redondos" />
@@ -112,11 +117,6 @@
                      </styleClass>
                   </PasswordField>
                   <Label fx:id="labelRegistroIncorrecto" alignment="CENTER" layoutX="35.0" layoutY="88.0" prefHeight="18.0" prefWidth="346.0" textFill="RED">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelDatosIncorrectos" alignment="CENTER" layoutX="27.0" layoutY="159.0" prefHeight="18.0" prefWidth="346.0" textFill="RED">
                      <font>
                         <Font size="10.0" />
                      </font>

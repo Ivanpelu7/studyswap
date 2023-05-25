@@ -100,6 +100,7 @@ public class LoginController implements Initializable {
         slide.setToX(415);
         slide.play();
 
+        labelRegistroIncorrecto.setText("");
         anchorPane2.setTranslateX(-272);
         buttonCambiar.setVisible(true);
         labelYaTienesCuenta.setVisible(true);
@@ -116,6 +117,7 @@ public class LoginController implements Initializable {
         labelYaTienesCuenta.setVisible(true);
         buttonRegistrarse.setVisible(true);
         buttonCambiar.setVisible(true);
+        labelRegistroIncorrecto.setVisible(true);
 
         textFieldNombreUsuarioI.setVisible(false);
         textFieldPasswordI.setVisible(false);
