@@ -32,6 +32,9 @@
                         <String fx:value="bordes-redondos" />
                         <String fx:value="fondo-blanco" />
                      </styleClass>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ComboBox>
                   <ComboBox fx:id="comboboxAsignatura" disable="true" prefWidth="150.0" promptText="Asignatura" stylesheets="@../css/style.css">
                      <HBox.margin>
@@ -42,6 +45,9 @@
                         <String fx:value="bordes-redondos" />
                         <String fx:value="fondo-blanco" />
                      </styleClass>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ComboBox>
                   <Button fx:id="botonFiltrar" mnemonicParsing="false" onAction="#filtrar" prefHeight="26.0" prefWidth="60.0" stylesheets="@../css/style.css" text="Filtrar" textFill="WHITE">
                      <HBox.margin>
@@ -55,7 +61,7 @@
                      </cursor>
                      <styleClass>
                         <String fx:value="combobox-filtro" />
-                        <String fx:value="shadow" />
+                        <String fx:value="boton" />
                      </styleClass>
                   </Button>
                </children>

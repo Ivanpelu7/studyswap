@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainAnchor" prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.AjustesController">
+<AnchorPane fx:id="mainAnchor" prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.AjustesController">
    <children>
       <BorderPane layoutX="7.0" prefHeight="642.0" prefWidth="839.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -19,36 +19,36 @@
                <children>
                   <AnchorPane layoutX="29.0" layoutY="5.0" prefHeight="184.0" prefWidth="401.0" stylesheets="@../css/style.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
                      <children>
-                        <ImageView fx:id="fotoPerfil" fitHeight="85.0" fitWidth="98.0" layoutX="20.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" styleClass="style-foto-perfil" AnchorPane.bottomAnchor="49.0" AnchorPane.topAnchor="46.0">
+                        <ImageView fx:id="fotoPerfil" fitHeight="85.0" fitWidth="82.0" layoutX="31.0" layoutY="36.0" pickOnBounds="true" styleClass="style-foto-perfil" AnchorPane.bottomAnchor="59.0" AnchorPane.topAnchor="36.0">
                            <image>
                               <Image url="@../images/hombre.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="labelNombre" layoutX="252.0" layoutY="24.0" promptText="Nombre" stylesheets="@../css/style.css">
+                        <TextField fx:id="labelNombre" editable="false" layoutX="252.0" layoutY="24.0" promptText="Nombre" stylesheets="@../css/style.css">
                            <styleClass>
                               <String fx:value="bordes-redondos" />
                               <String fx:value="shadow" />
                            </styleClass>
                         </TextField>
-                        <TextField fx:id="labelApellidos" layoutX="551.0" layoutY="24.0" prefHeight="31.0" prefWidth="214.0" promptText="Apellidos" stylesheets="@../css/style.css">
+                        <TextField fx:id="labelApellidos" editable="false" layoutX="551.0" layoutY="24.0" prefHeight="31.0" prefWidth="214.0" promptText="Apellidos" stylesheets="@../css/style.css">
                            <styleClass>
                               <String fx:value="bordes-redondos" />
                               <String fx:value="shadow" />
                            </styleClass>
                         </TextField>
-                        <TextField fx:id="labelNombreUsuario" layoutX="252.0" layoutY="73.0" promptText="Nombre usuario" stylesheets="@../css/style.css">
+                        <TextField fx:id="labelNombreUsuario" editable="false" layoutX="252.0" layoutY="73.0" promptText="Nombre usuario" stylesheets="@../css/style.css">
                            <styleClass>
                               <String fx:value="bordes-redondos" />
                               <String fx:value="shadow" />
                            </styleClass>
                         </TextField>
-                        <TextField fx:id="labelEmail" layoutX="412.0" layoutY="125.0" prefHeight="31.0" prefWidth="236.0" promptText="Correo electrónico" stylesheets="@../css/style.css">
+                        <TextField fx:id="labelEmail" editable="false" layoutX="412.0" layoutY="125.0" prefHeight="31.0" prefWidth="236.0" promptText="Correo electrónico" stylesheets="@../css/style.css">
                            <styleClass>
                               <String fx:value="bordes-redondos" />
                               <String fx:value="shadow" />
                            </styleClass>
                         </TextField>
-                        <PasswordField fx:id="labelPassword" layoutX="551.0" layoutY="73.0" prefHeight="31.0" prefWidth="214.0" promptText="Contraseña" stylesheets="@../css/style.css">
+                        <PasswordField fx:id="labelPassword" editable="false" layoutX="551.0" layoutY="73.0" prefHeight="31.0" prefWidth="214.0" promptText="Contraseña" stylesheets="@../css/style.css">
                            <styleClass>
                               <String fx:value="bordes-redondos" />
                               <String fx:value="shadow" />
@@ -79,6 +79,16 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
+                        <Button layoutX="41.0" layoutY="136.0" mnemonicParsing="false" onAction="#cambiarFotoPerfil" prefHeight="23.0" prefWidth="62.0" stylesheets="@../css/style.css" text="Editar" textFill="WHITE">
+                           <styleClass>
+                              <String fx:value="bordes-redondos" />
+                              <String fx:value="color-verde" />
+                              <String fx:value="boton" />
+                           </styleClass>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
                      </children>
                      <styleClass>
                         <String fx:value="pdflateral" />
@@ -89,7 +99,90 @@
             </AnchorPane>
          </top>
          <center>
-            <Button fx:id="buttonCambiarFotoPerfil" mnemonicParsing="false" onAction="#cambiarFotoPerfil" text="Añadir foto perfil" BorderPane.alignment="CENTER" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="buttonModificarApellidos" layoutX="555.0" layoutY="98.0" mnemonicParsing="false" onAction="#modificarApellidos" prefHeight="6.0" prefWidth="115.0" stylesheets="@../css/style.css" text="Modificar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="color-verde" />
+                        <String fx:value="boton" />
+                     </styleClass>
+                  </Button>
+                  <TextField fx:id="textFieldNuevosApellidos" layoutX="469.0" layoutY="55.0" prefHeight="31.0" prefWidth="287.0" promptText="Introduce nuevos apellidos" stylesheets="@../css/style.css" AnchorPane.rightAnchor="83.0">
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </TextField>
+                  <Button fx:id="buttonModificarNombre" layoutX="165.0" layoutY="98.0" mnemonicParsing="false" onAction="#modificarNombre" prefHeight="6.0" prefWidth="115.0" stylesheets="@../css/style.css" text="Modificar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="color-verde" />
+                        <String fx:value="boton" />
+                     </styleClass>
+                  </Button>
+                  <TextField fx:id="textFieldNuevoNombre" layoutX="79.0" layoutY="55.0" prefHeight="31.0" prefWidth="287.0" promptText="Introduce nuevo nombre" stylesheets="@../css/style.css" AnchorPane.leftAnchor="80.0">
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </TextField>
+                  <Button fx:id="buttonModificarNombreUsuario" layoutX="165.0" layoutY="222.0" mnemonicParsing="false" onAction="#modificarNombreUsuario" prefHeight="6.0" prefWidth="115.0" stylesheets="@../css/style.css" text="Modificar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="color-verde" />
+                        <String fx:value="boton" />
+                     </styleClass>
+                  </Button>
+                  <TextField fx:id="textFieldNuevoNombreUsuario" layoutX="79.0" layoutY="179.0" prefHeight="31.0" prefWidth="287.0" promptText="Introduce nuevo nombre usuario" stylesheets="@../css/style.css">
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </TextField>
+                  <Button fx:id="buttonModificarContrasena" layoutX="555.0" layoutY="222.0" mnemonicParsing="false" onAction="#cambiarContrasena" prefHeight="6.0" prefWidth="115.0" stylesheets="@../css/style.css" text="Modificar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="color-verde" />
+                        <String fx:value="boton" />
+                     </styleClass>
+                  </Button>
+                  <TextField fx:id="textFieldNuevaContrasena" layoutX="469.0" layoutY="179.0" prefHeight="31.0" prefWidth="287.0" promptText="Introduce nueva contraseña" stylesheets="@../css/style.css">
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </TextField>
+                  <Button fx:id="buttonModificarCorreo" layoutX="362.0" layoutY="343.0" mnemonicParsing="false" onAction="#modificarCorreoElectronico" prefHeight="6.0" prefWidth="115.0" stylesheets="@../css/style.css" text="Modificar" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="color-verde" />
+                        <String fx:value="boton" />
+                     </styleClass>
+                  </Button>
+                  <TextField fx:id="textFieldNuevoCorreo" layoutX="276.0" layoutY="300.0" prefHeight="31.0" prefWidth="287.0" promptText="Introduce nuevo correo electrónico" stylesheets="@../css/style.css">
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </TextField>
+               </children>
+            </AnchorPane>
          </center>
       </BorderPane>
    </children>

@@ -1,19 +1,56 @@
-.boton-menu:hover {
+.boton-menu {
+    -fx-background-color: transparent;
+}
 
+.boton-menu:hover {
     -fx-background-color: #27963a;
+}
+
+.boton-menu:pressed {
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+    -fx-scale-z: 0.97;
 }
 
 .background-azul {
     -fx-background-color: #b5d0d4;
 }
 
-.boton {
-
+.boton-transparent {
     -fx-background-color: transparent;
 }
 
-.pdflateral {
+.boton {
+    -fx-background-color: #70c07f;
+    -fx-background-radius: 100%;
+}
 
+.boton:hover {
+    -fx-scale-x: 1.04;
+    -fx-scale-y: 1.04;
+    -fx-scale-z: 1.04;
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 4.0, 0.0, 0.0, 4.0);
+}
+
+.boton:pressed {
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+    -fx-scale-z: 0.97;
+}
+
+.boton-transparent:pressed {
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+    -fx-scale-z: 0.97;
+}
+
+.boton-transparent:hover {
+    -fx-scale-x: 1.04;
+    -fx-scale-y: 1.04;
+    -fx-scale-z: 1.04;
+}
+
+.pdflateral {
     -fx-background-color: #ffff;
     -fx-background-radius: 7px;
 }
@@ -33,12 +70,11 @@
 }
 
 .textfield-datos {
-
     -fx-background-radius: 15px;
 }
 
 .shadow {
-    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 5.0, 0.0, 0.0, 5.0);
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 4.0, 0.0, 0.0, 4.0);
 }
 
 .style-menu-lateral {
@@ -53,19 +89,17 @@
 .item:hover {
     -fx-background-color: #D3D7D3;
     -fx-cursor: hand;
+    -fx-scale-x: 1.04;
+    -fx-scale-y: 1.04;
+    -fx-scale-z: 1.04;
 }
 
-.style-foto-perfil {
-    -fx-background-radius: 100%;
-    -fx-border-radius: 100%;
+.item:pressed {
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+    -fx-scale-z: 0.97;
 }
 
-.circular-image-view {
-    -fx-background-radius: 50%;
-    -fx-background-color: transparent;
-    -fx-background-insets: 0;
-    -fx-shape: "M 50 0 A 50 50 0 0 1 100 50 L 100 50 A 50 50 0 0 1 50 100 L 50 100 A 50 50 0 0 1 0 50 L 0 50 A 50 50 0 0 1 50 0 Z";
-    -fx-scale-shape: false;
-    -fx-min-width: 0;
-    -fx-min-height: 0;
+.color-verde {
+    -fx-background-color: #70c07f;
 }

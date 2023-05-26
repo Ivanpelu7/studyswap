@@ -25,7 +25,7 @@
                                         <Image url="@../images/hombre.png" />
                                     </image>
                                 </ImageView>
-                                <Button fx:id="buttonInicio" alignment="CENTER" graphicTextGap="1.0" layoutX="6.0" layoutY="247.0" mnemonicParsing="false" onAction="#cambiarVistaInicio" prefHeight="57.0" prefWidth="168.0" stylesheets="@../css/style.css" text="Inicio" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                <Button fx:id="buttonInicio" alignment="CENTER" graphicTextGap="1.0" layoutX="6.0" layoutY="247.0" mnemonicParsing="false" onAction="#cambiarVistaInicio" prefHeight="57.0" prefWidth="168.0" styleClass="boton-menu" stylesheets="@../css/style.css" text="Inicio" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
                                     </font>
@@ -39,13 +39,9 @@
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
-                                    <styleClass>
-                                        <String fx:value="boton-menu" />
-                                        <String fx:value="boton" />
-                                    </styleClass>
                                 </Button>
                                 <Line endX="79.0" layoutX="86.0" layoutY="216.0" startX="-79.0" stroke="WHITE" strokeWidth="3.0" />
-                                <Button fx:id="buttonApuntes" graphicTextGap="10.0" layoutY="304.0" mnemonicParsing="false" onAction="#cambiarVistaApuntes" prefHeight="57.0" prefWidth="171.0" stylesheets="@../css/style.css" text="Apuntes" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                <Button fx:id="buttonApuntes" graphicTextGap="10.0" layoutY="304.0" mnemonicParsing="false" onAction="#cambiarVistaApuntes" prefHeight="57.0" prefWidth="171.0" styleClass="boton-menu" stylesheets="@../css/style.css" text="Apuntes" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
                                     </font>
@@ -58,35 +54,27 @@
                                     </graphic>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
-                                    </cursor>
-                                    <styleClass>
-                                        <String fx:value="boton-menu" />
-                                        <String fx:value="boton" />
-                                    </styleClass></Button>
+                                    </cursor></Button>
                                 <Label fx:id="labelNombreUsuario" alignment="CENTER" layoutY="171.0" prefHeight="28.0" prefWidth="133.0" text="nombreUsuario" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                     <font>
                                         <Font size="14.0" />
                                     </font></Label>
-                                <Button fx:id="buttonAmigos" graphicTextGap="10.0" layoutX="1.0" layoutY="361.0" mnemonicParsing="false" onAction="#cambiarVistaAmigos" prefHeight="57.0" prefWidth="171.0" stylesheets="@../css/style.css" text="Amigos" textFill="WHITE">
+                                <Button fx:id="buttonAjustes" graphicTextGap="10.0" layoutX="4.0" layoutY="418.0" mnemonicParsing="false" onAction="#cambiarAjustes" prefHeight="57.0" prefWidth="171.0" styleClass="boton-menu" stylesheets="@../css/style.css" text="Ajustes" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
                                     </font>
-                                    <graphic>
-                                        <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../images/apoyo.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
-                                    <styleClass>
-                                        <String fx:value="boton" />
-                                        <String fx:value="boton-menu" />
-                                    </styleClass>
+                           <graphic>
+                                        <ImageView fitHeight="28.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../images/configuraciones.png" />
+                                            </image>
+                                        </ImageView>
+                           </graphic>
                                 </Button>
-                                <ImageView fx:id="buttonCerrarSesion" fitHeight="29.0" fitWidth="28.0" layoutX="14.0" layoutY="598.0" onMouseReleased="#cerrarSesion" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fx:id="buttonCerrarSesion" fitHeight="29.0" fitWidth="28.0" layoutX="14.0" layoutY="598.0" onMouseReleased="#cerrarSesion" pickOnBounds="true" preserveRatio="true" styleClass="boton">
                                     <image>
                                         <Image url="@../images/opcion-de-cerrar-sesion.png" />
                                     </image>
@@ -94,25 +82,31 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </ImageView>
-                                <Button fx:id="buttonAjustes" graphicTextGap="10.0" layoutX="-1.0" layoutY="419.0" mnemonicParsing="false" onAction="#cambiarAjustes" prefHeight="57.0" prefWidth="171.0" stylesheets="@../css/style.css" text="Ajustes" textFill="WHITE">
-                                    <font>
-                                        <Font name="System Bold" size="20.0" />
-                                    </font>
-                                    <graphic>
-                                        <ImageView fitHeight="28.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../images/configuraciones.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                    <cursor>
-                                        <Cursor fx:constant="HAND" />
-                                    </cursor>
-                                    <styleClass>
-                                        <String fx:value="boton" />
-                                        <String fx:value="boton-menu" />
-                                    </styleClass>
-                                </Button>
+                        <AnchorPane layoutX="2.0" layoutY="361.0" prefHeight="57.0" prefWidth="167.0" styleClass="boton-menu" stylesheets="@../css/style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                                      <Button fx:id="buttonAmigos" graphicTextGap="10.0" mnemonicParsing="false" onAction="#cambiarVistaAmigos" prefHeight="57.0" prefWidth="174.0" styleClass="boton-menu" stylesheets="@../css/style.css" text="Amigos" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <font>
+                                              <Font name="System Bold" size="20.0" />
+                                          </font>
+                                          <cursor>
+                                              <Cursor fx:constant="HAND" />
+                                          </cursor>
+                                 <graphic>
+                                              <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                                  <image>
+                                                      <Image url="@../images/apoyo.png" />
+                                                  </image>
+                                              </ImageView>
+                                 </graphic>
+                                      </Button>
+                                      <Circle fx:id="circuloSolicitudes" fill="RED" layoutX="152.0" layoutY="29.0" radius="10.0" stroke="RED" strokeType="INSIDE" visible="false" />
+                                      <Label fx:id="numeroSolicitudes" layoutX="149.0" layoutY="20.0" text="1" textFill="WHITE" visible="false">
+                                          <font>
+                                              <Font name="System Bold" size="12.0" />
+                                          </font>
+                                      </Label>
+                           </children>
+                        </AnchorPane>
                                 <Label fx:id="labelNombre" alignment="BOTTOM_CENTER" layoutY="118.0" text="Nombre" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
@@ -123,23 +117,13 @@
                                         <Font name="System Bold" size="20.0" />
                                     </font>
                                 </Label>
-                                <Circle fx:id="circuloSolicitudes" fill="RED" layoutX="152.0" layoutY="390.0" radius="9.0" stroke="RED" strokeType="INSIDE" visible="false" />
-                                <Label fx:id="numeroSolicitudes" layoutX="148.0" layoutY="381.0" text="1" textFill="WHITE" visible="false">
-                                    <font>
-                                        <Font name="System Bold" size="12.0" />
-                                    </font>
-                                </Label>
-                                <Button fx:id="Administrador" graphicTextGap="10.0" layoutX="-1.0" layoutY="476.0" mnemonicParsing="false" onAction="#CambiarAdministracion" prefHeight="57.0" prefWidth="171.0" stylesheets="@../css/style.css" text="Admin" textFill="WHITE">
+                                <Button fx:id="Administrador" graphicTextGap="10.0" layoutX="-1.0" layoutY="476.0" mnemonicParsing="false" onAction="#CambiarAdministracion" prefHeight="57.0" prefWidth="171.0" styleClass="boton-menu" stylesheets="@../css/style.css" text="Admin" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="20.0" />
                                     </font>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
-                                    <styleClass>
-                                        <String fx:value="boton" />
-                                        <String fx:value="boton-menu" />PERALES
-                                    </styleClass>
                                     <graphic>
                                         <ImageView>
                                             <image>
@@ -153,7 +137,7 @@
                                         <Image url="@../images/mujer.png" />
                                     </image>
                                 </ImageView>
-                        <ImageView fx:id="fotoPerfil" fitHeight="80.0" fitWidth="85.0" layoutX="42.0" layoutY="24.0" pickOnBounds="true" />
+                        <ImageView fx:id="fotoPerfil" fitHeight="85.0" fitWidth="82.0" layoutX="48.0" layoutY="24.0" pickOnBounds="true" />
                             </children>
                             <styleClass>
                                 <String fx:value="style-menu-lateral" />

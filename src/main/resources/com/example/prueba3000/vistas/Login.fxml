@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.LoginController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.LoginController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -27,29 +27,27 @@
                   </Label>
                   <TextField fx:id="textFieldNombreUsuarioI" layoutX="76.0" layoutY="185.0" prefHeight="31.0" prefWidth="263.0" promptText="Nombre usuario" stylesheets="@../css/style.css">
                      <styleClass>
-                        <String fx:value="bordes-redondos" />
                         <String fx:value="shadow" />
-                        <String fx:value="text-field" />
+                        <String fx:value="bordes-redondos" />
                      </styleClass>
                   </TextField>
                   <PasswordField fx:id="textFieldPasswordI" layoutX="76.0" layoutY="233.0" prefHeight="31.0" prefWidth="263.0" promptText="Contraseña" stylesheets="@../css/style.css">
                      <styleClass>
-                        <String fx:value="shadow" />
                         <String fx:value="bordes-redondos" />
+                        <String fx:value="shadow" />
                      </styleClass>
                   </PasswordField>
                   <Button fx:id="buttonAcceder" layoutX="143.0" layoutY="299.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="26.0" prefWidth="129.0" stylesheets="@../css/style.css" text="Acceder" textFill="WHITE">
-                     <styleClass>
-                        <String fx:value="bordes-redondos" />
-                        <String fx:value="combobox-filtro" />
-                        <String fx:value="shadow" />
-                     </styleClass>
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="boton" />
+                     </styleClass>
                   </Button>
                   <TextField fx:id="textFieldNombre" layoutX="76.0" layoutY="110.0" prefHeight="31.0" prefWidth="263.0" promptText="Nombre" stylesheets="@../css/style.css">
                      <styleClass>
@@ -94,17 +92,16 @@
                      </styleClass>
                   </PasswordField>
                   <Button fx:id="buttonRegistrarse" layoutX="136.0" layoutY="398.0" mnemonicParsing="false" onAction="#registrarse" prefHeight="26.0" prefWidth="129.0" stylesheets="@../css/style.css" text="Registrarse" textFill="WHITE">
-                     <styleClass>
-                        <String fx:value="bordes-redondos" />
-                        <String fx:value="combobox-filtro" />
-                        <String fx:value="shadow" />
-                     </styleClass>
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="boton" />
+                     </styleClass>
                   </Button>
                   <ImageView fx:id="imageRegistro" fitHeight="80.0" fitWidth="74.0" layoutX="180.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -130,41 +127,39 @@
                         <Image url="@../images/foto.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="labelAunNoTienesCuenta" layoutX="46.0" layoutY="251.0" styleClass="shadow" stylesheets="@../css/style.css" text="¿Aún no tienes una cuenta?">
+                  <Label fx:id="labelAunNoTienesCuenta" layoutX="46.0" layoutY="251.0" stylesheets="@../css/style.css" text="¿Aún no tienes una cuenta?">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
                   <Button fx:id="buttonCambiarRegistro" layoutX="73.0" layoutY="284.0" mnemonicParsing="false" onAction="#cambiarARegistro" prefHeight="26.0" prefWidth="129.0" stylesheets="@../css/style.css" text="Registrarse" textFill="WHITE">
-                     <styleClass>
-                        <String fx:value="bordes-redondos" />
-                        <String fx:value="combobox-filtro" />
-                        <String fx:value="shadow" />
-                     </styleClass>
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="boton" />
+                     </styleClass>
                   </Button>
-                  <Label fx:id="labelYaTienesCuenta" layoutX="58.0" layoutY="251.0" styleClass="shadow" stylesheets="@../css/style.css" text="¿Ya tienes una cuenta?">
+                  <Label fx:id="labelYaTienesCuenta" layoutX="58.0" layoutY="251.0" stylesheets="@../css/style.css" text="¿Ya tienes una cuenta?">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
                   <Button fx:id="buttonCambiar" layoutX="73.0" layoutY="284.0" mnemonicParsing="false" onAction="#cambiarIniciarSesion" prefHeight="26.0" prefWidth="129.0" stylesheets="@../css/style.css" text="Iniciar sesión" textFill="WHITE">
-                     <styleClass>
-                        <String fx:value="bordes-redondos" />
-                        <String fx:value="combobox-filtro" />
-                        <String fx:value="shadow" />
-                     </styleClass>
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="boton" />
+                     </styleClass>
                   </Button>
                </children></AnchorPane>
          </children>

@@ -267,7 +267,6 @@ public class LoginController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaPrincipal.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
-                scene.getStylesheets().add(Main.class.getResource("css/style.css").toExternalForm());
                 Stage stage = (Stage) buttonAcceder.getScene().getWindow();
                 stage.setScene(scene);
 

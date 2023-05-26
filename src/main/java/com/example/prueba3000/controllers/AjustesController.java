@@ -44,7 +44,25 @@ public class AjustesController implements Initializable {
     @javafx.fxml.FXML
     private AnchorPane mainAnchor;
     @javafx.fxml.FXML
-    private Button buttonCambiarFotoPerfil;
+    private TextField textFieldNuevoNombre;
+    @javafx.fxml.FXML
+    private TextField textFieldNuevoNombreUsuario;
+    @javafx.fxml.FXML
+    private TextField textFieldNuevaContrasena;
+    @javafx.fxml.FXML
+    private TextField textFieldNuevoCorreo;
+    @javafx.fxml.FXML
+    private TextField textFieldNuevosApellidos;
+    @javafx.fxml.FXML
+    private Button buttonModificarApellidos;
+    @javafx.fxml.FXML
+    private Button buttonModificarNombre;
+    @javafx.fxml.FXML
+    private Button buttonModificarNombreUsuario;
+    @javafx.fxml.FXML
+    private Button buttonModificarContrasena;
+    @javafx.fxml.FXML
+    private Button buttonModificarCorreo;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,7 +87,7 @@ public class AjustesController implements Initializable {
     }
 
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void cambiarFotoPerfil(ActionEvent actionEvent) throws SQLException, IOException {
 
         FileChooser fileChooser = new FileChooser();
@@ -100,5 +118,25 @@ public class AjustesController implements Initializable {
         }
 
 
+    }
+
+    @javafx.fxml.FXML
+    public void modificarApellidos(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void modificarNombre(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void modificarNombreUsuario(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void cambiarContrasena(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void modificarCorreoElectronico(ActionEvent actionEvent) {
     }
 }
