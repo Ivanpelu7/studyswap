@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
@@ -116,6 +117,11 @@ public class VistaPrincipalController implements Initializable {
         } catch (IOException | SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void setFotoPerfil(Image image) {
+
+        this.fotoPerfil.setFill(new ImagePattern(image));
     }
 
 

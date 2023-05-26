@@ -11,6 +11,7 @@ public class UsuarioHolder {
     }
 
     public static void setUsuario(Usuario usuario) {
+
         UsuarioHolder.usuario = usuario;
     }
 }

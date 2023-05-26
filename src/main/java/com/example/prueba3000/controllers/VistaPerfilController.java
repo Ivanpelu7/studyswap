@@ -46,11 +46,6 @@ public class VistaPerfilController implements Initializable {
         setApuntesDescargados();
     }
 
-    public AnchorPane getRootPane() {
-
-        return mainVistaPerfil;
-    }
-
     public void setApuntesSubidos() {
 
         gridPaneSubidos.getChildren().clear();

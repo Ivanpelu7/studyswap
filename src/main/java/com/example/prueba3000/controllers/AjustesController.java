@@ -118,12 +118,13 @@ public class AjustesController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaAjustes.fxml"));
                 Parent pane = loader.load();
                 mainAnchor.getChildren().setAll(pane);
+
+                loader = new FXMLLoader(Main.class.getResource("vistas/VistaPrincipal.fxml"));
+                loader.load();
+                VistaPrincipalController vpc = loader.getController();
+                vpc.setFotoPerfil(image);
             }
-
-
         }
-
-
     }
 
     @javafx.fxml.FXML

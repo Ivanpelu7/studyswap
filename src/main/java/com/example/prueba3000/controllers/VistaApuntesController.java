@@ -38,8 +38,6 @@ public class VistaApuntesController implements Initializable {
     @javafx.fxml.FXML
     private ImageView imgPDF;
     @javafx.fxml.FXML
-    private ImageView botonDescargar;
-    @javafx.fxml.FXML
     private TextField textFieldCurso;
     @javafx.fxml.FXML
     private Label labelCurso;
@@ -54,6 +52,8 @@ public class VistaApuntesController implements Initializable {
     @javafx.fxml.FXML
     private TextField textFieldNombre;
     private Usuario usuario;
+    @javafx.fxml.FXML
+    private Button botonDescargar;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

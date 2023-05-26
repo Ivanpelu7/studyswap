@@ -77,14 +77,6 @@
                               <Image url="@../images/pdf.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="botonDescargar" fitHeight="52.0" fitWidth="45.0" layoutX="119.0" layoutY="426.0" onMouseReleased="#descargarApunte" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/descargar.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
                         <TextField fx:id="textFieldCurso" editable="false" layoutX="86.0" layoutY="208.0" prefHeight="26.0" prefWidth="179.0" styleClass="textfield-datos" stylesheets="@../css/style.css" />
                         <Label fx:id="labelCurso" layoutX="45.0" layoutY="211.0" text="Curso">
                            <font>
@@ -109,6 +101,25 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
+                        <Button fx:id="botonDescargar" layoutX="51.0" layoutY="448.0" mnemonicParsing="false" onAction="#descargarApunte" prefHeight="42.0" prefWidth="181.0" stylesheets="@../css/style.css" text="Descargar" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/descargar.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="bordes-redondos" />
+                              <String fx:value="boton" />
+                           </styleClass>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
                      </children>
                      <styleClass>
                         <String fx:value="pdflateral" />
