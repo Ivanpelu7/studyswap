@@ -89,9 +89,9 @@
 .item:hover {
     -fx-background-color: #D3D7D3;
     -fx-cursor: hand;
-    -fx-scale-x: 1.04;
-    -fx-scale-y: 1.04;
-    -fx-scale-z: 1.04;
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+    -fx-scale-z: 1.03;
 }
 
 .item:pressed {

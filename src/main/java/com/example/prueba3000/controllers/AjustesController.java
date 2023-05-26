@@ -15,6 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 
 import java.awt.*;
@@ -63,6 +65,8 @@ public class AjustesController implements Initializable {
     private Button buttonModificarContrasena;
     @javafx.fxml.FXML
     private Button buttonModificarCorreo;
+    @javafx.fxml.FXML
+    private Circle fotoCircle;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -76,7 +80,9 @@ public class AjustesController implements Initializable {
         labelNombreUsuario.setText(usuario.getNombreUsuario());
 
         if (this.usuario.getFotoPerfil() != null) {
-            fotoPerfil.setImage(this.usuario.getFotoPerfil());
+            fotoPerfil.setVisible(false);
+            fotoCircle.setVisible(true);
+            fotoCircle.setFill(new ImagePattern(this.usuario.getFotoPerfil()));
 
         } else if (this.usuario.getSexo().equals("M")) {
             fotoPerfil.setImage(new Image(Main.class.getResourceAsStream("images/hombre.png")));

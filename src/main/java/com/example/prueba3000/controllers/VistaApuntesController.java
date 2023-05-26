@@ -140,8 +140,6 @@ public class VistaApuntesController implements Initializable {
 
         ApunteModel am = new ApunteModel();
 
-        ArrayList<Apunte> apuntesF = am.apuntesFiltro((Asignatura) comboboxAsignatura.getValue(), (Curso) comboboxCurso.getValue());
-
         if (!v.validarFiltro(comboboxCurso, comboboxAsignatura)) {
             Alert a = new Alert(Alert.AlertType.ERROR);
             a.setHeaderText(null);
@@ -149,6 +147,8 @@ public class VistaApuntesController implements Initializable {
             a.showAndWait();
 
         } else {
+            ArrayList<Apunte> apuntesF = am.apuntesFiltro((Asignatura) comboboxAsignatura.getValue(), (Curso) comboboxCurso.getValue());
+
             mainGridPane.getChildren().clear();
 
             int column = 0;

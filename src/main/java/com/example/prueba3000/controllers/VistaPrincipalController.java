@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
@@ -60,9 +61,9 @@ public class VistaPrincipalController implements Initializable {
     @FXML
     private Button buttonAjustes;
     @FXML
-    private ImageView fotoPerfil;
-    @FXML
     private AnchorPane mainAnchorPane;
+    @FXML
+    private Circle fotoPerfil;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -84,7 +85,7 @@ public class VistaPrincipalController implements Initializable {
             labelApellidos.setText(usuario.getApellidos());
 
             if (this.usuario.getFotoPerfil() != null) {
-                fotoPerfil.setImage(this.usuario.getFotoPerfil());
+                fotoPerfil.setFill(new ImagePattern(this.usuario.getFotoPerfil()));
                 fotoHombre.setVisible(false);
                 fotoMujer.setVisible(false);
 

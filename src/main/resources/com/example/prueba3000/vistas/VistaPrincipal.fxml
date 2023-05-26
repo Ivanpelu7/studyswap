@@ -137,7 +137,7 @@
                                         <Image url="@../images/mujer.png" />
                                     </image>
                                 </ImageView>
-                        <ImageView fx:id="fotoPerfil" fitHeight="85.0" fitWidth="82.0" layoutX="48.0" layoutY="24.0" pickOnBounds="true" />
+                        <Circle fx:id="fotoPerfil" fill="WHITE" layoutX="87.0" layoutY="64.0" radius="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" />
                             </children>
                             <styleClass>
                                 <String fx:value="style-menu-lateral" />
