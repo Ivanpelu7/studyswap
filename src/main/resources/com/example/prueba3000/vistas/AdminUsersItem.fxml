@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="seleccionado" onMousePressed="#click" prefHeight="57.0" prefWidth="383.0" style="-fx-background-color: FFFF;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.AdminUsersItemController">
+   <children>
+      <Pane prefHeight="57.0" prefWidth="382.0" style="-fx-background-color: FFFF;" stylesheets="@../css/style.css">
+         <children>
+            <Label fx:id="nombre_usuario" layoutX="59.0" layoutY="15.0" prefHeight="30.0" prefWidth="62.0" text="Diegix">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="email" layoutX="131.0" layoutY="14.0" prefHeight="30.0" prefWidth="195.0" text="Diegousduis@gmail.com">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="fotomujer" fitHeight="39.0" fitWidth="40.0" layoutX="14.0" layoutY="9.0">
+               <image>
+                  <Image url="@../images/mujer.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="fotohombre" fitHeight="39.0" fitWidth="40.0" layoutX="14.0" layoutY="9.0">
+               <image>
+                  <Image url="@../images/hombre.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="eliminar" layoutX="319.0" layoutY="6.0" mnemonicParsing="false" onAction="#eliminar_usuario" prefHeight="39.0" prefWidth="53.0" styleClass="boton-menu" stylesheets="@../css/style.css">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="37.0">
+                     <image>
+                        <Image url="@../images/borrar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <styleClass>
+            <String fx:value="bordes-redondos" />
+            <String fx:value="pdflateral" />
+         </styleClass>
+      </Pane>
+   </children>
+   <styleClass>
+      <String fx:value="bordes-redondos" />
+      <String fx:value="pdflateral" />
+      <String fx:value="shadow" />
+   </styleClass>
+</HBox>

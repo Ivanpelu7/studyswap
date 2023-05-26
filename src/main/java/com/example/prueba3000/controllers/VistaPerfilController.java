@@ -8,6 +8,7 @@ import com.example.prueba3000.util.UsuarioHolder;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -152,6 +153,17 @@ public class VistaPerfilController implements Initializable {
         stage.setResizable(false);
         stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
         stage.show();
+    }
+
+    public void CargarVista() throws IOException {
+        System.out.println("eeeeeeeeeee");
+        FXMLLoader perfil = new FXMLLoader(Main.class.getResource("vistas/VistaPerfil.fxml"));
+
+        Parent root = perfil.load();
+
+        mainVistaPerfil.getChildren().setAll(root);
+
+
     }
 
 

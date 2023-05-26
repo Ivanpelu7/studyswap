@@ -8,7 +8,7 @@ public class DBUtil {
     private Connection conexion;
     private String cadenaConexion = "jdbc:mysql://localhost:3306/studyswap";
     private String nombreUsuario = "root";
-    private String password = "12345";
+    private String password = "121cat6.T";
 
     public Connection getConexion() {
 

@@ -56,4 +56,31 @@ public class CursoModel extends DBUtil {
 
         return cursos;
     }
+
+
+
+    public void crearCurso(Curso curso) throws SQLException {
+        String query = "Insert into cursos (nombre) values(?);";
+        PreparedStatement ps = getConexion().prepareStatement(query);
+        ps.setString(1, curso.getNombre());
+        int rs=ps.executeUpdate();
+    }
+
+    public int  eliminarCurso(Curso curso) throws SQLException {
+        String query = "delete from cursos where id_curso= "+curso.getId();
+        PreparedStatement ps = getConexion().prepareStatement(query);
+        int rs=ps.executeUpdate();
+
+        return rs;
+    }
+
+    public int  editarCurso(String nombreNuevo,String nombreantiguo) throws SQLException {
+        String query = "update cursos set nombre=?  where nombre= ?;";
+        PreparedStatement ps = getConexion().prepareStatement(query);
+        ps.setString(1, nombreNuevo);
+        ps.setString(2, nombreantiguo);
+        int rs=ps.executeUpdate();
+
+        return rs;
+    }
 }

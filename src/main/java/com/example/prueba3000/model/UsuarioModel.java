@@ -17,7 +17,7 @@ public class UsuarioModel extends DBUtil {
     }
 
     public Usuario recuperarUsuario(String nomnreuser) throws SQLException {
-        String query = "SELECT * FROM usuarios where nombre_usuario=?";
+        String query = "SELECT * FROM usuarios where nombre_usuario=? ";
 
         PreparedStatement ps = getConexion().prepareStatement(query);
         ps.setString(1, nomnreuser);
@@ -54,7 +54,7 @@ public class UsuarioModel extends DBUtil {
 
         HashMap<Integer, Usuario> usuarios = new HashMap<Integer, Usuario>();
 
-        String query = "SELECT * FROM usuarios";
+        String query = "SELECT * FROM usuarios ";
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
@@ -121,6 +121,15 @@ public class UsuarioModel extends DBUtil {
         int i = preparedStatement.executeUpdate();
 
         return i;
+    }
+
+    public void eliminarUsuario(Usuario user) throws SQLException {
+        String query = "delete from usuarios where id_usuario="+user.getId();
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+        ps.executeUpdate();
+
+
     }
 }
 
