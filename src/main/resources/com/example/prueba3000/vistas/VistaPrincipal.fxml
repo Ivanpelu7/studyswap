@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainAnchorPane" prefHeight="662.0" prefWidth="1041.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaPrincipalController">
+<AnchorPane fx:id="mainAnchorPane" prefHeight="662.0" prefWidth="1041.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaPrincipalController">
     <children>
         <BorderPane prefHeight="662.0" prefWidth="1041.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
@@ -153,11 +153,7 @@
                                         <Image url="@../images/mujer.png" />
                                     </image>
                                 </ImageView>
-                        <ImageView fx:id="fotoPerfil" fitHeight="83.0" fitWidth="83.0" layoutX="45.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/mujer.png" />
-                           </image>
-                        </ImageView>
+                        <ImageView fx:id="fotoPerfil" fitHeight="80.0" fitWidth="85.0" layoutX="42.0" layoutY="24.0" pickOnBounds="true" />
                             </children>
                             <styleClass>
                                 <String fx:value="style-menu-lateral" />

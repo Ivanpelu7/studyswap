@@ -150,7 +150,7 @@ public class VistaPerfilController implements Initializable {
         stage.setScene(scene);
         stage.setTitle("Publicar Apunte");
         stage.setResizable(false);
-        stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icon.jpg")));
+        stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
         stage.show();
     }
 

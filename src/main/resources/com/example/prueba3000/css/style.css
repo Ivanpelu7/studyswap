@@ -59,3 +59,13 @@
     -fx-background-radius: 100%;
     -fx-border-radius: 100%;
 }
+
+.circular-image-view {
+    -fx-background-radius: 50%;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-shape: "M 50 0 A 50 50 0 0 1 100 50 L 100 50 A 50 50 0 0 1 50 100 L 50 100 A 50 50 0 0 1 0 50 L 0 50 A 50 50 0 0 1 50 0 Z";
+    -fx-scale-shape: false;
+    -fx-min-width: 0;
+    -fx-min-height: 0;
+}

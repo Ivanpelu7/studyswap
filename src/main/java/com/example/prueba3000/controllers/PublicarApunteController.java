@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class PublicarApunteController implements Initializable {
+
     @javafx.fxml.FXML
     private ComboBox comboboxCursos;
     @javafx.fxml.FXML

@@ -67,6 +67,8 @@ public class VistaPrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        fotoPerfil.getStyleClass().add("circular-image-view");
+
         try {
             this.usuario = UsuarioHolder.getUsuario();
 
