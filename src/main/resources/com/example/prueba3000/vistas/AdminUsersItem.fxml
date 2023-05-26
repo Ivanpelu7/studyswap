@@ -33,7 +33,7 @@
                   <Image url="@../images/hombre.png" />
                </image>
             </ImageView>
-            <Button fx:id="eliminar" layoutX="319.0" layoutY="6.0" mnemonicParsing="false" onAction="#eliminar_usuario" prefHeight="39.0" prefWidth="53.0" styleClass="boton" stylesheets="@../css/style.css">
+            <Button fx:id="eliminar" layoutX="319.0" layoutY="6.0" mnemonicParsing="false" onAction="#eliminar_usuario" prefHeight="39.0" prefWidth="53.0" styleClass="boton-menu" stylesheets="@../css/style.css">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="37.0">
                      <image>
