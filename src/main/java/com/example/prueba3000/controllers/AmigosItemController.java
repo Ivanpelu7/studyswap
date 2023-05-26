@@ -1,9 +1,7 @@
 package com.example.prueba3000.controllers;
 
-import com.example.prueba3000.controllers.VistaAmigosController;
 import com.example.prueba3000.model.Usuario;
 import com.example.prueba3000.util.MyListener;
-import javafx.event.Event;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -29,7 +27,7 @@ public class AmigosItemController {
         myslistener.onclicklistener(usuario);
     }
 
-    public void setData(Usuario user, MyListener myslistener) throws SQLException {
+    public void setData(Usuario user) throws SQLException {
         this.usuario = user;
         this.myslistener = myslistener;
         System.out.println(user.getNombreUsuario());

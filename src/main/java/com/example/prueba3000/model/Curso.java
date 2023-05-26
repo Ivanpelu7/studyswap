@@ -12,6 +12,9 @@ public class Curso {
         this.id = id;
         this.nombre = nombre;
     }
+    public Curso( String nombre) {
+        this.nombre = nombre;
+    }
 
     public int getId() {
         return id;

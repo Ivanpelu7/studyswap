@@ -11,12 +11,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -143,7 +140,7 @@ public class VistaAmigosController implements Initializable {
                     try {
                         HBox hBox = fxmlLoader.load();
                         AmigosItemController aic = fxmlLoader.getController();
-                        aic.setData(user, myListener);
+                        aic.setData(user);
                         vbox_users.add(hBox, column, row++);
                         GridPane.setMargin(hBox, new Insets(10));
 
@@ -389,12 +386,19 @@ public class VistaAmigosController implements Initializable {
             nsolicitud++;
             nomuserSolicitud.setText(s.getUsuarioEmisor().getNombreUsuario());
             PaneSolicitudes.setVisible(false);
-
-            FXMLLoader amigos = new FXMLLoader(Main.class.getResource("vistas/VistaAmigos.fxml"));
+            FXMLLoader amigos = new FXMLLoader(Main.class.getResource("vistas/VistaPrincipal.fxml"));
 
             Parent root = amigos.load();
 
-            anchor.getChildren().setAll(root);
+            VistaPrincipalController vpc = new VistaPrincipalController();
+            Object actionEvent = null;
+            vpc.cambiarVistaAmigos((ActionEvent) actionEvent);
+
+            //FXMLLoader amigos = new FXMLLoader(Main.class.getResource("vistas/VistaAmigos.fxml"));
+
+           // Parent root = amigos.load();
+
+            //anchor.getChildren().setAll(root);
 
         } else {
             PaneSolicitudes.setVisible(false);
