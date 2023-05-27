@@ -70,8 +70,6 @@ public class ApunteModel extends DBUtil {
             apuntesFiltro.add(ap);
         }
 
-        cerrarConexion();
-
         return apuntesFiltro;
     }
 
@@ -151,6 +149,5 @@ public class ApunteModel extends DBUtil {
 
         ps.executeUpdate();
 
-        cerrarConexion();
     }
 }

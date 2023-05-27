@@ -8,13 +8,17 @@ import com.example.prueba3000.util.Validador;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -89,7 +93,6 @@ public class LoginController implements Initializable {
         buttonRegistrarse.setVisible(false);
         buttonCambiar.setVisible(false);
         imageRegistro.setVisible(false);
-
     }
 
     @FXML
@@ -267,14 +270,18 @@ public class LoginController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaPrincipal.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
-                Stage stage = (Stage) buttonAcceder.getScene().getWindow();
+                Stage stage = new Stage();
                 stage.setScene(scene);
+                stage.setTitle("StudySwap");
+                stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
+                stage.setResizable(false);
+                stage.show();
+                Stage oldStage = (Stage) buttonAcceder.getScene().getWindow();
+                oldStage.close();
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-
         }
     }
 }

@@ -5,17 +5,22 @@ import com.example.prueba3000.model.*;
 import com.example.prueba3000.util.MyListener;
 import com.example.prueba3000.util.UsuarioHolder;
 import com.example.prueba3000.util.Validador;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
@@ -54,6 +59,12 @@ public class VistaApuntesController implements Initializable {
     private Usuario usuario;
     @javafx.fxml.FXML
     private Button botonDescargar;
+    @javafx.fxml.FXML
+    private AnchorPane progressPane;
+    @javafx.fxml.FXML
+    private ProgressBar progressBar;
+    @javafx.fxml.FXML
+    private ProgressIndicator progressIndicator;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -70,9 +81,10 @@ public class VistaApuntesController implements Initializable {
             }
 
             @Override
-            public void onclicklistener(Usuario Usuario) {
+            public void onclicklistener(Usuario Usuario) throws SQLException {
 
             }
+
         };
 
         try {
@@ -114,9 +126,7 @@ public class VistaApuntesController implements Initializable {
             }
 
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
+        } catch (SQLException | IOException e) {
             throw new RuntimeException(e);
         }
 
@@ -137,7 +147,6 @@ public class VistaApuntesController implements Initializable {
     public void filtrar(ActionEvent actionEvent) throws SQLException, IOException {
 
         Validador v = new Validador();
-
         ApunteModel am = new ApunteModel();
 
         if (!v.validarFiltro(comboboxCurso, comboboxAsignatura)) {
@@ -197,40 +206,54 @@ public class VistaApuntesController implements Initializable {
     @javafx.fxml.FXML
     public void descargarApunte(Event event) throws SQLException, IOException {
 
-        Blob pdf = this.apunte.getPdf();
-        String nombre = this.apunte.getNombre();
+        Validador v = new Validador();
 
-        File temporalFile = File.createTempFile("temp", ".pdf");
-        InputStream is = pdf.getBinaryStream();
-        OutputStream os = new FileOutputStream(temporalFile);
-        byte[] buffer = new byte[8096];
-        int bytesRead;
-
-        while ((bytesRead = is.read(buffer)) > 0) {
-            os.write(buffer, 0, bytesRead);
-        }
-
-        pdf.free();
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
-        fileChooser.setInitialFileName(nombre);
-
-        File archivo = fileChooser.showSaveDialog(null);
-
-        if (archivo != null) {
-            Files.copy(temporalFile.toPath(), archivo.toPath(), StandardCopyOption.REPLACE_EXISTING);
-
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
+        if (!v.validarDescargarApunte(this.apunte, this.usuario, new ApunteModel())) {
+            Alert a = new Alert(Alert.AlertType.ERROR);
             a.setHeaderText(null);
-            a.setContentText("Descarga realizada correctamente");
+            a.setContentText("Ya te has descargado este apunte anteriormente");
             a.showAndWait();
 
-            ApunteModel am = new ApunteModel();
-            am.apunteDescargado(this.apunte, this.usuario);
+        } else {
+            Blob pdf = this.apunte.getPdf();
+            String nombre = this.apunte.getNombre();
+
+            File temporalFile = File.createTempFile("temp", ".pdf");
+            InputStream is = pdf.getBinaryStream();
+            OutputStream os = new FileOutputStream(temporalFile);
+            byte[] buffer = new byte[8096];
+            int bytesRead;
+
+            while ((bytesRead = is.read(buffer)) > 0) {
+                os.write(buffer, 0, bytesRead);
+            }
+
+            pdf.free();
+
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+            fileChooser.setInitialFileName(nombre);
+
+            File archivo = fileChooser.showSaveDialog(null);
+
+            if (archivo != null) {
+                FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaProgreso.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.setTitle("Descarga");
+                stage.setScene(scene);
+                stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
+                stage.show();
+
+                Files.copy(temporalFile.toPath(), archivo.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+                ApunteModel am = new ApunteModel();
+                am.apunteDescargado(this.apunte, this.usuario);
+            }
+
+            temporalFile.delete();
         }
-
-        temporalFile.delete();
-
     }
 }

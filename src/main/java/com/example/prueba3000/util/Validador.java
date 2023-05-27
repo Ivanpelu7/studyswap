@@ -1,15 +1,22 @@
 package com.example.prueba3000.util;
 
-import com.example.prueba3000.model.Asignatura;
-import com.example.prueba3000.model.Curso;
-import com.example.prueba3000.model.Usuario;
+import com.example.prueba3000.model.*;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Validador {
+
+    public Validador() {
+
+    }
+
     public boolean validarPasswordIguales(String password, String repeatPassword) {
 
         if (password.equals(repeatPassword)) {
@@ -87,6 +94,26 @@ public class Validador {
 
         } else {
             return true;
+        }
+    }
+
+    public boolean validarDescargarApunte(Apunte apunte, Usuario usuario, ApunteModel am) {
+
+        try {
+            ArrayList<Apunte> apuntesDescargados = am.apuntesDescargados(usuario);
+
+            boolean check = true;
+
+            for (Apunte a : apuntesDescargados) {
+                if (a.getId() == apunte.getId()) {
+                    check = false;
+                }
+            }
+
+            return check;
+
+        } catch (SQLException | IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

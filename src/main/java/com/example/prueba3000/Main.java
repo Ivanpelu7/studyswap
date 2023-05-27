@@ -16,7 +16,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("vistas/Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("StudySwap");
-        stage.getIcons().setAll(new Image(getClass().getResourceAsStream("images/icono.png")));
+        stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

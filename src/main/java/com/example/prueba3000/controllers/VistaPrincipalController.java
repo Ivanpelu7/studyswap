@@ -152,12 +152,15 @@ public class VistaPrincipalController implements Initializable {
             loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("vistas/Login.fxml"));
             pane = loader.load();
-
             Scene scene = new Scene(pane);
-
             Stage stage = (Stage) buttonAmigos.getScene().getWindow();
-
-            stage.setScene(scene);
+            stage.close();
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+            newStage.setResizable(false);
+            newStage.setTitle("StudySwap");
+            newStage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
+            newStage.show();
         }
     }
 
