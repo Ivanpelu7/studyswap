@@ -4,10 +4,10 @@ import com.example.prueba3000.util.DBUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AsignaturaModel extends DBUtil {
@@ -60,5 +60,46 @@ public class AsignaturaModel extends DBUtil {
         cerrarConexion();
 
         return asignaturas;
+    }
+
+    public ObservableList<Asignatura> recuperarAsignaturasOL() throws SQLException {
+
+        ObservableList<Asignatura> asignaturas = FXCollections.observableArrayList();
+
+        String query = "SELECT * FROM asignaturas ";
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Integer id = rs.getInt("id_asignatura");
+            String nombre= rs.getString("nombre");
+            Asignatura a = new Asignatura(id,nombre);
+
+            asignaturas.add(a);
+        }
+
+        cerrarConexion();
+
+        return asignaturas;
+    }
+
+    public void añadirAsignatura(String nomasig) throws SQLException {
+        String query = "Insert into asignaturas (nombre) values (?)";
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+        ps.setString(1, nomasig);
+        ps.execute();
+    }
+
+
+    public void vincularAsignaturaConCurso(Curso c, Asignatura a) throws SQLException {
+        String query = "Insert into pertenece (id_asignatura,id_curso) values (?,?)";
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+        ps.setInt(1, a.getId());
+        ps.setInt(2, c.getId());
+        ps.execute();
     }
 }

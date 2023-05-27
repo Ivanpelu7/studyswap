@@ -1,12 +1,10 @@
 package com.example.prueba3000.controllers;
 
 import com.example.prueba3000.Main;
-import com.example.prueba3000.model.Curso;
-import com.example.prueba3000.model.CursoModel;
-import com.example.prueba3000.model.Usuario;
-import com.example.prueba3000.model.UsuarioModel;
+import com.example.prueba3000.model.*;
 
 
+import com.example.prueba3000.util.Validador;
 import javafx.beans.value.ObservableListValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -69,6 +67,24 @@ public class AdministradorController implements Initializable {
     private Label labelErrorCrear;
     @FXML
     private Label labelErrorEditar;
+    @FXML
+    private Pane paneVincularConCurso;
+    @FXML
+    private ComboBox listaCursos;
+    @FXML
+    private Button botonVincularAsignaturaCurso;
+    @FXML
+    private Pane paneAñadirAsig;
+    @FXML
+    private TextField nombreAsignaturaAñadir;
+    @FXML
+    private Button botonAñadirAsignatura;
+    @FXML
+    private Label ErrorNombreAsig;
+    @FXML
+    private ComboBox listaAsignaturas;
+    @FXML
+    private Label errorVincularAsig;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -167,7 +183,22 @@ public class AdministradorController implements Initializable {
     }
 
     @javafx.fxml.FXML
-    public void Mostrar_añadir_asignatura(ActionEvent actionEvent) {
+    public void Mostrar_añadir_asignatura(ActionEvent actionEvent) throws SQLException {
+        mostrarEliminarUsuario.setVisible(false);
+
+        mostrarAñadirCursos.setVisible(false);
+
+        mostrarEliminarApunte.setVisible(false);
+
+        mostrarAñadirAsignatura.setVisible(true);
+
+        CursoModel cm= new CursoModel();
+        listaCursos.setItems(cm.recuperarCursosOL());
+
+        AsignaturaModel am= new AsignaturaModel();
+
+
+        listaAsignaturas.setItems(am.recuperarAsignaturasOL());
     }
 
     @javafx.fxml.FXML
@@ -176,9 +207,6 @@ public class AdministradorController implements Initializable {
 
 
 
-    @Deprecated
-    public void añadir_asignatura(ActionEvent actionEvent) {
-    }
 
     @javafx.fxml.FXML
     public void añadir_cursos(ActionEvent actionEvent) throws SQLException, IOException {
@@ -206,6 +234,7 @@ public class AdministradorController implements Initializable {
             cm.crearCurso(c);
             nombre_editar_antiguo.setItems(cm.recuperarCursosOL());
             nombre_eliminar.setItems(cm.recuperarCursosOL());
+            nombre_curso_crear.setText(" ");
         }
 
     }
@@ -257,6 +286,82 @@ public class AdministradorController implements Initializable {
         nombre_eliminar.setItems(cm.recuperarCursosOL());
     }
 
+    @FXML
+    public void Añadir_asignatura(ActionEvent actionEvent) throws SQLException {
+        ErrorNombreAsig.setVisible(false);
+        AsignaturaModel am = new AsignaturaModel();
+        HashMap<Integer,Asignatura> asignaturas = new HashMap<>(am.recuperarAsignaturas());
+
+        String nombreAsignueva= nombreAsignaturaAñadir.getText();
+        boolean existe=false;
+        for(Asignatura a: asignaturas.values()) {
+            if (a.getNombre().equalsIgnoreCase(nombreAsignueva)) {
+                existe = true;
+            }
+
+        }
+
+            if(existe==true){
+                ErrorNombreAsig.setText("Esta asignatura ya existe");
+                ErrorNombreAsig.setVisible(true);
+            }
+            else {
+                    am.añadirAsignatura(nombreAsignueva);
+            }
+
+
+    }
+    @FXML
+    public void filtrarAsignatura(ActionEvent actionEvent) throws SQLException {
+        AsignaturaModel am = new AsignaturaModel();
+        CursoModel cm= new CursoModel();
+        Validador v= new Validador();
+        ObservableList<Curso> cursos= FXCollections.observableArrayList();
+
+        listaCursos.setDisable(false);
+
+
+    }
+    @FXML
+    public void VincularAsignaturaCurso(ActionEvent actionEvent) throws SQLException {
+        Validador v= new Validador();
+
+
+        if(!v.validarFiltro(listaCursos, listaAsignaturas)){
+
+            errorVincularAsig.setText("Debe seleccionar una asignatura y un curso");
+        }
+        else {
+            errorVincularAsig.setText("");
+            String nombreAsig= listaAsignaturas.getValue().toString();
+            String nombreCurso= listaCursos.getValue().toString();
+            AsignaturaModel am= new AsignaturaModel();
+            CursoModel cm= new CursoModel();
+
+            HashMap<Integer,Asignatura> asignaturas = new HashMap<>(am.recuperarAsignaturas());
+            HashMap<Integer,Curso> cursos = new HashMap<>(cm.recuperarCursos());
+
+            Asignatura asigantura = null;
+            Curso curso = null;
+            for(Asignatura a: asignaturas.values()){
+                if(nombreAsig.equalsIgnoreCase(a.getNombre())){
+                    asigantura=a;
+                }
+            }
+
+            for(Curso c:cursos.values()){
+                if(nombreCurso.equalsIgnoreCase(c.getNombre())){
+                    curso=c;
+                }
+            }
+
+            am.vincularAsignaturaConCurso(curso, asigantura);
+        }
+
+
+
+
+    }
 
 
 
@@ -270,6 +375,7 @@ public class AdministradorController implements Initializable {
         Parent root = admin.load();
         anchor.getChildren().setAll(root);
     }
+
 
 
 }
