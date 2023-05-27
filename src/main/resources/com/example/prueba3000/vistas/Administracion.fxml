@@ -159,7 +159,42 @@
                </font>
             </Label>
          </children></Pane>
-      <Pane fx:id="mostrarEliminarApunte" layoutX="14.0" layoutY="186.0" prefHeight="438.0" prefWidth="817.0" styleClass="pdflateral" stylesheets="@../css/style.css" />
-      <Pane fx:id="mostrarAñadirAsignatura" layoutX="14.0" layoutY="186.0" prefHeight="438.0" prefWidth="817.0" styleClass="pdflateral" stylesheets="@../css/style.css" visible="false" />
+      <Pane fx:id="mostrarAñadirAsignatura" layoutX="14.0" layoutY="186.0" prefHeight="438.0" prefWidth="817.0" styleClass="pdflateral" stylesheets="@../css/style.css">
+         <children>
+            <Pane layoutX="48.0" layoutY="148.0" prefHeight="143.0" prefWidth="267.0">
+               <children>
+                  <Pane fx:id="paneAñadirAsig" layoutX="29.0" layoutY="-22.0" prefHeight="166.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="28.0" layoutY="34.0" prefHeight="17.0" prefWidth="144.0" text="Nombre de la asignatura" />
+                        <TextField fx:id="nombreAsignaturaAñadir" layoutX="11.0" layoutY="65.0" prefHeight="25.0" prefWidth="179.0" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
+                        <Button fx:id="botonAñadirAsignatura" layoutX="63.0" layoutY="100.0" mnemonicParsing="false" onAction="#Añadir_asignatura" prefHeight="25.0" prefWidth="74.0" stylesheets="@../css/style.css" text="Añadir">
+                           <styleClass>
+                              <String fx:value="color-verde" />
+                              <String fx:value="bordes-redondos" />
+                           </styleClass>
+                        </Button>
+                        <Label fx:id="ErrorNombreAsig" layoutX="13.0" layoutY="135.0" prefHeight="17.0" prefWidth="169.0" textFill="RED" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="paneVincularConCurso" layoutX="335.0" layoutY="127.0" prefHeight="166.0" prefWidth="258.0">
+               <children>
+                  <Label layoutX="8.0" layoutY="14.0" prefHeight="17.0" prefWidth="248.0" text="Selecciona el curso al cual añadir la asignatura" />
+                  <ComboBox fx:id="listaCursos" disable="true" layoutX="54.0" layoutY="72.0" prefHeight="25.0" prefWidth="169.0" promptText="Seleccionar Curso" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
+                  <Button fx:id="botonVincularAsignaturaCurso" layoutX="107.0" layoutY="104.0" mnemonicParsing="false" onAction="#VincularAsignaturaCurso" prefHeight="25.0" prefWidth="63.0" stylesheets="@../css/style.css" text="Añadir">
+                     <styleClass>
+                        <String fx:value="bordes-redondos" />
+                        <String fx:value="color-verde" />
+                     </styleClass>
+                  </Button>
+                  <ComboBox fx:id="listaAsignaturas" layoutX="54.0" layoutY="38.0" onAction="#filtrarAsignatura" prefHeight="25.0" prefWidth="169.0" promptText="Seleccionar Asignatura" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
+                  <Label fx:id="errorVincularAsig" alignment="CENTER" layoutX="1.0" layoutY="135.0" prefHeight="17.0" prefWidth="258.0" textFill="RED" />
+               </children>
+            </Pane>
+            <Label alignment="CENTER" layoutX="97.0" layoutY="88.0" prefHeight="37.0" prefWidth="169.0" text="AÑADIR ASIGNATURA" />
+            <Label alignment="CENTER" layoutX="333.0" layoutY="94.0" prefHeight="37.0" prefWidth="258.0" text="AÑADIR ASIGNATURA A UN CURSO" />
+         </children></Pane>
+      <Pane fx:id="mostrarEliminarApunte" layoutX="14.0" layoutY="186.0" prefHeight="438.0" prefWidth="817.0" styleClass="pdflateral" stylesheets="@../css/style.css" visible="false" />
    </children>
 </AnchorPane>

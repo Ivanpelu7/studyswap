@@ -11,6 +11,23 @@ import java.util.HashMap;
 
 public class CursoModel extends DBUtil {
 
+    public Curso recuperarCurso(Integer id_curso) throws SQLException {
+        String query = "SELECT * FROM cursos where id_curso="+id_curso;
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ResultSet rs = ps.executeQuery();
+        Curso curso = null;
+        while (rs.next()) {
+
+            Integer id = rs.getInt("id_curso");
+            String nombre = rs.getString("nombre");
+
+             curso = new Curso(id, nombre);
+        }
+        return curso;
+    }
+
     public HashMap<Integer, Curso> recuperarCursos() throws SQLException {
 
         HashMap<Integer, Curso> cursos = new HashMap<>();
