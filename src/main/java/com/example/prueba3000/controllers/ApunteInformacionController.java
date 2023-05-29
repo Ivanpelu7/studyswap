@@ -81,9 +81,6 @@ public class ApunteInformacionController implements Initializable {
 
     @javafx.fxml.FXML
     public void eliminarApunte(ActionEvent actionEvent) throws SQLException {
-
-        ApunteModel apunteModel = new ApunteModel();
-        apunteModel.eliminarApunte(this.apunte);
     }
 
     @javafx.fxml.FXML
