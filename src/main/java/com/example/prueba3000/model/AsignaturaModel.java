@@ -102,4 +102,29 @@ public class AsignaturaModel extends DBUtil {
         ps.setInt(2, c.getId());
         ps.execute();
     }
+
+    public void eliminarAsignatura(Asignatura a) throws SQLException {
+        String query = "delete from asignaturas where id_asignatura=?";
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+        ps.setInt(1, a.getId());
+        ps.execute();
+    }
+
+    public boolean comprovarAsignaturaCurso(Asignatura a,Curso c) throws SQLException {
+        String query = "Select id_curso from pertenece where id_asignatura=?";
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+        ps.setInt(1, a.getId());
+        ResultSet rs=ps.executeQuery();
+        boolean pertenece=false;
+        while(rs.next()){
+            int id= rs.getInt("id_curso");
+            if(id==c.getId()){
+                pertenece=true;
+            }
+
+        }
+        return  pertenece;
+    }
 }

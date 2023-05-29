@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 
 import java.io.IOException;
@@ -74,8 +75,6 @@ public class AdministradorController implements Initializable {
     @FXML
     private Button botonVincularAsignaturaCurso;
     @FXML
-    private Pane paneAñadirAsig;
-    @FXML
     private TextField nombreAsignaturaAñadir;
     @FXML
     private Button botonAñadirAsignatura;
@@ -85,6 +84,24 @@ public class AdministradorController implements Initializable {
     private ComboBox listaAsignaturas;
     @FXML
     private Label errorVincularAsig;
+    @FXML
+    private Label ErrorNombreAsig1;
+    @FXML
+    private ComboBox listaAsignaturasEliminar;
+    @FXML
+    private Button botonEliminarAsignatura;
+    @FXML
+    private TableView tabla;
+    @FXML
+    private TableColumn columnaNombrePDF;
+    @FXML
+    private TableColumn columnaCurso;
+    @FXML
+    private TableColumn columnaAsignatura;
+    @FXML
+    private TableColumn columnaNombreUsuario;
+    @FXML
+    private TableColumn columnaIDReporte;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -199,10 +216,29 @@ public class AdministradorController implements Initializable {
 
 
         listaAsignaturas.setItems(am.recuperarAsignaturasOL());
+        listaAsignaturasEliminar.setItems(am.recuperarAsignaturasOL());
     }
 
     @javafx.fxml.FXML
-    public void Mostrar_eliminar_apunte(ActionEvent actionEvent) {
+    public void Mostrar_eliminar_apunte(ActionEvent actionEvent) throws SQLException, IOException {
+        mostrarEliminarUsuario.setVisible(false);
+
+        mostrarAñadirCursos.setVisible(false);
+
+        mostrarEliminarApunte.setVisible(true);
+
+        mostrarAñadirAsignatura.setVisible(false);
+
+        columnaIDReporte.setCellValueFactory(new PropertyValueFactory("id"));
+        columnaNombrePDF.setCellValueFactory(new PropertyValueFactory("nombre"));
+        columnaCurso.setCellValueFactory(new PropertyValueFactory("curso"));
+        columnaAsignatura.setCellValueFactory(new PropertyValueFactory("asignatura") );
+        columnaNombreUsuario.setCellValueFactory(new PropertyValueFactory("autor") );
+
+
+        ApunteModel am= new ApunteModel();
+        ObservableList<Apunte> apuntes = FXCollections.observableArrayList(am.recuperarApuntesTabla().values());
+        tabla.setItems(apuntes);
     }
 
 
@@ -244,7 +280,8 @@ public class AdministradorController implements Initializable {
         CursoModel cm= new CursoModel();
 
         Curso c= (Curso) nombre_eliminar.getValue();
-        int i=cm.eliminarCurso(c);
+
+        int i=cm.eliminarCurso(c.getId());
         if(i>0){
             Alert a= new Alert(Alert.AlertType.INFORMATION);
             a.setHeaderText("Curso eliminado correctamente");
@@ -354,13 +391,25 @@ public class AdministradorController implements Initializable {
                     curso=c;
                 }
             }
-
+            boolean pertenece=am.comprovarAsignaturaCurso(asigantura, curso);
+            if(pertenece==false){
             am.vincularAsignaturaConCurso(curso, asigantura);
+            }
+            else{
+                errorVincularAsig.setText("La asignatura ya pertenece a este curso");
+            }
         }
 
 
 
 
+    }
+
+    @FXML
+    public void eliminar_asignatura(ActionEvent actionEvent) throws SQLException {
+        AsignaturaModel am= new AsignaturaModel();
+        Asignatura a= (Asignatura) listaAsignaturasEliminar.getValue();
+        am.eliminarAsignatura(a);
     }
 
 

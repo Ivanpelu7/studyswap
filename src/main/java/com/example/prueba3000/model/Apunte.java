@@ -48,6 +48,37 @@ public class Apunte {
         this.autor = autor;
     }
 
+    public Apunte(Integer id, String nombre, Blob pdf, Integer puntuacion,Usuario autor) {
+        this.id=id;
+        this.nombre=nombre;
+        this.pdf=pdf;
+        this.puntuacion=puntuacion;
+        this.autor=autor;
+    }
+
+
+
+
+    public Apunte(Integer id, String nombre, Curso c, Asignatura a, Integer puntuacion, Usuario u) {
+        this.id=id;
+        this.nombre=nombre;
+        this.curso=c;
+        this.asignatura=a;
+        this.puntuacion=puntuacion;
+        this.autor=u;
+
+    }
+
+    public Apunte(Integer id, String nombre, Curso curso, Apunte asignatura, Integer puntuacion, Usuario usuario) {
+        this.id=id;
+        this.nombre=nombre;
+        this.curso=curso;
+        this.puntuacion=puntuacion;
+        this.autor=usuario;
+
+    }
+
+
     public int getId() {
         return id;
     }

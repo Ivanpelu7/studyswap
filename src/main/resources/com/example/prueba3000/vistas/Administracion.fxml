@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -54,7 +56,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="eliminarApunte" contentDisplay="RIGHT" graphicTextGap="9.0" layoutX="609.0" layoutY="29.0" mnemonicParsing="false" onAction="#Mostrar_eliminar_apunte" prefHeight="59.0" prefWidth="202.0" style="-fx-background-color: #70c07f;" styleClass="bordes-redondos" stylesheets="@../css/style.css" text="Eliminar apunte" textFill="WHITE">
+            <Button fx:id="eliminarApunte" contentDisplay="RIGHT" graphicTextGap="9.0" layoutX="609.0" layoutY="29.0" mnemonicParsing="false" onAction="#Mostrar_eliminar_apunte" prefHeight="59.0" prefWidth="202.0" style="-fx-background-color: #70c07f;" styleClass="bordes-redondos" stylesheets="@../css/style.css" text="Reportes" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -159,26 +161,22 @@
                </font>
             </Label>
          </children></Pane>
-      <Pane fx:id="mostrarAñadirAsignatura" layoutX="14.0" layoutY="186.0" prefHeight="438.0" prefWidth="817.0" styleClass="pdflateral" stylesheets="@../css/style.css">
+      <Pane fx:id="mostrarAñadirAsignatura" layoutX="14.0" layoutY="186.0" prefHeight="438.0" prefWidth="817.0" styleClass="pdflateral" stylesheets="@../css/style.css" visible="false">
          <children>
-            <Pane layoutX="48.0" layoutY="148.0" prefHeight="143.0" prefWidth="267.0">
+            <Pane layoutX="14.0" layoutY="183.0" prefHeight="143.0" prefWidth="267.0">
                <children>
-                  <Pane fx:id="paneAñadirAsig" layoutX="29.0" layoutY="-22.0" prefHeight="166.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="28.0" layoutY="34.0" prefHeight="17.0" prefWidth="144.0" text="Nombre de la asignatura" />
-                        <TextField fx:id="nombreAsignaturaAñadir" layoutX="11.0" layoutY="65.0" prefHeight="25.0" prefWidth="179.0" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
-                        <Button fx:id="botonAñadirAsignatura" layoutX="63.0" layoutY="100.0" mnemonicParsing="false" onAction="#Añadir_asignatura" prefHeight="25.0" prefWidth="74.0" stylesheets="@../css/style.css" text="Añadir">
-                           <styleClass>
-                              <String fx:value="color-verde" />
-                              <String fx:value="bordes-redondos" />
-                           </styleClass>
-                        </Button>
-                        <Label fx:id="ErrorNombreAsig" layoutX="13.0" layoutY="135.0" prefHeight="17.0" prefWidth="169.0" textFill="RED" />
-                     </children>
-                  </Pane>
+                  <Label layoutX="57.0" layoutY="12.0" prefHeight="17.0" prefWidth="144.0" text="Nombre de la asignatura" />
+                  <TextField fx:id="nombreAsignaturaAñadir" layoutX="40.0" layoutY="43.0" prefHeight="25.0" prefWidth="179.0" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
+                  <Button fx:id="botonAñadirAsignatura" layoutX="92.0" layoutY="78.0" mnemonicParsing="false" onAction="#Añadir_asignatura" prefHeight="25.0" prefWidth="74.0" stylesheets="@../css/style.css" text="Añadir">
+                     <styleClass>
+                        <String fx:value="color-verde" />
+                        <String fx:value="bordes-redondos" />
+                     </styleClass>
+                  </Button>
+                  <Label fx:id="ErrorNombreAsig" layoutX="42.0" layoutY="113.0" prefHeight="17.0" prefWidth="169.0" textFill="RED" />
                </children>
             </Pane>
-            <Pane fx:id="paneVincularConCurso" layoutX="335.0" layoutY="127.0" prefHeight="166.0" prefWidth="258.0">
+            <Pane fx:id="paneVincularConCurso" layoutX="280.0" layoutY="183.0" prefHeight="166.0" prefWidth="258.0">
                <children>
                   <Label layoutX="8.0" layoutY="14.0" prefHeight="17.0" prefWidth="248.0" text="Selecciona el curso al cual añadir la asignatura" />
                   <ComboBox fx:id="listaCursos" disable="true" layoutX="54.0" layoutY="72.0" prefHeight="25.0" prefWidth="169.0" promptText="Seleccionar Curso" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
@@ -192,9 +190,33 @@
                   <Label fx:id="errorVincularAsig" alignment="CENTER" layoutX="1.0" layoutY="135.0" prefHeight="17.0" prefWidth="258.0" textFill="RED" />
                </children>
             </Pane>
-            <Label alignment="CENTER" layoutX="97.0" layoutY="88.0" prefHeight="37.0" prefWidth="169.0" text="AÑADIR ASIGNATURA" />
-            <Label alignment="CENTER" layoutX="333.0" layoutY="94.0" prefHeight="37.0" prefWidth="258.0" text="AÑADIR ASIGNATURA A UN CURSO" />
+            <Label alignment="CENTER" layoutX="63.0" layoutY="146.0" prefHeight="37.0" prefWidth="169.0" text="AÑADIR ASIGNATURA" />
+            <Label alignment="CENTER" layoutX="280.0" layoutY="146.0" prefHeight="37.0" prefWidth="258.0" text="AÑADIR ASIGNATURA A UN CURSO" />
+            <Pane layoutX="538.0" layoutY="183.0" prefHeight="143.0" prefWidth="267.0">
+               <children>
+                  <Label layoutX="57.0" layoutY="12.0" prefHeight="17.0" prefWidth="144.0" text="Nombre de la asignatura" />
+                  <Button fx:id="botonEliminarAsignatura" layoutX="92.0" layoutY="78.0" mnemonicParsing="false" onAction="#eliminar_asignatura" prefHeight="25.0" prefWidth="74.0" stylesheets="@../css/style.css" text="Eliminar">
+                     <styleClass>
+                        <String fx:value="color-verde" />
+                        <String fx:value="bordes-redondos" />
+                     </styleClass>
+                  </Button>
+                  <Label fx:id="ErrorNombreAsig1" layoutX="42.0" layoutY="113.0" prefHeight="17.0" prefWidth="169.0" textFill="RED" />
+                  <ComboBox fx:id="listaAsignaturasEliminar" layoutX="44.0" layoutY="41.0" prefHeight="25.0" prefWidth="169.0" promptText="Seleccionar Asignatura" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
+               </children>
+            </Pane>
          </children></Pane>
-      <Pane fx:id="mostrarEliminarApunte" layoutX="14.0" layoutY="186.0" prefHeight="438.0" prefWidth="817.0" styleClass="pdflateral" stylesheets="@../css/style.css" visible="false" />
+      <Pane fx:id="mostrarEliminarApunte" layoutX="14.0" layoutY="177.0" prefHeight="438.0" prefWidth="817.0" styleClass="pdflateral" stylesheets="@../css/style.css">
+         <children>
+            <TableView fx:id="tabla" layoutX="139.0" layoutY="14.0" prefHeight="166.0" prefWidth="586.0">
+              <columns>
+                <TableColumn fx:id="columnaIDReporte" prefWidth="99.0" text="ID REPORTE" />
+                <TableColumn fx:id="columnaNombrePDF" prefWidth="113.0" text="NOMBRE PDF" />
+                  <TableColumn fx:id="columnaCurso" prefWidth="78.0" text="CURSO" />
+                  <TableColumn fx:id="columnaAsignatura" prefWidth="141.0" text="ASIGNATURA" />
+                  <TableColumn fx:id="columnaNombreUsuario" prefWidth="154.0" text="NOMBRE USUARIO" />
+              </columns>
+            </TableView>
+         </children></Pane>
    </children>
 </AnchorPane>

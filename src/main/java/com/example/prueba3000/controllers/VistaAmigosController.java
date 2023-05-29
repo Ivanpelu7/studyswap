@@ -140,7 +140,7 @@ public class VistaAmigosController implements Initializable {
                     try {
                         HBox hBox = fxmlLoader.load();
                         AmigosItemController aic = fxmlLoader.getController();
-                        aic.setData(user);
+                        aic.setData(user,myListener);
                         vbox_users.add(hBox, column, row++);
                         GridPane.setMargin(hBox, new Insets(10));
 

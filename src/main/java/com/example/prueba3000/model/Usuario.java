@@ -115,4 +115,11 @@ public class Usuario {
     public void setFotoPerfil(Image fotoPerfil) {
         this.fotoPerfil = fotoPerfil;
     }
+
+    @Override
+    public String toString() {
+        return this.getNombreUsuario();
+
+
+    }
 }

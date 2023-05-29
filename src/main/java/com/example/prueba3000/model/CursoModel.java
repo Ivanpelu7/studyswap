@@ -83,10 +83,16 @@ public class CursoModel extends DBUtil {
         int rs=ps.executeUpdate();
     }
 
-    public int  eliminarCurso(Curso curso) throws SQLException {
-        String query = "delete from cursos where id_curso= "+curso.getId();
-        PreparedStatement ps = getConexion().prepareStatement(query);
-        int rs=ps.executeUpdate();
+    public int  eliminarCurso(Integer id_curso) throws SQLException {
+        String query1 = "delete from pertenece where id_curso= "+id_curso;
+        PreparedStatement ps1 = getConexion().prepareStatement(query1);
+        int rs1=ps1.executeUpdate();
+
+
+            String query = "delete from cursos where id_curso= " + id_curso;
+            PreparedStatement ps = getConexion().prepareStatement(query);
+             int rs = ps.executeUpdate();
+
 
         return rs;
     }

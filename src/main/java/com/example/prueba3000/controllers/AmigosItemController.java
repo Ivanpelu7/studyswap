@@ -2,6 +2,7 @@ package com.example.prueba3000.controllers;
 
 import com.example.prueba3000.model.Usuario;
 import com.example.prueba3000.util.MyListener;
+import javafx.event.Event;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -18,18 +19,19 @@ public class AmigosItemController {
     private ImageView fotohombre;
     @javafx.fxml.FXML
     private HBox seleccionado;
-    private MyListener myslistener;
+    private MyListener mylistener;
     @javafx.fxml.FXML
     private ImageView fotomujer;
 
     @javafx.fxml.FXML
-    private void click() throws SQLException {
-        myslistener.onclicklistener(usuario);
+    public void click(Event event) throws SQLException {
+        mylistener.onclicklistener(usuario);
     }
 
-    public void setData(Usuario user) throws SQLException {
+
+    public void setData(Usuario user,MyListener myListener) throws SQLException {
         this.usuario = user;
-        this.myslistener = myslistener;
+        this.mylistener = myListener;
         System.out.println(user.getNombreUsuario());
         if (user.getSexo().equals("M")) {
             fotohombre.setVisible(true);
@@ -44,4 +46,7 @@ public class AmigosItemController {
 
 
     }
+
+
+
 }
