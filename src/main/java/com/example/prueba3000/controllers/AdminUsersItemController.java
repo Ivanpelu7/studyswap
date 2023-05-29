@@ -67,11 +67,7 @@ public class AdminUsersItemController {
         if(a.getResult() == ButtonType.OK){
             um.eliminarUsuario(this.usuario);
 
-            FXMLLoader admin = new FXMLLoader(Main.class.getResource("vistas/Administracion.fxml"));
 
-            Parent root = admin.load();
-
-            AdministradorController ac= admin.getController();
 
 
 

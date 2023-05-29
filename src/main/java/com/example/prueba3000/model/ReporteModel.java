@@ -2,17 +2,14 @@ package com.example.prueba3000.model;
 
 import com.example.prueba3000.util.DBUtil;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 public class ReporteModel extends DBUtil {
-
-    public ReporteModel() {
-
-    }
-
-    public void insertarReporte(Reporte reporte) throws SQLException {
+    public void insertarReporte(Reporte reporte) throws SQLException, SQLException {
 
         String query = "INSERT INTO reportes(id_usuario, id_apunte, mensaje) VALUES(?, ?, ?)";
 
@@ -43,4 +40,36 @@ public class ReporteModel extends DBUtil {
             return true;
         }
     }
+
+    public HashMap<Integer, Reporte> recuperarReportes() throws SQLException, IOException {
+        HashMap<Integer,Reporte>reportes = new HashMap<>();
+
+        HashMap<Integer, Apunte> apuntes = new ApunteModel().recuperarApuntes();
+        HashMap<Integer, Usuario> usuarios = new UsuarioModel().recuperarUsuarios();
+
+        String query = "SELECT * FROM reportes";
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+
+            Integer id = rs.getInt("id_reporte");
+            Integer id_usuario=rs.getInt("id_usuario");
+            Integer id_apunte= rs.getInt("id_apunte");
+            String mensaje=rs.getString("mensaje");
+
+
+            Apunte a= apuntes.get(id_apunte);
+            Usuario u = usuarios.get(id_usuario);
+
+            Reporte r= new Reporte(id, a, u, mensaje);
+            reportes.put(id, r);
+        }
+
+        return reportes;
+    }
 }
+
+

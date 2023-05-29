@@ -34,6 +34,7 @@ public class Reporte {
         return id;
     }
 
+
     public void setId(int id) {
         this.id = id;
     }
@@ -46,11 +47,9 @@ public class Reporte {
         this.usuario = usuario;
     }
 
-    public String getMensaje() {
-        return mensaje;
-    }
+    public String getMensaje() {return mensaje;}
 
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
-    }
+    public void setMensaje(String mensaje) {this.mensaje = mensaje;}
+
+
 }

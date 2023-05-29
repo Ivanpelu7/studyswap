@@ -1,9 +1,7 @@
 package com.example.prueba3000.model;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 
@@ -48,35 +46,12 @@ public class Apunte {
         this.autor = autor;
     }
 
-    public Apunte(Integer id, String nombre, Blob pdf, Integer puntuacion,Usuario autor) {
-        this.id=id;
-        this.nombre=nombre;
-        this.pdf=pdf;
-        this.puntuacion=puntuacion;
-        this.autor=autor;
-    }
 
 
 
 
-    public Apunte(Integer id, String nombre, Curso c, Asignatura a, Integer puntuacion, Usuario u) {
-        this.id=id;
-        this.nombre=nombre;
-        this.curso=c;
-        this.asignatura=a;
-        this.puntuacion=puntuacion;
-        this.autor=u;
 
-    }
 
-    public Apunte(Integer id, String nombre, Curso curso, Apunte asignatura, Integer puntuacion, Usuario usuario) {
-        this.id=id;
-        this.nombre=nombre;
-        this.curso=curso;
-        this.puntuacion=puntuacion;
-        this.autor=usuario;
-
-    }
 
 
     public int getId() {
@@ -142,4 +117,11 @@ public class Apunte {
     public void setAutor(Usuario autor) {
         this.autor = autor;
     }
+
+    @Override
+    public String toString() {
+        return  this.nombre+"  "+this.curso.getNombre()+"  "+this.asignatura.getNombre();
+    }
+
+
 }

@@ -7,8 +7,10 @@ import com.example.prueba3000.model.*;
 import com.example.prueba3000.util.Validador;
 import javafx.beans.value.ObservableListValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,6 +25,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AdministradorController implements Initializable {
@@ -93,15 +96,32 @@ public class AdministradorController implements Initializable {
     @FXML
     private TableView tabla;
     @FXML
-    private TableColumn columnaNombrePDF;
-    @FXML
-    private TableColumn columnaCurso;
-    @FXML
-    private TableColumn columnaAsignatura;
-    @FXML
     private TableColumn columnaNombreUsuario;
     @FXML
     private TableColumn columnaIDReporte;
+    @FXML
+    private TableColumn columnaPDF;
+    private  int posicionentabla;
+    @FXML
+    private TextField idReporte;
+    @FXML
+    private TextField NombrePDF;
+    @FXML
+    private TextField Asignatura;
+    @FXML
+    private TextField Curso;
+    @FXML
+    private TextField NombreUsuario;
+    @FXML
+    private TextArea Mensaje;
+    @FXML
+    private Button botonEliminar;
+    @FXML
+    private Button botonVer;
+    @FXML
+    private Pane paneMostrarReportes;
+    private Reporte reporteSeleccionado;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -229,17 +249,21 @@ public class AdministradorController implements Initializable {
 
         mostrarAñadirAsignatura.setVisible(false);
 
+        paneMostrarReportes.setVisible(false );
+
         columnaIDReporte.setCellValueFactory(new PropertyValueFactory("id"));
-        columnaNombrePDF.setCellValueFactory(new PropertyValueFactory("nombre"));
-        columnaCurso.setCellValueFactory(new PropertyValueFactory("curso"));
-        columnaAsignatura.setCellValueFactory(new PropertyValueFactory("asignatura") );
-        columnaNombreUsuario.setCellValueFactory(new PropertyValueFactory("autor") );
+        columnaPDF.setCellValueFactory(new PropertyValueFactory("apunte"));
+        columnaNombreUsuario.setCellValueFactory(new PropertyValueFactory("usuario") );
+
+        ReporteModel rm= new ReporteModel();
+        ObservableList<Reporte> reportes = FXCollections.observableArrayList(rm.recuperarReportes().values());
+
+        tabla.setItems(reportes);
 
 
-        ApunteModel am= new ApunteModel();
-        ObservableList<Apunte> apuntes = FXCollections.observableArrayList(am.recuperarApuntesTabla().values());
-        tabla.setItems(apuntes);
     }
+
+
 
 
 
@@ -427,4 +451,56 @@ public class AdministradorController implements Initializable {
 
 
 
+
+    @FXML
+    public void click(Event event) {
+        ReporteSeleccionado();
+    }
+    public Reporte getReporte(){
+        if(tabla != null){
+            ObservableList<Reporte> tabl= tabla.getSelectionModel().getSelectedItems();
+            if(tabl.size() ==1){
+                final Reporte reporteSeleccionado= tabl.get(0);
+                return reporteSeleccionado;
+            }
+        }
+        return null;
+    }
+
+    private void ReporteSeleccionado() {
+        ArrayList<Reporte> reportes= new ArrayList<>(tabla.getItems());
+        final Reporte reporte=getReporte();
+        posicionentabla=reportes.indexOf(reporte);
+
+        this.reporteSeleccionado=reporte;
+        paneMostrarReportes.setVisible(true);
+        System.out.println("reporte.getUsuario()");
+        if(reporte != null){
+           idReporte.setText(String.valueOf(reporte.getId()));
+           NombrePDF.setText(reporte.getApunte().getNombre());
+           Asignatura.setText(reporte.getApunte().getAsignatura().getNombre());
+           Curso.setText(reporte.getApunte().getCurso().getNombre());
+           NombreUsuario.setText(reporte.getUsuario().getNombreUsuario());
+           Mensaje.setText(reporte.getMensaje());
+        }
+    }
+
+
+    @FXML
+    public void eliminarPdf(ActionEvent actionEvent) throws SQLException, IOException {
+        ApunteModel am= new ApunteModel();
+        am.eliminarApunte(this.reporteSeleccionado.getApunte());
+
+        FXMLLoader amigos = new FXMLLoader(Main.class.getResource("vistas/Administracion.fxml"));
+
+        Parent root = amigos.load();
+
+        anchor.getChildren().setAll(root);
+    }
+
+    @FXML
+    public void verPdf(ActionEvent actionEvent) {
+    }
 }
+
+
