@@ -116,4 +116,16 @@ public class Validador {
             throw new RuntimeException(e);
         }
     }
+
+    public boolean validarCalificacion(Usuario usuario, Apunte apunte) throws SQLException {
+
+        ApunteModel apunteModel = new ApunteModel();
+
+        if (apunteModel.comprobarPuntuacionExiste(usuario, apunte)) {
+            return true;
+
+        } else {
+            return false;
+        }
+    }
 }

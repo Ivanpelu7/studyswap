@@ -4,6 +4,7 @@ module com.example.prueba3000 {
     requires java.sql;
     requires mysql.connector.j;
     requires java.desktop;
+    requires org.controlsfx.controls;
 
     opens com.example.prueba3000 to javafx.fxml;
     exports com.example.prueba3000;

@@ -44,7 +44,7 @@
                               <String fx:value="shadow" />
                            </styleClass>
                         </TextField>
-                        <TextField fx:id="labelEmail" editable="false" layoutX="412.0" layoutY="125.0" prefHeight="31.0" prefWidth="236.0" promptText="Correo electrónico" stylesheets="@../css/style.css">
+                        <TextField fx:id="labelEmail" editable="false" layoutX="297.0" layoutY="124.0" prefHeight="31.0" prefWidth="236.0" promptText="Correo electrónico" stylesheets="@../css/style.css">
                            <styleClass>
                               <String fx:value="bordes-redondos" />
                               <String fx:value="shadow" />
@@ -76,7 +76,7 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label layoutX="273.0" layoutY="130.0" text="Correo electrónico">
+                        <Label layoutX="158.0" layoutY="129.0" text="Correo electrónico">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -95,6 +95,18 @@
                            </cursor>
                         </Button>
                         <Circle fx:id="fotoCircle" fill="WHITE" layoutX="72.0" layoutY="79.0" radius="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" visible="false" />
+                        <Button fx:id="buttonEliminarCuenta" layoutX="593.0" layoutY="124.0" mnemonicParsing="false" onAction="#eliminarCuenta" style="-fx-background-color: red;" stylesheets="@../css/style.css" text="Eliminar cuenta" textFill="WHITE">
+                           <styleClass>
+                              <String fx:value="bordes-redondos" />
+                              <String fx:value="boton" />
+                           </styleClass>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                      </children>
                      <styleClass>
                         <String fx:value="pdflateral" />

@@ -139,6 +139,15 @@ public class AmigosModel extends DBUtil {
         return comprovarSolicitud;
     }
 
+    public void eliminarAmistad(Usuario usuario) throws SQLException {
+
+        String query = "DELETE FROM amigos WHERE id_usuario = " + usuario.getId() + " OR id_amigo = " + usuario.getId();
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ps.executeUpdate();
+    }
+
 }
 
 

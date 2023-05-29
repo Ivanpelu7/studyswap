@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane prefHeight="536.0" prefWidth="326.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.ApunteInformacionController">
+   <children>
+      <ImageView fitHeight="117.0" fitWidth="110.0" layoutX="109.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/pdf.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="textFieldCurso" editable="false" layoutX="91.0" layoutY="306.0" prefHeight="0.0" prefWidth="195.0" stylesheets="@../css/style.css">
+         <styleClass>
+            <String fx:value="bordes-redondos" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </TextField>
+      <Label layoutX="36.0" layoutY="308.0" text="Curso">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="19.0" layoutY="14.0" prefHeight="55.0" prefWidth="284.0" stylesheets="@../css/style.css">
+         <children>
+            <Label fx:id="labelNombreApunte" alignment="CENTER" layoutX="4.0" layoutY="12.0" prefHeight="31.0" prefWidth="284.0" text="Nombre apunte">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="pdflateral" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </AnchorPane>
+      <TextField fx:id="textFieldAsig" editable="false" layoutX="113.0" layoutY="348.0" prefHeight="0.0" prefWidth="195.0" stylesheets="@../css/style.css">
+         <styleClass>
+            <String fx:value="bordes-redondos" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </TextField>
+      <Label layoutX="18.0" layoutY="350.0" text="Asignatura">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldAutor" editable="false" layoutX="96.0" layoutY="388.0" prefHeight="0.0" prefWidth="195.0" stylesheets="@../css/style.css">
+         <styleClass>
+            <String fx:value="bordes-redondos" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </TextField>
+      <Label layoutX="40.0" layoutY="390.0" text="Autor">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonEliminar" layoutX="85.0" layoutY="441.0" mnemonicParsing="false" onAction="#eliminarApunte" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: red;" stylesheets="@../css/style.css" text="Eliminar" textFill="WHITE">
+         <styleClass>
+            <String fx:value="boton" />
+            <String fx:value="bordes-redondos" />
+         </styleClass>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttonReportar" layoutX="85.0" layoutY="441.0" mnemonicParsing="false" onAction="#reportarApunte" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: red;" stylesheets="@../css/style.css" text="Reportar" textFill="WHITE">
+         <styleClass>
+            <String fx:value="boton" />
+            <String fx:value="bordes-redondos" />
+         </styleClass>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttonCalificar" layoutX="85.0" layoutY="485.0" mnemonicParsing="false" onAction="#calificarApunte" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #70c07f;" stylesheets="@../css/style.css" text="Calificar" textFill="WHITE">
+         <styleClass>
+            <String fx:value="boton" />
+            <String fx:value="bordes-redondos" />
+         </styleClass>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Rating fx:id="puntuacion" layoutX="75.0" layoutY="252.0" />
+      <Label fx:id="labelTruco" layoutX="67.0" layoutY="243.0" prefHeight="48.0" prefWidth="195.0" />
+   </children>
+</AnchorPane>

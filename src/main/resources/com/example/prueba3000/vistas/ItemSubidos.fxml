@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorPanePDF" prefHeight="96.0" prefWidth="90.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.ApunteSubidoController">
+<AnchorPane fx:id="anchorPanePDF" onMouseReleased="#seleccionarApunte" prefHeight="96.0" prefWidth="90.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.ApunteSubidoController">
    <children>
       <AnchorPane prefHeight="96.0" prefWidth="91.0" stylesheets="@../css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>

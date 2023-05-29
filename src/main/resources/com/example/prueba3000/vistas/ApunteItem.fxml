@@ -5,8 +5,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import org.controlsfx.control.Rating?>
 
-<AnchorPane fx:id="anchorPanePDF" onMouseReleased="#clickApunte" prefHeight="96.0" prefWidth="90.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.ApunteItemController">
+<AnchorPane fx:id="anchorPanePDF" onMouseReleased="#clickApunte" prefHeight="269.0" prefWidth="281.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.ApunteItemController">
    <children>
       <AnchorPane prefHeight="96.0" prefWidth="91.0" stylesheets="@../css/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -16,6 +17,7 @@
                   <Image url="@../images/pdf.png" />
                </image>
             </ImageView>
+            <Rating layoutX="46.0" layoutY="119.0" prefHeight="18.0" prefWidth="90.0" styleClass="rate" stylesheets="@../css/style.css" />
          </children>
          <styleClass>
             <String fx:value="item" />

@@ -44,9 +44,6 @@
             <String fx:value="fondo-blanco" />
             <String fx:value="shadow" />
          </styleClass>
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
       </TextField>
       <TextField fx:id="textFieldRuta" editable="false" layoutX="46.0" layoutY="316.0" prefHeight="36.0" prefWidth="286.0" stylesheets="@../css/style.css">
          <styleClass>

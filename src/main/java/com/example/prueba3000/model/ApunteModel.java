@@ -150,4 +150,58 @@ public class ApunteModel extends DBUtil {
         ps.executeUpdate();
 
     }
+
+    public void eliminarApuntesUsuario(Usuario usuario) throws SQLException {
+
+        String query = "DELETE FROM apuntes WHERE id_autor = " + usuario.getId();
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ps.executeUpdate();
+
+        cerrarConexion();
+    }
+
+    public void eliminarDescargasUsuario(Usuario usuario) throws SQLException {
+
+        String query = "DELETE FROM descargas WHERE id_usuario = " + usuario.getId();
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ps.executeUpdate();
+
+        cerrarConexion();
+    }
+
+    public void calificarApunte(Usuario usuario, Apunte apunte, int calificacion) throws SQLException {
+
+        String query = "INSERT INTO puntuaciones(id_usuario, id_apunte, puntuacion) VALUES(?, ?, ?)";
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ps.setInt(1, usuario.getId());
+        ps.setInt(2, apunte.getId());
+        ps.setInt(3, calificacion);
+
+        ps.executeUpdate();
+
+        cerrarConexion();
+    }
+
+    public boolean comprobarPuntuacionExiste(Usuario usuario, Apunte apunte) throws SQLException {
+
+        String query = "SELECT * FROM puntuaciones WHERE id_usuario = " + usuario.getId() + " AND id_apunte = "
+                + apunte.getId();
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ResultSet resultSet = ps.executeQuery();
+
+        if (resultSet.next()) {
+            return false;
+
+        } else {
+            return true;
+        }
+    }
 }

@@ -128,8 +128,81 @@ public class UsuarioModel extends DBUtil {
 
         PreparedStatement ps = getConexion().prepareStatement(query);
         ps.executeUpdate();
+    }
 
+    public int modificarApellidos(Usuario usuario, String apellidos) throws SQLException {
 
+        String query = "UPDATE usuarios SET apellidos = ? WHERE id_usuario = " + usuario.getId();
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ps.setString(1, apellidos);
+
+        int i = ps.executeUpdate();
+
+        cerrarConexion();
+
+        return i;
+    }
+
+    public int modificarNombre(Usuario usuario, String nombre) throws SQLException {
+
+        String query = "UPDATE usuarios SET nombre = ? WHERE id_usuario = " + usuario.getId();
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ps.setString(1, nombre);
+
+        int i = ps.executeUpdate();
+
+        cerrarConexion();
+
+        return i;
+    }
+
+    public int modificarNombreUsuario(Usuario usuario, String nombreUsuario) throws SQLException {
+
+        String query = "UPDATE usuarios SET nombre_usuario = ? WHERE id_usuario = " + usuario.getId();
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ps.setString(1, nombreUsuario);
+
+        int i = ps.executeUpdate();
+
+        cerrarConexion();
+
+        return i;
+    }
+
+    public int modificarPassword(Usuario usuario, String password) throws SQLException {
+
+        String query = "UPDATE usuarios SET password = ? WHERE id_usuario = " + usuario.getId();
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ps.setString(1, password);
+
+        int i = ps.executeUpdate();
+
+        cerrarConexion();
+
+        return i;
+    }
+
+    public int modificarCorreoElectronico(Usuario usuario, String correoElectronico) throws SQLException {
+
+        String query = "UPDATE usuarios SET email = ? WHERE id_usuario = " + usuario.getId();
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ps.setString(1, correoElectronico);
+
+        int i = ps.executeUpdate();
+
+        cerrarConexion();
+
+        return i;
     }
 }
 

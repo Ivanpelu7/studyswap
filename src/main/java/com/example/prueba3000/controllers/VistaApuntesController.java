@@ -5,7 +5,6 @@ import com.example.prueba3000.model.*;
 import com.example.prueba3000.util.MyListener;
 import com.example.prueba3000.util.UsuarioHolder;
 import com.example.prueba3000.util.Validador;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
