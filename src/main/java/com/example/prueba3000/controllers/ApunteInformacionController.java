@@ -7,12 +7,14 @@ import com.example.prueba3000.model.Usuario;
 import com.example.prueba3000.util.UsuarioHolder;
 import com.example.prueba3000.util.Validador;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
 
@@ -42,6 +44,8 @@ public class ApunteInformacionController implements Initializable {
     @javafx.fxml.FXML
     private Label labelTruco;
     private Usuario usuario;
+    @FXML
+    private AnchorPane mainAnchor;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -111,7 +115,7 @@ public class ApunteInformacionController implements Initializable {
     }
 
     @javafx.fxml.FXML
-    public void calificarApunte(ActionEvent actionEvent) throws SQLException {
+    public void calificarApunte(ActionEvent actionEvent) throws SQLException, IOException {
 
         Validador v = new Validador();
 

@@ -45,7 +45,7 @@ public class VistaProgresoController implements Initializable {
 
             for (int i = 1; i <= 100; i++) {
                 updateProgress(i, 100);
-                Thread.sleep(50);
+                Thread.sleep(40);
             }
 
             return 0;
