@@ -16,8 +16,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
 
-<AnchorPane prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaApuntesController">
+<AnchorPane prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaApuntesController">
    <children>
       <BorderPane layoutX="244.0" layoutY="201.0" prefHeight="642.0" prefWidth="839.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -120,6 +121,8 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
+                        <Rating fx:id="puntuacionApunte" layoutX="53.0" layoutY="392.0" rating="0.0" />
+                        <Label layoutX="35.0" layoutY="390.0" prefHeight="36.0" prefWidth="210.0" />
                      </children>
                      <styleClass>
                         <String fx:value="pdflateral" />

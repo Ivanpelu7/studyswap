@@ -20,6 +20,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.controlsfx.control.Rating;
 
 import java.io.*;
 import java.net.URL;
@@ -59,11 +60,7 @@ public class VistaApuntesController implements Initializable {
     @javafx.fxml.FXML
     private Button botonDescargar;
     @javafx.fxml.FXML
-    private AnchorPane progressPane;
-    @javafx.fxml.FXML
-    private ProgressBar progressBar;
-    @javafx.fxml.FXML
-    private ProgressIndicator progressIndicator;
+    private Rating puntuacionApunte;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -200,6 +197,7 @@ public class VistaApuntesController implements Initializable {
         textFieldAsignatura.setText(apunte.getAsignatura().getNombre());
         textFieldAutor.setText(apunte.getAutor().getNombreUsuario());
         textFieldNombre.setText(apunte.getNombre());
+        puntuacionApunte.setRating(apunte.getPuntuacion());
     }
 
     @javafx.fxml.FXML

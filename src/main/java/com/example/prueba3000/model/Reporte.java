@@ -16,6 +16,12 @@ public class Reporte {
         this.mensaje = mensaje;
     }
 
+    public Reporte(Apunte apunte, Usuario usuario, String mensaje) {
+        this.apunte = apunte;
+        this.usuario = usuario;
+        this.mensaje = mensaje;
+    }
+
     public Apunte getApunte() {
         return apunte;
     }

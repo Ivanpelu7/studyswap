@@ -241,5 +241,14 @@ public class ApunteModel extends DBUtil {
         return apuntes;
     }
 
+    public void eliminarApunte(Apunte apunte) throws SQLException {
+
+        String query = "DELETE FROM apuntes WHERE id_apunte = " + apunte.getId();
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ps.executeUpdate();
+    }
+
 
 }

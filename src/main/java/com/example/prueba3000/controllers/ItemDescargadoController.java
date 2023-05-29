@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -35,6 +36,8 @@ public class ItemDescargadoController {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.setTitle("Apunte Descargado");
+        stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
         stage.show();
 
         ApunteInformacionController aic = loader.getController();

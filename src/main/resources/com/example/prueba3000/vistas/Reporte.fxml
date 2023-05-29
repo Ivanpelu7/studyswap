@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="276.0" prefWidth="397.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.ReporteController">
+   <children>
+      <Button fx:id="buttonEnviarReporte" layoutX="169.0" layoutY="225.0" mnemonicParsing="false" onAction="#enviarReporte" stylesheets="@../css/style.css" text="Enviar" textFill="WHITE">
+         <styleClass>
+            <String fx:value="bordes-redondos" />
+            <String fx:value="boton" />
+         </styleClass>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="mensajeReporte" layoutX="21.0" layoutY="59.0" prefHeight="158.0" prefWidth="354.0" promptText="250 caracteres max" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextArea>
+      <Label layoutX="21.0" layoutY="25.0" text="Escribe aqui tu motivo:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

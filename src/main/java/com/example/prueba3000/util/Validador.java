@@ -128,4 +128,16 @@ public class Validador {
             return false;
         }
     }
+
+    public boolean validarReporte(Usuario usuario, Apunte apunte) throws SQLException {
+
+        ReporteModel reporteModel = new ReporteModel();
+
+        if (reporteModel.reporteExisteUsuario(usuario, apunte)) {
+            return true;
+
+        } else {
+            return false;
+        }
+    }
 }

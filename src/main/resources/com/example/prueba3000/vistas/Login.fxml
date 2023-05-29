@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.LoginController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.LoginController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -25,13 +25,13 @@
                         <Font size="10.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="textFieldNombreUsuarioI" layoutX="76.0" layoutY="185.0" prefHeight="31.0" prefWidth="263.0" promptText="Nombre usuario" stylesheets="@../css/style.css">
+                  <TextField fx:id="textFieldNombreUsuarioI" focusTraversable="false" layoutX="76.0" layoutY="185.0" prefHeight="31.0" prefWidth="263.0" promptText="Nombre usuario" stylesheets="@../css/style.css">
                      <styleClass>
                         <String fx:value="shadow" />
                         <String fx:value="bordes-redondos" />
                      </styleClass>
                   </TextField>
-                  <PasswordField fx:id="textFieldPasswordI" layoutX="76.0" layoutY="233.0" prefHeight="31.0" prefWidth="263.0" promptText="Contraseña" stylesheets="@../css/style.css">
+                  <PasswordField fx:id="textFieldPasswordI" focusTraversable="false" layoutX="76.0" layoutY="233.0" prefHeight="31.0" prefWidth="263.0" promptText="Contraseña" stylesheets="@../css/style.css">
                      <styleClass>
                         <String fx:value="bordes-redondos" />
                         <String fx:value="shadow" />

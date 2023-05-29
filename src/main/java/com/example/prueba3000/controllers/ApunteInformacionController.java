@@ -1,15 +1,22 @@
 package com.example.prueba3000.controllers;
 
+import com.example.prueba3000.Main;
 import com.example.prueba3000.model.Apunte;
 import com.example.prueba3000.model.ApunteModel;
 import com.example.prueba3000.model.Usuario;
 import com.example.prueba3000.util.UsuarioHolder;
 import com.example.prueba3000.util.Validador;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -73,12 +80,37 @@ public class ApunteInformacionController implements Initializable {
     }
 
     @javafx.fxml.FXML
-    public void eliminarApunte(ActionEvent actionEvent) {
+    public void eliminarApunte(ActionEvent actionEvent) throws SQLException {
+
+        ApunteModel apunteModel = new ApunteModel();
+        apunteModel.eliminarApunte(this.apunte);
     }
 
     @javafx.fxml.FXML
-    public void reportarApunte(ActionEvent actionEvent) {
+    public void reportarApunte(ActionEvent actionEvent) throws IOException, SQLException {
 
+        Validador v = new Validador();
+
+        if (!v.validarReporte(this.usuario, this.apunte)) {
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setHeaderText(null);
+            a.setContentText("Ya has reportado este apunte anteriormente");
+            a.showAndWait();
+
+        } else {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/Reporte.fxml"));
+            Parent root = loader.load();
+
+            ReporteController reporteController = loader.getController();
+            reporteController.setApunte(this.apunte);
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Reporte");
+            stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
+            stage.show();
+        }
     }
 
     @javafx.fxml.FXML
@@ -109,10 +141,5 @@ public class ApunteInformacionController implements Initializable {
                 a.showAndWait();
             }
         }
-
-
-
     }
-
-
 }
