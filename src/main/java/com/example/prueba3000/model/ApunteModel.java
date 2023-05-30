@@ -23,7 +23,7 @@ public class ApunteModel extends DBUtil {
         HashMap<Integer, Curso> cursos = new CursoModel().recuperarCursos();
         HashMap<Integer, Usuario> usuarios = new UsuarioModel().recuperarUsuarios();
 
-        String query = "SELECT * FROM apuntes ORDER BY puntuacion DESC";
+        String query = "SELECT * FROM apuntes";
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
@@ -92,8 +92,7 @@ public class ApunteModel extends DBUtil {
 
         ArrayList<Apunte> apuntesFiltro = new ArrayList<>();
 
-        String query = "SELECT id_apunte FROM apuntes WHERE id_asignatura = " + a.getId() + " AND id_curso = " + c.getId()
-                + " ORDER BY puntuacion DESC";
+        String query = "SELECT id_apunte FROM apuntes WHERE id_asignatura = " + a.getId() + " AND id_curso = " + c.getId();
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
@@ -180,7 +179,7 @@ public class ApunteModel extends DBUtil {
 
     public void apunteDescargado(Apunte apunte, Usuario usuario) throws SQLException {
 
-        String query = "call añadirRegistroDescargas(" + usuario.getId() + ", " + apunte.getId() + ")";
+        String query = "call añadirRegistroDescargas("+ usuario.getId() + ", " + apunte.getId() + ")";
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
@@ -243,6 +242,7 @@ public class ApunteModel extends DBUtil {
     }
 
 
+
     public void eliminarApunte(Apunte apunte) throws SQLException {
 
         String query = "DELETE FROM apuntes WHERE id_apunte = " + apunte.getId();
@@ -271,4 +271,6 @@ public class ApunteModel extends DBUtil {
 
         return i;
     }
+
+
 }

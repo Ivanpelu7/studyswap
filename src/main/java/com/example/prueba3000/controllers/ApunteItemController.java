@@ -5,6 +5,7 @@ import com.example.prueba3000.util.MyListener;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.net.URL;
@@ -21,6 +22,18 @@ public class ApunteItemController implements Initializable {
     private Label labelNombreUsuario;
     private Apunte apunte;
     private MyListener myListener;
+    @javafx.fxml.FXML
+    private ImageView Estrella0;
+    @javafx.fxml.FXML
+    private ImageView Estrella1;
+    @javafx.fxml.FXML
+    private ImageView Estrella2;
+    @javafx.fxml.FXML
+    private ImageView Estrella3;
+    @javafx.fxml.FXML
+    private ImageView Estrella4;
+    @javafx.fxml.FXML
+    private ImageView Estrella5;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -34,6 +47,24 @@ public class ApunteItemController implements Initializable {
         this.myListener = myListener;
 
         labelNombreUsuario.setText(apunte.getNombre());
+        if(apunte.getPuntuacion()==0){
+            Estrella0.setVisible(true);
+        }
+        if(apunte.getPuntuacion()==1){
+            Estrella1.setVisible(true);
+        }
+        if(apunte.getPuntuacion()==2){
+            Estrella2.setVisible(true);
+        }
+        if(apunte.getPuntuacion()==3){
+            Estrella3.setVisible(true);
+        }
+        if(apunte.getPuntuacion()==4){
+            Estrella4.setVisible(true);
+        }
+        if(apunte.getPuntuacion()==5){
+            Estrella5.setVisible(true);
+        }
     }
 
     @javafx.fxml.FXML

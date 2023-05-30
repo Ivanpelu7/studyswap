@@ -220,7 +220,7 @@
             </Pane>
             <Label alignment="CENTER" layoutX="547.0" layoutY="128.0" prefHeight="37.0" prefWidth="258.0" text="ELIMINAR ASIGNATURA" />
          </children></Pane>
-      <Pane fx:id="mostrarEliminarApunte" layoutX="118.0" layoutY="164.0" prefHeight="200.0" prefWidth="610.0" styleClass="pdflateral" stylesheets="@../css/style.css">
+      <Pane fx:id="mostrarEliminarApunte" layoutX="118.0" layoutY="164.0" prefHeight="200.0" prefWidth="610.0" styleClass="pdflateral" stylesheets="@../css/style.css" visible="false">
          <children>
             <TableView fx:id="tabla" layoutX="64.0" layoutY="17.0" onMouseClicked="#click" prefHeight="166.0" prefWidth="482.0">
               <columns>

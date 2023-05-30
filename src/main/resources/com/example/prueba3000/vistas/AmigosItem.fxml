@@ -6,6 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <HBox fx:id="seleccionado" onMousePressed="#click" prefHeight="57.0" prefWidth="445.0" style="-fx-background-color: #ffff;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.AmigosItemController">
@@ -22,16 +23,17 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <ImageView fx:id="fotomujer" fitHeight="50.0" fitWidth="50.0" layoutX="9.0" layoutY="5.0">
+            <ImageView fx:id="fotomujer" fitHeight="50.0" fitWidth="50.0" layoutX="9.0" layoutY="5.0" visible="false">
                <image>
                   <Image url="@../images/mujer.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="fotohombre" fitHeight="50.0" fitWidth="50.0" layoutX="9.0" layoutY="5.0">
+            <ImageView fx:id="fotohombre" fitHeight="50.0" fitWidth="50.0" layoutX="9.0" layoutY="5.0" visible="false">
                <image>
                   <Image url="@../images/hombre.png" />
                </image>
             </ImageView>
+            <Circle fx:id="circuloImagen" fill="DODGERBLUE" layoutX="34.0" layoutY="29.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </Pane>
    </children>
