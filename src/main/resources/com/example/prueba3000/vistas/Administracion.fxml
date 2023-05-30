@@ -224,13 +224,13 @@
          <children>
             <TableView fx:id="tabla" layoutX="64.0" layoutY="17.0" onMouseClicked="#click" prefHeight="166.0" prefWidth="482.0">
               <columns>
-                <TableColumn fx:id="columnaIDReporte" prefWidth="74.0" text="ID REPORTE" />
-                <TableColumn fx:id="columnaPDF" prefWidth="254.0" text="PDF" />
-                  <TableColumn fx:id="columnaNombreUsuario" prefWidth="152.0" text="NOMBRE USUARIO" />
+                <TableColumn fx:id="columnaIDReporte" maxWidth="740.0" minWidth="30.0" prefWidth="74.0" text="ID REPORTE" />
+                <TableColumn fx:id="columnaPDF" maxWidth="2540.0" minWidth="30.0" prefWidth="254.0" text="PDF" />
+                  <TableColumn fx:id="columnaNombreUsuario" maxWidth="1520.0" minWidth="30.0" prefWidth="152.0" text="NOMBRE USUARIO" />
               </columns>
             </TableView>
          </children></Pane>
-      <Pane fx:id="paneMostrarReportes" layoutX="115.0" layoutY="405.0" prefHeight="200.0" prefWidth="610.0" styleClass="pdflateral" stylesheets="@../css/style.css" visible="false">
+      <Pane fx:id="paneMostrarReportes" layoutX="115.0" layoutY="405.0" prefHeight="200.0" prefWidth="610.0" styleClass="pdflateral" stylesheets="@../css/style.css">
          <children>
             <ImageView fitHeight="104.0" fitWidth="88.0" layoutX="7.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -243,8 +243,31 @@
             <TextField fx:id="Curso" layoutX="395.0" layoutY="14.0" prefHeight="25.0" prefWidth="100.0" />
             <TextField fx:id="NombreUsuario" layoutX="500.0" layoutY="14.0" prefHeight="25.0" prefWidth="100.0" />
             <TextArea fx:id="Mensaje" layoutX="102.0" layoutY="50.0" prefHeight="97.0" prefWidth="500.0" />
-            <Button fx:id="botonEliminar" layoutX="381.0" layoutY="149.0" mnemonicParsing="false" onAction="#eliminarPdf" prefHeight="37.0" prefWidth="100.0" text="ELIMINAR" />
-            <Button fx:id="botonVer" layoutX="188.0" layoutY="149.0" mnemonicParsing="false" onAction="#verPdf" prefHeight="37.0" prefWidth="100.0" text="VER" />
+            <Button fx:id="botonEliminar" layoutX="439.0" layoutY="147.0" mnemonicParsing="false" onAction="#eliminarPdf" prefHeight="50.0" prefWidth="44.0" styleClass="boton-transparent" stylesheets="@../css/style.css">
+               <graphic>
+                  <ImageView fitHeight="42.0" fitWidth="40.0">
+                     <image>
+                        <Image url="@../images/expediente%20(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="botonVer" layoutX="165.0" layoutY="147.0" mnemonicParsing="false" onAction="#verPdf" prefHeight="50.0" prefWidth="38.0" styleClass="boton-transparent" stylesheets="@../css/style.css">
+               <graphic>
+                  <ImageView fitHeight="42.0" fitWidth="40.0">
+                     <image>
+                        <Image url="@../images/ver-lista.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="botonEliminarReporte" layoutX="293.0" layoutY="152.0" mnemonicParsing="false" onAction="#eliminarReporte" prefHeight="50.0" prefWidth="63.0" styleClass="boton-transparent" stylesheets="@../css/style.css">
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="40.0">
+                     <image>
+                        <Image url="@../images/borrar.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </Pane>
    </children>

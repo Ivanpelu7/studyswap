@@ -39,7 +39,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AdministradorController  {
+public class AdministradorController {
     @javafx.fxml.FXML
     private AnchorPane anchor;
     @javafx.fxml.FXML
@@ -112,7 +112,7 @@ public class AdministradorController  {
     private TableColumn columnaIDReporte;
     @FXML
     private TableColumn columnaPDF;
-    private  int posicionentabla;
+    private int posicionentabla;
     @FXML
     private TextField idReporte;
     @FXML
@@ -132,12 +132,13 @@ public class AdministradorController  {
     @FXML
     private Pane paneMostrarReportes;
     private Reporte reporteSeleccionado;
-
-
+    @FXML
+    private Button botonEliminarReporte;
 
 
     @javafx.fxml.FXML
     public void Mostrar_eliminar_usuario() {
+        paneMostrarReportes.setVisible(false);
         mostrarEliminarUsuario.setVisible(true);
 
         mostrarAñadirCursos.setVisible(false);
@@ -154,10 +155,11 @@ public class AdministradorController  {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        ArrayList<Usuario>usuariosNoAdmins= new ArrayList<>();
-        for(Usuario u: usuariosHashmap.values() ){
-            if(u.getTipoUsuario()==0){
-                usuariosNoAdmins.add(u);}
+        ArrayList<Usuario> usuariosNoAdmins = new ArrayList<>();
+        for (Usuario u : usuariosHashmap.values()) {
+            if (u.getTipoUsuario() == 0) {
+                usuariosNoAdmins.add(u);
+            }
         }
 
         int column = 0;
@@ -196,9 +198,9 @@ public class AdministradorController  {
     }
 
 
-
     @javafx.fxml.FXML
-    public void Mostrar_editar_cursos( ) throws SQLException {
+    public void Mostrar_editar_cursos() throws SQLException {
+        paneMostrarReportes.setVisible(false);
         mostrarEliminarUsuario.setVisible(false);
 
         mostrarAñadirCursos.setVisible(true);
@@ -207,19 +209,18 @@ public class AdministradorController  {
 
         mostrarAñadirAsignatura.setVisible(false);
 
-        CursoModel cm= new CursoModel();
+        CursoModel cm = new CursoModel();
 
 
         nombre_editar_antiguo.setItems(cm.recuperarCursosOL());
         nombre_eliminar.setItems(cm.recuperarCursosOL());
 
 
-
-
     }
 
     @javafx.fxml.FXML
-    public void Mostrar_añadir_asignatura( ) throws SQLException {
+    public void Mostrar_añadir_asignatura() throws SQLException {
+        paneMostrarReportes.setVisible(false);
         mostrarEliminarUsuario.setVisible(false);
 
         mostrarAñadirCursos.setVisible(false);
@@ -228,10 +229,10 @@ public class AdministradorController  {
 
         mostrarAñadirAsignatura.setVisible(true);
 
-        CursoModel cm= new CursoModel();
+        CursoModel cm = new CursoModel();
         listaCursos.setItems(cm.recuperarCursosOL());
 
-        AsignaturaModel am= new AsignaturaModel();
+        AsignaturaModel am = new AsignaturaModel();
 
 
         listaAsignaturas.setItems(am.recuperarAsignaturasOL());
@@ -239,7 +240,8 @@ public class AdministradorController  {
     }
 
     @javafx.fxml.FXML
-    public void Mostrar_eliminar_apunte( ) throws SQLException, IOException {
+    public void Mostrar_eliminar_apunte() throws SQLException, IOException {
+        paneMostrarReportes.setVisible(false);
         mostrarEliminarUsuario.setVisible(false);
 
         mostrarAñadirCursos.setVisible(false);
@@ -248,13 +250,13 @@ public class AdministradorController  {
 
         mostrarAñadirAsignatura.setVisible(false);
 
-        paneMostrarReportes.setVisible(false );
+        paneMostrarReportes.setVisible(false);
 
         columnaIDReporte.setCellValueFactory(new PropertyValueFactory("id"));
         columnaPDF.setCellValueFactory(new PropertyValueFactory("apunte"));
-        columnaNombreUsuario.setCellValueFactory(new PropertyValueFactory("usuario") );
+        columnaNombreUsuario.setCellValueFactory(new PropertyValueFactory("usuario"));
 
-        ReporteModel rm= new ReporteModel();
+        ReporteModel rm = new ReporteModel();
         ObservableList<Reporte> reportes = FXCollections.observableArrayList(rm.recuperarReportes().values());
 
         tabla.setItems(reportes);
@@ -263,33 +265,28 @@ public class AdministradorController  {
     }
 
 
-
-
-
-
     @javafx.fxml.FXML
-    public void añadir_cursos( ) throws SQLException, IOException {
+    public void añadir_cursos() throws SQLException, IOException {
         labelErrorCrear.setVisible(false);
-        CursoModel cm= new CursoModel();
-        Curso c= new Curso(nombre_curso_crear.getText().toUpperCase());
+        CursoModel cm = new CursoModel();
+        Curso c = new Curso(nombre_curso_crear.getText().toUpperCase());
 
-        ArrayList<Curso>cursos=new ArrayList<>(cm.recuperarCursos().values());
+        ArrayList<Curso> cursos = new ArrayList<>(cm.recuperarCursos().values());
 
-        boolean existe=false;
+        boolean existe = false;
 
-        for(Curso curso:cursos){
-            if(curso.getNombre().equals(c.getNombre())){
+        for (Curso curso : cursos) {
+            if (curso.getNombre().equals(c.getNombre())) {
 
-                existe=true;
+                existe = true;
             }
 
         }
 
-        if(existe==true){
+        if (existe == true) {
             labelErrorCrear.setText("EL curso ya existe");
             labelErrorCrear.setVisible(true);
-        }
-        else {
+        } else {
             cm.crearCurso(c);
             nombre_editar_antiguo.setItems(cm.recuperarCursosOL());
             nombre_eliminar.setItems(cm.recuperarCursosOL());
@@ -300,13 +297,13 @@ public class AdministradorController  {
 
     @javafx.fxml.FXML
     public void Eliminar_cursos(ActionEvent actionEvent) throws SQLException {
-        CursoModel cm= new CursoModel();
+        CursoModel cm = new CursoModel();
 
-        Curso c= (Curso) nombre_eliminar.getValue();
+        Curso c = (Curso) nombre_eliminar.getValue();
 
-        int i=cm.eliminarCurso(c.getId());
-        if(i>0){
-            Alert a= new Alert(Alert.AlertType.INFORMATION);
+        int i = cm.eliminarCurso(c.getId());
+        if (i > 0) {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
             a.setHeaderText("Curso eliminado correctamente");
             a.showAndWait();
             nombre_editar_antiguo.setItems(cm.recuperarCursosOL());
@@ -314,32 +311,30 @@ public class AdministradorController  {
         }
 
 
-
     }
 
     @javafx.fxml.FXML
     public void Editar_Cursos(ActionEvent actionEvent) throws SQLException {
         labelErrorEditar.setVisible(false);
-        CursoModel cm= new CursoModel();
-        String nombrenuevo= nombre_editar_nuevo.getText( ).toUpperCase();
-        String nombreantiguo= nombre_editar_antiguo.getValue().toString();
-        ArrayList<Curso>cursos=new ArrayList<>(cm.recuperarCursos().values());
-        boolean existe=false;
+        CursoModel cm = new CursoModel();
+        String nombrenuevo = nombre_editar_nuevo.getText().toUpperCase();
+        String nombreantiguo = nombre_editar_antiguo.getValue().toString();
+        ArrayList<Curso> cursos = new ArrayList<>(cm.recuperarCursos().values());
+        boolean existe = false;
 
-        for(Curso curso:cursos){
-            if(curso.getNombre().equals(nombrenuevo)){
-                existe=true;
+        for (Curso curso : cursos) {
+            if (curso.getNombre().equals(nombrenuevo)) {
+                existe = true;
             }
-            System.out.println(curso.getNombre()+" "+nombrenuevo+" "+existe);
+            System.out.println(curso.getNombre() + " " + nombrenuevo + " " + existe);
         }
 
-        if(existe==true){
+        if (existe == true) {
             labelErrorEditar.setText("El nombre seleccionado ya existe");
             labelErrorEditar.setVisible(true);
-        }
-        else {
-            cm.editarCurso(nombrenuevo,nombreantiguo);
-            System.out.println(nombrenuevo+nombreantiguo);
+        } else {
+            cm.editarCurso(nombrenuevo, nombreantiguo);
+            System.out.println(nombrenuevo + nombreantiguo);
             nombre_editar_nuevo.setText(" ");
         }
         nombre_editar_antiguo.setItems(cm.recuperarCursosOL());
@@ -350,105 +345,99 @@ public class AdministradorController  {
     public void Añadir_asignatura(ActionEvent actionEvent) throws SQLException {
         ErrorNombreAsig.setVisible(false);
         AsignaturaModel am = new AsignaturaModel();
-        HashMap<Integer,Asignatura> asignaturas = new HashMap<>(am.recuperarAsignaturas());
+        HashMap<Integer, Asignatura> asignaturas = new HashMap<>(am.recuperarAsignaturas());
 
-        String nombreAsignueva= nombreAsignaturaAñadir.getText();
-        boolean existe=false;
-        for(Asignatura a: asignaturas.values()) {
+        String nombreAsignueva = nombreAsignaturaAñadir.getText();
+        boolean existe = false;
+        for (Asignatura a : asignaturas.values()) {
             if (a.getNombre().equalsIgnoreCase(nombreAsignueva)) {
                 existe = true;
             }
 
         }
 
-            if(existe==true){
-                ErrorNombreAsig.setText("Esta asignatura ya existe");
-                ErrorNombreAsig.setVisible(true);
-            }
-            else {
-                    am.añadirAsignatura(nombreAsignueva);
-            }
+        if (existe == true) {
+            ErrorNombreAsig.setText("Esta asignatura ya existe");
+            ErrorNombreAsig.setVisible(true);
+        } else {
+            am.añadirAsignatura(nombreAsignueva);
+        }
 
 
     }
+
     @FXML
     public void filtrarAsignatura(ActionEvent actionEvent) throws SQLException {
         AsignaturaModel am = new AsignaturaModel();
-        CursoModel cm= new CursoModel();
-        Validador v= new Validador();
-        ObservableList<Curso> cursos= FXCollections.observableArrayList();
+        CursoModel cm = new CursoModel();
+        Validador v = new Validador();
+        ObservableList<Curso> cursos = FXCollections.observableArrayList();
 
         listaCursos.setDisable(false);
 
 
     }
+
     @FXML
     public void VincularAsignaturaCurso(ActionEvent actionEvent) throws SQLException {
-        Validador v= new Validador();
+        Validador v = new Validador();
 
 
-        if(!v.validarFiltro(listaCursos, listaAsignaturas)){
+        if (!v.validarFiltro(listaCursos, listaAsignaturas)) {
 
             errorVincularAsig.setText("Debe seleccionar una asignatura y un curso");
-        }
-        else {
+        } else {
             errorVincularAsig.setText("");
-            String nombreAsig= listaAsignaturas.getValue().toString();
-            String nombreCurso= listaCursos.getValue().toString();
-            AsignaturaModel am= new AsignaturaModel();
-            CursoModel cm= new CursoModel();
+            String nombreAsig = listaAsignaturas.getValue().toString();
+            String nombreCurso = listaCursos.getValue().toString();
+            AsignaturaModel am = new AsignaturaModel();
+            CursoModel cm = new CursoModel();
 
-            HashMap<Integer,Asignatura> asignaturas = new HashMap<>(am.recuperarAsignaturas());
-            HashMap<Integer,Curso> cursos = new HashMap<>(cm.recuperarCursos());
+            HashMap<Integer, Asignatura> asignaturas = new HashMap<>(am.recuperarAsignaturas());
+            HashMap<Integer, Curso> cursos = new HashMap<>(cm.recuperarCursos());
 
             Asignatura asigantura = null;
             Curso curso = null;
-            for(Asignatura a: asignaturas.values()){
-                if(nombreAsig.equalsIgnoreCase(a.getNombre())){
-                    asigantura=a;
+            for (Asignatura a : asignaturas.values()) {
+                if (nombreAsig.equalsIgnoreCase(a.getNombre())) {
+                    asigantura = a;
                 }
             }
 
-            for(Curso c:cursos.values()){
-                if(nombreCurso.equalsIgnoreCase(c.getNombre())){
-                    curso=c;
+            for (Curso c : cursos.values()) {
+                if (nombreCurso.equalsIgnoreCase(c.getNombre())) {
+                    curso = c;
                 }
             }
-            boolean pertenece=am.comprovarAsignaturaCurso(asigantura, curso);
-            if(pertenece==false){
-            am.vincularAsignaturaConCurso(curso, asigantura);
-            }
-            else{
+            boolean pertenece = am.comprovarAsignaturaCurso(asigantura, curso);
+            if (pertenece == false) {
+                am.vincularAsignaturaConCurso(curso, asigantura);
+            } else {
                 errorVincularAsig.setText("La asignatura ya pertenece a este curso");
             }
         }
-
-
 
 
     }
 
     @FXML
     public void eliminar_asignatura(ActionEvent actionEvent) throws SQLException {
-        AsignaturaModel am= new AsignaturaModel();
-        Asignatura a= (Asignatura) listaAsignaturasEliminar.getValue();
+        AsignaturaModel am = new AsignaturaModel();
+        Asignatura a = (Asignatura) listaAsignaturasEliminar.getValue();
         am.eliminarAsignatura(a);
     }
-
-
-
-
 
 
     @FXML
     public void click(Event event) {
         ReporteSeleccionado();
     }
-    public Reporte getReporte(){
-        if(tabla != null){
-            ObservableList<Reporte> tabl= tabla.getSelectionModel().getSelectedItems();
-            if(tabl.size() ==1){
-                final Reporte reporteSeleccionado= tabl.get(0);
+
+    public Reporte getReporte() {
+        if (tabla != null) {
+            ObservableList<Reporte> tabl = tabla.getSelectionModel().getSelectedItems();
+            if (tabl.size() == 1) {
+                final Reporte reporteSeleccionado = tabl.get(0);
                 return reporteSeleccionado;
             }
         }
@@ -456,37 +445,45 @@ public class AdministradorController  {
     }
 
     private void ReporteSeleccionado() {
-        ArrayList<Reporte> reportes= new ArrayList<>(tabla.getItems());
-        final Reporte reporte=getReporte();
-        posicionentabla=reportes.indexOf(reporte);
-
-        this.reporteSeleccionado=reporte;
-        paneMostrarReportes.setVisible(true);
-        System.out.println("reporte.getUsuario()");
-        if(reporte != null){
-           idReporte.setText(String.valueOf(reporte.getId()));
-           NombrePDF.setText(reporte.getApunte().getNombre());
-           Asignatura.setText(reporte.getApunte().getAsignatura().getNombre());
-           Curso.setText(reporte.getApunte().getCurso().getNombre());
-           NombreUsuario.setText(reporte.getUsuario().getNombreUsuario());
-           Mensaje.setText(reporte.getMensaje());
+        ArrayList<Reporte> reportes = new ArrayList<>(tabla.getItems());
+        final Reporte reporte = getReporte();
+        posicionentabla = reportes.indexOf(reporte);
+        if (reportes.size() > 0) {
+            this.reporteSeleccionado = reporte;
+            paneMostrarReportes.setVisible(true);
+            System.out.println("reporte.getUsuario()");
+            if (reporte != null) {
+                idReporte.setText(String.valueOf(reporte.getId()));
+                NombrePDF.setText(reporte.getApunte().getNombre());
+                Asignatura.setText(reporte.getApunte().getAsignatura().getNombre());
+                Curso.setText(reporte.getApunte().getCurso().getNombre());
+                NombreUsuario.setText(reporte.getUsuario().getNombreUsuario());
+                Mensaje.setText(reporte.getMensaje());
+            }
         }
     }
 
 
     @FXML
     public void eliminarPdf(ActionEvent actionEvent) throws SQLException, IOException {
-        ApunteModel am= new ApunteModel();
-        ReporteModel rm= new ReporteModel();
-        rm.eliminarReporte(this.reporteSeleccionado);
-        am.eliminarApunte(this.reporteSeleccionado.getApunte());
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setHeaderText("¿Estas seguro que quieres eliminar el archivo?");
+        a.showAndWait();
+        if (a.getResult() == ButtonType.OK) {
+            ApunteModel am = new ApunteModel();
+            ReporteModel rm = new ReporteModel();
+            rm.eliminarReporte(this.reporteSeleccionado);
+            am.eliminarApunte(this.reporteSeleccionado.getApunte());
 
-        FXMLLoader amigos = new FXMLLoader(Main.class.getResource("vistas/Administracion.fxml"));
+            FXMLLoader admin = new FXMLLoader(Main.class.getResource("vistas/Administracion.fxml"));
 
-        Parent root = amigos.load();
+            Parent root = admin.load();
+            AdministradorController ac = admin.getController();
+            anchor.getChildren().setAll(root);
+            ac.actualizarPagina(4);
 
-        anchor.getChildren().setAll(root);
-        paneMostrarReportes.setVisible(false);
+            paneMostrarReportes.setVisible(false);
+        }
     }
 
     @FXML
@@ -523,7 +520,7 @@ public class AdministradorController  {
 
     public void actualizarPagina(int i) throws SQLException, IOException {
 
-        if(i==1){
+        if (i == 1) {
             Mostrar_eliminar_usuario();
             mostrarEliminarUsuario.setVisible(true);
 
@@ -534,8 +531,8 @@ public class AdministradorController  {
             mostrarAñadirAsignatura.setVisible(false);
         }
 
-        if(i==2){
-           Mostrar_editar_cursos();
+        if (i == 2) {
+            Mostrar_editar_cursos();
             mostrarEliminarUsuario.setVisible(false);
 
             mostrarAñadirCursos.setVisible(true);
@@ -545,18 +542,7 @@ public class AdministradorController  {
             mostrarAñadirAsignatura.setVisible(false);
         }
 
-        if(i==3){
-            Mostrar_eliminar_apunte();
-            mostrarEliminarUsuario.setVisible(false);
-
-            mostrarAñadirCursos.setVisible(false);
-
-            mostrarEliminarApunte.setVisible(true);
-
-            mostrarAñadirAsignatura.setVisible(false);
-        }
-
-        if(i==4){
+        if (i == 3) {
             Mostrar_añadir_asignatura();
             mostrarEliminarUsuario.setVisible(false);
 
@@ -565,9 +551,40 @@ public class AdministradorController  {
             mostrarEliminarApunte.setVisible(false);
 
             mostrarAñadirAsignatura.setVisible(true);
+        }
+
+        if (i == 4) {
+            Mostrar_eliminar_apunte();
+            mostrarEliminarUsuario.setVisible(false);
+
+            mostrarAñadirCursos.setVisible(false);
+
+            mostrarEliminarApunte.setVisible(true);
+
+            mostrarAñadirAsignatura.setVisible(false);
 
         }
     }
-}
 
+    @FXML
+    public void eliminarReporte(ActionEvent actionEvent) throws SQLException, IOException {
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setHeaderText("¿Estas seguro que quieres eliminar el reporte?");
+        a.showAndWait();
+        if (a.getResult() == ButtonType.OK) {
+            ApunteModel am = new ApunteModel();
+            ReporteModel rm = new ReporteModel();
+            rm.eliminarReporte(this.reporteSeleccionado);
+
+            FXMLLoader admin = new FXMLLoader(Main.class.getResource("vistas/Administracion.fxml"));
+
+            Parent root = admin.load();
+            AdministradorController ac = admin.getController();
+            anchor.getChildren().setAll(root);
+            ac.actualizarPagina(4);
+
+            paneMostrarReportes.setVisible(false);
+        }
+    }
+}
 
