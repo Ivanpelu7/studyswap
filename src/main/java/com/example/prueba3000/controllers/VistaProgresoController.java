@@ -33,7 +33,7 @@ public class VistaProgresoController implements Initializable {
         protected void succeeded() {
             Alert a = new Alert(Alert.AlertType.INFORMATION);
             a.setHeaderText(null);
-            a.setContentText("Descarga realizada");
+            a.setContentText("Proceso finalizado correctamente");
             a.show();
 
             Stage stage = (Stage) progressBar.getScene().getWindow();

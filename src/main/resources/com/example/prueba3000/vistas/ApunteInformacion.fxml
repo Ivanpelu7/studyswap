@@ -11,19 +11,19 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.Rating?>
 
-<AnchorPane prefHeight="536.0" prefWidth="326.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.ApunteInformacionController">
+<AnchorPane prefHeight="536.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.ApunteInformacionController">
    <children>
-      <ImageView fitHeight="117.0" fitWidth="110.0" layoutX="109.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="117.0" fitWidth="110.0" layoutX="115.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/pdf.png" />
          </image>
       </ImageView>
-      <Label layoutX="60.0" layoutY="308.0" text="Curso">
+      <Label layoutX="70.0" layoutY="306.0" text="Curso">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="19.0" layoutY="14.0" prefHeight="55.0" prefWidth="284.0" stylesheets="@../css/style.css">
+      <AnchorPane layoutX="30.0" layoutY="14.0" prefHeight="55.0" prefWidth="284.0" stylesheets="@../css/style.css">
          <children>
             <Label fx:id="labelNombreApunte" alignment="CENTER" layoutX="4.0" layoutY="12.0" prefHeight="31.0" prefWidth="284.0" text="Nombre apunte">
                <font>
@@ -36,35 +36,35 @@
             <String fx:value="shadow" />
          </styleClass>
       </AnchorPane>
-      <TextField fx:id="textFieldAsig" editable="false" focusTraversable="false" layoutX="113.0" layoutY="348.0" prefHeight="0.0" prefWidth="195.0" stylesheets="@../css/style.css">
+      <TextField fx:id="textFieldAsig" editable="false" focusTraversable="false" layoutX="123.0" layoutY="346.0" prefHeight="0.0" prefWidth="195.0" stylesheets="@../css/style.css">
          <styleClass>
             <String fx:value="bordes-redondos" />
             <String fx:value="shadow" />
          </styleClass>
       </TextField>
-      <Label layoutX="18.0" layoutY="350.0" text="Asignatura">
+      <Label layoutX="28.0" layoutY="348.0" text="Asignatura">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="textFieldAutor" editable="false" focusTraversable="false" layoutX="113.0" layoutY="391.0" prefHeight="0.0" prefWidth="195.0" stylesheets="@../css/style.css">
+      <TextField fx:id="textFieldAutor" editable="false" focusTraversable="false" layoutX="123.0" layoutY="389.0" prefHeight="0.0" prefWidth="195.0" stylesheets="@../css/style.css">
          <styleClass>
             <String fx:value="bordes-redondos" />
             <String fx:value="shadow" />
          </styleClass>
       </TextField>
-      <Label layoutX="61.0" layoutY="390.0" text="Autor">
+      <Label layoutX="71.0" layoutY="388.0" text="Autor">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="textFieldCurso" editable="false" focusTraversable="false" layoutX="113.0" layoutY="309.0" prefHeight="0.0" prefWidth="195.0" stylesheets="@../css/style.css">
+      <TextField fx:id="textFieldCurso" editable="false" focusTraversable="false" layoutX="123.0" layoutY="307.0" prefHeight="0.0" prefWidth="195.0" stylesheets="@../css/style.css">
          <styleClass>
             <String fx:value="bordes-redondos" />
             <String fx:value="shadow" />
          </styleClass>
       </TextField>
-      <Button fx:id="buttonEliminar" layoutX="86.0" layoutY="456.0" mnemonicParsing="false" onAction="#eliminarApunte" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: red;" stylesheets="@../css/style.css" text="Eliminar" textFill="WHITE">
+      <Button fx:id="buttonEliminar" layoutX="96.0" layoutY="470.0" mnemonicParsing="false" onAction="#eliminarApunte" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: red;" stylesheets="@../css/style.css" text="Eliminar" textFill="WHITE">
          <styleClass>
             <String fx:value="boton" />
             <String fx:value="bordes-redondos" />
@@ -76,7 +76,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="buttonReportar" layoutX="85.0" layoutY="441.0" mnemonicParsing="false" onAction="#reportarApunte" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: red;" stylesheets="@../css/style.css" text="Reportar" textFill="WHITE">
+      <Button fx:id="buttonReportar" layoutX="95.0" layoutY="439.0" mnemonicParsing="false" onAction="#reportarApunte" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: red;" stylesheets="@../css/style.css" text="Reportar" textFill="WHITE">
          <styleClass>
             <String fx:value="boton" />
             <String fx:value="bordes-redondos" />
@@ -88,7 +88,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="buttonCalificar" layoutX="85.0" layoutY="485.0" mnemonicParsing="false" onAction="#calificarApunte" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #70c07f;" stylesheets="@../css/style.css" text="Calificar" textFill="WHITE">
+      <Button fx:id="buttonCalificar" layoutX="95.0" layoutY="483.0" mnemonicParsing="false" onAction="#calificarApunte" prefHeight="31.0" prefWidth="157.0" style="-fx-background-color: #70c07f;" stylesheets="@../css/style.css" text="Calificar" textFill="WHITE">
          <styleClass>
             <String fx:value="boton" />
             <String fx:value="bordes-redondos" />
@@ -100,7 +100,18 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Rating fx:id="puntuacion" layoutX="75.0" layoutY="252.0" />
-      <Label fx:id="labelTruco" layoutX="67.0" layoutY="243.0" prefHeight="48.0" prefWidth="195.0" />
+      <Rating fx:id="puntuacion" layoutX="86.0" layoutY="252.0" />
+      <Label fx:id="labelTruco" layoutX="72.0" layoutY="244.0" prefHeight="48.0" prefWidth="195.0" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="72.0" />
+      <TextField fx:id="textFieldNumeroDescargas" editable="false" focusTraversable="false" layoutX="123.0" layoutY="426.0" prefHeight="0.0" prefWidth="195.0" stylesheets="@../css/style.css">
+         <styleClass>
+            <String fx:value="bordes-redondos" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </TextField>
+      <Label fx:id="labelNumeroDescargas" layoutX="10.0" layoutY="425.0" text="Nº descargas">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

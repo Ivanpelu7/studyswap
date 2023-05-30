@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class ItemDescargadoController {
 
@@ -29,7 +30,7 @@ public class ItemDescargadoController {
     }
 
     @javafx.fxml.FXML
-    public void seleccionarApunte(Event event) throws IOException {
+    public void seleccionarApunte(Event event) throws IOException, SQLException {
 
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/ApunteInformacion.fxml"));
         Parent root = loader.load();

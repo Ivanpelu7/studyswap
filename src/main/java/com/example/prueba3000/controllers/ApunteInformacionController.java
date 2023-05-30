@@ -45,6 +45,10 @@ public class ApunteInformacionController implements Initializable {
     @javafx.fxml.FXML
     private Label labelTruco;
     private Usuario usuario;
+    @FXML
+    private TextField textFieldNumeroDescargas;
+    @FXML
+    private Label labelNumeroDescargas;
 
 
     @Override
@@ -53,13 +57,16 @@ public class ApunteInformacionController implements Initializable {
         this.usuario = UsuarioHolder.getUsuario();
     }
 
-    public void setDatos(Apunte apunte) {
+    public void setDatos(Apunte apunte) throws SQLException {
 
         this.apunte = apunte;
 
         buttonCalificar.setVisible(false);
         buttonReportar.setVisible(false);
 
+        int numDescargas = new ApunteModel().numeroDescargas(this.apunte);
+
+        textFieldNumeroDescargas.setText(String.valueOf(numDescargas));
         puntuacion.setRating(this.apunte.getPuntuacion());
         labelNombreApunte.setText(apunte.getNombre());
         textFieldCurso.setText(apunte.getCurso().getNombre());
@@ -73,6 +80,8 @@ public class ApunteInformacionController implements Initializable {
         buttonEliminar.setVisible(false);
         buttonCalificar.setVisible(true);
         labelTruco.setDisable(true);
+        textFieldNumeroDescargas.setVisible(false);
+        labelNumeroDescargas.setVisible(false);
 
         this.apunte = apunte;
 

@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -99,14 +100,19 @@ public class PublicarApunteController implements Initializable {
             int i = am.insertarApunte(ap);
 
             if (i != 0) {
-                Alert a = new Alert(Alert.AlertType.INFORMATION);
-                a.setHeaderText(null);
-                a.setContentText("Publicación realizada correctamente");
-                a.showAndWait();
-                a.getResult();
+                FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaProgreso.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.setTitle("Subir apunte");
+                stage.setScene(scene);
+                stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
+                stage.show();
 
-                Stage stage = (Stage) buttonPublicar.getScene().getWindow();
-                stage.close();
+                Stage stage1 = (Stage) buttonPublicar.getScene().getWindow();
+                stage1.close();
+
 
             } else {
                 Alert a = new Alert(Alert.AlertType.ERROR);

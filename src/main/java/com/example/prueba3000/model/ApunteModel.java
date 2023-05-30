@@ -254,4 +254,21 @@ public class ApunteModel extends DBUtil {
         ps1.executeUpdate();
         ps.executeUpdate();
     }
+
+    public int numeroDescargas(Apunte apunte) throws SQLException {
+
+        int i = 0;
+
+        String query = "SELECT count(*) FROM descargas WHERE id_apunte = " + apunte.getId();
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ResultSet resultSet = ps.executeQuery();
+
+        if (resultSet.next()) {
+            i = resultSet.getInt("count(*)");
+        }
+
+        return i;
+    }
 }
