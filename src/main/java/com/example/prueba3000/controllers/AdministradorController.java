@@ -441,17 +441,6 @@ public class AdministradorController implements Initializable {
 
 
 
-
-    public void acualizarPagina() throws IOException {
-        FXMLLoader admin = new FXMLLoader(Main.class.getResource("vistas/Administracion.fxml"));
-
-        Parent root = admin.load();
-        anchor.getChildren().setAll(root);
-    }
-
-
-
-
     @FXML
     public void click(Event event) {
         ReporteSeleccionado();
@@ -496,10 +485,13 @@ public class AdministradorController implements Initializable {
         Parent root = amigos.load();
 
         anchor.getChildren().setAll(root);
+        paneMostrarReportes.setVisible(false);
     }
 
     @FXML
     public void verPdf(ActionEvent actionEvent) {
+
+        paneMostrarReportes.setVisible(false);
     }
 }
 
