@@ -180,7 +180,7 @@ public class ApunteModel extends DBUtil {
 
     public void apunteDescargado(Apunte apunte, Usuario usuario) throws SQLException {
 
-        String query = "call añadirRegistroDescargas("+ usuario.getId() + ", " + apunte.getId() + ")";
+        String query = "call añadirRegistroDescargas(" + usuario.getId() + ", " + apunte.getId() + ")";
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
@@ -243,13 +243,15 @@ public class ApunteModel extends DBUtil {
     }
 
 
-
     public void eliminarApunte(Apunte apunte) throws SQLException {
 
         String query = "DELETE FROM apuntes WHERE id_apunte = " + apunte.getId();
+        String query1 = "DELETE FROM descargas WHERE id_apunte = " + apunte.getId();
 
         PreparedStatement ps = getConexion().prepareStatement(query);
+        PreparedStatement ps1 = getConexion().prepareStatement(query1);
 
+        ps1.executeUpdate();
         ps.executeUpdate();
     }
 }
