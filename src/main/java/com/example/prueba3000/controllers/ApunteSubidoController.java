@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.event.Event;
 import javafx.stage.Stage;
@@ -39,6 +40,8 @@ public class ApunteSubidoController {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.setTitle("Apunte Subido");
+        stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
         stage.show();
 
         ApunteInformacionController aic = loader.getController();
