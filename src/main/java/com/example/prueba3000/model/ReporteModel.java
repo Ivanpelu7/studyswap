@@ -70,6 +70,14 @@ public class ReporteModel extends DBUtil {
 
         return reportes;
     }
+
+    public void eliminarReporte(Reporte reporte) throws SQLException {
+        String query = "delete from reportes where id_apunte= "+reporte.getApunte().getId();
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ps.executeUpdate();
+    }
 }
 
 

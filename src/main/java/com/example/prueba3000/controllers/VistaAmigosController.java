@@ -14,6 +14,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -88,6 +90,12 @@ public class VistaAmigosController implements Initializable {
     private Button botodenegarsolicitud;
     @javafx.fxml.FXML
     private Pane noAmigos;
+    @javafx.fxml.FXML
+    private Circle circuloImagenAñadir;
+    @javafx.fxml.FXML
+    private Circle circuloImagenSolicitud;
+    @javafx.fxml.FXML
+    private Circle circuloImageMostrarAmigo;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -178,18 +186,21 @@ public class VistaAmigosController implements Initializable {
 
         solicitudes.addAll(sam.peticionesAmistad(this.usuario, usuariosHashmap));
         if (this.solicitudes.size() > 0) {
-            if (usuario.getSexo().equals("M")) {
-                fotohombre11.setVisible(true);
-                fotomujer11.setVisible(false);
-
-            } else if (usuario.getSexo().equals("F")) {
-                fotomujer11.setVisible(true);
-                fotohombre11.setVisible(false);
-            }
 
             SolicitudAmistad s = this.solicitudes.get(nsolicitud);
             nomuserSolicitud.setText(s.getUsuarioEmisor().getNombreUsuario());
+            if(s.getUsuarioEmisor().getFotoPerfil()==null){
+                if (s.getUsuarioEmisor().getSexo().equals("M")) {
+                    circuloImagenSolicitud.setVisible(false);
+                    fotohombre11.setVisible(true);
 
+                } else if (s.getUsuarioEmisor().getSexo().equals("F")) {
+                    fotomujer11.setVisible(true);
+                }
+            }
+            else {
+                circuloImagenSolicitud.setFill(new ImagePattern(s.getUsuarioEmisor().getFotoPerfil()));
+            }
         } else {
             PaneSolicitudes.setVisible(false);
         }
@@ -200,14 +211,22 @@ public class VistaAmigosController implements Initializable {
         this.usuarioaeliminar = usuario;
         paneAmigoSeleccionado.setVisible(true);
 
-        if (usuario.getSexo().equals("M")) {
-            fotohombre.setVisible(true);
-            fotomujer.setVisible(false);
+        if (usuario.getFotoPerfil()==null) {
+            circuloImageMostrarAmigo.setVisible(false);
+            if (usuario.getSexo().equals("M")) {
+                fotohombre.setVisible(true);
+            }
+            if (usuario.getSexo().equals("F")) {
+                fotomujer.setVisible(true);
 
-        } else if (usuario.getSexo().equals("F")) {
-            fotomujer.setVisible(true);
-            fotohombre.setVisible(false);
+            }
+
         }
+        else {
+            circuloImageMostrarAmigo.setFill(new ImagePattern(usuario.getFotoPerfil()));
+        }
+
+
 
         Mostar_username.setText(usuario.getNombreUsuario());
         Mostrar_Nombre.setText(usuario.getNombre());
@@ -295,13 +314,18 @@ public class VistaAmigosController implements Initializable {
 
 
             }
-            if (usuario.getSexo().equals("M")) {
-                fotohombre1.setVisible(true);
-                fotomujer1.setVisible(false);
+            if (usuarioaBuscar.getFotoPerfil()==null) {
+                circuloImagenAñadir.setVisible(false);
+                if (usuarioaBuscar.getSexo().equals("M")) {
+                    fotohombre1.setVisible(true);
+                }
+                if (usuarioaBuscar.getSexo().equals("F")) {
+                    fotomujer1.setVisible(true);
+                }
 
-            } else if (usuario.getSexo().equals("F")) {
-                fotomujer1.setVisible(true);
-                fotohombre1.setVisible(false);
+            }
+            else {
+                circuloImagenAñadir.setFill(new ImagePattern(usuarioaBuscar.getFotoPerfil()));
             }
 
             nomuserMostrarAñadir.setText(usuarioaBuscar.getNombreUsuario());
@@ -341,16 +365,23 @@ public class VistaAmigosController implements Initializable {
         if (nsolicitud <= this.solicitudes.size()) {
             PaneSolicitudes.setVisible(true);
             am.aceptarSolicitud(s);
-            if (usuario.getSexo().equals("M")) {
-                fotohombre11.setVisible(true);
-                fotomujer11.setVisible(false);
 
-            } else if (usuario.getSexo().equals("F")) {
-                fotomujer11.setVisible(true);
-                fotohombre11.setVisible(false);
-            }
 
             nsolicitud++;
+            if (s.getUsuarioEmisor().getFotoPerfil()==null) {
+                circuloImagenSolicitud.setVisible(false);
+                if (s.getUsuarioEmisor().getSexo().equals("M")) {
+                    fotohombre11.setVisible(true);
+                }
+                if (s.getUsuarioEmisor().getSexo().equals("F")) {
+                    fotomujer11.setVisible(true);
+
+                }
+
+            }
+            else {
+                circuloImagenSolicitud.setFill(new ImagePattern(s.getUsuarioEmisor().getFotoPerfil()));
+            }
             nomuserSolicitud.setText(s.getUsuarioEmisor().getNombreUsuario());
             PaneSolicitudes.setVisible(false);
 
@@ -374,16 +405,22 @@ public class VistaAmigosController implements Initializable {
         PaneSolicitudes.setVisible(true);
         if (nsolicitud <= this.solicitudes.size()) {
             am.rechazarSolicitud(s);
-            if (usuario.getSexo().equals("M")) {
-                fotohombre11.setVisible(true);
-                fotomujer11.setVisible(false);
 
-            } else if (usuario.getSexo().equals("F")) {
-                fotomujer11.setVisible(true);
-                fotohombre11.setVisible(false);
-            }
 
             nsolicitud++;
+            if (s.getUsuarioEmisor().getFotoPerfil()==null) {
+                circuloImagenSolicitud.setVisible(false);
+                if (s.getUsuarioEmisor().getSexo().equals("M")) {
+                    fotohombre11.setVisible(true);
+                }
+                if (s.getUsuarioEmisor().getSexo().equals("F")) {
+                    fotomujer11.setVisible(true);
+                }
+
+            }
+            else {
+                circuloImagenSolicitud.setFill(new ImagePattern(s.getUsuarioEmisor().getFotoPerfil()));
+            }
             nomuserSolicitud.setText(s.getUsuarioEmisor().getNombreUsuario());
             PaneSolicitudes.setVisible(false);
             FXMLLoader amigos = new FXMLLoader(Main.class.getResource("vistas/VistaPrincipal.fxml"));

@@ -6,6 +6,8 @@ import javafx.event.Event;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 
 import java.sql.SQLException;
 
@@ -22,6 +24,8 @@ public class AmigosItemController {
     private MyListener mylistener;
     @javafx.fxml.FXML
     private ImageView fotomujer;
+    @javafx.fxml.FXML
+    private Circle circuloImagen;
 
     @javafx.fxml.FXML
     public void click(Event event) throws SQLException {
@@ -33,13 +37,20 @@ public class AmigosItemController {
         this.usuario = user;
         this.mylistener = myListener;
         System.out.println(user.getNombreUsuario());
-        if (user.getSexo().equals("M")) {
-            fotohombre.setVisible(true);
-            fotomujer.setVisible(false);
+        if (usuario.getFotoPerfil()==null) {
+            circuloImagen.setVisible(false);
+            if (usuario.getSexo().equals("M")) {
+                fotomujer.setVisible(false);
+                fotohombre.setVisible(true);
+            }
+            if (usuario.getSexo().equals("F")) {
+                fotomujer.setVisible(true);
+                fotohombre.setVisible(false);
+            }
 
-        } else if (user.getSexo().equals("F")) {
-            fotomujer.setVisible(true);
-            fotohombre.setVisible(false);
+        }
+        else {
+            circuloImagen.setFill(new ImagePattern(usuario.getFotoPerfil()));
         }
         nombre_usuario.setText(user.getNombreUsuario());
         email.setText(user.getEmail());

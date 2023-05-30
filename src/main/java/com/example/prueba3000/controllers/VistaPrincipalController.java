@@ -196,6 +196,9 @@ public class VistaPrincipalController implements Initializable {
             Parent root = pane.load();
             rootPane.getChildren().setAll(root);
 
+
+
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -209,5 +212,7 @@ public class VistaPrincipalController implements Initializable {
         pane = loader.load();
 
         rootPane.getChildren().setAll(pane);
+
+
     }
 }
