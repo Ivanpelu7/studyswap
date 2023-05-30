@@ -2,6 +2,7 @@ package com.example.prueba3000.controllers;
 
 import com.example.prueba3000.Main;
 import com.example.prueba3000.model.Apunte;
+import com.example.prueba3000.model.ApunteModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,6 +12,8 @@ import javafx.event.Event;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.HashMap;
 
 
 public class ApunteSubidoController {
@@ -29,7 +32,7 @@ public class ApunteSubidoController {
     }
 
     @javafx.fxml.FXML
-    public void seleccionarApunte(Event event) throws IOException {
+    public void seleccionarApunte(Event event) throws IOException, SQLException {
 
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/ApunteInformacion.fxml"));
         Parent root = loader.load();
@@ -39,6 +42,12 @@ public class ApunteSubidoController {
         stage.show();
 
         ApunteInformacionController aic = loader.getController();
+
+        HashMap<Integer, Apunte> apuntes = new ApunteModel().recuperarApuntes();
+
+        int punt = apuntes.get(this.apunte.getId()).getPuntuacion();
+        this.apunte.setPuntuacion(punt);
+
         aic.setDatos(this.apunte);
     }
 }

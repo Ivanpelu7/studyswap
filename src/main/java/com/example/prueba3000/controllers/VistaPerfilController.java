@@ -149,17 +149,4 @@ public class VistaPerfilController implements Initializable {
         stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
         stage.show();
     }
-
-    public void CargarVista() throws IOException {
-        System.out.println("eeeeeeeeeee");
-        FXMLLoader perfil = new FXMLLoader(Main.class.getResource("vistas/VistaPerfil.fxml"));
-
-        Parent root = perfil.load();
-
-        mainVistaPerfil.getChildren().setAll(root);
-
-
-    }
-
-
 }

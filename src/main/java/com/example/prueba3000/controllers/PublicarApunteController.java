@@ -105,16 +105,8 @@ public class PublicarApunteController implements Initializable {
                 a.showAndWait();
                 a.getResult();
 
-
-
                 Stage stage = (Stage) buttonPublicar.getScene().getWindow();
                 stage.close();
-                FXMLLoader amigos = new FXMLLoader(Main.class.getResource("vistas/VistaPerfil.fxml"));
-                Parent root = amigos.load();
-                VistaPerfilController controller= amigos.getController();
-                controller.CargarVista();
-
-
 
             } else {
                 Alert a = new Alert(Alert.AlertType.ERROR);

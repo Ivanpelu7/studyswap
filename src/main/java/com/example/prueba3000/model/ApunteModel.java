@@ -23,7 +23,7 @@ public class ApunteModel extends DBUtil {
         HashMap<Integer, Curso> cursos = new CursoModel().recuperarCursos();
         HashMap<Integer, Usuario> usuarios = new UsuarioModel().recuperarUsuarios();
 
-        String query = "SELECT * FROM apuntes";
+        String query = "SELECT * FROM apuntes ORDER BY puntuacion DESC";
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
@@ -51,13 +51,49 @@ public class ApunteModel extends DBUtil {
         return apuntes;
     }
 
+    public ArrayList<Apunte> recuperarApuntesArray() throws SQLException, IOException {
+
+        ArrayList<Apunte> apuntes = new ArrayList<>();
+        HashMap<Integer, Asignatura> asignaturas = new AsignaturaModel().recuperarAsignaturas();
+        HashMap<Integer, Curso> cursos = new CursoModel().recuperarCursos();
+        HashMap<Integer, Usuario> usuarios = new UsuarioModel().recuperarUsuarios();
+
+        String query = "SELECT * FROM apuntes ORDER BY puntuacion DESC";
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+
+            Integer id = rs.getInt("id_apunte");
+            String nombre = rs.getString("nombre");
+            Blob pdf = rs.getBlob("pdf");
+            Integer puntuacion = rs.getInt("puntuacion");
+            Integer idAsignatura = rs.getInt("id_asignatura");
+            Integer idCurso = rs.getInt("id_curso");
+            Integer idAutor = rs.getInt("id_autor");
+
+            Asignatura a = asignaturas.get(idAsignatura);
+            Curso c = cursos.get(idCurso);
+            Usuario u = usuarios.get(idAutor);
+
+            Apunte apunte = new Apunte(id, nombre, pdf, puntuacion, a, c, u);
+
+            apuntes.add(apunte);
+        }
+
+        return apuntes;
+    }
+
     public ArrayList<Apunte> apuntesFiltro(Asignatura a, Curso c) throws SQLException, IOException {
 
         HashMap<Integer, Apunte> apuntesTodos = recuperarApuntes();
 
         ArrayList<Apunte> apuntesFiltro = new ArrayList<>();
 
-        String query = "SELECT id_apunte FROM apuntes WHERE id_asignatura = " + a.getId() + " AND id_curso = " + c.getId();
+        String query = "SELECT id_apunte FROM apuntes WHERE id_asignatura = " + a.getId() + " AND id_curso = " + c.getId()
+                + " ORDER BY puntuacion DESC";
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
@@ -216,6 +252,4 @@ public class ApunteModel extends DBUtil {
 
         ps.executeUpdate();
     }
-
-
 }

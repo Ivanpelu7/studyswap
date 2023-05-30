@@ -38,7 +38,7 @@ public class VistaApuntesController implements Initializable {
     private ComboBox comboboxCurso;
     @javafx.fxml.FXML
     private ComboBox comboboxAsignatura;
-    private HashMap<Integer, Apunte> apuntesHM;
+    private ArrayList<Apunte> apuntesHM;
     @javafx.fxml.FXML
     private Button botonFiltrar;
     @javafx.fxml.FXML
@@ -87,14 +87,12 @@ public class VistaApuntesController implements Initializable {
         try {
             comboboxCurso.setItems(cm.recuperarCursosOL());
 
-            apuntesHM = am.recuperarApuntes();
-
-            ArrayList<Apunte> apuntes = new ArrayList<>(apuntesHM.values());
+            apuntesHM = am.recuperarApuntesArray();
 
             int column = 0;
             int row = 1;
 
-            for (int i = 0; i < apuntes.size(); i++) {
+            for (int i = 0; i < apuntesHM.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
 
                 fxmlLoader.setLocation(Main.class.getResource("vistas/ApunteItem.fxml"));
@@ -102,7 +100,7 @@ public class VistaApuntesController implements Initializable {
                 AnchorPane pane = fxmlLoader.load();
 
                 ApunteItemController aic2 = fxmlLoader.getController();
-                aic2.setApunte(apuntes.get(i), myListener);
+                aic2.setApunte(apuntesHM.get(i), myListener);
 
                 if (column == 4) {
                     column = 0;

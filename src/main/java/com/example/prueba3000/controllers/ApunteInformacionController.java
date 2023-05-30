@@ -21,6 +21,7 @@ import org.controlsfx.control.Rating;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class ApunteInformacionController implements Initializable {
@@ -44,8 +45,7 @@ public class ApunteInformacionController implements Initializable {
     @javafx.fxml.FXML
     private Label labelTruco;
     private Usuario usuario;
-    @FXML
-    private AnchorPane mainAnchor;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -135,6 +135,8 @@ public class ApunteInformacionController implements Initializable {
 
             if (a.getResult() == ButtonType.OK) {
                 apunteModel.calificarApunte(this.usuario, this.apunte, (int) puntuacion.getRating());
+
+
 
                 a = new Alert(Alert.AlertType.INFORMATION);
                 a.setHeaderText(null);
