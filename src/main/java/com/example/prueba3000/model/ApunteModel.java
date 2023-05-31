@@ -59,7 +59,7 @@ public class ApunteModel extends DBUtil {
         HashMap<Integer, Curso> cursos = new CursoModel().recuperarCursos();
         HashMap<Integer, Usuario> usuarios = new UsuarioModel().recuperarUsuarios();
 
-        String query = "SELECT * FROM apuntes ORDER BY puntuacion DESC";
+        String query = "SELECT * FROM apuntes where eliminado=0 ORDER BY puntuacion DESC";
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
@@ -116,7 +116,7 @@ public class ApunteModel extends DBUtil {
         HashMap<Integer, Apunte> apuntes = recuperarApuntes();
         ArrayList<Apunte> apuntesSubidos = new ArrayList<>();
 
-        String query = "SELECT * FROM apuntes WHERE id_autor = " + usuario.getId();
+        String query = "SELECT * FROM apuntes WHERE eliminado = 0 and id_autor = " + usuario.getId();
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
@@ -151,6 +151,7 @@ public class ApunteModel extends DBUtil {
 
             Apunte apunte = apuntes.get(id);
 
+
             apuntesDescargados.add(apunte);
         }
 
@@ -159,8 +160,8 @@ public class ApunteModel extends DBUtil {
 
     public int insertarApunte(Apunte apunte) throws SQLException, FileNotFoundException {
 
-        String query = "INSERT INTO apuntes(nombre, pdf, id_asignatura, id_curso, id_autor)" +
-                " VALUES(?, ?, ?, ?, ?)";
+        String query = "INSERT INTO apuntes(nombre, pdf, id_asignatura, id_curso, id_autor,eliminado)" +
+                " VALUES(?, ?, ?, ?, ?,?)";
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
@@ -171,6 +172,7 @@ public class ApunteModel extends DBUtil {
         ps.setInt(3, apunte.getAsignatura().getId());
         ps.setInt(4, apunte.getCurso().getId());
         ps.setInt(5, apunte.getAutor().getId());
+        ps.setInt(6, 0);
 
         int i = ps.executeUpdate();
 
@@ -247,13 +249,11 @@ public class ApunteModel extends DBUtil {
 
     public void eliminarApunte(Apunte apunte) throws SQLException {
 
-        String query = "DELETE FROM apuntes WHERE id_apunte = " + apunte.getId();
-        String query1 = "DELETE FROM descargas WHERE id_apunte = " + apunte.getId();
+        String query = "update apuntes set eliminado=1 where id_apunte=" + apunte.getId();
 
         PreparedStatement ps = getConexion().prepareStatement(query);
-        PreparedStatement ps1 = getConexion().prepareStatement(query1);
 
-        ps1.executeUpdate();
+
         ps.executeUpdate();
     }
 

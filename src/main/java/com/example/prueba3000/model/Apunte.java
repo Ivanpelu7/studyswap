@@ -119,4 +119,11 @@ public class Apunte {
     }
 
 
+    public int getEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(int eliminado) {
+        this.eliminado = eliminado;
+    }
 }

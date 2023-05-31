@@ -50,6 +50,8 @@ public class ApunteInformacionController implements Initializable {
     private TextField textFieldNumeroDescargas;
     @FXML
     private Label labelNumeroDescargas;
+    @FXML
+    private Label apunteEliminado;
 
 
     @Override
@@ -65,8 +67,9 @@ public class ApunteInformacionController implements Initializable {
         buttonCalificar.setVisible(false);
         buttonReportar.setVisible(false);
 
-        int numDescargas = new ApunteModel().numeroDescargas(this.apunte);
 
+
+        int numDescargas = new ApunteModel().numeroDescargas(this.apunte);
         textFieldNumeroDescargas.setText(String.valueOf(numDescargas));
         puntuacion.setRating(this.apunte.getPuntuacion());
         labelNombreApunte.setText(apunte.getNombre());
@@ -86,6 +89,12 @@ public class ApunteInformacionController implements Initializable {
 
         this.apunte = apunte;
 
+        if(apunte.getEliminado()==1){
+            apunteEliminado.setVisible(true);
+        }
+        else{
+            apunteEliminado.setVisible(false);
+        }
         puntuacion.setRating(0);
         labelNombreApunte.setText(apunte.getNombre());
         textFieldCurso.setText(apunte.getCurso().getNombre());
@@ -95,6 +104,17 @@ public class ApunteInformacionController implements Initializable {
 
     @javafx.fxml.FXML
     public void eliminarApunte(ActionEvent actionEvent) throws SQLException {
+        ApunteModel am= new ApunteModel();
+
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setHeaderText("¿Estas seguro de que quieres eliminar el archivo?");
+        a.showAndWait();
+        if(a.getResult()==ButtonType.OK){
+            am.eliminarApunte(this.apunte);
+
+            Stage stage = (Stage) buttonEliminar.getScene().getWindow();
+            stage.close();
+        }
     }
 
     @javafx.fxml.FXML
