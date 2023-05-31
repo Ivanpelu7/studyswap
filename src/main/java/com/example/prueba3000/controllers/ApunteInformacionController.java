@@ -91,6 +91,8 @@ public class ApunteInformacionController implements Initializable {
 
         if(apunte.getEliminado()==1){
             apunteEliminado.setVisible(true);
+            buttonReportar.setDisable(true);
+            buttonCalificar.setDisable(true);
         }
         else{
             apunteEliminado.setVisible(false);

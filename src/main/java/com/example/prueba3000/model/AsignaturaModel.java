@@ -105,10 +105,16 @@ public class AsignaturaModel extends DBUtil {
 
     public void eliminarAsignatura(Asignatura a) throws SQLException {
         String query = "delete from asignaturas where id_asignatura=?";
+        String query1 = "delete from pertenece where id_asignatura=?";
 
         PreparedStatement ps = getConexion().prepareStatement(query);
+        PreparedStatement ps1 = getConexion().prepareStatement(query1);
+
         ps.setInt(1, a.getId());
-        ps.execute();
+        ps1.setInt(1, a.getId());
+
+        ps1.executeUpdate();
+        ps.executeUpdate();
     }
 
     public boolean comprovarAsignaturaCurso(Asignatura a,Curso c) throws SQLException {

@@ -245,7 +245,7 @@ public class AjustesController implements Initializable {
     @javafx.fxml.FXML
     public void modificarCorreoElectronico(ActionEvent actionEvent) throws SQLException, IOException {
 
-        String email = textFieldNuevoNombre.getText();
+        String email = textFieldNuevoCorreo.getText();
 
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setHeaderText(null);

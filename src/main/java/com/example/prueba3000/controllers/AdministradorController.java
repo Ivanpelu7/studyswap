@@ -350,7 +350,7 @@ public class AdministradorController {
     }
 
     @FXML
-    public void Añadir_asignatura(ActionEvent actionEvent) throws SQLException {
+    public void Añadir_asignatura(ActionEvent actionEvent) throws SQLException, IOException {
         ErrorNombreAsig.setVisible(false);
         AsignaturaModel am = new AsignaturaModel();
         HashMap<Integer, Asignatura> asignaturas = new HashMap<>(am.recuperarAsignaturas());
@@ -369,6 +369,7 @@ public class AdministradorController {
             ErrorNombreAsig.setVisible(true);
         } else {
             am.añadirAsignatura(nombreAsignueva);
+            actualizarPagina(3);
         }
 
 
@@ -387,7 +388,7 @@ public class AdministradorController {
     }
 
     @FXML
-    public void VincularAsignaturaCurso(ActionEvent actionEvent) throws SQLException {
+    public void VincularAsignaturaCurso(ActionEvent actionEvent) throws SQLException, IOException {
         Validador v = new Validador();
 
 
@@ -420,6 +421,7 @@ public class AdministradorController {
             boolean pertenece = am.comprovarAsignaturaCurso(asigantura, curso);
             if (pertenece == false) {
                 am.vincularAsignaturaConCurso(curso, asigantura);
+                actualizarPagina(3);
             } else {
                 errorVincularAsig.setText("La asignatura ya pertenece a este curso");
             }
@@ -429,10 +431,11 @@ public class AdministradorController {
     }
 
     @FXML
-    public void eliminar_asignatura(ActionEvent actionEvent) throws SQLException {
+    public void eliminar_asignatura(ActionEvent actionEvent) throws SQLException, IOException {
         AsignaturaModel am = new AsignaturaModel();
         Asignatura a = (Asignatura) listaAsignaturasEliminar.getValue();
         am.eliminarAsignatura(a);
+        actualizarPagina(3);
     }
 
 
@@ -548,14 +551,13 @@ public class AdministradorController {
         }
 
         if (i == 3) {
-            Mostrar_añadir_asignatura();
-            mostrarEliminarUsuario.setVisible(false);
+            FXMLLoader admin = new FXMLLoader(Main.class.getResource("vistas/Administracion.fxml"));
 
-            mostrarAñadirCursos.setVisible(false);
+            Parent root = admin.load();
+            AdministradorController ac = admin.getController();
+            anchor.getChildren().setAll(root);
 
-            mostrarEliminarApunte.setVisible(false);
-
-            mostrarAñadirAsignatura.setVisible(true);
+            ac.Mostrar_añadir_asignatura();
         }
 
         if (i == 4) {

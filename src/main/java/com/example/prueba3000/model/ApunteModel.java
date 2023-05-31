@@ -94,7 +94,7 @@ public class ApunteModel extends DBUtil {
 
         ArrayList<Apunte> apuntesFiltro = new ArrayList<>();
 
-        String query = "SELECT id_apunte FROM apuntes WHERE id_asignatura = " + a.getId() + " AND id_curso = " + c.getId();
+        String query = "SELECT id_apunte FROM apuntes WHERE eliminado = 0 AND id_asignatura = " + a.getId() + " AND id_curso = " + c.getId();
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
