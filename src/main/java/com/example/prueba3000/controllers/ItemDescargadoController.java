@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -101,7 +102,10 @@ public class ItemDescargadoController {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Apunte Descargado");
+        stage.setResizable(false);
         stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
+        stage.initOwner(labelNombreUsuario.getScene().getWindow());
+        stage.initModality(Modality.WINDOW_MODAL);
         stage.show();
 
         ApunteInformacionController aic = loader.getController();

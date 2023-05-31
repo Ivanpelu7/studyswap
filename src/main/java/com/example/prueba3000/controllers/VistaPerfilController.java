@@ -150,6 +150,6 @@ public class VistaPerfilController implements Initializable {
         stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
         stage.initOwner(gridPaneDescargados.getScene().getWindow());
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.showAndWait();
+        stage.show();
     }
 }

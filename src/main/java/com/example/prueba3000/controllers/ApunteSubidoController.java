@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.event.Event;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -102,7 +103,10 @@ public class ApunteSubidoController {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("Apunte Subido");
+        stage.setResizable(false);
         stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
+        stage.initOwner(labelNombreUsuario.getScene().getWindow());
+        stage.initModality(Modality.WINDOW_MODAL);
         stage.show();
 
         ApunteInformacionController aic = loader.getController();

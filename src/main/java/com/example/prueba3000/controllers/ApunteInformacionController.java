@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
 
@@ -118,7 +119,10 @@ public class ApunteInformacionController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Reporte");
+            stage.setResizable(false);
             stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
+            stage.initOwner(labelNombreApunte.getScene().getWindow());
+            stage.initModality(Modality.WINDOW_MODAL);
             stage.show();
         }
     }

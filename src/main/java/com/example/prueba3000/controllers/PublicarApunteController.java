@@ -116,8 +116,6 @@ public class PublicarApunteController implements Initializable {
                 Stage stage1 = (Stage) buttonPublicar.getScene().getWindow();
                 stage1.close();
 
-
-
             } else {
                 Alert a = new Alert(Alert.AlertType.ERROR);
                 a.setHeaderText(null);

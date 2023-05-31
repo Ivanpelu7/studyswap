@@ -20,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
 
@@ -243,6 +244,8 @@ public class VistaApuntesController implements Initializable {
                 stage.setTitle("Descarga");
                 stage.setScene(scene);
                 stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
+                stage.initOwner(botonDescargar.getScene().getWindow());
+                stage.initModality(Modality.WINDOW_MODAL);
                 stage.show();
 
                 Files.copy(temporalFile.toPath(), archivo.toPath(), StandardCopyOption.REPLACE_EXISTING);
