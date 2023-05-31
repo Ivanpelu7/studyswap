@@ -64,7 +64,7 @@
                                           </ImageView>
                                           <ImageView fx:id="pendiente" fitHeight="30.0" fitWidth="30.0" layoutX="237.0" layoutY="4.0">
                                              <image>
-                                                <Image url="@../images/reloj.png" />
+                                                <Image url="@../images/reloj-de-pared.png" />
                                              </image>
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
@@ -74,7 +74,7 @@
                                              <graphic>
                                                 <ImageView fitHeight="30.0" fitWidth="30.0">
                                                    <image>
-                                                      <Image url="@../images/añadir.png" />
+                                                      <Image url="@../images/anadirBlanco.png" />
                                                    </image>
                                                 </ImageView>
                                              </graphic>
