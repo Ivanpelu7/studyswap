@@ -36,7 +36,7 @@ public class AmigosItemController {
     public void setData(Usuario user,MyListener myListener) throws SQLException {
         this.usuario = user;
         this.mylistener = myListener;
-        System.out.println(user.getNombreUsuario());
+
         if (usuario.getFotoPerfil()==null) {
             circuloImagen.setVisible(false);
             if (usuario.getSexo().equals("M")) {
