@@ -39,7 +39,7 @@ public class ItemDescargadoController {
     public void setApunteDescargado(Apunte a) {
 
         apunte = a;
-
+        if (a.getEliminado()==1){labelNombreUsuario.setStyle("-fx-text-fill: red;");}
         labelNombreUsuario.setText(apunte.getNombre());
 
         if(apunte.getPuntuacion()==0){

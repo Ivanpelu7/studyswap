@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.Rating?>
 
-<AnchorPane prefHeight="536.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.ApunteInformacionController">
+<AnchorPane prefHeight="536.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.ApunteInformacionController">
    <children>
       <ImageView fitHeight="117.0" fitWidth="110.0" layoutX="115.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -113,5 +113,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Label fx:id="apunteEliminado" alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" layoutY="78.0" prefHeight="17.0" prefWidth="284.0" text="El archivo original ha sido eliminado" textFill="RED" visible="false" />
    </children>
 </AnchorPane>

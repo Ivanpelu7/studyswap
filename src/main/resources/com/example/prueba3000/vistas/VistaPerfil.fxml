@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainVistaPerfil" prefHeight="642.4" prefWidth="839.2" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaPerfilController">
+<AnchorPane fx:id="mainVistaPerfil" prefHeight="642.4" prefWidth="839.2" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaPerfilController">
    <children>
       <ScrollPane layoutX="32.0" layoutY="94.0" prefHeight="519.0" prefWidth="356.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css">
          <content>
@@ -33,7 +33,7 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <Line endY="505.20001220703125" layoutX="420.0" layoutY="106.0" startY="-46.79998779296875" stroke="#2cbf4c" strokeWidth="2.0" />
+      <Line endY="505.20001220703125" layoutX="420.0" layoutY="106.0" startY="-17.0" stroke="#2cbf4c" strokeWidth="2.0" />
       <AnchorPane layoutX="83.0" layoutY="16.0" prefHeight="59.0" prefWidth="254.0" stylesheets="@../css/style.css">
          <children>
             <Label layoutX="25.0" layoutY="14.0" text="Apuntes Subidos">
@@ -72,5 +72,14 @@
             <String fx:value="shadow" />
          </styleClass>
       </AnchorPane>
+      <Button fx:id="botonGirar" layoutX="779.0" layoutY="612.0" minWidth="32.0" mnemonicParsing="false" onAction="#actualizar" prefHeight="22.0" prefWidth="32.0" styleClass="boton-transparent" stylesheets="@../css/style.css">
+         <graphic>
+            <ImageView fx:id="ImagenGirar" fitHeight="21.0" fitWidth="20.0">
+               <image>
+                  <Image url="@../images/recargar.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
