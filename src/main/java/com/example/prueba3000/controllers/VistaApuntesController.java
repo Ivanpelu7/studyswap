@@ -194,7 +194,7 @@ public class VistaApuntesController implements Initializable {
     }
 
     public void setApunte(Apunte apunte) {
-
+    Validador v =new Validador();
         this.apunte = apunte;
 
         textFieldCurso.setText(apunte.getCurso().getNombre());
@@ -202,6 +202,13 @@ public class VistaApuntesController implements Initializable {
         textFieldAutor.setText(apunte.getAutor().getNombreUsuario());
         textFieldNombre.setText(apunte.getNombre());
         puntuacionApunte.setRating(apunte.getPuntuacion());
+
+        if (!v.validarDescargarApunte(this.apunte, this.usuario, new ApunteModel())) {
+            botonDescargar.setDisable(true);
+        }
+        else {
+            botonDescargar.setDisable(false);
+        }
     }
 
     @javafx.fxml.FXML
@@ -209,13 +216,7 @@ public class VistaApuntesController implements Initializable {
 
         Validador v = new Validador();
 
-        if (!v.validarDescargarApunte(this.apunte, this.usuario, new ApunteModel())) {
-            Alert a = new Alert(Alert.AlertType.ERROR);
-            a.setHeaderText(null);
-            a.setContentText("Ya te has descargado este apunte anteriormente");
-            a.showAndWait();
 
-        } else {
             Blob pdf = this.apunte.getPdf();
             String nombre = this.apunte.getNombre();
 
@@ -252,9 +253,14 @@ public class VistaApuntesController implements Initializable {
 
                 ApunteModel am = new ApunteModel();
                 am.apunteDescargado(this.apunte, this.usuario);
-            }
+
 
             temporalFile.delete();
+            botonDescargar.setDisable(true);
+
+
+
+
         }
     }
 

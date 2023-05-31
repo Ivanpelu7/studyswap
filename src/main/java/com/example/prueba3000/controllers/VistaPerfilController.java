@@ -150,6 +150,7 @@ public class VistaPerfilController implements Initializable {
         loader.setLocation(Main.class.getResource("vistas/PublicarApunte.fxml"));
         pane = loader.load();
 
+
         Scene scene = new Scene(pane);
 
         Stage stage = new Stage();
@@ -159,7 +160,34 @@ public class VistaPerfilController implements Initializable {
         stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
         stage.initOwner(gridPaneDescargados.getScene().getWindow());
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.show();
+
+        stage.showAndWait();
+    }
+
+
+
+
+
+    @javafx.fxml.FXML
+    public void actualizar(ActionEvent actionEvent) throws IOException {
+        FXMLLoader perfil = new FXMLLoader(Main.class.getResource("vistas/VistaPerfil.fxml"));
+
+        Parent root = perfil.load();
+
+       mainVistaPerfil.getChildren().setAll(root);
+
+
+        VistaPerfilController vpc = perfil.getController();
+        vpc.girar();
+
+    }
+
+    public  void girar()  {
+        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(1),ImagenGirar);
+        rotateTransition.setByAngle(360);
+        rotateTransition.play();
+
+
     }
 
     public  void girar()  {

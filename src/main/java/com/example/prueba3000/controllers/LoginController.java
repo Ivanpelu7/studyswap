@@ -261,10 +261,7 @@ public class LoginController implements Initializable {
 
             UsuarioHolder.setUsuario(usuarioConectado);
 
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setHeaderText(null);
-            a.setContentText("Inicio de sesión correcto");
-            a.showAndWait();
+
 
             try {
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaPrincipal.fxml"));
