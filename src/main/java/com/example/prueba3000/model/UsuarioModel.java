@@ -125,8 +125,13 @@ public class UsuarioModel extends DBUtil {
 
     public void eliminarUsuario(Usuario user) throws SQLException {
         String query = "delete from usuarios where id_usuario="+user.getId();
+        String query1 = "delete from descargas where id_usuario="+user.getId();
+
+        PreparedStatement ps1 = getConexion().prepareStatement(query1);
 
         PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ps1.executeUpdate();
         ps.executeUpdate();
     }
 

@@ -129,6 +129,8 @@ public class VistaPrincipalController implements Initializable {
     public void cambiarVistaAmigos(ActionEvent actionEvent) throws IOException {
 
         try {
+            circuloSolicitudes.setVisible(false);
+            numeroSolicitudes.setVisible(false);
             loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("vistas/VistaAmigos.fxml"));
             pane = loader.load();

@@ -67,10 +67,6 @@ public class AdminUsersItemController {
         if(a.getResult() == ButtonType.OK){
             um.eliminarUsuario(this.usuario);
 
-
-
-
-
         }
     }
 }
