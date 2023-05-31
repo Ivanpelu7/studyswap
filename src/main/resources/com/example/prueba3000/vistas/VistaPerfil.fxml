@@ -15,7 +15,7 @@
 
 <AnchorPane fx:id="mainVistaPerfil" prefHeight="642.4" prefWidth="839.2" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaPerfilController">
    <children>
-      <ScrollPane layoutX="32.0" layoutY="94.0" prefHeight="519.0" prefWidth="356.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css">
+      <ScrollPane layoutX="32.0" layoutY="94.0" prefHeight="474.0" prefWidth="356.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css">
          <content>
             <GridPane fx:id="gridPaneSubidos">
               <rowConstraints>
@@ -24,7 +24,7 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <ScrollPane layoutX="453.0" layoutY="94.0" prefHeight="519.0" prefWidth="356.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css">
+      <ScrollPane layoutX="453.0" layoutY="94.0" prefHeight="474.0" prefWidth="356.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css">
          <content>
             <GridPane fx:id="gridPaneDescargados">
               <rowConstraints>
@@ -72,9 +72,9 @@
             <String fx:value="shadow" />
          </styleClass>
       </AnchorPane>
-      <Button fx:id="botonGirar" layoutX="779.0" layoutY="612.0" minWidth="32.0" mnemonicParsing="false" onAction="#actualizar" prefHeight="22.0" prefWidth="32.0" styleClass="boton-transparent" stylesheets="@../css/style.css">
+      <Button fx:id="botonGirar1" layoutX="768.0" layoutY="577.0" mnemonicParsing="false" onAction="#actualizar" prefHeight="50.0" prefWidth="44.0" styleClass="boton-transparent" stylesheets="@../css/style.css">
          <graphic>
-            <ImageView fx:id="ImagenGirar" fitHeight="21.0" fitWidth="20.0">
+            <ImageView fx:id="ImagenGirar" fitHeight="37.0" fitWidth="37.0">
                <image>
                   <Image url="@../images/recargar.png" />
                </image>

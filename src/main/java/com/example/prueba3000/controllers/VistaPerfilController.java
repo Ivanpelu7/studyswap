@@ -165,49 +165,24 @@ public class VistaPerfilController implements Initializable {
     }
 
 
-
-
-
     @javafx.fxml.FXML
     public void actualizar(ActionEvent actionEvent) throws IOException {
         FXMLLoader perfil = new FXMLLoader(Main.class.getResource("vistas/VistaPerfil.fxml"));
 
         Parent root = perfil.load();
 
-       mainVistaPerfil.getChildren().setAll(root);
-
+        mainVistaPerfil.getChildren().setAll(root);
 
         VistaPerfilController vpc = perfil.getController();
         vpc.girar();
 
     }
 
-    public  void girar()  {
-        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(1),ImagenGirar);
+    public void girar() {
+        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(1), ImagenGirar);
         rotateTransition.setByAngle(360);
         rotateTransition.play();
 
-
-    }
-
-    public  void girar()  {
-        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(1),botonGirar);
-        rotateTransition.setByAngle(360);
-        rotateTransition.play();
-
-
-    }
-
-    @javafx.fxml.FXML
-    public void actualizar(ActionEvent actionEvent) throws IOException {
-        loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("vistas/VistaPerfil.fxml"));
-        pane = loader.load();
-
-        mainVistaPerfil.getChildren().setAll(pane);
-
-        VistaPerfilController vpc = new VistaPerfilController();
-        vpc.girar();
 
     }
 }
