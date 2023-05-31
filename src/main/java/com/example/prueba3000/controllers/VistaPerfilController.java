@@ -5,6 +5,7 @@ import com.example.prueba3000.model.Apunte;
 import com.example.prueba3000.model.ApunteModel;
 import com.example.prueba3000.model.Usuario;
 import com.example.prueba3000.util.UsuarioHolder;
+import javafx.animation.RotateTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -12,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -25,6 +27,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class VistaPerfilController implements Initializable {
 
@@ -37,6 +40,12 @@ public class VistaPerfilController implements Initializable {
     AnchorPane pane;
     @javafx.fxml.FXML
     private AnchorPane mainVistaPerfil;
+    @javafx.fxml.FXML
+    private Button buttonPublicarApunte;
+    @javafx.fxml.FXML
+    private Button botonGirar;
+    @javafx.fxml.FXML
+    private ImageView ImagenGirar;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -151,5 +160,26 @@ public class VistaPerfilController implements Initializable {
         stage.initOwner(gridPaneDescargados.getScene().getWindow());
         stage.initModality(Modality.WINDOW_MODAL);
         stage.show();
+    }
+
+    public  void girar()  {
+        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(1),botonGirar);
+        rotateTransition.setByAngle(360);
+        rotateTransition.play();
+
+
+    }
+
+    @javafx.fxml.FXML
+    public void actualizar(ActionEvent actionEvent) throws IOException {
+        loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("vistas/VistaPerfil.fxml"));
+        pane = loader.load();
+
+        mainVistaPerfil.getChildren().setAll(pane);
+
+        VistaPerfilController vpc = new VistaPerfilController();
+        vpc.girar();
+
     }
 }

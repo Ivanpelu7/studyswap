@@ -13,9 +13,7 @@ import java.util.HashMap;
 
 public class Validador {
 
-    public Validador() {
-
-    }
+    public Validador() {}
 
     public boolean validarPasswordIguales(String password, String repeatPassword) {
 
@@ -62,7 +60,7 @@ public class Validador {
 
     public boolean validarPasswordFormato(String password) {
 
-        if (password.length() > 5) {
+        if (password.length() < 8) {
             return false;
         }
 
