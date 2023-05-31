@@ -118,16 +118,14 @@ public class VistaAmigosController implements Initializable {
             AmigosModel am = new AmigosModel();
 
             HashMap<Integer, Usuario> usuariosHashmap = new HashMap<>();
-            ArrayList<Usuario> amigoss = new ArrayList<>();
 
             try {
                 usuariosHashmap.putAll(um.recuperarUsuarios());
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-            amigoss.addAll(am.recuperarAmigos(this.usuario, usuariosHashmap));
+            this.amigos.addAll(am.recuperarAmigos(this.usuario, usuariosHashmap));
 
-            this.amigos.addAll(amigoss);
             myListener = new MyListener() {
                 @Override
                 public void onClickListener(Apunte apunte) {
@@ -141,7 +139,7 @@ public class VistaAmigosController implements Initializable {
             };
             int column = 0;
             int row = 1;
-            if (amigos.size() > 0) {
+            if (this.amigos.size() > 0) {
                 for (Usuario user : this.amigos) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(Main.class.getResource("vistas/AmigosItem.fxml"));
