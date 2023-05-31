@@ -205,7 +205,7 @@ public class AjustesController implements Initializable {
                 a.setContentText("Nombre de usuario modificado correctamente");
                 a.showAndWait();
 
-                this.usuario.setNombre(nombreUsuario);
+                this.usuario.setNombreUsuario(nombreUsuario);
 
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaAjustes.fxml"));
                 Parent pane = loader.load();
@@ -233,7 +233,7 @@ public class AjustesController implements Initializable {
                 a.setContentText("Contraseña modificada correctamente");
                 a.showAndWait();
 
-                this.usuario.setNombre(password);
+                this.usuario.setPassword(password);
 
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaAjustes.fxml"));
                 Parent pane = loader.load();
@@ -261,7 +261,7 @@ public class AjustesController implements Initializable {
                 a.setContentText("Correo electrónico modificado correctamente");
                 a.showAndWait();
 
-                this.usuario.setNombre(email);
+                this.usuario.setEmail(email);
 
                 FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaAjustes.fxml"));
                 Parent pane = loader.load();

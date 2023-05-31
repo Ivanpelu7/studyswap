@@ -174,7 +174,7 @@ public class LoginController implements Initializable {
             labelRegistroIncorrecto.setText("Las contraseñas no coinciden");
 
         } else if (!v.validarPasswordFormato(contra)) {
-            labelRegistroIncorrecto.setText("La contraseña debe contener 5 caracteres máximo (solo números y letras)");
+            labelRegistroIncorrecto.setText("La contraseña debe contener 8 caracteres mínimo (solo números y letras)");
 
         } else {
             int i = um.addUsuario(new Usuario(nombreUsuario, contra, mail, name, apell, 0, genero));
@@ -260,7 +260,6 @@ public class LoginController implements Initializable {
             }
 
             UsuarioHolder.setUsuario(usuarioConectado);
-
 
 
             try {

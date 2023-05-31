@@ -179,10 +179,9 @@ public class VistaPerfilController implements Initializable {
     }
 
     public void girar() {
+
         RotateTransition rotateTransition = new RotateTransition(Duration.seconds(1), ImagenGirar);
         rotateTransition.setByAngle(360);
         rotateTransition.play();
-
-
     }
 }
