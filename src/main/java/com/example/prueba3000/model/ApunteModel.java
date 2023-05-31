@@ -38,12 +38,13 @@ public class ApunteModel extends DBUtil {
             Integer idAsignatura = rs.getInt("id_asignatura");
             Integer idCurso = rs.getInt("id_curso");
             Integer idAutor = rs.getInt("id_autor");
+            Integer eliminado = rs.getInt("eliminado");
 
             Asignatura a = asignaturas.get(idAsignatura);
             Curso c = cursos.get(idCurso);
             Usuario u = usuarios.get(idAutor);
 
-            Apunte apunte = new Apunte(id, nombre, pdf, puntuacion, a, c, u);
+            Apunte apunte = new Apunte(id, nombre, pdf, puntuacion, a, c, u, eliminado);
 
             apuntes.put(apunte.getId(), apunte);
         }
@@ -73,12 +74,13 @@ public class ApunteModel extends DBUtil {
             Integer idAsignatura = rs.getInt("id_asignatura");
             Integer idCurso = rs.getInt("id_curso");
             Integer idAutor = rs.getInt("id_autor");
+            Integer eliminado = rs.getInt("eliminado");
 
             Asignatura a = asignaturas.get(idAsignatura);
             Curso c = cursos.get(idCurso);
             Usuario u = usuarios.get(idAutor);
 
-            Apunte apunte = new Apunte(id, nombre, pdf, puntuacion, a, c, u);
+            Apunte apunte = new Apunte(id, nombre, pdf, puntuacion, a, c, u, eliminado);
 
             apuntes.add(apunte);
         }

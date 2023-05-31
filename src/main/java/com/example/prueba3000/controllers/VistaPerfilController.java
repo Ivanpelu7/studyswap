@@ -141,7 +141,6 @@ public class VistaPerfilController implements Initializable {
         loader.setLocation(Main.class.getResource("vistas/PublicarApunte.fxml"));
         pane = loader.load();
 
-
         Scene scene = new Scene(pane);
 
         Stage stage = new Stage();
@@ -149,16 +148,8 @@ public class VistaPerfilController implements Initializable {
         stage.setTitle("Publicar Apunte");
         stage.setResizable(false);
         stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
-        stage.initOwner(esteStage());
+        stage.initOwner(gridPaneDescargados.getScene().getWindow());
         stage.initModality(Modality.WINDOW_MODAL);
-
         stage.showAndWait();
-    }
-
-    public Stage esteStage() throws IOException {
-
-        Stage stage = (Stage) gridPaneSubidos.getScene().getWindow();
-
-        return stage;
     }
 }

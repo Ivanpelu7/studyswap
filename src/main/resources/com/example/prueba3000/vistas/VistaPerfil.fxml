@@ -15,7 +15,7 @@
 
 <AnchorPane fx:id="mainVistaPerfil" prefHeight="642.4" prefWidth="839.2" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaPerfilController">
    <children>
-      <ScrollPane layoutX="46.0" layoutY="94.0" prefHeight="519.0" prefWidth="342.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css">
+      <ScrollPane layoutX="32.0" layoutY="94.0" prefHeight="519.0" prefWidth="356.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css">
          <content>
             <GridPane fx:id="gridPaneSubidos">
               <rowConstraints>
@@ -24,7 +24,7 @@
             </GridPane>
          </content>
       </ScrollPane>
-      <ScrollPane layoutX="453.0" layoutY="94.0" prefHeight="519.0" prefWidth="342.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css">
+      <ScrollPane layoutX="453.0" layoutY="94.0" prefHeight="519.0" prefWidth="356.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css">
          <content>
             <GridPane fx:id="gridPaneDescargados">
               <rowConstraints>

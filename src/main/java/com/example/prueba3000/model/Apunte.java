@@ -15,6 +15,7 @@ public class Apunte {
     private Asignatura asignatura;
     private Curso curso;
     private Usuario autor;
+    private int eliminado;
 
     public Apunte(String nombre, File pf, Asignatura asignatura, Curso curso, Usuario autor) {
         this.id = id;
@@ -36,7 +37,7 @@ public class Apunte {
         this.autor = autor;
     }
 
-    public Apunte(int id, String nombre, Blob pdf, int puntuacion, Asignatura asignatura, Curso curso, Usuario autor) throws SQLException, IOException {
+    public Apunte(int id, String nombre, Blob pdf, int puntuacion, Asignatura asignatura, Curso curso, Usuario autor, int eliminado) throws SQLException, IOException {
         this.id = id;
         this.nombre = nombre;
         this.pdf = pdf;
@@ -44,14 +45,8 @@ public class Apunte {
         this.asignatura = asignatura;
         this.curso = curso;
         this.autor = autor;
+        this.eliminado = eliminado;
     }
-
-
-
-
-
-
-
 
 
     public int getId() {

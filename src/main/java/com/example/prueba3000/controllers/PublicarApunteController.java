@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -108,10 +109,13 @@ public class PublicarApunteController implements Initializable {
                 stage.setTitle("Subir apunte");
                 stage.setScene(scene);
                 stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
-                stage.show();
+                stage.initOwner(buttonPublicar.getScene().getWindow());
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.showAndWait();
 
                 Stage stage1 = (Stage) buttonPublicar.getScene().getWindow();
                 stage1.close();
+
 
 
             } else {
