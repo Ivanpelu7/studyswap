@@ -5,6 +5,7 @@ import com.example.prueba3000.model.*;
 
 
 import com.example.prueba3000.util.Validador;
+import javafx.animation.RotateTransition;
 import javafx.beans.value.ObservableListValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -23,7 +24,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.util.Duration;
 
 import java.awt.*;
 import java.io.File;
@@ -134,18 +137,14 @@ public class AdministradorController {
     private Reporte reporteSeleccionado;
     @FXML
     private Button botonEliminarReporte;
+    @FXML
+    private Button botonGirar;
+    @FXML
+    private ImageView ImagenGirar;
 
 
     @javafx.fxml.FXML
     public void Mostrar_eliminar_usuario() {
-        paneMostrarReportes.setVisible(false);
-        mostrarEliminarUsuario.setVisible(true);
-
-        mostrarAñadirCursos.setVisible(false);
-
-        mostrarEliminarApunte.setVisible(false);
-
-        mostrarAñadirAsignatura.setVisible(false);
 
         UsuarioModel um = new UsuarioModel();
         HashMap<Integer, Usuario> usuariosHashmap = new HashMap<>();
@@ -193,6 +192,15 @@ public class AdministradorController {
             }
 
         }
+        botonGirar.setVisible(true);
+        paneMostrarReportes.setVisible(false);
+        mostrarEliminarUsuario.setVisible(true);
+
+        mostrarAñadirCursos.setVisible(false);
+
+        mostrarEliminarApunte.setVisible(false);
+
+        mostrarAñadirAsignatura.setVisible(false);
 
 
     }
@@ -475,12 +483,8 @@ public class AdministradorController {
             rm.eliminarReporte(this.reporteSeleccionado);
             am.eliminarApunte(this.reporteSeleccionado.getApunte());
 
-            FXMLLoader admin = new FXMLLoader(Main.class.getResource("vistas/Administracion.fxml"));
 
-            Parent root = admin.load();
-            AdministradorController ac = admin.getController();
-            anchor.getChildren().setAll(root);
-            ac.actualizarPagina(4);
+            actualizarPagina(4);
 
             paneMostrarReportes.setVisible(false);
         }
@@ -521,14 +525,15 @@ public class AdministradorController {
     public void actualizarPagina(int i) throws SQLException, IOException {
 
         if (i == 1) {
-            Mostrar_eliminar_usuario();
-            mostrarEliminarUsuario.setVisible(true);
+            FXMLLoader admin = new FXMLLoader(Main.class.getResource("vistas/Administracion.fxml"));
 
-            mostrarAñadirCursos.setVisible(false);
+            Parent root = admin.load();
+            AdministradorController ac = admin.getController();
+            anchor.getChildren().setAll(root);
 
-            mostrarEliminarApunte.setVisible(false);
+            ac.Mostrar_eliminar_usuario();
+            ac.girar();
 
-            mostrarAñadirAsignatura.setVisible(false);
         }
 
         if (i == 2) {
@@ -554,14 +559,13 @@ public class AdministradorController {
         }
 
         if (i == 4) {
-            Mostrar_eliminar_apunte();
-            mostrarEliminarUsuario.setVisible(false);
+            FXMLLoader admin = new FXMLLoader(Main.class.getResource("vistas/Administracion.fxml"));
 
-            mostrarAñadirCursos.setVisible(false);
+            Parent root = admin.load();
+            AdministradorController ac = admin.getController();
+            anchor.getChildren().setAll(root);
 
-            mostrarEliminarApunte.setVisible(true);
-
-            mostrarAñadirAsignatura.setVisible(false);
+            ac.Mostrar_eliminar_apunte();
 
         }
     }
@@ -586,5 +590,21 @@ public class AdministradorController {
             paneMostrarReportes.setVisible(false);
         }
     }
+
+
+    @FXML
+    public void actualizar(Event event) throws SQLException, IOException {
+        actualizarPagina(1);
+
+    }
+    public  void girar()  {
+        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(1),botonGirar);
+        rotateTransition.setByAngle(360);
+        rotateTransition.play();
+
+
+
+    }
+
 }
 

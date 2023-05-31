@@ -75,9 +75,9 @@
             <String fx:value="shadow" />
          </styleClass>
       </Pane>
-      <Pane fx:id="mostrarEliminarUsuario" layoutX="14.0" layoutY="186.0" prefHeight="438.0" prefWidth="817.0" stylesheets="@../css/style.css" visible="false">
+      <Pane fx:id="mostrarEliminarUsuario" layoutX="14.0" layoutY="186.0" prefHeight="438.0" prefWidth="817.0" stylesheets="@../css/style.css">
          <children>
-            <ScrollPane fx:id="scrollPane" layoutX="11.0" layoutY="11.0" prefHeight="411.0" prefWidth="800.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css">
+            <ScrollPane fx:id="scrollPane" layoutX="11.0" layoutY="11.0" prefHeight="355.0" prefWidth="800.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css">
                <content>
                   <GridPane fx:id="vbox_users" stylesheets="@../css/style.css">
                     <rowConstraints>
@@ -86,6 +86,14 @@
                   </GridPane>
                </content>
             </ScrollPane>
+            <Button fx:id="botonGirar" layoutX="753.0" layoutY="363.0" mnemonicParsing="false" onAction="#actualizar" prefHeight="50.0" prefWidth="44.0" styleClass="boton-transparent" stylesheets="@../css/style.css" visible="false">
+               <graphic>
+                  <ImageView fx:id="ImagenGirar" fitHeight="37.0" fitWidth="37.0">
+                     <image>
+                        <Image url="@../images/recargar.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children></Pane>
       <Pane fx:id="mostrarAñadirCursos" layoutY="170.0" prefHeight="438.0" prefWidth="817.0" styleClass="pdflateral" stylesheets="@../css/style.css" visible="false">
          <children>
@@ -230,7 +238,7 @@
               </columns>
             </TableView>
          </children></Pane>
-      <Pane fx:id="paneMostrarReportes" layoutX="115.0" layoutY="405.0" prefHeight="200.0" prefWidth="610.0" styleClass="pdflateral" stylesheets="@../css/style.css">
+      <Pane fx:id="paneMostrarReportes" layoutX="115.0" layoutY="405.0" prefHeight="200.0" prefWidth="610.0" styleClass="pdflateral" stylesheets="@../css/style.css" visible="false">
          <children>
             <ImageView fitHeight="104.0" fitWidth="88.0" layoutX="7.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
