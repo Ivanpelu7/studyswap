@@ -190,9 +190,8 @@ public class VistaAmigosController implements Initializable {
             SolicitudAmistad s = this.solicitudes.get(nsolicitud);
             nomuserSolicitud.setText(s.getUsuarioEmisor().getNombreUsuario());
             if(s.getUsuarioEmisor().getFotoPerfil()==null){
-                circuloImagenSolicitud.setVisible(false);
                 if (s.getUsuarioEmisor().getSexo().equals("M")) {
-
+                    circuloImagenSolicitud.setVisible(false);
                     fotohombre11.setVisible(true);
 
                 } else if (s.getUsuarioEmisor().getSexo().equals("F")) {

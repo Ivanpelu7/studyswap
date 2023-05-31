@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.Rating?>
 
-<AnchorPane prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaApuntesController">
+<AnchorPane fx:id="mainAnchorPane" prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaApuntesController">
    <children>
       <BorderPane layoutX="244.0" layoutY="201.0" prefHeight="642.0" prefWidth="839.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -65,6 +65,21 @@
                         <String fx:value="boton" />
                      </styleClass>
                   </Button>
+                  <Button fx:id="botonLimpiarFiltros" mnemonicParsing="false" onAction="#limpiarFiltros" prefHeight="26.0" prefWidth="102.0" stylesheets="@../css/style.css" text="Limpiar filtros" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <styleClass>
+                        <String fx:value="combobox-filtro" />
+                        <String fx:value="boton" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets left="20.0" top="15.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
          </top>
@@ -102,11 +117,11 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Button fx:id="botonDescargar" layoutX="51.0" layoutY="448.0" mnemonicParsing="false" onAction="#descargarApunte" prefHeight="42.0" prefWidth="181.0" stylesheets="@../css/style.css" text="Descargar" textFill="WHITE">
+                        <Button fx:id="botonDescargar" graphicTextGap="10.0" layoutX="51.0" layoutY="448.0" mnemonicParsing="false" onAction="#descargarApunte" prefHeight="42.0" prefWidth="181.0" stylesheets="@../css/style.css" text="Descargar" textFill="WHITE">
                            <graphic>
-                              <ImageView fitHeight="35.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="24.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/descargar.png" />
+                                    <Image url="@../images/descarga-directa.png" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />

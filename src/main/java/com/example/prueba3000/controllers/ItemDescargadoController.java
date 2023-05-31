@@ -3,6 +3,7 @@ package com.example.prueba3000.controllers;
 import com.example.prueba3000.Main;
 import com.example.prueba3000.model.Apunte;
 import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -91,7 +92,7 @@ public class ItemDescargadoController {
         }
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void seleccionarApunte(Event event) throws IOException, SQLException {
 
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/ApunteInformacion.fxml"));

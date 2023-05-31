@@ -62,6 +62,10 @@ public class VistaApuntesController implements Initializable {
     private Button botonDescargar;
     @javafx.fxml.FXML
     private Rating puntuacionApunte;
+    @javafx.fxml.FXML
+    private Button botonLimpiarFiltros;
+    @javafx.fxml.FXML
+    private AnchorPane mainAnchorPane;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -224,8 +228,6 @@ public class VistaApuntesController implements Initializable {
                 os.write(buffer, 0, bytesRead);
             }
 
-            pdf.free();
-
             FileChooser fileChooser = new FileChooser();
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
             fileChooser.setInitialFileName(nombre);
@@ -252,4 +254,13 @@ public class VistaApuntesController implements Initializable {
             temporalFile.delete();
         }
     }
+
+    @javafx.fxml.FXML
+    public void limpiarFiltros(ActionEvent actionEvent) throws SQLException, IOException {
+
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("vistas/VistaApuntes.fxml"));
+        Parent root = loader.load();
+        mainAnchorPane.getChildren().setAll(root);
+    }
 }
+

@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class VistaPerfilController implements Initializable {
@@ -140,6 +141,7 @@ public class VistaPerfilController implements Initializable {
         loader.setLocation(Main.class.getResource("vistas/PublicarApunte.fxml"));
         pane = loader.load();
 
+
         Scene scene = new Scene(pane);
 
         Stage stage = new Stage();
@@ -147,6 +149,16 @@ public class VistaPerfilController implements Initializable {
         stage.setTitle("Publicar Apunte");
         stage.setResizable(false);
         stage.getIcons().setAll(new Image(Main.class.getResourceAsStream("images/icono.png")));
-        stage.show();
+        stage.initOwner(esteStage());
+        stage.initModality(Modality.WINDOW_MODAL);
+
+        stage.showAndWait();
+    }
+
+    public Stage esteStage() throws IOException {
+
+        Stage stage = (Stage) gridPaneSubidos.getScene().getWindow();
+
+        return stage;
     }
 }

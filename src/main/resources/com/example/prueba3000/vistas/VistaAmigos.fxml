@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchor" prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaAmigosController">
+<AnchorPane fx:id="anchor" prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaAmigosController">
    <children>
       <BorderPane layoutX="14.0" layoutY="8.0" prefHeight="627.0" prefWidth="826.0">
          <top>
@@ -29,14 +29,14 @@
                            <children>
                               <Pane prefHeight="266.0" prefWidth="384.0" style="-fx-background-color: FFFF;" styleClass="pdflateral" stylesheets="@../css/style.css">
                                  <children>
-                                    <Label layoutX="41.0" layoutY="25.0" prefHeight="77.0" prefWidth="288.0" text="AÑADIR AMIGOS">
+                                    <Label layoutX="112.0" layoutY="14.0" prefHeight="77.0" prefWidth="161.0" text="Añadir amigo">
                                        <font>
-                                          <Font name="Leelawadee Bold" size="34.0" />
+                                          <Font name="System Bold" size="25.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="usernameAmigoAñadir" layoutX="41.0" layoutY="111.0" prefHeight="25.0" prefWidth="270.0" promptText="Nombre de usuario" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
+                                    <TextField fx:id="usernameAmigoAñadir" layoutX="42.0" layoutY="107.0" prefHeight="34.0" prefWidth="270.0" promptText="Nombre de usuario" styleClass="bordes-redondos" stylesheets="@../css/style.css" />
                                     <Label fx:id="userNoExiste" alignment="CENTER" layoutX="40.0" layoutY="145.0" prefHeight="17.0" prefWidth="273.0" textFill="RED" />
-                                    <Pane fx:id="paneAmigobuscado" layoutX="36.0" layoutY="143.0" prefHeight="38.0" prefWidth="281.0" style="-fx-background-color: #70c07f;" styleClass="bordes-redondos" stylesheets="@../css/style.css">
+                                    <Pane fx:id="paneAmigobuscado" layoutX="36.0" layoutY="154.0" prefHeight="38.0" prefWidth="281.0" style="-fx-background-color: #70c07f;" styleClass="bordes-redondos" stylesheets="@../css/style.css">
                                        <children>
                                           <ImageView fx:id="botonAñadido" fitHeight="30.0" fitWidth="30.0" layoutX="237.0" layoutY="4.0">
                                              <image>
@@ -136,18 +136,18 @@
                                                 <Circle fx:id="circuloImagenSolicitud" fill="DODGERBLUE" layoutX="22.0" layoutY="20.0" radius="17.0" stroke="BLACK" strokeType="INSIDE" />
                                              </children>
                                           </Pane>
-                                          <Label alignment="CENTER" layoutX="-4.0" layoutY="14.0" prefHeight="93.0" prefWidth="411.0" text="SOLICITUDES">
+                                          <Label alignment="CENTER" layoutX="-4.0" layoutY="27.0" prefHeight="55.0" prefWidth="411.0" text="Solicitudes">
                                              <font>
-                                                <Font name="Leelawadee Bold" size="34.0" />
+                                                <Font name="System Bold" size="25.0" />
                                              </font>
                                           </Label>
                                        </children>
                                     </Pane>
                                  </children>
                               </Pane>
-                              <Label layoutX="86.0" layoutY="265.0" prefHeight="77.0" prefWidth="288.0" text="MIS AMIGOS">
+                              <Label layoutX="123.0" layoutY="266.0" prefHeight="77.0" prefWidth="139.0" text="Mis amigos">
                                  <font>
-                                    <Font name="Leelawadee Bold" size="34.0" />
+                                    <Font name="System Bold" size="25.0" />
                                  </font>
                               </Label>
                            </children>
