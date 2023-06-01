@@ -193,7 +193,7 @@ public class ApunteModel extends DBUtil {
 
     public void eliminarApuntesUsuario(Usuario usuario) throws SQLException {
 
-        String query = "DELETE FROM apuntes WHERE id_autor = " + usuario.getId();
+        String query = "update apuntes set eliminado=1 where id_autor=" + usuario.getId();
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 

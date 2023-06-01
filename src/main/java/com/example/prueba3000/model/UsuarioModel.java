@@ -129,8 +129,9 @@ public class UsuarioModel extends DBUtil {
         String query1 = "delete from descargas where id_usuario="+user.getId();
         String query2 = "delete from solicitudes where id_usuario_emisor="+user.getId();
 
-        AmigosModel am= new AmigosModel();
-        am.eliminaramigo(user, user);
+        ApunteModel am= new ApunteModel();
+        am.eliminarApuntesUsuario(user);
+
 
         AmigosModel amigosModel = new AmigosModel();
         amigosModel.eliminarAmistad(user);
