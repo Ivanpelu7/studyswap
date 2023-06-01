@@ -124,8 +124,13 @@ public class UsuarioModel extends DBUtil {
     }
 
     public void eliminarUsuario(Usuario user) throws SQLException {
+
         String query = "delete from usuarios where id_usuario="+user.getId();
         String query1 = "delete from descargas where id_usuario="+user.getId();
+        String query2 = "delete from solicitudes where id_usuario_emisor="+user.getId();
+
+        AmigosModel am= new AmigosModel();
+        am.eliminaramigo(user, user);
 
         AmigosModel amigosModel = new AmigosModel();
         amigosModel.eliminarAmistad(user);
@@ -134,8 +139,11 @@ public class UsuarioModel extends DBUtil {
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
+        PreparedStatement ps2 = getConexion().prepareStatement(query2);
+
         ps1.executeUpdate();
         ps.executeUpdate();
+        ps2.executeUpdate();
     }
 
     public int modificarApellidos(Usuario usuario, String apellidos) throws SQLException {
