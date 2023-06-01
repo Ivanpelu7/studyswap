@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchor" prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaAmigosController">
+<AnchorPane fx:id="anchor" prefHeight="642.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.VistaAmigosController">
    <children>
       <BorderPane layoutX="14.0" layoutY="8.0" prefHeight="627.0" prefWidth="826.0">
          <top>
@@ -141,6 +141,7 @@
                                                 <Font name="System Bold" size="25.0" />
                                              </font>
                                           </Label>
+                                          <Label fx:id="noSolicitudes" alignment="CENTER" layoutX="3.0" layoutY="100.0" prefHeight="91.0" prefWidth="387.0" text=" NO TIENES SOLICITUDES" />
                                        </children>
                                     </Pane>
                                  </children>

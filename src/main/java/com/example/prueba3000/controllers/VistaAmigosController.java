@@ -96,6 +96,8 @@ public class VistaAmigosController implements Initializable {
     private Circle circuloImagenSolicitud;
     @javafx.fxml.FXML
     private Circle circuloImageMostrarAmigo;
+    @javafx.fxml.FXML
+    private Label noSolicitudes;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -176,6 +178,7 @@ public class VistaAmigosController implements Initializable {
     int nsolicitud = 0;
 
     public void setSolicitudes(Usuario u) throws SQLException {
+        noSolicitudes.setVisible(false);
         SolicitudAmistadModel sam = new SolicitudAmistadModel();
         UsuarioModel um = new UsuarioModel();
 
@@ -201,6 +204,7 @@ public class VistaAmigosController implements Initializable {
             }
         } else {
             PaneSolicitudes.setVisible(false);
+            noSolicitudes.setVisible(true);
         }
     }
 

@@ -14,6 +14,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -33,18 +35,30 @@ public class AdminUsersItemController {
     private ImageView fotomujer;
     @javafx.fxml.FXML
     private Button eliminar;
+    @javafx.fxml.FXML
+    private Circle circuloImagen;
 
     @Deprecated
     public void setData(Usuario user) throws SQLException {
         this.usuario = user;
 
-        if (user.getSexo().equals("M")) {
-            fotohombre.setVisible(true);
-            fotomujer.setVisible(false);
+        if (user.getFotoPerfil()==null) {
+            circuloImagen.setVisible(false);
+            if (user.getSexo().equals("M")) {
+                fotohombre.setVisible(true);
+                fotomujer.setVisible(false);
+            }
+            if (user.getSexo().equals("F")) {
+                fotomujer.setVisible(true);
+                fotohombre.setVisible(false);
 
-        } else if (user.getSexo().equals("F")) {
-            fotomujer.setVisible(true);
+            }
+
+        }
+        else {
+            fotomujer.setVisible(false);
             fotohombre.setVisible(false);
+            circuloImagen.setFill(new ImagePattern(user.getFotoPerfil()));
         }
         nombre_usuario.setText(user.getNombreUsuario());
         email.setText(user.getEmail());

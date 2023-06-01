@@ -7,11 +7,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <HBox fx:id="seleccionado" onMousePressed="#click" prefHeight="57.0" prefWidth="383.0" style="-fx-background-color: FFFF;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prueba3000.controllers.AdminUsersItemController">
    <children>
-      <Pane prefHeight="57.0" prefWidth="382.0" style="-fx-background-color: FFFF;" stylesheets="@../css/style.css">
+      <Pane prefHeight="44.0" prefWidth="382.0" style="-fx-background-color: FFFF;" stylesheets="@../css/style.css">
          <children>
             <Label fx:id="nombre_usuario" layoutX="59.0" layoutY="15.0" prefHeight="30.0" prefWidth="62.0" text="Diegix">
                <font>
@@ -33,7 +34,7 @@
                   <Image url="@../images/hombre.png" />
                </image>
             </ImageView>
-            <Button fx:id="eliminar" layoutX="319.0" layoutY="6.0" mnemonicParsing="false" onAction="#eliminar_usuario" prefHeight="39.0" prefWidth="53.0" styleClass="boton-menu" stylesheets="@../css/style.css">
+            <Button fx:id="eliminar" layoutX="319.0" layoutY="6.0" mnemonicParsing="false" onAction="#eliminar_usuario" prefHeight="39.0" prefWidth="53.0" styleClass="boton-transparent" stylesheets="@../css/style.css">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="37.0">
                      <image>
@@ -42,6 +43,7 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Circle fx:id="circuloImagen" fill="DODGERBLUE" layoutX="34.0" layoutY="29.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
          <styleClass>
             <String fx:value="bordes-redondos" />

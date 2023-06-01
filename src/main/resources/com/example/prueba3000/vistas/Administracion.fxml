@@ -75,7 +75,7 @@
             <String fx:value="shadow" />
          </styleClass>
       </Pane>
-      <Pane fx:id="mostrarEliminarUsuario" layoutX="14.0" layoutY="186.0" prefHeight="438.0" prefWidth="817.0" stylesheets="@../css/style.css">
+      <Pane fx:id="mostrarEliminarUsuario" layoutY="170.0" prefHeight="438.0" prefWidth="817.0" stylesheets="@../css/style.css">
          <children>
             <ScrollPane fx:id="scrollPane" layoutX="11.0" layoutY="11.0" prefHeight="355.0" prefWidth="800.0" styleClass="style-scroll-pane" stylesheets="@../css/style.css">
                <content>
@@ -170,7 +170,7 @@
                </font>
             </Label>
          </children></Pane>
-      <Pane fx:id="mostrarAñadirAsignatura" layoutX="14.0" layoutY="186.0" prefHeight="438.0" prefWidth="817.0" styleClass="pdflateral" stylesheets="@../css/style.css" visible="false">
+      <Pane fx:id="mostrarAñadirAsignatura" layoutY="170.0" prefHeight="438.0" prefWidth="817.0" styleClass="pdflateral" stylesheets="@../css/style.css" visible="false">
          <children>
             <Pane layoutX="14.0" layoutY="165.0" prefHeight="143.0" prefWidth="267.0">
                <children>
@@ -228,7 +228,7 @@
             </Pane>
             <Label alignment="CENTER" layoutX="547.0" layoutY="128.0" prefHeight="37.0" prefWidth="258.0" text="ELIMINAR ASIGNATURA" />
          </children></Pane>
-      <Pane fx:id="mostrarEliminarApunte" layoutX="118.0" layoutY="164.0" prefHeight="200.0" prefWidth="610.0" styleClass="pdflateral" stylesheets="@../css/style.css" visible="false">
+      <Pane fx:id="mostrarEliminarApunte" layoutX="118.0" layoutY="164.0" prefHeight="200.0" prefWidth="610.0" styleClass="pdflateral" stylesheets="@../css/style.css">
          <children>
             <TableView fx:id="tabla" layoutX="64.0" layoutY="17.0" onMouseClicked="#click" prefHeight="166.0" prefWidth="482.0">
               <columns>
@@ -238,7 +238,7 @@
               </columns>
             </TableView>
          </children></Pane>
-      <Pane fx:id="paneMostrarReportes" layoutX="115.0" layoutY="405.0" prefHeight="200.0" prefWidth="610.0" styleClass="pdflateral" stylesheets="@../css/style.css" visible="false">
+      <Pane fx:id="paneMostrarReportes" layoutX="115.0" layoutY="405.0" prefHeight="200.0" prefWidth="610.0" styleClass="pdflateral" stylesheets="@../css/style.css">
          <children>
             <ImageView fitHeight="104.0" fitWidth="88.0" layoutX="7.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -267,9 +267,9 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="botonEliminarReporte" layoutX="293.0" layoutY="152.0" mnemonicParsing="false" onAction="#eliminarReporte" prefHeight="50.0" prefWidth="63.0" styleClass="boton-transparent" stylesheets="@../css/style.css">
+            <Button fx:id="botonEliminarReporte" layoutX="289.0" layoutY="147.0" mnemonicParsing="false" onAction="#eliminarReporte" prefHeight="50.0" prefWidth="63.0" styleClass="boton-transparent" stylesheets="@../css/style.css">
                <graphic>
-                  <ImageView fitHeight="33.0" fitWidth="40.0">
+                  <ImageView fitHeight="40.0" fitWidth="40.0">
                      <image>
                         <Image url="@../images/borrar.png" />
                      </image>
