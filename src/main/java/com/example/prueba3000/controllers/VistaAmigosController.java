@@ -273,7 +273,7 @@ public class VistaAmigosController implements Initializable {
         Validador v = new Validador();
 
         HashMap<Integer, Usuario> usuariosHashmap = new HashMap<>();
-        usuariosHashmap.putAll(um.recuperarUsuarios());
+        usuariosHashmap.putAll(um.recuperarUsuariossinAdmin());
 
 
         if (!v.nombreUsuarioExiste(usernameAmigoAñadir.getText(), usuariosHashmap)) {

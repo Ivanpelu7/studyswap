@@ -6,6 +6,7 @@ import com.example.prueba3000.model.ApunteModel;
 import com.example.prueba3000.model.Usuario;
 import com.example.prueba3000.model.UsuarioModel;
 import com.example.prueba3000.util.UsuarioHolder;
+import com.example.prueba3000.util.Validador;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -73,6 +75,8 @@ public class AjustesController implements Initializable {
     @javafx.fxml.FXML
     private Button buttonEliminarCuenta;
     private UsuarioModel usuarioModel;
+    @javafx.fxml.FXML
+    private Label contraseñaIncorrecta;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -216,15 +220,17 @@ public class AjustesController implements Initializable {
 
     @javafx.fxml.FXML
     public void cambiarContrasena(ActionEvent actionEvent) throws SQLException, IOException {
-
+        contraseñaIncorrecta.setVisible(false);
         String password = textFieldNuevaContrasena.getText();
-
+        Validador v= new Validador();
+        if(v.validarPasswordFormato(password)==true){
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setHeaderText(null);
         a.setContentText("Va a modificar la contraseña, ¿estas seguro/a?");
         a.showAndWait();
 
         if (a.getResult() == ButtonType.OK) {
+
             int i = usuarioModel.modificarPassword(this.usuario, password);
 
             if (i > 0) {
@@ -239,6 +245,11 @@ public class AjustesController implements Initializable {
                 Parent pane = loader.load();
                 mainAnchor.getChildren().setAll(pane);
             }
+
+            }
+        }
+        else {
+            contraseñaIncorrecta.setVisible(true);
         }
     }
 

@@ -49,12 +49,51 @@ public class UsuarioModel extends DBUtil {
         }
         return usuario;
     }
+    public HashMap<Integer, Usuario> recuperarUsuariossinAdmin() throws SQLException {
+
+        HashMap<Integer, Usuario> usuarios = new HashMap<Integer, Usuario>();
+
+        String query = "SELECT * FROM usuarios where tipo_usuario=0";
+
+        PreparedStatement ps = getConexion().prepareStatement(query);
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+
+            Integer id = rs.getInt("id_usuario");
+            String nombreUsuario = rs.getString("nombre_usuario");
+            String password = rs.getString("password");
+            String email = rs.getString("email");
+            String nombre = rs.getString("nombre");
+            String apellidos = rs.getString("apellidos");
+            int tipoUsuario = rs.getInt("tipo_usuario");
+            String sexo = rs.getString("sexo");
+            Blob fotoPerfil = rs.getBlob("foto_perfil");
+
+            Image image = null;
+
+            if (fotoPerfil != null) {
+                InputStream inputStream = fotoPerfil.getBinaryStream();
+                image = new Image(inputStream);
+            }
+
+            Usuario usuario = new Usuario(id, nombreUsuario, password, email, nombre, apellidos, tipoUsuario, sexo, image);
+
+            usuarios.put(usuario.getId(), usuario);
+        }
+
+        cerrarConexion();
+
+        return usuarios;
+
+    }
 
     public HashMap<Integer, Usuario> recuperarUsuarios() throws SQLException {
 
         HashMap<Integer, Usuario> usuarios = new HashMap<Integer, Usuario>();
 
-        String query = "SELECT * FROM usuarios ";
+        String query = "SELECT * FROM usuarios";
 
         PreparedStatement ps = getConexion().prepareStatement(query);
 
