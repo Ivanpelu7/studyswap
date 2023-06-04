@@ -191,8 +191,8 @@ public class VistaAmigosController implements Initializable {
             SolicitudAmistad s = this.solicitudes.get(nsolicitud);
             nomuserSolicitud.setText(s.getUsuarioEmisor().getNombreUsuario());
             if(s.getUsuarioEmisor().getFotoPerfil()==null){
+                circuloImagenSolicitud.setVisible(false);
                 if (s.getUsuarioEmisor().getSexo().equals("M")) {
-                    circuloImagenSolicitud.setVisible(false);
                     fotohombre11.setVisible(true);
 
                 } else if (s.getUsuarioEmisor().getSexo().equals("F")) {
@@ -213,19 +213,22 @@ public class VistaAmigosController implements Initializable {
         this.usuarioaeliminar = usuario;
         paneAmigoSeleccionado.setVisible(true);
 
-        if (usuario.getFotoPerfil()==null) {
+        if (usuarioaeliminar.getFotoPerfil()==null) {
             circuloImageMostrarAmigo.setVisible(false);
-            if (usuario.getSexo().equals("M")) {
+            if (usuarioaeliminar.getSexo().equals("M")) {
                 fotohombre.setVisible(true);
             }
-            if (usuario.getSexo().equals("F")) {
+            if (usuarioaeliminar.getSexo().equals("F")) {
                 fotomujer.setVisible(true);
 
             }
 
         }
         else {
-            circuloImageMostrarAmigo.setFill(new ImagePattern(usuario.getFotoPerfil()));
+            fotohombre.setVisible(false);
+            fotomujer.setVisible(false);
+            circuloImageMostrarAmigo.setVisible(true);
+            circuloImageMostrarAmigo.setFill(new ImagePattern(usuarioaeliminar.getFotoPerfil()));
         }
 
 
